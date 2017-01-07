@@ -1,0 +1,24 @@
+{
+    "name": "magicsquare",
+    "locales": {
+        "en": {
+            "title": "Magic Square",
+            "subtitle": "Fill in the blanks to obtain a magic square!",
+            "description": "In recreational mathematics, a magic square is an arrangement of distinct numbers (i.e., each number is used once), usually integers, in a square grid, where the numbers in each row, and in each column, and the numbers in the main and secondary diagonals, all add up to the same number. Here, we explore a simpler variant of magic squares, where the numbers can repeat, we do not consider the diagonals and the only constraint is that the sums of numbers in all rows and columns are all equal (e.g. to 100).",
+            "instructions": "Fill in the missing gaps so the sum of numbers in all rows and columns is exactly 100."
+        },
+        "cz": {
+            "title": "Magic Square",
+            "subtitle": "Fill in the blanks to obtain a magic square!",
+            "description": "In recreational mathematics, a magic square is an arrangement of distinct numbers (i.e., each number is used once), usually integers, in a square grid, where the numbers in each row, and in each column, and the numbers in the main and secondary diagonals, all add up to the same number. Here, we explore a simpler variant of magic squares, where the numbers can repeat, we do not consider the diagonals and the only constraint is that the sums of numbers in all rowa and columns are all equal (e.g. to 100).",
+            "instructions": "Fill in the missing gaps so the sum of numbers in all rows and columns is exactly 100."
+        }
+    },
+    "tags": [
+        "math"
+    ],
+    "gameClass": "MagicSquareGame",
+    "configuration": [
+    ]
+}
+                

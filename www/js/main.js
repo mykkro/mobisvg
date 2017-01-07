@@ -20,13 +20,16 @@ $(document).ready(function() {
 
   var storage = window.localStorage;
   var value = storage.getItem("mobisvg") || 0;
-  alert(value);
-  storage.setItem("mobisvg", value+1);
+  //alert(value);
+  //storage.setItem("mobisvg", value+1);
 
+/*
    var paper = Raphael("paper", "100%", "100%");
    paper.setViewBox( 0, 0, 1000, 1000, false );
    var startX=100, startY=100, endX=900, endY=900;
    paper.path( ["M", startX, startY, "L", endX, endY ] );
+
+
 
     paper.circle(100, 100, 50).attr({
         "fill": "#fff",
@@ -34,8 +37,9 @@ $(document).ready(function() {
         "stroke-width": "10"
     }).mousedown(function(e) {
       //alert("clicked");
-
-      $.ajax( "https://api.github.com/legacy/repos/search/javascript" ) //"https://nit.felk.cvut.cz/~myrousz/carvivi/road-editor/sample/test.json" )
+      var url = "https://api.github.com/legacy/repos/search/javascript"; 
+      var url = "data/test.json";
+      $.ajax( url ) //"https://nit.felk.cvut.cz/~myrousz/carvivi/road-editor/sample/test.json" )
         .done(function(data) {
             alert( "success" );
             console.log(data);
@@ -48,6 +52,8 @@ $(document).ready(function() {
             alert( "complete" );
         });
     }); 
+*/
+    startEngine(gameBaseUrl, paper);
 });
 
 function show(text) {
@@ -103,21 +109,16 @@ function updatePage() {
      var or = strongStart + "Orientation: " + strongEnd +
        (window.orientation || 0) + " degrees";
      var br = "<br/>";
-     console.log(or);
      strRes = or + br;
      sw = strongStart + "Width: " + strongEnd + screen.width;
-     console.log(sw);
      strRes += sw + br;
      sh = strongStart + "Height: " + strongEnd + screen.height;
-     console.log(sh);
      strRes += sh + br;
      ww = strongStart + "Inner width: " + strongEnd +
        window.innerWidth;
-     console.log(ww);
      strRes += ww + br;
      wh = strongStart + "Inner height: " + strongEnd +
        window.innerHeight;
-     console.log(wh);
-     strRes += wh + br;
-     document.getElementById('controls').innerHTML = strRes;
+     strRes += wh + br;     
+     //document.getElementById('controls').innerHTML = strRes;
    }

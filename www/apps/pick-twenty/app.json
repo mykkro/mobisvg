@@ -1,0 +1,40 @@
+{
+    "name": "pick-twenty",
+    "locales": {
+        "en": {
+            "title": "Pick 20",
+            "subtitle": "",
+            "description": "Description comes here...",
+            "instructions": ""
+        },
+        "cz": {
+            "title": "Pick 20",
+            "subtitle": "",
+            "description": "Description comes here...",
+            "instructions": ""
+        }
+    },
+    "tags": [
+        "visual", "attention"
+    ],
+    "gameClass": "PickTwentyGame",
+    "configuration": [
+        { 
+            "name": "N",
+            "title": "",
+            "description": "",
+            "type": "int",
+            "minValue": 1,
+            "maxValue": 20,
+            "default": 10
+        },
+        { 
+            "name": "rotateGoals",
+            "title": "",
+            "description": "",
+            "type": "boolean",
+            "default": true
+        }
+    ]
+}
+                

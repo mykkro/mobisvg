@@ -1,0 +1,24 @@
+{
+    "name": "sequences",
+    "locales": {
+        "en": {
+            "title": "Sequences",
+            "subtitle": "",
+            "description": "Description comes here...",
+            "instructions": ""
+        },
+        "cz": {
+            "title": "Sequences",
+            "subtitle": "",
+            "description": "Description comes here...",
+            "instructions": ""
+        }
+    },
+    "tags": [
+        "logical"
+    ],
+    "gameClass": "SequencesGame",
+    "configuration": [
+    ]
+}
+                

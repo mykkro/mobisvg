@@ -22,6 +22,10 @@ platforms/ios/cordova/console.log
 Thumbs.db
 Desktop.ini
 
+node_modules/
+platforms/
+
+
 *.sw[mnpcod]
 *.log
 *.tmp
