@@ -1,0 +1,29 @@
+# Android
+platforms/android/assets/www
+platforms/android/bin/
+platforms/android/gen/
+platforms/android/res/xml/config.xml
+
+# iOS
+platforms/ios/build/
+platforms/ios/CordovaLib/build/
+platforms/ios/www
+platforms/ios/MyPace/config.xml
+platforms/ios/.staging
+
+# Emulator logs
+platforms/ios/cordova/console.log
+
+# IntelliJ IDEA files
+*.iml
+.idea
+
+#windows
+Thumbs.db
+Desktop.ini
+
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
