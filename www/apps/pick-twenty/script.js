@@ -29,8 +29,6 @@ var PickTwentyGame = Game.extend({
         this.locations.push({x:p.x, y:p.y, radius:rad});
     },
     createGUI: function(r) {
-        // create grid
-        r.rect(0,0,1000,1000).attr({ "fill":"ddd"});
         var self = this;
     },
     generateTaskData: function(options) {
@@ -58,15 +56,20 @@ var PickTwentyGame = Game.extend({
         }
         self.numberButtons = [];
         for(var i=0; i<self.locations.length; i++) {
-            var styles = ["rot0", "rot1", "rot2", "rot3", "rot4", "rot5", "rot6", "rot7", "rot8", "rot9", "rot10", "rot11"];
             var kinds = ["kind0", "kind1", "kind2"];
             var caption = (i+1)+"";
             if(i==5 || i==8) caption += ".";
             var klazz = "round-btn btn1 "+pickRandom(kinds);
-            if(this.rotateGoals) {
-                klazz = klazz + " " + pickRandom(styles)
-            }
-            var aa = new HtmlButtonWidget(100, 100, {"class":klazz, "backgroundColor":"cyan"}, caption);
+            var aa = new RoundButtonWidget(caption, {
+                "class":klazz, 
+                "border":10, 
+                "radius": 50, 
+                "fontSize": 60, 
+                "fontWeight": "bold",
+                "rotation": this.rotateGoals ? Math.random()*360.0 : 0,
+                backgroundStyle: {"fill": "#aac", "stroke":"#333", "stroke-width": 8},
+                highlightedBackgroundStyle: {"fill": "#aac", "stroke":"#333", "stroke-width": 8}
+            });
 
             aa.setPosition(self.locations[i].x, self.locations[i].y);
 
@@ -74,6 +77,7 @@ var PickTwentyGame = Game.extend({
             self.counter = 0;
 
             aa.onClick(function(btn) {
+                player.playSound("click");
                 // which index?
                 var ndx = -1;
                 for(var i=0; i<self.numberButtons.length; i++) {
@@ -86,9 +90,9 @@ var PickTwentyGame = Game.extend({
                 if(self.counter == ndx) {
                     console.log("Correct!", self.counter, elapsedTime);
                     // log success (time) + relevant data
-                    btn.addClass("correct");
+                    btn.setHighlighted(true, {"stroke":"green"});
                     setTimeout(function() {
-                        btn.removeClass("correct");
+                        btn.setHighlighted(false);
                     }, 1000);
                     self.counter++;
                     if(self.counter==self.N) {
@@ -100,9 +104,9 @@ var PickTwentyGame = Game.extend({
                     console.log("Incorrect!", self.counter, elapsedTime);
                     // log error (time) + relevant data
                     self.mistakes++;
-                    btn.addClass("incorrect");
+                    btn.setHighlighted(true, {"stroke":"red"});
                     setTimeout(function() {
-                        btn.removeClass("incorrect");
+                        btn.setHighlighted(false);
                     }, 1000);
                 }
 

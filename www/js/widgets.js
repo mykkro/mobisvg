@@ -44,16 +44,26 @@ var ButtonWidget = Widget.extend({
     constructor: function(text, options) {
         this.base();
         var o = options || {};
-        this.o = o;
+        o.backgroundStyle = o.backgroundStyle || ButtonWidget.backgroundStyle;
+        o.highlightedBackgroundStyle = o.highlightedBackgroundStyle || ButtonWidget.highlightedBackgroundStyle;
+        o.disabledBackgroundStyle = o.disabledBackgroundStyle || ButtonWidget.disabledBackgroundStyle;
         o.fontSize = o.fontSize || 40;
+        o.fontFamily = o.fontFamily || "Helvetica";
+        o.fontWeight = o.fontWeight || "normal",
+        o.textStyle = {"font-family" : o.fontFamily, "font-size" : o.fontSize, "font-weight": o.fontWeight, "text-anchor" : "start"};
+        this.o = o;
+        this.text = text;
+        this.createElement();
+    },
+    createElement: function() {
+        var o = this.o;
+        var text = this.text;
         o.border = o.border || 20;
         o.radius = o.radius || 30;
         var anchor = o.anchor;
         var border = o.border;
         var radius = o.radius;
-        var textStyle = {"font-family" : "Helvetica", "font-size" : o.fontSize, "text-anchor" : "start"};
-        var emptyStyle = {"fill": "none", "stroke":"none"};
-        var ttt = r.text(0,0,text).attr(textStyle);
+        var ttt = r.text(0,0,text).attr(this.o.textStyle);
         var bbox = ttt.node.getBBox();
         var tw = bbox.width;
         var th = bbox.height;
@@ -65,10 +75,11 @@ var ButtonWidget = Widget.extend({
         this.dy = border - ty;
         this.ttt = ttt;
         ttt.transform("T"+(x + this.dx)+","+(y + this.dy));
-        var rrr = r.rect(x, y, tw+2*border, th+2*border, radius).attr(ButtonWidget.backgroundStyle);
+        var rrr = r.rect(x, y, tw+2*border, th+2*border, radius).attr(this.o.backgroundStyle);
         ttt.toFront();
         this.rrr = rrr;
-        var bbb = r.rect(x, y, tw+2*border, th+2*border, radius).attr(emptyStyle);    
+        this.buttonBackground = rrr;
+        var bbb = r.rect(x, y, tw+2*border, th+2*border, radius).attr(ButtonWidget.emptyStyle);    
         bbb.node.setAttribute("class","svgbutton");
         this.root.push(rrr);
         this.root.push(ttt);
@@ -97,7 +108,15 @@ var ButtonWidget = Widget.extend({
     },
     setDisabled: function(flag) {
         this.disabled = flag;
-        this.rrr.attr(flag ? ButtonWidget.disabledBackgroundStyle : ButtonWidget.backgroundStyle)
+        this.buttonBackground.attr(flag 
+            ? this.o.disabledBackgroundStyle 
+            : this.o.backgroundStyle);
+    },
+    setHighlighted: function(flag, style) {
+        this.highlighted = flag;
+        this.buttonBackground.attr(flag 
+            ? $.extend(this.o.highlightedBackgroundStyle, style)
+            : this.o.backgroundStyle);
     },
     onClick: function(val) {
         if(typeof(val)=="function") {
@@ -108,9 +127,74 @@ var ButtonWidget = Widget.extend({
     }
 
 }, {
-    backgroundStyle: {"fill": "#aac", "stroke":"#333"},
-    disabledBackgroundStyle: {"fill": "#eee", "stroke":"#333"}
+    emptyStyle: {"fill": "none", "stroke":"none"},
+    backgroundStyle: {"fill": "#aac", "stroke":"#333", "stroke-width": 2},
+    highlightedBackgroundStyle: {"fill": "#aac", "stroke":"#333", "stroke-width": 2},
+    disabledBackgroundStyle: {"fill": "#eee", "stroke":"#333", "stroke-width": 2}
 });
+
+//var aa = new RoundButtonWidget(100, 100, {"class":klazz, "backgroundColor":"cyan"}, caption);
+var RoundButtonWidget = ButtonWidget.extend({
+    constructor: function(text, options) {
+        this.base(text, options);
+    },
+    createElement: function() {
+        var o = this.o;
+        var text = this.text;
+        o.rotation = o.rotation || 0;
+        this.rotation = o.rotation;
+        o.fontSize = o.fontSize || 50;
+        o.fontWeight = o.fontWeight || 'bold';
+        o.border = o.border || 10;
+        var anchor = o.anchor;
+        var border = o.border;
+        var radius = o.radius;
+        var ttt = r.text(0,0,text).attr(this.o.textStyle);
+        var bbox = ttt.node.getBBox();
+        var tw = bbox.width;
+        var th = bbox.height;
+        var tx = bbox.x;
+        var ty = bbox.y;
+        var x = 0;
+        var y = 0;
+        o.radius = o.radius || Math.max(tw+2*border, th+2*border);
+        this.dx = -tw/2;
+        this.dy = 0;
+        this.ttt = ttt;
+        ttt.transform("T"+(x + this.dx)+","+(y + this.dy));
+        var rrr = r.circle(x, y, o.radius).attr(this.o.backgroundStyle);
+        ttt.toFront();
+        this.rrr = rrr;
+        var bbb = r.circle(x, y, o.radius).attr(ButtonWidget.emptyStyle);    
+        bbb.node.setAttribute("class","svgbutton");
+        this.buttonBackground = rrr;
+        this.root.push(rrr);
+        this.root.push(ttt);
+        this.root.push(bbb);   
+        var self = this; 
+        // use Raphael's touch events
+        if(MOBILE) {
+            bbb.touchstart(function(e) {
+                if(!self.disabled) {
+                    self.onClick();
+                }
+            });
+        } else {
+            bbb.mousedown(function(e) {
+                if(!self.disabled) {
+                    self.onClick();
+                }
+            });            
+        }
+        this.w = o.radius;
+        this.h = o.radius;
+    },
+    setPosition: function(x, y) {
+        this.base(x, y);
+        this.root.rotate(this.rotation);
+    }
+});
+
 
 // resizable UI widget with defined dimensions
 var ResizableWidget = SizedWidget.extend({

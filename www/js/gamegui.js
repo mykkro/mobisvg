@@ -1,365 +1,350 @@
+//var gameBaseUrl = "apps/differences";
+var gameBaseUrl = "apps/pick-twenty";
 
-function isPhoneGap() {
-    return (window.cordova || window.PhoneGap || window.phonegap) 
-    && /^file:\/{3}[^\/]/i.test(window.location.href) 
-    && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
-}
-
-
-// lays out buttons in centered layout
-var layoutButtons = function(buttons, gap, y) {
-    var totalWidth = 0;
-    buttons.forEach(function(b) {
-        if(totalWidth) totalWidth += gap;
-        totalWidth += b.w;
-    });
-    xx = (1000-totalWidth)/2;
-    buttons.forEach(function(b) {
-        b.setPosition(xx, y);
-        xx += b.w + gap;
-    });
-}
-
-var buttonStyle = {fontSize: 30, border: 15, anchor: "middle", radius: 25};
-
-var createGameLauncherButtons = function(loc, metadata, gameSettings) {
-    var startBtn = new ButtonWidget(loc("Start"), buttonStyle);        
-    var settingsBtn = new ButtonWidget(loc("Settings"), buttonStyle);        
-    var instrBtn = new ButtonWidget(loc("Instructions"), buttonStyle);        
-    var exitBtn = new ButtonWidget(loc("Exit"), buttonStyle);        
-    var gap = 40;
-    var yy = 800;
-    layoutButtons([startBtn, settingsBtn, instrBtn, exitBtn], gap, yy);
-
-    // bind events
-    startBtn.onClick(function() {
-        startGame(loc, metadata, gameSettings);
-    });
-
-    settingsBtn.onClick(function() {
-        showSettingsPage(loc, metadata, gameSettings);
-    });
-
-    instrBtn.onClick(function() {
-        showInstructionsPage(loc, metadata, gameSettings);
-    });
-
-    exitBtn.onClick(function() {
-        showGameSelectionPage(loc);
-    });
-
-    return [startBtn, settingsBtn, instrBtn, exitBtn];
-}
-
-var createInstructionsPageButtons = function(loc, metadata, gameSettings) {
-    var startBtn = new ButtonWidget(loc("Start"), buttonStyle);        
-    var settingsBtn = new ButtonWidget(loc("Settings"), buttonStyle);        
-    var backBtn = new ButtonWidget(loc("Back"), buttonStyle);        
-    var gap = 40;
-    var yy = 800;
-    layoutButtons([startBtn, settingsBtn, backBtn], gap, yy);
-
-    // bind events
-    startBtn.onClick(function() {
-        startGame(loc, metadata, gameSettings);
-    });
-
-    settingsBtn.onClick(function() {
-        showSettingsPage(loc, metadata, gameSettings);
-    });
-
-    backBtn.onClick(function() {
-        showGameLauncherPage(loc, metadata, gameSettings);
-    });
-
-    return [startBtn, settingsBtn, backBtn];
-}
-
-var createSettingsPageButtons = function(loc, metadata, gameSettings) {
-    var saveBtn = new ButtonWidget(loc("Save"), buttonStyle);        
-    var resetBtn = new ButtonWidget(loc("Reset"), buttonStyle);        
-    var backBtn = new ButtonWidget(loc("Back"), buttonStyle);        
-    var gap = 40;
-    var yy = 800;
-    layoutButtons([saveBtn, resetBtn, backBtn], gap, yy);
-
-    // bind events
-    saveBtn.onClick(function() {
-        alert("Runs on Cordova: "+isPhoneGap());
-        showGameLauncherPage(loc, metadata, gameSettings);
-    });
-
-    resetBtn.onClick(function() {
-        alert("resetting settings...");
-    });
-
-    backBtn.onClick(function() {
-        showGameLauncherPage(loc, metadata, gameSettings);
-    });
-
-    return [saveBtn, resetBtn, backBtn];
-}
-
-var createResultsPageButtons = function(loc, metadata, gameSettings) {
-    var againBtn = new ButtonWidget(loc("Play again"), buttonStyle);        
-    var backBtn = new ButtonWidget(loc("Back"), buttonStyle);        
-    var gap = 40;
-    var yy = 800;
-    layoutButtons([againBtn, backBtn], gap, yy);
-
-    // bind events
-    againBtn.onClick(function() {
-        startGame(loc, metadata, gameSettings);
-    });
-
-    backBtn.onClick(function() {
-        showGameLauncherPage(loc, metadata, gameSettings);
-    });
-
-    return [againBtn, backBtn];
-}
-var createAbortButton = function(loc) {
-    var abortBtn = new ButtonWidget(loc("Exit"), {fontSize: 30, border: 15, anchor: "middle", radius: 20});        
-    abortBtn.setPosition(1000-abortBtn.w-10, 10);
-    return abortBtn;
-}
-
-var showGameSelectionPage = function(loc) {
-    r.clear();
-}
-
-
-var showGameLauncherPage = function(loc, metadata, gameSettings) {
-    r.clear();
-    showGameTitle(loc);
-    showGamePreviewImage();
-    showGameSubtitle(loc);
-    createGameLauncherButtons(loc, metadata, gameSettings);
-}
-
-var showInstructionsPage = function(loc, metadata, gameSettings) {
-    r.clear();
-    showGameTitle(loc);
-    showGameDescription(loc);
-    showGameInstructions(loc);
-    showGameSubtitle(loc);
-    createInstructionsPageButtons(loc, metadata, gameSettings);
-}
-
-var showSettingsPage = function(loc, metadata, gameSettings) {
-    r.clear();
-    showGameTitle(loc);
-    createSettingsPageButtons(loc, metadata, gameSettings);
-}
-
-var showResultsPage = function(loc, metadata, gameSettings, results) {
-    r.clear();
-    showGameTitle(loc);    
-    showGameResults(loc, results);
-    createResultsPageButtons(loc, metadata, gameSettings);
-}
-
-var showGameResults = function(loc, results) {
-    var labelSvg = new TextWidget(600, 40, "middle", loc("Results"));
-    labelSvg.setPosition(200, 160)
-    labelSvg.setStyle({"fill": "black"})
-
-    var yy = 250;    
-    results.messages.forEach(function(m) {
-        var msg = new TextWidget(600, 30, "middle", m);
-        msg.setPosition(200, yy);
-        yy += 40;
-    });
-
-}
-
-var showGameSubtitle = function(loc) {
-    var tw = new TextWidget(600, 30, "middle", loc("subtitle"));
-    tw.setStyle({"fill": "cyan"})
-    tw.setPosition(200, 130);
-} 
-
-var showGameDescription = function(loc) {
-    var tw = new TextWidget(800, 20, "start", loc("description"));
-    tw.setStyle({"fill": "cyan"})
-    tw.setPosition(100, 200);
-} 
-
-var showGameInstructions = function(loc) {
-    var tw = new TextWidget(800, 25, "start", loc("instructions"));
-    tw.setStyle({"fill": "cyan"})
-    tw.setPosition(100, 300);
-} 
-
-var showGameTitle = function(loc) {
-    var labelSvg = new TextWidget(600, 40, "middle", loc("title"));
-    labelSvg.setPosition(200, 60)
-    labelSvg.setStyle({"fill": "blue"})
-    return labelSvg;
-}
-
-var showGamePreviewImage = function() {
-    var img = new ImageWidget(gameBaseUrl + "/preview.png", 500, 500); 
-    img.setPosition(250, 200);
-    return img;
-}
-
-var startGame = function(loc, metadata, gameSettings) {
-    console.log("Starting the game!");
-    var game = new window[metadata.gameClass](gameSettings);
-    var sequence = game.generateTaskData();
-    resetScene();
-
-    game.createGUI(r);                        
-
-    var abortBtn = createAbortButton(loc);
-    abortBtn.onClick(function() {
-        game.abort();
-        showGameLauncherPage(loc, metadata, gameSettings);
-    });
-
-    var labelSvg = showGameTitle(loc);
-
-    game.onFinish(function(result, messages) {
-        console.log("Finished with result:", result);
-        showResultsPage(loc, metadata, gameSettings, {result:result, messages:messages});
-    });
-    game.onAbort(function() {
-        console.log("Aborted!");
-        showGameLauncherPage(loc, metadata, gameSettings);
-    });
-    game.start(sequence);                        
-}
-
-/*
-    $("#result-wrap").click(function() {
-        // back to title...
-        $("#gamebox-overlay").hide();
-        $("#gamebox").hide();
-        $("#info").show();
-    });
-
-    $("#info button[name=game-settings]").click(function() {
-        console.log("Configuring the game!");
-        form.val(gameSettings);
-        $("#info").hide();
-        $("#form-wrapper").show();
-    });
-
-    $("#form-wrapper button[name=form-save]").click(function() {
-        console.log("Saving the settings!");
-        gameSettings = form.val();
-        $("#form-wrapper").hide();
-        $("#info").show();
-    });
-
-    $("#form-wrapper button[name=form-cancel]").click(function() {
-        console.log("Discarding the settings!");
-        $("#form-wrapper").hide();
-        $("#info").show();
-    });
-
-    $("#form-wrapper").hide();
-    $("#info").show();
-    $("#gamebox").hide();
-*/
-
-
-var gameBaseUrl = "apps/differences";
-//var gameBaseUrl = "apps/pick-twenty";
-
-var initialize = function(url) {
-    var dfd = jQuery.Deferred();
- 
-    jQuery.getMultipleJSON(url + '/globals.json', url + '/app.json',  url + '/settings.json')
-    .progress(function(percent, count, total) {
-        dfd.notify("Progress: " + percent + "%");
-    })
-    .fail(function(jqxhr, textStatus, error) {
-        dfd.reject(textStatus, error);
-    })
-    .done(function(globals, game, settings) {
-        dfd.resolve(globals, game, settings);
-    }); 
-
-    // Return the Promise so caller can't change the Deferred
-    return dfd.promise();
-}
-
-/**
- * Clears canvas, removes all widgets.
- */
-var resetScene = function() {
-    $("#holder").empty();
-    $("#html-widgets").empty();
-    if(r) r.clear();
-    r = makeScene();
-}
-
-var makeScene = function() {
-    var paper = Raphael("paper", "100%", "100%");
-    paper.setViewBox( 0, 0, 1000, 1000, false );
-    var rh = RaphaelHelper;
-    if(DEBUG) rh.drawGrid(paper, "#ccc");    
-    return paper;
-}
+var player = new SoundPlayer();
 
 var startEngine = function(url) {
+    var gg = new GameGUI(url);
+    gg.start(url);
+}
 
-    // load style dynamically...
-    $("<link/>", {
-       rel: "stylesheet",
-       type: "text/css",
-       href: gameBaseUrl + "/style.css"
-    }).appendTo("head");
+/* Game GUI manager. */
+var GameGUI = Base.extend({
+    constructor: function(url) {
+        console.log("Creating Game GUI", url);
+        this.url = url;
+    },
+    loadScriptAndStyle: function() {
+        var dfd = jQuery.Deferred();
+        // load style dynamically...
+        $("<link/>", {
+           rel: "stylesheet",
+           type: "text/css",
+           href: this.url + "/style.css"
+        }).appendTo("head");
+        // load script dynamically
+        jQuery.ajax({
+            url: this.url + "/script.js",
+            dataType: 'script'
+        })
+        .progress(function(percent, count, total) {
+            dfd.notify("Progress: " + percent + "%");
+        })
+        .fail(function(jqxhr, textStatus, error) {
+            dfd.reject(textStatus, error);
+        })
+        .done(function(scr) {
+            dfd.resolve(scr);
+        }); 
+        return dfd.promise();
+    },
+    /**
+     *  Loads configuration JSON files. Returns Promise. 
+     *  Configuration files are:
+     *    app.json
+     *    globals.json
+     *    settings.json 
+     */
+    initialize: function(url) {
+        var dfd = jQuery.Deferred();
+        var url = this.url;
+        jQuery.getMultipleJSON(url + '/globals.json', url + '/app.json',  url + '/settings.json')
+        .progress(function(percent, count, total) {
+            dfd.notify("Progress: " + percent + "%");
+        })
+        .fail(function(jqxhr, textStatus, error) {
+            dfd.reject(textStatus, error);
+        })
+        .done(function(globals, game, settings) {
+            dfd.resolve(globals, game, settings);
+        }); 
+        return dfd.promise();
+    },
+    /**
+     * Clears canvas, removes all widgets.
+     */
+    resetScene: function() {
+        if(r) r.clear();
+        r = this.makeScene();
+    },
+    makeScene: function() {
+        var paper = Raphael("paper", "100%", "100%");
+        paper.setViewBox( 0, 0, 1000, 1000, false );
+        var rh = RaphaelHelper;
+        if(DEBUG) rh.drawGrid(paper, "#ccc");    
+        return paper;
+    },
+    // show various GUI pages
+    showGameLauncherPage: function() {
+        r.clear();
+        this.showGameTitle();
+        this.showGamePreviewImage();
+        this.showGameSubtitle();
+        this.createGameLauncherButtons();
+    },
+    showInstructionsPage: function() {
+        r.clear();
+        this.showGameTitle();
+        this.showGameDescription();
+        this.showGameInstructions();
+        this.showGameSubtitle();
+        this.createInstructionsPageButtons();
+    },
+    showSettingsPage: function() {
+        r.clear();
+        this.showGameTitle();
+        this.createSettingsPageButtons();
+        $("#settings-form-outer").show();
+    },
+    showResultsPage: function(results, messages) {
+        r.clear();
+        this.showGameTitle();    
+        this.showGameResults(results, messages);
+        this.createResultsPageButtons();
+    },
+    showGameSelectionPage: function() {
+        r.clear();
+    },
+    // render various widgets
+    showGameResults: function(results, messages) {
+        var labelSvg = new TextWidget(600, 40, "middle", this.loc("Results"));
+        labelSvg.setPosition(200, 160)
+        labelSvg.setStyle({"fill": "black"})
 
-    // load script dynamically
-    jQuery.ajax({
-        url: gameBaseUrl + "/script.js",
-        dataType: 'script',
-        success: function() {
-            console.log("Script loaded!");
-        },
-        async: false
-    });
+        var yy = 250;    
+        messages.forEach(function(m) {
+            var msg = new TextWidget(600, 30, "middle", m);
+            msg.setPosition(200, yy);
+            yy += 40;
+        });
 
-    initialize(url).done(function(globals, metadata, settings) {
-        console.log("Game initialized!");
-        console.log("Globals:", globals);
-        console.log("Game:", metadata);
-        console.log("Settings:", settings);
+    },
+    showGameSubtitle: function(loc) {
+        var tw = new TextWidget(600, 30, "middle", this.loc("subtitle"));
+        tw.setStyle({"fill": "#ddd"})
+        tw.setPosition(200, 130);
+    },
+    showGameDescription: function(loc) {
+        var tw = new TextWidget(800, 20, "start", this.loc("description"));
+        tw.setStyle({"fill": "white"})
+        tw.setPosition(100, 200);
+    }, 
+    showGameInstructions: function(loc) {
+        var tw = new TextWidget(800, 25, "start", this.loc("instructions"));
+        tw.setStyle({"fill": "white"})
+        tw.setPosition(100, 300);
+    },
+    showGameTitle: function(loc) {
+        var labelSvg = new TextWidget(600, 40, "middle", this.loc("title"));
+        labelSvg.setPosition(200, 60)
+        labelSvg.setStyle({"fill": "orange"})
+        return labelSvg;
+    }, 
+    showGamePreviewImage: function() {
+        var img = new ImageWidget(this.url + "/preview.png", 500, 500); 
+        img.setPosition(250, 200);
+        return img;
+    },
+    // lays out buttons in centered layout
+    layoutButtons: function(buttons, gap, y) {
+        var totalWidth = 0;
+        buttons.forEach(function(b) {
+            if(totalWidth) totalWidth += gap;
+            totalWidth += b.w;
+        });
+        xx = (1000-totalWidth)/2;
+        buttons.forEach(function(b) {
+            b.setPosition(xx, y);
+            xx += b.w + gap;
+        });
+    },
+    buttonStyle: {
+        fontSize: 30, border: 15, anchor: "middle", radius: 25
+    },
+    // create buttons
+    createGameLauncherButtons: function() {
+        var startBtn = new ButtonWidget(this.loc("Start"), this.buttonStyle);        
+        var settingsBtn = new ButtonWidget(this.loc("Settings"), this.buttonStyle);        
+        var instrBtn = new ButtonWidget(this.loc("Instructions"), this.buttonStyle);        
+        var exitBtn = new ButtonWidget(this.loc("Exit"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        this.layoutButtons([startBtn, settingsBtn, instrBtn, exitBtn], gap, yy);
+        var self = this;
 
+        // bind events
+        startBtn.onClick(function() {
+            self.startGame();
+        });
 
-        var loc = function(name) {
-            var l = metadata.locales[settings.locale];
-            if(name in l) {
-                return l[name];
-            } else {
-                return "{" + name + "}";
-            }
-        } 
+        settingsBtn.onClick(function() {
+            self.showSettingsPage();
+        });
 
-        // put code here...
-        resetScene();
+        instrBtn.onClick(function() {
+            self.showInstructionsPage();
+        });
 
-        var game = new window[metadata.gameClass]({});
+        exitBtn.onClick(function() {
+            self.showGameSelectionPage();
+        });
 
-        var configForm = {
-            "title": "Settings",
-            "description": "",
-            "fields": metadata.configuration
-        }
-        var form = new Form(configForm);
-        $("#form").html(form.body);
-        var gameSettings = form.val();
-        console.log("Using settings:", gameSettings);
+        return [startBtn, settingsBtn, instrBtn, exitBtn];
+    },
+    createInstructionsPageButtons: function() {
+        var startBtn = new ButtonWidget(this.loc("Start"), this.buttonStyle);        
+        var settingsBtn = new ButtonWidget(this.loc("Settings"), this.buttonStyle);        
+        var backBtn = new ButtonWidget(this.loc("Back"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        this.layoutButtons([startBtn, settingsBtn, backBtn], gap, yy);
+        var self = this;
 
-        // render game launcher
-        // (page with game title, description, preview and start/config buttons)
-        showGameLauncherPage(loc, metadata, gameSettings);
+        // bind events
+        startBtn.onClick(function() {
+            self.startGame();
+        });
 
-    }).fail(function() {
-        console.error("Failed to load JSON");
-    });
+        settingsBtn.onClick(function() {
+            self.showSettingsPage();
+        });
 
-}                 
+        backBtn.onClick(function() {
+            self.showGameLauncherPage();
+        });
+
+        return [startBtn, settingsBtn, backBtn];
+    },
+    createSettingsPageButtons: function() {
+        var saveBtn = new ButtonWidget(this.loc("Save"), this.buttonStyle);        
+        var resetBtn = new ButtonWidget(this.loc("Reset"), this.buttonStyle);        
+        var backBtn = new ButtonWidget(this.loc("Back"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        this.layoutButtons([saveBtn, resetBtn, backBtn], gap, yy);
+        var self = this;
+
+        // bind events
+        saveBtn.onClick(function() {
+            self.gameSettings = self.form.val();
+            console.log("Game settings: ", self.gameSettings);
+            // TODO store globally...
+            $("#settings-form-outer").hide();
+            self.showGameLauncherPage();
+        });
+
+        resetBtn.onClick(function() {
+            self.form.val(self.gameSettings);
+        });
+
+        backBtn.onClick(function() {
+            $("#settings-form-outer").hide();
+            self.showGameLauncherPage();
+        });
+
+        return [saveBtn, resetBtn, backBtn];
+    },
+    createResultsPageButtons: function() {
+        var againBtn = new ButtonWidget(this.loc("Play again"), this.buttonStyle);        
+        var backBtn = new ButtonWidget(this.loc("Back"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        this.layoutButtons([againBtn, backBtn], gap, yy);
+        var self = this;
+
+        // bind events
+        againBtn.onClick(function() {
+            self.startGame();
+        });
+
+        backBtn.onClick(function() {
+            self.showGameLauncherPage();
+        });
+
+        return [againBtn, backBtn];
+    },
+    createAbortButton: function() {
+        var abortBtn = new ButtonWidget(this.loc("Exit"), {fontSize: 30, border: 15, anchor: "middle", radius: 20});        
+        abortBtn.setPosition(1000-abortBtn.w-10, 10);
+        return abortBtn;
+    },
+    /**
+     *  Initializes the game widget abnd starts the game.
+    */
+    startGame: function() {
+        var self = this;
+        console.log("Starting the game!");
+        var game = new window[this.metadata.gameClass](this.gameSettings);
+        this.gameInstance = game;
+        var sequence = game.generateTaskData();
+        this.resetScene();
+
+        game.createGUI(r);                        
+
+        var abortBtn = this.createAbortButton();
+        abortBtn.onClick(function() {
+            game.abort();
+            self.showGameLauncherPage();
+        });
+
+        var labelSvg = this.showGameTitle();
+
+        game.onFinish(function(result, messages) {
+            console.log("Finished with result:", result);
+            self.showResultsPage(result, messages);
+        });
+        game.onAbort(function() {
+            console.log("Aborted!");
+            self.showGameLauncherPage();
+        });
+        game.start(sequence);                        
+    },
+    // load assets and start the GUI
+    start: function() {
+        var self = this;
+        self.loadScriptAndStyle().done(function() {
+            self.initialize().done(function(globals, metadata, settings) {
+                self.globals = globals;
+                self.metadata = metadata;
+                self.settings = settings;
+
+                console.log("Game initialized!");
+                console.log("Globals:", globals);
+                console.log("Game:", metadata);
+                console.log("Settings:", settings);
+
+                var loc = function(name) {
+                    var l = metadata.locales[settings.locale];
+                    if(name in l) {
+                        return l[name];
+                    } else {
+                        return "{" + name + "}";
+                    }
+                } 
+
+                self.loc = loc;
+
+                // put code here...
+                self.resetScene();
+
+                self.game = new window[metadata.gameClass]({});
+
+                var configForm = {
+                    "title": "Settings",
+                    "description": "",
+                    "fields": metadata.configuration
+                }
+                self.form = new Form(configForm);
+                $("#form").html(self.form.body);
+                self.gameSettings = self.form.val();
+
+                console.log("Using settings:", self.gameSettings);
+
+                self.showGameLauncherPage();
+
+            }).fail(function() {
+                console.error("Failed to load JSON");
+            });
+        });        
+    }
+});

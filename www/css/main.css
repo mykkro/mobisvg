@@ -27,7 +27,8 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    background-color: green;
+    background-image: url(../img/blue.jpg);
+    background-size:cover;
 }
 
 #paper {
@@ -53,13 +54,6 @@ body {
     position: absolute;
     left: 0px;
     bottom: 0px;
-}
-
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-                                      /* offset horizontal: half of image width and text area width */
-    }
 }
 
 
