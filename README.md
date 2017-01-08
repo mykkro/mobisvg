@@ -1,5 +1,5 @@
-Cordova app to display screen dimensions and resizing svg canvas
-================================================================
+Cordova development Useful Notes
+================================
 
 1. Create cordova app
 ---------------------
