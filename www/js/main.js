@@ -53,7 +53,10 @@ $(document).ready(function() {
         });
     }); 
 */
-    startEngine(gameBaseUrl, paper);
+    
+  $.getJSON("resources/translations.json").done(function(data) {
+    startEngine(gameBaseUrl, data);
+  });
 });
 
 function show(text) {

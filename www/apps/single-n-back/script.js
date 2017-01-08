@@ -11,43 +11,26 @@ var NBackSingleGame = NBackGame.extend({
         self.createBackground(r);
         // create buttons
         var useColors = true;
-        this.button1 = new HtmlButtonWidget(200, 100, {"class":"btn3"}, "Position");
-        this.button1.setPosition(400, 850);
+
+        this.button1 = new ButtonWidget("Position", {fontSize: 40, border: 20, anchor: "middle", radius: 30});
+        this.button1.setPosition(500-this.button1.w/2, 850);
         this.button1.onClick(function() {
             if(self.currentFrame >= self.N) {
-                self.animateBackground(self.button1);
+                player.playSound("click");
                 self.answer[self.currentFrame-self.N] = 1;
             }
         });
     },
     showFrame: function() {
         var self = this;
-        var delay1 = 1000;
-        var delay2 = 2000;        
         if(this.currentFrame == this.gamedata.length) {
             this.finish(this.answer);
         } else {
             var data = self.gamedata[self.currentFrame];
             var p = self.indexAsPosition(data);
             self.lastBox = self.drawBox(r, p.x, p.y, "blue");
+            player.playSound("new-box");
         }
-        if(this.finished) {
-            return;
-        }
-        self.updateCounter();
-        // if delay - start timer...
-        setTimeout(function() {
-            if(self.lastBox) {
-                self.lastBox.remove();
-            }
-            if(this.finished) {
-                return;
-            }
-            setTimeout(function() {
-                self.currentFrame++;
-                self.showFrame();
-            }, delay2);
-        }, delay1);
     },
     generateTaskData: function(options) {
         var sequence = [], sequence1=[], sequence2=[];
@@ -63,12 +46,7 @@ var NBackSingleGame = NBackGame.extend({
         for(var i=0; i<this.L-this.N; i++) {
             this.answer.push(0);
         }
-        this.currentFrame = 0;
-        this.lastBox = null;
-        this.showFrame();
-    },
-    abort: function() {
-        this.base();        
+        this.startTimer();
     }
 });
 

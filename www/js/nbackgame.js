@@ -1,3 +1,4 @@
+
 var NBackGame = Game.extend({
     constructor: function(config) {
         console.log("Starting N-Back game with config", config);
@@ -30,20 +31,14 @@ var NBackGame = Game.extend({
         for(var y=1; y<N; y++) {
             r.line(x0, y0+y*cellSize, x0+M*cellSize, y0+y*cellSize).attr(lineStyle);
         }
-        this.label = new HtmlLabelWidget(600, 500,{}, "");
-        this.label.addClass("nback-counter");
-        this.label.setPosition(200, 140);
+        var labelSvg = new TextWidget(600, 50, "middle", "");
+        labelSvg.setPosition(200, 140)
+        labelSvg.setStyle({"fill": "black"});        
+        this.label = labelSvg;
         this.updateCounter();
     },
     updateCounter: function() {
         this.label.setText((this.currentFrame+1)+"/"+this.L);
-    },
-    animateBackground: function(btn) {
-        console.log("Highlighting a button...");
-        btn.box.addClass("highlighted");
-        setTimeout(function() {
-            btn.box.removeClass("highlighted");
-        }, 100);
     },
     drawBox: function(r, col, row, color) {
         var cs = this.cellSize - 40;
@@ -53,7 +48,39 @@ var NBackGame = Game.extend({
         var cs = this.cellSize - 40;
         return r.image(image, this.x0+col*this.cellSize+20, this.y0+row*this.cellSize+20, cs, cs);
     },
+    checkFrame: function(elapsedMillis) {
+        if(this.finished) {
+            this.timer.stop();
+            return;
+        }
+        var delay1 = 1000;
+        var delay2 = 2000;
+        //console.log("Time: ", elapsedMillis, "Frame:", this.currentFrame, "Last time:", this.lastFrameTime);
+        if((elapsedMillis >= this.lastFrameTime + delay1) && this.lastBox) {
+            this.lastBox.remove();
+            this.lastBox = null;
+        }
+        if(elapsedMillis >= this.lastFrameTime + delay1 + delay2) {
+            this.currentFrame++;
+            this.lastFrameTime += (delay1 + delay2);
+            this.updateCounter();
+            this.showFrame();
+        }
+    },
     showFrame: function() {
+    },
+    startTimer: function() {
+        this.currentFrame = 0;
+        this.lastBox = null;
+        this.showFrame();
+        var self = this;
+        var timer = new Timer();
+        this.timer = timer;
+        this.lastFrameTime = 0;
+        timer.start({precision: 'secondTenths', callback: function (values) {
+            var elapsedMillis = values.secondTenths * 100 + values.seconds * 1000 + values.minutes * 60000 + values.hours * 3600000;
+            self.checkFrame(elapsedMillis);
+        }});
     },
     indexAsPosition: function(index) {
         var px = index % 3;
@@ -61,6 +88,10 @@ var NBackGame = Game.extend({
         return { x: px, y: py };
     },
     generateTaskData: function(options) {
+    },
+    abort: function() {
+        this.base();       
+        this.timer.stop(); 
     }
 }, {
     colors: [

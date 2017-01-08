@@ -8,16 +8,16 @@ var MentalRotationGame = Game.extend({
     },
     createGUI: function(r) {
         // create grid
-        r.rect(0,0,1000,1000).attr({ "fill":"ddd"});
         var self = this;
 
-        this.label = new HtmlLabelWidget(600, 50,{}, "");
-        this.label.addClass("counter");
-        this.label.setPosition(200, 140);
+        var labelSvg = new TextWidget(600, 50, "middle", "");
+        labelSvg.setPosition(200, 160)
+        labelSvg.setStyle({"fill": "black"});
+        this.label = labelSvg;
         this.updateCounter();
 
-        this.label2 = new HtmlLabelWidget(500, 300, {}, "Which of the shapes below is a rotated version of the shape shown left?");
-        this.label2.addClass("instruction");
+        this.label2 = new TextWidget(500, 30, "start", "Which of the shapes below is a rotated version of the shape shown left?");
+        //this.label2.addClass("instruction");
         this.label2.setPosition(300, 300);
 
     },
@@ -36,9 +36,9 @@ var MentalRotationGame = Game.extend({
         $(".html-image-widget.item").empty();
 
         // render original...
-        var img0 = new HtmlImageWidget(150, 150, {}, g.offered);
-        img0.addClass("item item-offered");
-        img0.setPosition(100, 300);        
+        var img0 = new ImageWidget(gameBaseUrl + "/" + g.offered, 150, 150); 
+        img0.setPosition(100, 300);
+        //img0.addClass("item item-offered");
 
         // render rest of items
         var y0 = 600;
@@ -46,11 +46,13 @@ var MentalRotationGame = Game.extend({
         for(var i=0; i<n; i++) {
             (function() {
                 var gg = g.rest[i];
-                var img = new HtmlImageWidget(150, 150, {}, gg.item);
-                img.addClass("item item-choice");
+                var img = new ImageWidget(gameBaseUrl + "/" + gg.item, 150, 150); 
+                //img.addClass("item item-choice");
                 img.setPosition(100 + 200*i, y0);     
-                img.body.click(function()  {
+                var clk = new Clickable(img);
+                clk.onClick(function()  {
                     // collect answer!
+                    player.playSound("click");
                     self.answer[self.currentFrame] = gg.match;
                     self.advanceFrame();
                 });

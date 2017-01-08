@@ -10,18 +10,19 @@ var NBackDualGame = NBackGame.extend({
         self.createBackground(r);
         // create buttons
         var useColors = true;
-        this.button1 = new HtmlButtonWidget(200, 100, {"class":"btn3"}, "Position");
-        this.button1.setPosition(250, 850);
+
+        this.button1 = new ButtonWidget("Position", {fontSize: 40, border: 20, anchor: "middle", radius: 30});
+        this.button1.setPosition(350-this.button1.w/2, 850);
         this.button1.onClick(function() {
-            self.animateBackground(self.button1);
+            player.playSound("click");
             if(self.currentFrame >= self.N) {
                 self.answer[0][self.currentFrame-self.N] = 1;
             }
         });
-        this.button2 = new HtmlButtonWidget(200, 100, {"class":"btn3"}, this.dualType=="colors" ? "Color" : "Sign");
-        this.button2.setPosition(550, 850);
+        this.button2 = new ButtonWidget(this.dualType=="colors" ? "Color" : "Sign", {fontSize: 40, border: 20, anchor: "middle", radius: 30});
+        this.button2.setPosition(650-this.button2.w/2, 850);
         this.button2.onClick(function() {
-            self.animateBackground(self.button2);
+            player.playSound("click");
             if(self.currentFrame >= self.N) {
                 self.answer[1][self.currentFrame-self.N] = 1;
             }
@@ -29,8 +30,6 @@ var NBackDualGame = NBackGame.extend({
     },
     showFrame: function() {
         var self = this;
-        var delay1 = 1000;
-        var delay2 = 2000;        
         if(this.currentFrame == this.gamedata[0].length) {
             this.finish(this.answer);
         } else {
@@ -40,26 +39,10 @@ var NBackDualGame = NBackGame.extend({
             if(self.dualType == "colors") {
                 self.lastBox = self.drawBox(r, p.x, p.y, NBackGame.colors[data2]);
             } else {
-                self.lastBox = self.drawImage(r, p.x, p.y, NBackGame.signImages[data2]);
+                self.lastBox = self.drawImage(r, p.x, p.y, gameBaseUrl + "/"+ NBackGame.signImages[data2]);
             }
+            player.playSound("newBox");
         }
-        if(this.finished) {
-            return;
-        }
-        self.updateCounter();
-        // if delay - start timer...
-        setTimeout(function() {
-            if(self.lastBox) {
-                self.lastBox.remove();
-            }
-            if(this.finished) {
-                return;
-            }
-            setTimeout(function() {
-                self.currentFrame++;
-                self.showFrame();
-            }, delay2);
-        }, delay1);
     },
     generateTaskData: function(options) {
         var sequence = [], sequence1=[], sequence2=[];
@@ -77,9 +60,7 @@ var NBackDualGame = NBackGame.extend({
             this.answer[0].push(0);
             this.answer[1].push(0);
         }
-        this.currentFrame = 0;
-        this.lastBox = null;
-        this.showFrame();
+        this.startTimer();
     }
 });
 

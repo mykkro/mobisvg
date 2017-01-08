@@ -305,21 +305,33 @@ var PieWidget = ResizableWidget.extend({
 var TextWidget = Widget.extend({
     constructor: function(maxWidth, fontSize, anchor, text) {
         this.base();
+        this.maxWidth = maxWidth;
         this.fontSize = fontSize;
         this.anchor = anchor;
         this.textStyle = {"font-family" : "Helvetica", "font-weight" : "bold", "font-size" : fontSize, "text-anchor" : anchor};
-        var x = 0;
-        if(anchor == "middle") {
-            x = maxWidth/2;                            
-        } else if(anchor == "end") {
-            x = maxWidth;
-        }
-        this.shape = r.paragraph({x : x, y : fontSize / 2, maxWidth : maxWidth, text : text, textStyle : this.textStyle });
-        this.root.push(this.shape);
+        this.setText(text);
     },
     setStyle: function(attr) {
         this.base(attr);
         this.shape.attr(attr);
+    },
+    setText: function(text) {
+        this.text = text;
+        var x = 0;
+        if(this.anchor == "middle") {
+            x = this.maxWidth/2;                            
+        } else if(this.anchor == "end") {
+            x = this.maxWidth;
+        }
+        this.shape = r.paragraph({x : x, y : this.fontSize / 2, maxWidth : this.maxWidth, text : this.text, textStyle : this.textStyle });
+        // clear Raphael set
+        var set = this.root;
+        set.forEach(function(el, idx) {
+            el.remove();
+            set.exclude(el);
+        });
+        this.root.push(this.shape);
+        this.setPosition(this.x, this.y);
     }
 });
 

@@ -1,18 +1,22 @@
 //var gameBaseUrl = "apps/differences";
-var gameBaseUrl = "apps/pick-twenty";
+//var gameBaseUrl = "apps/pick-twenty";
+//var gameBaseUrl = "apps/mental-rotation";
+//var gameBaseUrl = "apps/single-n-back";
+var gameBaseUrl = "apps/dual-n-back";
 
 var player = new SoundPlayer();
 
-var startEngine = function(url) {
-    var gg = new GameGUI(url);
+var startEngine = function(url, translations) {
+    var gg = new GameGUI(url, translations);
     gg.start(url);
 }
 
 /* Game GUI manager. */
 var GameGUI = Base.extend({
-    constructor: function(url) {
-        console.log("Creating Game GUI", url);
+    constructor: function(url, translations) {
+        console.log("Creating Game GUI", url, translations);
         this.url = url;
+        this.translations = translations;
     },
     loadScriptAndStyle: function() {
         var dfd = jQuery.Deferred();
@@ -44,6 +48,7 @@ var GameGUI = Base.extend({
      *    app.json
      *    globals.json
      *    settings.json 
+     *    translations.json
      */
     initialize: function(url) {
         var dfd = jQuery.Deferred();
@@ -119,23 +124,23 @@ var GameGUI = Base.extend({
         });
 
     },
-    showGameSubtitle: function(loc) {
-        var tw = new TextWidget(600, 30, "middle", this.loc("subtitle"));
+    showGameSubtitle: function() {
+        var tw = new TextWidget(600, 30, "middle", this.loc("$subtitle"));
         tw.setStyle({"fill": "#ddd"})
         tw.setPosition(200, 130);
     },
-    showGameDescription: function(loc) {
-        var tw = new TextWidget(800, 20, "start", this.loc("description"));
+    showGameDescription: function() {
+        var tw = new TextWidget(800, 20, "start", this.loc("$description"));
         tw.setStyle({"fill": "white"})
         tw.setPosition(100, 200);
     }, 
-    showGameInstructions: function(loc) {
-        var tw = new TextWidget(800, 25, "start", this.loc("instructions"));
+    showGameInstructions: function() {
+        var tw = new TextWidget(800, 25, "start", this.loc("$instructions"));
         tw.setStyle({"fill": "white"})
-        tw.setPosition(100, 300);
+        tw.setPosition(100, 400);
     },
-    showGameTitle: function(loc) {
-        var labelSvg = new TextWidget(600, 40, "middle", this.loc("title"));
+    showGameTitle: function() {
+        var labelSvg = new TextWidget(600, 40, "middle", this.loc("$title"));
         labelSvg.setPosition(200, 60)
         labelSvg.setStyle({"fill": "orange"})
         return labelSvg;
@@ -314,11 +319,27 @@ var GameGUI = Base.extend({
                 console.log("Settings:", settings);
 
                 var loc = function(name) {
-                    var l = metadata.locales[settings.locale];
-                    if(name in l) {
-                        return l[name];
+                    if(name) {
+                        if(name[0]=="$") {
+                            name = name.slice(1);
+                            var l = metadata.locales[settings.locale];
+                            if(name in l) {
+                                return l[name];
+                            } else {
+                                console.warn("Missing ["+settings.locale+"] locale for key $" + name)
+                                return "$" + name;
+                            }
+                        } else {
+                            var l = self.translations[settings.locale];
+                            if(name in l) {
+                                return l[name];
+                            } else {
+                                console.warn("Missing ["+settings.locale+"] locale for key '" + name + "'")
+                                return "{" + name + "}";
+                            }
+                        }
                     } else {
-                        return "{" + name + "}";
+                        return "";
                     }
                 } 
 
@@ -330,7 +351,7 @@ var GameGUI = Base.extend({
                 self.game = new window[metadata.gameClass]({});
 
                 var configForm = {
-                    "title": "Settings",
+                    "title": loc("Settings"),
                     "description": "",
                     "fields": metadata.configuration
                 }
