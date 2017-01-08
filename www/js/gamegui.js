@@ -1,4 +1,11 @@
 
+function isPhoneGap() {
+    return (window.cordova || window.PhoneGap || window.phonegap) 
+    && /^file:\/{3}[^\/]/i.test(window.location.href) 
+    && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+}
+
+
 // lays out buttons in centered layout
 var layoutButtons = function(buttons, gap, y) {
     var totalWidth = 0;
@@ -78,7 +85,7 @@ var createSettingsPageButtons = function(loc, metadata, gameSettings) {
 
     // bind events
     saveBtn.onClick(function() {
-        alert("saving settings...");
+        alert("Runs on Cordova: "+isPhoneGap());
         showGameLauncherPage(loc, metadata, gameSettings);
     });
 

@@ -1,5 +1,14 @@
+
+function isPhoneGap() {
+    return (window.cordova || window.PhoneGap || window.phonegap) 
+    && /^file:\/{3}[^\/]/i.test(window.location.href) 
+    && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+}
+
+
 var r = null;
 var DEBUG = false;
+var MOBILE = isPhoneGap();
 
 // basic UI widget
 var Widget = Base.extend({
@@ -65,12 +74,20 @@ var ButtonWidget = Widget.extend({
         this.root.push(ttt);
         this.root.push(bbb);   
         var self = this; 
-        bbb.mousedown(function(e) {
-            if(!self.disabled) {
-                console.log("Mouse down!");
-                self.onClick();
-            }
-        });
+        // use Raphael's touch events
+        if(MOBILE) {
+            bbb.touchstart(function(e) {
+                if(!self.disabled) {
+                    self.onClick();
+                }
+            });
+        } else {
+            bbb.mousedown(function(e) {
+                if(!self.disabled) {
+                    self.onClick();
+                }
+            });            
+        }
         this.w = tw+2*border;
         this.h = th + 2*border;
     },

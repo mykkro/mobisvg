@@ -43,15 +43,19 @@ var DifferencesGame = Game.extend({
     putMarker: function(x, y) {
         var self = this;
         var marker = r.circle(x, y, 30).attr({fill:"red", opacity: 0.5, stroke: "blue"});
-        marker.mousedown(function(e) {
-            console.log("Delete me!");
+        var touchMarkerHandler = function(e) {
             self.circles.exclude(marker);
             marker.remove();
             self.okButton.setDisabled(true);
             console.log("Removing...", self.circles.items.length);
             self.updateBar(self.grp, self.circles.items.length);
             e.stopPropagation();
-        });
+        }
+        if(MOBILE) {
+            marker.touchstart(touchMarkerHandler);
+        } else {
+            marker.mousedown(touchMarkerHandler);
+        }
         self.circles.push(marker);
         console.log("Adding...", self.circles.items.length);
         self.updateBar(self.grp, self.circles.items.length);
@@ -101,13 +105,11 @@ var DifferencesGame = Game.extend({
         this.updateBar(grp, circles.items.length);
 
 
-        var overlay = r.rect(0,200,1000,562).attr({stroke:"none", fill: "white", opacity:0});
-        overlay.attr({
-            cursor: 'pointer',
-        }).mousedown(function(e) {
+        var touchHandler = function(e) {
             var bnds = e.target.getBoundingClientRect();
-            var fx = (e.clientX - bnds.left)/bnds.width * overlay.attrs.width;
-            var fy = (e.clientY - bnds.top)/bnds.height * overlay.attrs.height;
+            var ee = MOBILE ? e.targetTouches[0] : e;
+            var fx = (ee.clientX - bnds.left)/bnds.width * overlay.attrs.width;
+            var fy = (ee.clientY - bnds.top)/bnds.height * overlay.attrs.height;
             console.log(fx, fy);
 
             var res = self.pointInRegion(fx,fy);
@@ -120,9 +122,18 @@ var DifferencesGame = Game.extend({
                 self.putMarker(fx, fy+200);
                 self.okButton.setDisabled(self.circles.items.length != 9);
             }
-
             e.stopPropagation();
-        }); 
+        }
+
+        var overlay = r.rect(0,200,1000,562).attr({stroke:"none", fill: "white", opacity:0});
+        overlay.attr({
+            cursor: 'pointer',
+        });
+        if(MOBILE) {
+            overlay.touchstart(touchHandler); 
+        } else {
+            overlay.mousedown(touchHandler); 
+        }
 
     },
     start: function(gamedata) {
