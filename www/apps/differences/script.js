@@ -22,7 +22,6 @@ var DifferencesGame = Game.extend({
     },
     createGUI: function(r) {
         // create grid
-        r.rect(0,0,1000,1000).attr({ "fill":"ddd"});
         var self = this;
         //var btn = new HtmlButtonWidget(200, 100, {"class":"btn3"}, "OK");
         var btn = new ButtonWidget("OK", {fontSize: 40, border: 20, anchor: "middle", radius: 30});        
