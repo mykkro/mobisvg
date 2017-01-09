@@ -34,7 +34,7 @@ var DifferencesGame = Game.extend({
         })        
         this.okButton = btn;
 
-        var img = new ImageWidget(gameBaseUrl + "/assets/image.jpg", 1000, 562); 
+        var img = new ImageWidget(self.baseUrl + "/assets/image.jpg", 1000, 562); 
         img.setPosition(0, 200);
     },
     generateTaskData: function(options) {

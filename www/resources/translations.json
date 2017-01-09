@@ -1,5 +1,17 @@
 {
     "en": {
+        "Start": "Start",
+        "Settings": "Settings",
+        "Instructions": "Instructions",
+        "Exit": "Exit",
+        "Save": "Save",
+        "Reset": "Reset",
+        "Back": "Back",
+        "Results": "Results",
+        "Play again": "Play again",
+        "Position": "Position",
+        "Color": "Color",
+        "Sign": "Sign"
     },
     "cz": {
         "Start": "Start",
@@ -10,6 +22,9 @@
         "Reset": "Reset",
         "Back": "Zpět",
         "Results": "Výsledky",
-        "Play again": "Hrát znovu"
+        "Play again": "Hrát znovu",
+        "Position": "Pozice",
+        "Color": "Barva",
+        "Sign": "Značka"
     }
 }

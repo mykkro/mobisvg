@@ -1,22 +1,67 @@
-//var gameBaseUrl = "apps/differences";
-//var gameBaseUrl = "apps/pick-twenty";
-//var gameBaseUrl = "apps/mental-rotation";
-//var gameBaseUrl = "apps/single-n-back";
-var gameBaseUrl = "apps/dual-n-back";
-
 var player = new SoundPlayer();
 
-var startEngine = function(url, translations) {
-    var gg = new GameGUI(url, translations);
-    gg.start(url);
-}
+var AppsGUI = Base.extend({
+    constructor: function() {
+        this.apps = {};
+        this.settings = {};
+        this.translations = {};
+    },
+    loadTranslations: function(callback) {
+      $.getJSON("resources/translations.json").done(callback);
+    },
+    loadAppList: function(callback) {
+        $.getJSON("apps.json").done(callback);
+    },
+    loadAppsSettings: function(callback) {
+        $.getJSON("settings.json").done(callback);
+    },
+    loadAppsMetadata: function(callback) {
+        var self = this;
+        self.loadAppList(function(applist) {
+            self.loadAppsSettings(function(settings) {
+                self.loadTranslations(function(translations) {
+                    var urls = applist.map(function(a) { return "apps/"+a+"/app.json"; } );
+                    $.getMultipleJSON.apply(this, urls).done(function() {
+                        var args = Array.prototype.slice.call(arguments);
+                        var apps = {};
+                        args.forEach(function(app) {
+                            apps[app.name] = app;
+                        });
+                        self.apps = apps;
+                        self.settings = settings;
+                        self.translations = translations;
+                        callback(self);
+                    });
+                });
+            });
+        });
+    },
+    init: function() {
+        var self = this;
+        this.loadAppsMetadata(function() {
+            console.log("Apps metadata loaded!");
+            console.log("Global settings:", self.settings);
+            console.log("Apps:",self.apps);
+            console.log("Translations:",self.translations);
+            self.onReady(self);
+        })
+    },
+    onReady: function(val) {
+        if(typeof(val)=="function") {
+            this._onReady = val;
+        } else {
+            if(this._onReady) this._onReady(this, val);
+        }
+    }
+});
 
 /* Game GUI manager. */
 var GameGUI = Base.extend({
-    constructor: function(url, translations) {
-        console.log("Creating Game GUI", url, translations);
+    constructor: function(url, translations, globalSettings) {
+        console.log("Creating Game GUI", url, translations, globalSettings);
         this.url = url;
         this.translations = translations;
+        this.globalSettings = globalSettings;
     },
     loadScriptAndStyle: function() {
         var dfd = jQuery.Deferred();
@@ -280,6 +325,8 @@ var GameGUI = Base.extend({
         var self = this;
         console.log("Starting the game!");
         var game = new window[this.metadata.gameClass](this.gameSettings);
+        game.baseUrl = self.url;
+        game.loc = self.loc;
         this.gameInstance = game;
         var sequence = game.generateTaskData();
         this.resetScene();
@@ -311,30 +358,30 @@ var GameGUI = Base.extend({
             self.initialize().done(function(globals, metadata, settings) {
                 self.globals = globals;
                 self.metadata = metadata;
-                self.settings = settings;
+                self.settings = $.extend(self.globalSettings, settings);
 
                 console.log("Game initialized!");
                 console.log("Globals:", globals);
                 console.log("Game:", metadata);
-                console.log("Settings:", settings);
+                console.log("Settings:", self.settings);
 
                 var loc = function(name) {
                     if(name) {
                         if(name[0]=="$") {
                             name = name.slice(1);
-                            var l = metadata.locales[settings.locale];
+                            var l = metadata.locales[self.settings.locale];
                             if(name in l) {
                                 return l[name];
                             } else {
-                                console.warn("Missing ["+settings.locale+"] locale for key $" + name)
+                                console.warn("Missing ["+self.settings.locale+"] locale for key $" + name)
                                 return "$" + name;
                             }
                         } else {
-                            var l = self.translations[settings.locale];
+                            var l = self.translations[self.settings.locale];
                             if(name in l) {
                                 return l[name];
                             } else {
-                                console.warn("Missing ["+settings.locale+"] locale for key '" + name + "'")
+                                console.warn("Missing ["+self.settings.locale+"] locale for key '" + name + "'")
                                 return "{" + name + "}";
                             }
                         }
@@ -349,6 +396,8 @@ var GameGUI = Base.extend({
                 self.resetScene();
 
                 self.game = new window[metadata.gameClass]({});
+                self.game.baseUrl = self.url;
+                self.game.loc = loc;
 
                 var configForm = {
                     "title": loc("Settings"),

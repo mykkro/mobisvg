@@ -1,3 +1,6 @@
+var appgui;
+var engine;
+
 $(document).ready(function() { 
   // jQuery is properly loaded at this point
   // so proceed to bind the Cordova's deviceready event
@@ -53,10 +56,20 @@ $(document).ready(function() {
         });
     }); 
 */
+
+var gameBaseUrl = "apps/differences";
+//var gameBaseUrl = "apps/pick-twenty";
+//var gameBaseUrl = "apps/mental-rotation";
+//var gameBaseUrl = "apps/single-n-back";
+//var gameBaseUrl = "apps/dual-n-back";
     
-  $.getJSON("resources/translations.json").done(function(data) {
-    startEngine(gameBaseUrl, data);
+  appgui = new AppsGUI();
+  appgui.onReady(function() {
+    engine = new GameGUI(gameBaseUrl, appgui.translations, appgui.settings);
+    engine.start();
   });
+  appgui.init();
+
 });
 
 function show(text) {

@@ -11,7 +11,7 @@ var NBackDualGame = NBackGame.extend({
         // create buttons
         var useColors = true;
 
-        this.button1 = new ButtonWidget("Position", {fontSize: 40, border: 20, anchor: "middle", radius: 30});
+        this.button1 = new ButtonWidget(this.loc("Position"), {fontSize: 40, border: 20, anchor: "middle", radius: 30});
         this.button1.setPosition(350-this.button1.w/2, 850);
         this.button1.onClick(function() {
             player.playSound("click");
@@ -19,7 +19,7 @@ var NBackDualGame = NBackGame.extend({
                 self.answer[0][self.currentFrame-self.N] = 1;
             }
         });
-        this.button2 = new ButtonWidget(this.dualType=="colors" ? "Color" : "Sign", {fontSize: 40, border: 20, anchor: "middle", radius: 30});
+        this.button2 = new ButtonWidget(this.dualType=="colors" ? this.loc("Color") : this.loc("Sign"), {fontSize: 40, border: 20, anchor: "middle", radius: 30});
         this.button2.setPosition(650-this.button2.w/2, 850);
         this.button2.onClick(function() {
             player.playSound("click");
@@ -39,7 +39,7 @@ var NBackDualGame = NBackGame.extend({
             if(self.dualType == "colors") {
                 self.lastBox = self.drawBox(r, p.x, p.y, NBackGame.colors[data2]);
             } else {
-                self.lastBox = self.drawImage(r, p.x, p.y, gameBaseUrl + "/"+ NBackGame.signImages[data2]);
+                self.lastBox = self.drawImage(r, p.x, p.y, self.baseUrl + "/"+ NBackGame.signImages[data2]);
             }
             player.playSound("newBox");
         }

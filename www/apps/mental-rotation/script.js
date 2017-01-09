@@ -36,7 +36,7 @@ var MentalRotationGame = Game.extend({
         $(".html-image-widget.item").empty();
 
         // render original...
-        var img0 = new ImageWidget(gameBaseUrl + "/" + g.offered, 150, 150); 
+        var img0 = new ImageWidget(self.baseUrl + "/" + g.offered, 150, 150); 
         img0.setPosition(100, 300);
         //img0.addClass("item item-offered");
 
@@ -46,7 +46,7 @@ var MentalRotationGame = Game.extend({
         for(var i=0; i<n; i++) {
             (function() {
                 var gg = g.rest[i];
-                var img = new ImageWidget(gameBaseUrl + "/" + gg.item, 150, 150); 
+                var img = new ImageWidget(self.baseUrl + "/" + gg.item, 150, 150); 
                 //img.addClass("item item-choice");
                 img.setPosition(100 + 200*i, y0);     
                 var clk = new Clickable(img);

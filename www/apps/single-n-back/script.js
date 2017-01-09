@@ -12,7 +12,7 @@ var NBackSingleGame = NBackGame.extend({
         // create buttons
         var useColors = true;
 
-        this.button1 = new ButtonWidget("Position", {fontSize: 40, border: 20, anchor: "middle", radius: 30});
+        this.button1 = new ButtonWidget(this.loc("Position"), {fontSize: 40, border: 20, anchor: "middle", radius: 30});
         this.button1.setPosition(500-this.button1.w/2, 850);
         this.button1.onClick(function() {
             if(self.currentFrame >= self.N) {

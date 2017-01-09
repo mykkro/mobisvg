@@ -4,6 +4,9 @@
 var Game = Base.extend({
     constructor: function(config) {
         this.config = config;
+        // baseUrl and loc will be overwritten by the app engine...
+        this.baseUrl = "";
+        this.loc = function(s) { return s; };
         console.log("Game config loaded: ", config);
     },
     createGUI: function(r) {
