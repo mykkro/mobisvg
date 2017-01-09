@@ -397,3 +397,59 @@ var Clickable = SizedWidget.extend({
         console.log("Out!");
     }
 });
+
+// use like this:
+// bb = new AppPreviewWidget("apps/mental-rotation/preview.png", "Title", "Subtitle", ["perception", "memory"])
+// TODO button behaviour merge with Clickable
+var AppPreviewWidget = Widget.extend({    
+    constructor: function(previewUrl, title, subtitle, tags) {
+        this.base();
+        var previewWidth = 250;
+        var previewHeight = 250;
+        var previewImageWidth = 150;
+        var previewImageHeight = 150;
+        this.background = r.roundedRectangle(0, 0, previewWidth, previewHeight, 5, 5, 30, 5).attr(AppPreviewWidget.backgroundStyle);
+        this.image = r.image(previewUrl, (previewWidth-previewImageWidth)/2, 10, previewImageWidth, previewImageHeight);                
+        this.title = r.text(previewWidth/2,previewImageHeight + 30,title).attr(AppPreviewWidget.titleStyle);
+        this.subtitle = r.text(previewWidth/2,previewImageHeight + 57,subtitle).attr(AppPreviewWidget.subtitleStyle);
+        this.tags = r.text(previewWidth/2,previewImageHeight + 80,(tags || []).join(", ")).attr(AppPreviewWidget.tagsStyle);
+        this.overlay = r.rect(0, 0, previewWidth, previewHeight).attr(ButtonWidget.emptyStyle);
+        var bbb = this.overlay;
+        bbb.node.setAttribute("class","svgbutton");
+        this.root.push(this.background);
+        this.root.push(this.image);
+        this.root.push(this.title);
+        this.root.push(this.subtitle);
+        this.root.push(this.tags);
+        this.root.push(this.overlay);
+        this.w = previewWidth;
+        this.h = previewHeight;
+        var self = this;
+        // use Raphael's touch events        
+        if(MOBILE) {
+            bbb.touchstart(function(e) {
+                if(!self.disabled) {
+                    self.onClick();
+                }
+            });
+        } else {
+            bbb.mousedown(function(e) {
+                if(!self.disabled) {
+                    self.onClick();
+                }
+            });            
+        }
+    },
+    onClick: function(val) {
+        if(typeof(val)=="function") {
+            this._onClick = val;
+        } else {
+            if(this._onClick) this._onClick(this);
+        }
+    }
+}, {
+    backgroundStyle: {"fill":"white", "stroke": "none", "opacity": 0.6},
+    titleStyle: { "fill": "black", "stroke": "none", "font-size": "30", "anchor": "middle"},
+    subtitleStyle: { "fill": "black", "stroke": "none", "font-size": "20", "anchor": "middle"},
+    tagsStyle: { "fill": "blue", "stroke": "none", "font-size": "16", "anchor": "middle"}
+});

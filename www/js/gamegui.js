@@ -6,6 +6,19 @@ var AppsGUI = Base.extend({
         this.settings = {};
         this.translations = {};
     },
+    loc: function(name) {
+        if(name) {
+            var l = this.translations[this.settings.locale];
+            if(name in l) {
+                return l[name];
+            } else {
+                console.warn("Missing ["+this.settings.locale+"] locale for key '" + name + "'")
+                return "{" + name + "}";
+            }
+        } else {
+            return "";
+        }
+    },
     loadTranslations: function(callback) {
       $.getJSON("resources/translations.json").done(callback);
     },
@@ -52,6 +65,33 @@ var AppsGUI = Base.extend({
         } else {
             if(this._onReady) this._onReady(this, val);
         }
+    },
+    getSortedAppList: function() {
+        var applist = [];
+        for(var key in this.apps) {
+            var app = this.apps[key];
+            applist.push(app);
+        }
+        // sort applist by title (according to current locale)
+        var locale = this.settings.locale;
+        applist.sort(function(a, b) {
+            // console.log(a, b);
+            return a.locales[locale].title > b.locales[locale].title ? 1 : -1;
+        });
+        return applist;
+    },
+    getAllTags: function() {
+        var tagMap = {};
+        for(var key in this.apps) {
+            var app = this.apps[key];
+            app.tags.forEach(function(t) { tagMap[t] = true; });
+        }
+        var tags = [];
+        for(var key in tagMap) {
+            tags.push(this.loc(key));
+        }
+        tags.sort();
+        return tags;
     }
 });
 
@@ -352,6 +392,30 @@ var GameGUI = Base.extend({
         game.start(sequence);                        
     },
     // load assets and start the GUI
+    localize: function(name, locale, localeStrings, translations) {
+        if(name) {
+            if(name[0]=="$") {
+                name = name.slice(1);
+                var l = localeStrings[locale];
+                if(name in l) {
+                    return l[name];
+                } else {
+                    console.warn("Missing ["+locale+"] locale for key $" + name)
+                    return "$" + name;
+                }
+            } else {
+                var l = translations[locale];
+                if(name in l) {
+                    return l[name];
+                } else {
+                    console.warn("Missing ["+locale+"] locale for key '" + name + "'")
+                    return "{" + name + "}";
+                }
+            }
+        } else {
+            return "";
+        }
+    },
     start: function() {
         var self = this;
         self.loadScriptAndStyle().done(function() {
@@ -366,28 +430,7 @@ var GameGUI = Base.extend({
                 console.log("Settings:", self.settings);
 
                 var loc = function(name) {
-                    if(name) {
-                        if(name[0]=="$") {
-                            name = name.slice(1);
-                            var l = metadata.locales[self.settings.locale];
-                            if(name in l) {
-                                return l[name];
-                            } else {
-                                console.warn("Missing ["+self.settings.locale+"] locale for key $" + name)
-                                return "$" + name;
-                            }
-                        } else {
-                            var l = self.translations[self.settings.locale];
-                            if(name in l) {
-                                return l[name];
-                            } else {
-                                console.warn("Missing ["+self.settings.locale+"] locale for key '" + name + "'")
-                                return "{" + name + "}";
-                            }
-                        }
-                    } else {
-                        return "";
-                    }
+                    return self.localize(name, self.settings.locale, metadata.locales, self.translations);
                 } 
 
                 self.loc = loc;

@@ -11,7 +11,13 @@
         "Play again": "Play again",
         "Position": "Position",
         "Color": "Color",
-        "Sign": "Sign"
+        "Sign": "Sign",
+
+        "attention": "attention",
+        "memory": "memory",
+        "spatial": "spatial",
+        "visual": "visual"
+
     },
     "cz": {
         "Start": "Start",
@@ -25,6 +31,11 @@
         "Play again": "Hrát znovu",
         "Position": "Pozice",
         "Color": "Barva",
-        "Sign": "Značka"
+        "Sign": "Značka",
+
+        "attention": "attention",
+        "memory": "memory",
+        "spatial": "spatial",
+        "visual": "visual"
     }
 }
