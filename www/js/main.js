@@ -65,8 +65,8 @@ var gameBaseUrl = "apps/differences";
     
   appgui = new AppsGUI();
   appgui.onReady(function() {
-    engine = new GameGUI(gameBaseUrl, appgui.translations, appgui.settings);
-    engine.start();
+    console.log("AppGUI ready!");
+    appgui.showMainPage();
   });
   appgui.init();
 

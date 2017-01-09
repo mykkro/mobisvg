@@ -6,6 +6,9 @@ var AppsGUI = Base.extend({
         this.settings = {};
         this.translations = {};
     },
+    buttonStyle: {
+        fontSize: 30, border: 15, anchor: "middle", radius: 25
+    },
     loc: function(name) {
         if(name) {
             var l = this.translations[this.settings.locale];
@@ -92,13 +95,89 @@ var AppsGUI = Base.extend({
         }
         tags.sort();
         return tags;
+    },
+    showAppLaunchers: function(apps) {
+        var self = this;
+        console.log(apps);
+        this.resetScene();
+        // display up to 9 launchers
+        // each launcher is 250x250 px
+        var row = 0;
+        var col = 0;
+        var i = 0;
+        var locale = this.settings.locale;
+        while(i<apps.length) {
+            var app = apps[i++];
+            // create launcher and position it...
+            console.log("Creating launcher for app", app, row, col);
+            var gap = 10;
+            var x = 115 + (250 + gap)*col;
+            var y = 115 + (250 + gap)*row;
+            var launcher = new AppPreviewWidget("apps/"+app.name+"/preview.png", app.locales[locale].title, app.locales[locale].subtitle, app.tags)
+            launcher.setPosition(x, y);
+            (function() {
+                var app2 = app;
+                launcher.onClick(function() {
+                    console.log("Start app", app2);
+                    engine = new GameGUI(self, "apps/"+app2.name, self.translations, self.settings);
+                    engine.start();
+                })
+            })();
+            col += 1;
+            if(col == 3) {
+                col = 0;
+                row += 1;
+                if(row == 3) {
+                    break;
+                }
+            }
+        }
+    },
+    // create buttons
+    createMainPageButtons: function() {
+        var settingsBtn = new ButtonWidget(this.loc("Settings"), this.buttonStyle);        
+        var historyBtn = new ButtonWidget(this.loc("History"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        Widget.layoutButtons([settingsBtn, historyBtn], gap, yy);
+        var self = this;
+
+        // bind events
+        settingsBtn.onClick(function() {
+            self.showSettingsPage();
+        });
+
+        historyBtn.onClick(function() {
+            self.showHistoryPage();
+        });
+
+        return [settingsBtn, historyBtn];
+    },
+    showMainPage: function() {
+        this.showAppLaunchers(this.getSortedAppList());
+        this.createMainPageButtons();
+    },
+    /**
+     * Clears canvas, removes all widgets.
+     */
+    resetScene: function() {
+        if(r) r.clear();
+        r = this.makeScene();
+    },
+    makeScene: function() {
+        var paper = Raphael("paper", "100%", "100%");
+        paper.setViewBox( 0, 0, 1000, 1000, false );
+        var rh = RaphaelHelper;
+        if(DEBUG) rh.drawGrid(paper, "#ccc");    
+        return paper;
     }
 });
 
 /* Game GUI manager. */
 var GameGUI = Base.extend({
-    constructor: function(url, translations, globalSettings) {
+    constructor: function(appgui, url, translations, globalSettings) {
         console.log("Creating Game GUI", url, translations, globalSettings);
+        this.appgui = appgui;
         this.url = url;
         this.translations = translations;
         this.globalSettings = globalSettings;
@@ -150,20 +229,6 @@ var GameGUI = Base.extend({
         }); 
         return dfd.promise();
     },
-    /**
-     * Clears canvas, removes all widgets.
-     */
-    resetScene: function() {
-        if(r) r.clear();
-        r = this.makeScene();
-    },
-    makeScene: function() {
-        var paper = Raphael("paper", "100%", "100%");
-        paper.setViewBox( 0, 0, 1000, 1000, false );
-        var rh = RaphaelHelper;
-        if(DEBUG) rh.drawGrid(paper, "#ccc");    
-        return paper;
-    },
     // show various GUI pages
     showGameLauncherPage: function() {
         r.clear();
@@ -193,7 +258,7 @@ var GameGUI = Base.extend({
         this.createResultsPageButtons();
     },
     showGameSelectionPage: function() {
-        r.clear();
+        this.appgui.showMainPage();
     },
     // render various widgets
     showGameResults: function(results, messages) {
@@ -236,18 +301,6 @@ var GameGUI = Base.extend({
         return img;
     },
     // lays out buttons in centered layout
-    layoutButtons: function(buttons, gap, y) {
-        var totalWidth = 0;
-        buttons.forEach(function(b) {
-            if(totalWidth) totalWidth += gap;
-            totalWidth += b.w;
-        });
-        xx = (1000-totalWidth)/2;
-        buttons.forEach(function(b) {
-            b.setPosition(xx, y);
-            xx += b.w + gap;
-        });
-    },
     buttonStyle: {
         fontSize: 30, border: 15, anchor: "middle", radius: 25
     },
@@ -257,9 +310,11 @@ var GameGUI = Base.extend({
         var settingsBtn = new ButtonWidget(this.loc("Settings"), this.buttonStyle);        
         var instrBtn = new ButtonWidget(this.loc("Instructions"), this.buttonStyle);        
         var exitBtn = new ButtonWidget(this.loc("Exit"), this.buttonStyle);        
+        var historyBtn = new ButtonWidget(this.loc("History"), this.buttonStyle);        
+
         var gap = 40;
         var yy = 900;
-        this.layoutButtons([startBtn, settingsBtn, instrBtn, exitBtn], gap, yy);
+        Widget.layoutButtons([startBtn, settingsBtn, instrBtn, historyBtn, exitBtn], gap, yy);
         var self = this;
 
         // bind events
@@ -275,22 +330,27 @@ var GameGUI = Base.extend({
             self.showInstructionsPage();
         });
 
+        historyBtn.onClick(function() {
+            self.showHistoryPage();
+        });
+
         exitBtn.onClick(function() {
             self.showGameSelectionPage();
         });
 
-        return [startBtn, settingsBtn, instrBtn, exitBtn];
+        return [startBtn, settingsBtn, instrBtn, historyBtn, exitBtn];
     },
     createInstructionsPageButtons: function() {
-        var startBtn = new ButtonWidget(this.loc("Start"), this.buttonStyle);        
-        var settingsBtn = new ButtonWidget(this.loc("Settings"), this.buttonStyle);        
+        //var startBtn = new ButtonWidget(this.loc("Start"), this.buttonStyle);        
+        //var settingsBtn = new ButtonWidget(this.loc("Settings"), this.buttonStyle);        
         var backBtn = new ButtonWidget(this.loc("Back"), this.buttonStyle);        
         var gap = 40;
         var yy = 900;
-        this.layoutButtons([startBtn, settingsBtn, backBtn], gap, yy);
+        Widget.layoutButtons([/*startBtn, settingsBtn, */backBtn], gap, yy);
         var self = this;
 
         // bind events
+        /*
         startBtn.onClick(function() {
             self.startGame();
         });
@@ -298,12 +358,12 @@ var GameGUI = Base.extend({
         settingsBtn.onClick(function() {
             self.showSettingsPage();
         });
-
+        */
         backBtn.onClick(function() {
             self.showGameLauncherPage();
         });
 
-        return [startBtn, settingsBtn, backBtn];
+        return [/*startBtn, settingsBtn, */backBtn];
     },
     createSettingsPageButtons: function() {
         var saveBtn = new ButtonWidget(this.loc("Save"), this.buttonStyle);        
@@ -311,7 +371,7 @@ var GameGUI = Base.extend({
         var backBtn = new ButtonWidget(this.loc("Back"), this.buttonStyle);        
         var gap = 40;
         var yy = 900;
-        this.layoutButtons([saveBtn, resetBtn, backBtn], gap, yy);
+        Widget.layoutButtons([saveBtn, resetBtn, backBtn], gap, yy);
         var self = this;
 
         // bind events
@@ -339,7 +399,7 @@ var GameGUI = Base.extend({
         var backBtn = new ButtonWidget(this.loc("Back"), this.buttonStyle);        
         var gap = 40;
         var yy = 900;
-        this.layoutButtons([againBtn, backBtn], gap, yy);
+        Widget.layoutButtons([againBtn, backBtn], gap, yy);
         var self = this;
 
         // bind events
@@ -369,7 +429,7 @@ var GameGUI = Base.extend({
         game.loc = self.loc;
         this.gameInstance = game;
         var sequence = game.generateTaskData();
-        this.resetScene();
+        this.appgui.resetScene();
 
         game.createGUI(r);                        
 
@@ -436,7 +496,7 @@ var GameGUI = Base.extend({
                 self.loc = loc;
 
                 // put code here...
-                self.resetScene();
+                self.appgui.resetScene();
 
                 self.game = new window[metadata.gameClass]({});
                 self.game.baseUrl = self.url;

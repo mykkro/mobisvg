@@ -28,6 +28,18 @@ var Widget = Base.extend({
     }
 }, {
     // global styles/utility functions
+    layoutButtons: function(buttons, gap, y) {
+        var totalWidth = 0;
+        buttons.forEach(function(b) {
+            if(totalWidth) totalWidth += gap;
+            totalWidth += b.w;
+        });
+        xx = (1000-totalWidth)/2;
+        buttons.forEach(function(b) {
+            b.setPosition(xx, y);
+            xx += b.w + gap;
+        });
+    }
 });
 
 // UI widget with defined dimensions
@@ -411,7 +423,7 @@ var AppPreviewWidget = Widget.extend({
         this.background = r.roundedRectangle(0, 0, previewWidth, previewHeight, 5, 5, 30, 5).attr(AppPreviewWidget.backgroundStyle);
         this.image = r.image(previewUrl, (previewWidth-previewImageWidth)/2, 10, previewImageWidth, previewImageHeight);                
         this.title = r.text(previewWidth/2,previewImageHeight + 30,title).attr(AppPreviewWidget.titleStyle);
-        this.subtitle = r.text(previewWidth/2,previewImageHeight + 57,subtitle).attr(AppPreviewWidget.subtitleStyle);
+        //this.subtitle = r.text(previewWidth/2,previewImageHeight + 57,subtitle).attr(AppPreviewWidget.subtitleStyle);
         this.tags = r.text(previewWidth/2,previewImageHeight + 80,(tags || []).join(", ")).attr(AppPreviewWidget.tagsStyle);
         this.overlay = r.rect(0, 0, previewWidth, previewHeight).attr(ButtonWidget.emptyStyle);
         var bbb = this.overlay;
@@ -419,7 +431,7 @@ var AppPreviewWidget = Widget.extend({
         this.root.push(this.background);
         this.root.push(this.image);
         this.root.push(this.title);
-        this.root.push(this.subtitle);
+        //this.root.push(this.subtitle);
         this.root.push(this.tags);
         this.root.push(this.overlay);
         this.w = previewWidth;
