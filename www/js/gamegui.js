@@ -341,29 +341,18 @@ var GameGUI = Base.extend({
         return [startBtn, settingsBtn, instrBtn, historyBtn, exitBtn];
     },
     createInstructionsPageButtons: function() {
-        //var startBtn = new ButtonWidget(this.loc("Start"), this.buttonStyle);        
-        //var settingsBtn = new ButtonWidget(this.loc("Settings"), this.buttonStyle);        
         var backBtn = new ButtonWidget(this.loc("Back"), this.buttonStyle);        
         var gap = 40;
         var yy = 900;
-        Widget.layoutButtons([/*startBtn, settingsBtn, */backBtn], gap, yy);
+        Widget.layoutButtons([backBtn], gap, yy);
         var self = this;
 
         // bind events
-        /*
-        startBtn.onClick(function() {
-            self.startGame();
-        });
-
-        settingsBtn.onClick(function() {
-            self.showSettingsPage();
-        });
-        */
         backBtn.onClick(function() {
             self.showGameLauncherPage();
         });
 
-        return [/*startBtn, settingsBtn, */backBtn];
+        return [backBtn];
     },
     createSettingsPageButtons: function() {
         var saveBtn = new ButtonWidget(this.loc("Save"), this.buttonStyle);        

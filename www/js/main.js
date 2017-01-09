@@ -101,7 +101,9 @@ function onResize() {
  var boxsize = Math.min(ww, hh);
  $("#stage").width(boxsize);
  $("#stage").height(boxsize);
+ $("#stage").css({left:Math.floor((ww-boxsize)/2)+"px",top:Math.floor((hh-boxsize)/2)+"px"})
  // reposition the controls
+ /*
  if(ww<hh) {
    $("#controls").removeClass("beside")
    $("#controls").addClass("below")
@@ -113,6 +115,7 @@ function onResize() {
    $("#controls").width(ww-hh);
    $("#controls").height(hh);
  }
+ */
 }
 
 

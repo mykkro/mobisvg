@@ -370,15 +370,19 @@ var Clickable = SizedWidget.extend({
         var overlay = r.rect(child.x, child.y, child.w, child.h).attr({"fill":"white", "stroke": "none", "opacity": 0.1});
         this.root.push(child);
         this.root.push(overlay);
-        overlay.mousedown(function(e) {
-            self.mouseDown(e);
-        }).mouseup(function(e) {
-            self.mouseUp(e);
-        }).mouseover(function(e) {
-            self.mouseOver(e);
-        }).mouseout(function(e) {
-            self.mouseOut(e);
-        });
+        if(MOBILE) {
+            overlay.touchstart(function(e) {
+                if(!self.disabled) {
+                    self.onClick();
+                }
+            });
+        } else {
+            overlay.mousedown(function(e) {
+                if(!self.disabled) {
+                    self.onClick();
+                }
+            });            
+        }
     },
     _getMouseCoordinates: function(e) {
         var bnds = e.target.getBoundingClientRect();   
@@ -392,22 +396,15 @@ var Clickable = SizedWidget.extend({
         } else {
             if(this._onClick) this._onClick(this, val);
         }
-    },
+    }
+    /*
     mouseDown: function(e) {
         console.log("Down!");
         // get mouse coordinates...
         console.log(this._getMouseCoordinates(e));
         this.onClick(e);
-    },
-    mouseUp: function(e) {
-        console.log("Up!");
-    },
-    mouseOver: function(e) {
-        console.log("Over!");
-    },
-    mouseOut: function(e) {
-        console.log("Out!");
     }
+    */
 });
 
 // use like this:
