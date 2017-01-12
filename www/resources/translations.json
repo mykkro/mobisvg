@@ -13,6 +13,7 @@
         "Position": "Position",
         "Color": "Color",
         "Sign": "Sign",
+        "Both": "Both",
 
         "attention": "attention",
         "memory": "memory",
@@ -34,6 +35,7 @@
         "Position": "Pozice",
         "Color": "Barva",
         "Sign": "Značka",
+        "Both": "Obojí",
 
         "attention": "attention",
         "memory": "memory",

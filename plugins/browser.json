@@ -9,6 +9,12 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.mykkro.mobisvg"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.mykkro.mobisvg"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.mykkro.mobisvg"
         }
     },
     "dependent_plugins": {}

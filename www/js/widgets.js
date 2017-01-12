@@ -56,9 +56,10 @@ var ButtonWidget = Widget.extend({
     constructor: function(text, options) {
         this.base();
         var o = options || {};
-        o.backgroundStyle = o.backgroundStyle || ButtonWidget.backgroundStyle;
-        o.highlightedBackgroundStyle = o.highlightedBackgroundStyle || ButtonWidget.highlightedBackgroundStyle;
-        o.disabledBackgroundStyle = o.disabledBackgroundStyle || ButtonWidget.disabledBackgroundStyle;
+        o.backgroundStyle = $.extend({}, ButtonWidget.backgroundStyle, o.backgroundStyle);
+        o.clickedBackgroundStyle = $.extend({}, ButtonWidget.clickedBackgroundStyle, o.clickedBackgroundStyle);
+        o.highlightedBackgroundStyle = $.extend({}, ButtonWidget.highlightedBackgroundStyle, o.highlightedBackgroundStyle);
+        o.disabledBackgroundStyle = $.extend({}, ButtonWidget.disabledBackgroundStyle, o.disabledBackgroundStyle);
         o.fontSize = o.fontSize || 40;
         o.fontFamily = o.fontFamily || "Helvetica";
         o.fontWeight = o.fontWeight || "normal",
@@ -134,13 +135,20 @@ var ButtonWidget = Widget.extend({
         if(typeof(val)=="function") {
             this._onClick = val;
         } else {
-            if(this._onClick) this._onClick(this);
+            // animate button
+            var self = this;            
+            if(self._beforeClick) self._beforeClick(self);
+            self.buttonBackground.animate(self.o.clickedBackgroundStyle, 100, ">", function() {
+                self.buttonBackground.animate(self.o.backgroundStyle, 100, "<", function() {            
+                });
+                if(self._onClick) self._onClick(self);
+            });
         }
     }
-
 }, {
     emptyStyle: {"fill": "none", "stroke":"none"},
     backgroundStyle: {"fill": "#aac", "stroke":"#333", "stroke-width": 2},
+    clickedBackgroundStyle: {"fill": "#77a", "stroke":"#333", "stroke-width": 2},
     highlightedBackgroundStyle: {"fill": "#aac", "stroke":"#333", "stroke-width": 2},
     disabledBackgroundStyle: {"fill": "#eee", "stroke":"#333", "stroke-width": 2}
 });

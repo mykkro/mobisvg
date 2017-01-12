@@ -11,19 +11,30 @@ var NBackDualGame = NBackGame.extend({
         // create buttons
         var useColors = true;
 
-        this.button1 = new ButtonWidget(this.loc("Position"), {fontSize: 40, border: 20, anchor: "middle", radius: 30});
-        this.button1.setPosition(350-this.button1.w/2, 850);
+        var buttonStyle = {fontSize: 40, border: 20, anchor: "middle", radius: 30};
+
+        this.button1 = new ButtonWidget(this.loc("Position"), buttonStyle);
+        this.button1.setPosition(300-this.button1.w/2, 850);
         this.button1.onClick(function() {
             player.playSound("click");
             if(self.currentFrame >= self.N) {
                 self.answer[0][self.currentFrame-self.N] = 1;
             }
         });
-        this.button2 = new ButtonWidget(this.dualType=="colors" ? this.loc("Color") : this.loc("Sign"), {fontSize: 40, border: 20, anchor: "middle", radius: 30});
-        this.button2.setPosition(650-this.button2.w/2, 850);
+        this.button2 = new ButtonWidget(this.dualType=="colors" ? this.loc("Color") : this.loc("Sign"), buttonStyle);
+        this.button2.setPosition(500-this.button2.w/2, 850);
         this.button2.onClick(function() {
             player.playSound("click");
             if(self.currentFrame >= self.N) {
+                self.answer[1][self.currentFrame-self.N] = 1;
+            }
+        });
+        this.button3 = new ButtonWidget(this.loc("Both"), buttonStyle);
+        this.button3.setPosition(700-this.button2.w/2, 850);
+        this.button3.onClick(function() {
+            player.playSound("click");
+            if(self.currentFrame >= self.N) {
+                self.answer[0][self.currentFrame-self.N] = 1;
                 self.answer[1][self.currentFrame-self.N] = 1;
             }
         });

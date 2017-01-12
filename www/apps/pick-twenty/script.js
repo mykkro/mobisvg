@@ -76,9 +76,9 @@ var PickTwentyGame = Game.extend({
             self.numberButtons.push(aa);
             self.counter = 0;
 
-            aa.onClick(function(btn) {
-                player.playSound("click");
-                // which index?
+            self.correct = false;
+
+            aa._beforeClick = function(btn) {
                 var ndx = -1;
                 for(var i=0; i<self.numberButtons.length; i++) {
                     if(btn == self.numberButtons[i]) {
@@ -86,14 +86,22 @@ var PickTwentyGame = Game.extend({
                         break;
                     }
                 }
+                self.correct = (self.counter == ndx);
+                if(self.correct) {
+                    // log success (time) + relevant data
+                    btn.o.clickedBackgroundStyle = $.extend(btn.o.clickedBackgroundStyle, {"stroke": "green", "fill":"darkgreen"});
+                } else {
+                    btn.o.clickedBackgroundStyle = $.extend(btn.o.clickedBackgroundStyle, {"stroke": "red", "fill":"crimson"});
+                }
+            }
+
+            aa.onClick(function(btn) {
+                player.playSound("click");
+                // which index?
                 var elapsedTime = new Date().getTime() - self.startTime;
-                if(self.counter == ndx) {
+                if(self.correct) {
                     console.log("Correct!", self.counter, elapsedTime);
                     // log success (time) + relevant data
-                    btn.setHighlighted(true, {"stroke":"green"});
-                    setTimeout(function() {
-                        btn.setHighlighted(false);
-                    }, 1000);
                     self.counter++;
                     if(self.counter==self.N) {
                         console.log("Well done!", elapsedTime);
@@ -104,10 +112,6 @@ var PickTwentyGame = Game.extend({
                     console.log("Incorrect!", self.counter, elapsedTime);
                     // log error (time) + relevant data
                     self.mistakes++;
-                    btn.setHighlighted(true, {"stroke":"red"});
-                    setTimeout(function() {
-                        btn.setHighlighted(false);
-                    }, 1000);
                 }
 
             });
