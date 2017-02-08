@@ -23,8 +23,9 @@ $(document).ready(function() {
     states[Connection.CELL_4G]  = 'Cell 4G connection';
     states[Connection.CELL]     = 'Cell generic connection';
     states[Connection.NONE]     = 'No network connection';
-    alert('Connection type: ' + states[networkState]);  
-    alert(device.platform);
+
+    console.log('Connection type: ' + states[networkState]);  
+    console.log(device.platform);
 
      updatePage();
   }); 

@@ -405,14 +405,6 @@ var Clickable = SizedWidget.extend({
             if(this._onClick) this._onClick(this, val);
         }
     }
-    /*
-    mouseDown: function(e) {
-        console.log("Down!");
-        // get mouse coordinates...
-        console.log(this._getMouseCoordinates(e));
-        this.onClick(e);
-    }
-    */
 });
 
 // use like this:
