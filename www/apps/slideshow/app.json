@@ -1,0 +1,24 @@
+{
+    "name": "slideshow",
+    "locales": {
+        "en": {
+            "title": "Slideshow",
+            "subtitle": "Enter subtitle here",
+            "description": "Enter description here",
+            "instructions": "Enter instructions here"
+        },
+        "cz": {
+            "title": "Slideshow",
+            "subtitle": "Enter subtitle here",
+            "description": "Enter description here",
+            "instructions": "Enter instructions here"
+        }
+    },
+    "tags": [
+        "instructional"
+    ],
+    "gameClass": "Slideshow",
+    "configuration": [
+    ]
+}
+                

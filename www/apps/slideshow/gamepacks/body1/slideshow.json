@@ -1,0 +1,32 @@
+{
+  "$type": "playonweb-slideshow",
+  "name": "sampleSlideshow",
+  "title": "Sample Slideshow",
+  "version": "1.0",
+  "slides": [
+    {
+      "name": "slide1",
+      "url": "assets/slide1.png"
+    },
+    {
+      "name": "slide2",
+      "url": "assets/slide2.png"
+    },
+    {
+      "name": "slide3",
+      "url": "assets/slide3.png"
+    },
+    {
+      "name": "slide4",
+      "url": "assets/slide4.png"
+    },
+    {
+      "name": "slide5",
+      "url": "assets/slide5.png"
+    },
+    {
+      "name": "slide6",
+      "url": "assets/slide6.png"
+    }
+  ]
+}
