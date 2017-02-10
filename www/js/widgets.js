@@ -378,7 +378,7 @@ var Clickable = SizedWidget.extend({
         this.child = child;
         this.base(child.w, child.h);
         var self = this;
-        var overlay = r.rect(child.x, child.y, child.w, child.h).attr({"fill":"white", "stroke": "none", "opacity": 0.1});
+        var overlay = r.rect(child.x, child.y, child.w, child.h).attr({"fill":"white", "stroke": "none", "opacity": 0.001});
         this.root.push(child);
         this.root.push(overlay);
         if(MOBILE) {

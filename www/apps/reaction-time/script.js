@@ -6,20 +6,34 @@ var ReactionTimeGame = Game.extend({
         this.base(config);
         this.totalFrames = 0;
         this.currentFrame = 0;
+        this.targetClicked = false;
     },
     createGUI: function(r) {
         var labelSvg = new TextWidget(600, 50, "middle", "");
         labelSvg.setPosition(200, 140)
         labelSvg.setStyle({"fill": "black"});        
         this.label = labelSvg;
+        this.body = new GroupWidget(); 
     },
     showFrame: function() {
+        this.body.clearContents();
         this.updateCounter();
         var self = this;        
+
         if(this.currentFrame == this.totalFrames) {
             this.finish(this.answer);
         } else {
             console.log("Show frame:", this.currentFrame);
+
+            var img0 = new ImageWidget(self.baseUrl + "/assets/3.png", 200, 200); 
+            img0.setPosition(100+Math.random()*600, 300+Math.random()*400);
+            var clk = new Clickable(img0);
+            clk.onClick(function() {
+                console.log("clicked!");
+                self.targetClicked = true;
+            });
+            this.body.addChild(clk);
+
         }
     },
     start: function(gamedata) {
@@ -33,17 +47,19 @@ var ReactionTimeGame = Game.extend({
             this.timer.stop();
             return;
         }
-        var delay1 = 1000;
-        var delay2 = 2000;
+        var delay1 = 2000;
+        var delay2 = 1500;
         //console.log("Time: ", elapsedMillis, "Frame:", this.currentFrame, "Last time:", this.lastFrameTime);
-        if((elapsedMillis >= this.lastFrameTime + delay1) && this.lastBox) {
-            this.lastBox.remove();
-            this.lastBox = null;
+        if(elapsedMillis >= this.lastFrameTime + delay1) {
+            this.body.clearContents();
         }
-        if(elapsedMillis >= this.lastFrameTime + delay1 + delay2) {
+        if(this.targetClicked) {
+            this.targetClicked = false;
+            this.body.clearContents();
+        }
+        if((elapsedMillis >= this.lastFrameTime + delay1 + delay2)) {
             this.currentFrame++;
             this.lastFrameTime += (delay1 + delay2);
-            this.updateCounter();
             this.showFrame();
         }
     },
