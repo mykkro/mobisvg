@@ -29,19 +29,12 @@ var ReverseColorTestGame = Game.extend({
         }
         return indices;
     },
-    // TODO move to utility library
-    //+ Jonas Raoni Soares Silva
-    //@ http://jsfromhell.com/array/shuffle [v1.0]
-    _shuffleArray: function(o) { //v1.0
-      for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-      return o;
-    },     
     generateTaskData: function(options) {
         var availableColors = ["red", "green", "blue", "yellow"];
         var sequenceLength = 10;
         var matchedCount = 4;
 
-        var correctIndices = this._shuffleArray(this._makeRange(sequenceLength));
+        var correctIndices = this._makeRange(sequenceLength).shuffle();
         var correct = {};
         for(var i=0; i<matchedCount; i++) {
             correct[correctIndices[i]] = true;
