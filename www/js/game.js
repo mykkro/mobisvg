@@ -8,6 +8,14 @@ var Game = Base.extend({
         this.baseUrl = "";
         this.loc = function(s) { return s; };
         console.log("Game config loaded: ", config);
+        this.embeddingOptions = this.getEmbeddingOptions();
+    },
+    // set default embedding options for this Game
+    getEmbeddingOptions: function() {
+        return {
+            renderTitle: true,
+            renderAbortButton: true
+        };
     },
     createGUI: function(r) {
         // override in subclasses...

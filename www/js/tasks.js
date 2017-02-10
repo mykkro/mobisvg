@@ -25,6 +25,24 @@ var NullTask = Task.extend({
 });
 
 
+// special type of task connected with reading materials
+// the data contain information about:
+// - how many pages were in the material
+// - how long it took to read them (or, to proceed to next page)
+// TODO add more data
+var InstructionalTask = Task.extend({
+    validate: function(answer) {
+        return (answer.length > 0);
+    },
+    evaluate: function(answer) {
+        var pagesTotal = answer.length;
+        return {
+            pagesTotal: pagesTotal
+        }
+    }
+});
+
+
 var ReactionTimeTask = Task.extend({
     // tests if the answer contains correct data
     // (it is array of specific length)

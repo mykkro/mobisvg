@@ -428,13 +428,19 @@ var GameGUI = Base.extend({
 
         game.createGUI(r);                        
 
-        var abortBtn = this.createAbortButton();
-        abortBtn.onClick(function() {
-            game.abort();
-            self.showGameLauncherPage();
-        });
+        var eo = game.embeddingOptions;
+        console.log("Embedding options:", eo);
 
-        var labelSvg = this.showGameTitle();
+        if(eo.renderTitle) {
+            var labelSvg = this.showGameTitle();
+        }
+        if(eo.renderAbortButton) {
+            var abortBtn = this.createAbortButton();
+            abortBtn.onClick(function() {
+                game.abort();
+                self.showGameLauncherPage();
+            });
+        }
 
         game.onFinish(function(result, messages) {
             console.log("Finished with result:", result);

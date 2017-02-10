@@ -110,6 +110,10 @@ var ReactionTimeGame = Game.extend({
     abort: function() {
         this.base();       
         this.timer.stop(); 
+    },
+    finish: function(result) {
+        this.timer.stop(); 
+        this.base(result);       
     }
 
 });

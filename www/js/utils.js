@@ -52,6 +52,15 @@ var makeRange = function(n) {
     return indices;
 }
 
+// creates array [0 0 0 .. 0] of length n
+var makeZeroes = function(n) {
+    var indices = [];
+    for(var i=0; i<n; i++) {
+        indices[i] = 0;
+    }
+    return indices;
+}
+
 
 // from: http://stackoverflow.com/questions/3954438/remove-item-from-array-by-value
 Array.prototype.remove = function() {
