@@ -25,6 +25,9 @@ var Widget = Base.extend({
     setStyle: function(attr) {
         // apply your styles here...
         this.style = attr;
+    },
+    clear: function() {        
+        r.wipe(this.root);
     }
 }, {
     // global styles/utility functions
@@ -404,8 +407,36 @@ var Clickable = SizedWidget.extend({
         } else {
             if(this._onClick) this._onClick(this, val);
         }
+    },
+    clear: function() {
+        this.child.clear();
+        this.base();
+    }    
+});
+
+var GroupWidget = Widget.extend({
+    constructor: function(children) {
+        this.children = children || [];
+        this.base();
+        var self = this;
+        this.children.forEach(function(c) {
+            self.addChild(c);
+        });
+    },
+    addChild: function(widget) {
+        this.children.push(widget);
+        this.root.push(widget.root);
+    },
+    clearContents: function() {
+        var self = this;
+        this.children.forEach(function(c) {
+            self.root.exclude(c.root);
+            c.clear();
+        });
+        this.children = [];
     }
 });
+
 
 // use like this:
 // bb = new AppPreviewWidget("apps/mental-rotation/preview.png", "Title", "Subtitle", ["perception", "memory"])

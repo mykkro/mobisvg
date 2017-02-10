@@ -40,3 +40,19 @@ Raphael.fn.roundedRectangle = function (x, y, w, h, r1, r2, r3, r4){
 
     return this.path(array);
 };
+
+
+// clears element completely together with set contents if nested
+Raphael.fn.wipe = function(g) {
+  if(g) {
+    // clear set of sets...
+    g.forEach(function(gg) {
+      if(gg.type=="set") {
+        gg.forEach(function(ggg) {
+          Raphael.fn.wipe(ggg);
+        });
+      }
+      gg.remove();
+    });
+  }
+}

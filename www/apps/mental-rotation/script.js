@@ -18,8 +18,9 @@ var MentalRotationGame = Game.extend({
 
         this.label2 = new TextWidget(500, 30, "start", "Which of the shapes below is a rotated version of the shape shown left?");
         //this.label2.addClass("instruction");
-        this.label2.setPosition(300, 300);
-
+        this.label2.setPosition(300, 300);       
+        
+        this.body = new GroupWidget(); 
     },
     updateCounter: function() {
         this.label.setText((this.currentFrame+1)+"/"+this.totalFrames);
@@ -29,15 +30,16 @@ var MentalRotationGame = Game.extend({
     },    
     renderFrame: function() {
         var self = this;
+        this.body.clearContents();
+
         this.updateCounter();
         var g = this.goals[this.currentFrame];
         console.log(g);
 
-        $(".html-image-widget.item").empty();
-
         // render original...
         var img0 = new ImageWidget(self.baseUrl + "/" + g.offered, 150, 150); 
         img0.setPosition(100, 300);
+        this.body.addChild(img0);
         //img0.addClass("item item-offered");
 
         // render rest of items
@@ -47,6 +49,7 @@ var MentalRotationGame = Game.extend({
             (function() {
                 var gg = g.rest[i];
                 var img = new ImageWidget(self.baseUrl + "/" + gg.item, 150, 150); 
+                self.body.addChild(img);
                 //img.addClass("item item-choice");
                 img.setPosition(100 + 200*i, y0);     
                 var clk = new Clickable(img);
