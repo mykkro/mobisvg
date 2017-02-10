@@ -43,6 +43,16 @@ var shuffle = function(array) {
   return array;
 }
 
+// creates array [0 1 2 3... n-1]
+var makeRange = function(n) {
+    var indices = [];
+    for(var i=0; i<n; i++) {
+        indices[i] = i;
+    }
+    return indices;
+}
+
+
 // from: http://stackoverflow.com/questions/3954438/remove-item-from-array-by-value
 Array.prototype.remove = function() {
     var what, a = arguments, L = a.length, ax;

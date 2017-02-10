@@ -21,20 +21,12 @@ var ReverseColorTestGame = Game.extend({
     updateCounter: function() {
         this.label.setText((this.currentFrame+1)+"/"+this.totalFrames);
     },
-    // TODO move to utility library
-    _makeRange: function(n) {
-        var indices = [];
-        for(var i=0; i<n; i++) {
-            indices[i] = i;
-        }
-        return indices;
-    },
     generateTaskData: function(options) {
         var availableColors = ["red", "green", "blue", "yellow"];
         var sequenceLength = 10;
         var matchedCount = 4;
 
-        var correctIndices = this._makeRange(sequenceLength).shuffle();
+        var correctIndices = makeRange(sequenceLength).shuffle();
         var correct = {};
         for(var i=0; i<matchedCount; i++) {
             correct[correctIndices[i]] = true;

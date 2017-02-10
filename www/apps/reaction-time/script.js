@@ -7,6 +7,7 @@ var ReactionTimeGame = Game.extend({
         this.totalFrames = 0;
         this.currentFrame = 0;
         this.targetClicked = false;
+        this.currentTime = 0;
     },
     createGUI: function(r) {
         var labelSvg = new TextWidget(600, 50, "middle", "");
@@ -15,52 +16,61 @@ var ReactionTimeGame = Game.extend({
         this.label = labelSvg;
         this.body = new GroupWidget(); 
     },
-    showFrame: function() {
-        this.body.clearContents();
-        this.updateCounter();
+    showTarget: function() {
         var self = this;        
-
-        if(this.currentFrame == this.totalFrames) {
-            this.finish(this.answer);
-        } else {
-            console.log("Show frame:", this.currentFrame);
-
-            var img0 = new ImageWidget(self.baseUrl + "/assets/3.png", 200, 200); 
-            img0.setPosition(100+Math.random()*600, 300+Math.random()*400);
-            var clk = new Clickable(img0);
-            clk.onClick(function() {
-                console.log("clicked!");
-                self.targetClicked = true;
-            });
-            this.body.addChild(clk);
-
-        }
+        var img0 = new ImageWidget(self.baseUrl + "/assets/3.png", 200, 200); 
+        img0.setPosition(100+Math.random()*600, 300+Math.random()*400);
+        var clk = new Clickable(img0);
+        clk.onClick(function() {
+            self.targetClicked = true;
+            // TODO record the reaction time...
+            self.targetReactionTime = self.currentTime;
+            self.hideTarget();
+        });
+        this.body.addChild(clk);
+    },
+    hideTarget: function() {
+        this.body.clearContents();
+    },
+    generateReport: function(evalResult) {
+        return [
+            "Hit ratio: "+ sprintf("%.1f %%", evalResult.hitRatio * 100),
+            "Average delay: "+ sprintf("%.2f s", evalResult.avgDelay / 1000),
+        ];
     },
     start: function(gamedata) {
         this.base(gamedata);
-        this.totalFrames = this.gamedata.length;
-        this.task = new NullTask();
+        this.totalFrames = this.gamedata.length/2;
+        this.task = new ReactionTimeTask();
+        this.events = this.gamedata.slice(0);
+        this.targetShowTime = -1;
+        this.targetReactionTime = -1;
+        this.answer = [];
+        this.updateCounter();
         this.startTimer();
     },
     checkFrame: function(elapsedMillis) {
-        if(this.finished) {
+        this.currentTime = elapsedMillis;
+        if(this.events.length == 0) {
             this.timer.stop();
+            this.finish(this.answer);
             return;
         }
-        var delay1 = 2000;
-        var delay2 = 1500;
-        //console.log("Time: ", elapsedMillis, "Frame:", this.currentFrame, "Last time:", this.lastFrameTime);
-        if(elapsedMillis >= this.lastFrameTime + delay1) {
-            this.body.clearContents();
-        }
-        if(this.targetClicked) {
-            this.targetClicked = false;
-            this.body.clearContents();
-        }
-        if((elapsedMillis >= this.lastFrameTime + delay1 + delay2)) {
-            this.currentFrame++;
-            this.lastFrameTime += (delay1 + delay2);
-            this.showFrame();
+        var topEvent = this.events[0];
+        if(elapsedMillis >= topEvent.time) {
+            this.events.shift();
+            if(topEvent.type == "showtarget") {
+                this.showTarget();
+                this.targetShowTime = elapsedMillis;
+                this.targetReactionTime = -1;
+            } else if(topEvent.type == "cleartarget") {
+                this.hideTarget();
+                this.answer.push({cue: this.targetShowTime, reaction: this.targetReactionTime});
+                this.currentFrame++;
+                if(this.currentFrame < this.gamedata.length/2) {
+                    this.updateCounter();
+                }
+            }
         }
     },
     updateCounter: function() {
@@ -68,19 +78,34 @@ var ReactionTimeGame = Game.extend({
     },
     startTimer: function() {
         this.currentFrame = 0;
-        this.lastBox = null;
-        this.showFrame();
         var self = this;
         var timer = new Timer();
         this.timer = timer;
-        this.lastFrameTime = 0;
         timer.start({precision: 'secondTenths', callback: function (values) {
             var elapsedMillis = values.secondTenths * 100 + values.seconds * 1000 + values.minutes * 60000 + values.hours * 3600000;
             self.checkFrame(elapsedMillis);
         }});
     },
     generateTaskData: function(options) {
-        return [1,2,3,4,5,6,7,8,9,10];
+        // generate event sequence
+        // events:
+        //   showtarget [time, type, x, y]
+        //   cleartarget [time]
+        var N = 12; // number of frames
+        var totalTime = 60000;
+        var allowedShift = 1000;
+        var targetTimeout = 3000;
+        var avgFrameLen = totalTime/12;
+        var events = [];
+        var startTimes = [];
+        for(var i=0; i<N; i++) {
+            var eventStartTime = (i+1)*avgFrameLen;
+            eventStartTime += (Math.random()*2-1)*allowedShift;
+            startTimes.push(eventStartTime);
+            events.push({"type": "showtarget", "time": eventStartTime});
+            events.push({"type": "cleartarget", "time": eventStartTime + targetTimeout});
+        }
+        return events;
     },
     abort: function() {
         this.base();       

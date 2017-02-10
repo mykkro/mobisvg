@@ -25,6 +25,39 @@ var NullTask = Task.extend({
 });
 
 
+var ReactionTimeTask = Task.extend({
+    // tests if the answer contains correct data
+    // (it is array of specific length)
+    validate: function(answer) {
+        return (answer.length > 0);
+    },
+    evaluate: function(answer) {
+        // there is no single "correctness" value
+        var cuesTotal = 0;
+        var cuesHit = 0;
+        var delay = 0;
+        var successfulHits = []
+        for(var i=0; i<answer.length; i++) {
+            cuesTotal++;
+            if(answer[i].reaction >= 0) {
+                cuesHit++;
+                successfulHits.push(1);
+                delay += answer[i].reaction - answer[i].cue;
+            } else {
+                successfulHits.push(0);
+            }
+        }
+        var avgDelay = (cuesHit>0) ? (delay/cuesHit) : 0;
+        return {
+            cuesTotal: cuesTotal,
+            cuesHit: cuesHit,
+            hitRatio: cuesHit/cuesTotal,
+            avgDelay: avgDelay
+        }
+    }
+});
+
+
 var BinaryMultiTask = BinaryTask.extend({
     // tests if the answer contains correct data
     // (it is array of specific length)
