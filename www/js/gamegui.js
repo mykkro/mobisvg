@@ -161,7 +161,13 @@ var AppsGUI = Base.extend({
      * Clears canvas, removes all widgets.
      */
     resetScene: function() {
-        if(r) r.clear();
+        if(r) {
+            // clear paper contents
+            r.clear();
+            // remove from DOM
+            r.canvas.remove();            
+            r = null;
+        }
         r = this.makeScene();
     },
     makeScene: function() {
