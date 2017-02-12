@@ -1,0 +1,10 @@
+{
+  "$type": "playonweb-gamepack",
+  "name": "default",
+  "title": "Default Sudoku Gamepack",
+  "version": "1.0",
+  "language": "en",
+  "resources": {
+    
+  }
+}
