@@ -338,6 +338,11 @@ var TextWidget = Widget.extend({
         this.base(attr);
         this.shape.attr(attr);
     },
+    // TODO test it...
+    setCssClass: function(css) {
+        TTT = this;
+        this.shape[0].node.setAttribute("class", css);
+    },
     setText: function(text) {
         this.text = text;
         var x = 0;
