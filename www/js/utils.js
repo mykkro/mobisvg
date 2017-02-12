@@ -61,6 +61,14 @@ var makeZeroes = function(n) {
     return indices;
 }
 
+var makeFilled = function(n, val) {
+    var indices = [];
+    for(var i=0; i<n; i++) {
+        indices[i] = val;
+    }
+    return indices;
+}
+
 
 // from: http://stackoverflow.com/questions/3954438/remove-item-from-array-by-value
 Array.prototype.remove = function() {

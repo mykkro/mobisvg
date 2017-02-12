@@ -122,6 +122,9 @@ var ButtonWidget = Widget.extend({
         this.base(x, y);
         this.ttt.transform("T"+(x + this.dx)+","+(y + this.dy));
     },
+    setEnabled: function(flag) {
+        this.setDisabled(!flag);
+    },
     setDisabled: function(flag) {
         this.disabled = flag;
         this.buttonBackground.attr(flag 

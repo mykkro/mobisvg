@@ -2,10 +2,10 @@
 	"differences",
 	"mental-rotation",
 	"pick-twenty",
-	"single-n-back",
 	"memory-game",
 	"slideshow",
 	"colortest-reverse",
 	"reaction-time",
-	"sudoku"
+	"sudoku",
+	"questionary"
 ]

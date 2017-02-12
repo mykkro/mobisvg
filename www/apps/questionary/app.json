@@ -1,0 +1,24 @@
+{
+    "name": "questionary",
+    "locales": {
+        "en": {
+            "title": "Questionary",
+            "subtitle": "Enter subtitle here",
+            "description": "Enter description here",
+            "instructions": "Enter instructions here"
+        },
+        "cz": {
+            "title": "Questionary",
+            "subtitle": "Enter subtitle here",
+            "description": "Enter description here",
+            "instructions": "Enter instructions here"
+        }
+    },
+    "tags": [
+        "survey"
+    ],
+    "gameClass": "Questionary",
+    "configuration": [
+    ]
+}
+                
