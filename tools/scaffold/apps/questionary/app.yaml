@@ -28,3 +28,9 @@ gamepacks:
     - name : barthel-cz
       locales:
         - cz:
+          - title:        Barthel Index
+          - subtitle:
+          - description:
+          - instructions:
+      resources:
+        - questionary:  questionary.json

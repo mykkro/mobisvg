@@ -20,3 +20,4 @@ gamepacks:
     - name : default
       locales:
         - en:
+          - title: Sudoku
