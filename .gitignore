@@ -32,4 +32,5 @@ platforms/
 *.tmp.*
 log.txt
 
-tools/tmp/*
+tools/scaffold/tmp/
+!.gitkeep

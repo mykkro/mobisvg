@@ -51,6 +51,22 @@ def scaffold_preview(src_dir, out_dir):
     copy_file_if_exists(os.path.join(src_dir, "preview.png"), os.path.join(out_dir, "preview.png"))
 
 
+def scaffold_config(src_dir, out_dir):
+    src_path = os.path.join(src_dir, "config.yaml")
+    if os.path.exists(src_path):
+        dst_path = os.path.join(out_dir, "config.json")
+        config = load_yaml_file(src_path)
+        write_json_file(dst_path, config)
+
+
+def scaffold_settings(src_dir, out_dir):
+    src_path = os.path.join(src_dir, "settings.yaml")
+    if os.path.exists(src_path):
+        dst_path = os.path.join(out_dir, "settings.json")
+        settings = load_yaml_file(src_path)
+        write_json_file(dst_path, settings)
+
+
 def scaffold_locale(dir, out_dir, loc):
     name = loc.keys()[0]
     locale = loc.values()[0] or []
@@ -94,6 +110,12 @@ def scaffold_gamepack(dir, out_dir, gp):
 
     # copy preview.png if it exists
     scaffold_preview(dir, out_dir)
+
+    # read config.yaml if it exists
+    scaffold_config(dir, out_dir)
+
+    # read settings.yaml if it exists
+    scaffold_settings(dir, out_dir)
 
     # copy assets if any
     scaffold_assets(dir, out_dir)
@@ -184,6 +206,12 @@ def scaffold_app(app):
     # copy assets if any
     scaffold_assets(dir, out_root)
 
+    # read config.yaml if it exists
+    scaffold_config(dir, out_dir)
+
+    # read settings.yaml if it exists
+    scaffold_settings(dir, out_dir)
+
     print "Scaffolding app: %s" % app_name
     print app
 
@@ -197,6 +225,11 @@ def load_text_file(path):
 def write_text_file(path, text):
     with open(path, 'w') as myfile:
         myfile.write(text)
+
+
+def write_json_file(path, data):
+    with open(path, 'w') as myfile:
+        json.dump(data, myfile, indent=4)
 
 
 def scaffold_script(src_dir, tgt_dir, script_list=[]):
