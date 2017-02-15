@@ -5,6 +5,8 @@
 import os, sys, yaml, json
 from shutil import copyfile
 from distutils.dir_util import copy_tree
+import datetime
+from time import mktime
 
 
 SRCDIR = "."
@@ -14,19 +16,30 @@ TGTDIR = "tmp"
 def scaffold(data):
     print "Scaffolding applications..."
     print
-    print_framework_info(data)
-    scaffold_locales("", "tmp", data["locales"])
-    scaffold_apps(data["apps"])
+    info = scaffold_framework_info(data)
+    loc_index = scaffold_locales("", "tmp", data["locales"])
+    apps_index = scaffold_apps(data["apps"])
+    return {
+        "info": info,
+        "apps": apps_index,
+        "locales": loc_index
+    }
 
 
 def scaffold_locales(dir, out_dir, data):
+    loc_index = []
     for loc in data:
-        scaffold_locale(os.path.join(dir, "locales"), os.path.join(out_dir, "locales"), loc)
+        loc_index.append(
+            scaffold_locale(os.path.join(dir, "locales"), os.path.join(out_dir, "locales"), loc)
+        )
+    return loc_index
 
 
 def scaffold_gamepacks(dir, out_dir, data):
+    gp_index = []
     for gp in data:
-        scaffold_gamepack(os.path.join(dir, "gamepacks"), os.path.join(out_dir, "gamepacks"), gp)
+        gp_index.append(scaffold_gamepack(os.path.join(dir, "gamepacks"), os.path.join(out_dir, "gamepacks"), gp))
+    return gp_index
 
 
 def scaffold_assets(dir, out_dir):
@@ -38,17 +51,21 @@ def scaffold_assets(dir, out_dir):
 
 
 def scaffold_apps(data):
+    apps_index = []
     for app in data:
-        scaffold_app(app)
+        apps_index.append(scaffold_app(app))
+    return apps_index
 
 
 def copy_file_if_exists(src_path, dst_path):
     if os.path.exists(src_path):
         copyfile(src_path, dst_path)
+        return True
+    return False
 
 
 def scaffold_preview(src_dir, out_dir):
-    copy_file_if_exists(os.path.join(src_dir, "preview.png"), os.path.join(out_dir, "preview.png"))
+    return copy_file_if_exists(os.path.join(src_dir, "preview.png"), os.path.join(out_dir, "preview.png"))
 
 
 def scaffold_config(src_dir, out_dir):
@@ -57,6 +74,8 @@ def scaffold_config(src_dir, out_dir):
         dst_path = os.path.join(out_dir, "config.json")
         config = load_yaml_file(src_path)
         write_json_file(dst_path, config)
+        return config
+    return None
 
 
 def scaffold_settings(src_dir, out_dir):
@@ -65,10 +84,14 @@ def scaffold_settings(src_dir, out_dir):
         dst_path = os.path.join(out_dir, "settings.json")
         settings = load_yaml_file(src_path)
         write_json_file(dst_path, settings)
+        return settings
+    return None
 
 
 def scaffold_locale(dir, out_dir, loc):
+    index = {}
     name = loc.keys()[0]
+    index["name"] = name
     locale = loc.values()[0] or []
 
     dir = os.path.join(dir, name)
@@ -77,25 +100,29 @@ def scaffold_locale(dir, out_dir, loc):
 
     # scaffold metadata
     out_path = os.path.join(out_dir, "metadata.json")
-    scaffold_metadata(locale, out_path, language=name)
+    index["metadata"] = scaffold_metadata(locale, out_path, language=name)
 
     # scaffold translations
     path = os.path.join(dir, "translations.yaml")
     if os.path.exists(path):
         out_path = os.path.join(out_dir, "translations.json")
-        scaffold_vocabulary(path, out_path, language=name)
+        index["translations"] = scaffold_vocabulary(path, out_path, language=name)
 
     # copy preview.png if it exists
-    scaffold_preview(dir, out_dir)
+    index["preview"] = scaffold_preview(dir, out_dir)
 
     # copy assets if any
     scaffold_assets(dir, out_dir)
 
+    return index
+
 
 def scaffold_gamepack(dir, out_dir, gp):
+    index = {}
     name = gp["name"]
+    index["name"] = name
     locales = gp.get("locales", []) or []
-    resources = gp.get("resources", []) or []
+    resources = gp.get("resources", {}) or {}
 
     dir = os.path.join(dir, name)
     out_dir = os.path.join(out_dir, name)
@@ -103,27 +130,29 @@ def scaffold_gamepack(dir, out_dir, gp):
     print "Scaffolding gamepack %s" % name
 
     # scaffold locales
-    scaffold_locales(dir, out_dir, locales)
+    index["locales"] = scaffold_locales(dir, out_dir, locales)
 
     # scaffold resources
-    scaffold_resources(dir, out_dir, resources)
+    index["resources"] = scaffold_resources(dir, out_dir, resources)
 
     # copy preview.png if it exists
-    scaffold_preview(dir, out_dir)
+    index["preview"] = scaffold_preview(dir, out_dir)
 
     # read config.yaml if it exists
-    scaffold_config(dir, out_dir)
+    index["config"] = scaffold_config(dir, out_dir)
 
     # read settings.yaml if it exists
-    scaffold_settings(dir, out_dir)
+    index["settings"] = scaffold_settings(dir, out_dir)
 
     # copy assets if any
     scaffold_assets(dir, out_dir)
 
+    return index
+
 
 def scaffold_resources(dir, out_dir, resources):
     print "Scaffolding resources"
-    print dir, resources
+    return resources
 
 
 def scaffold_metadata(locale, out_path, language="en", version="1.0"):
@@ -140,6 +169,7 @@ def scaffold_metadata(locale, out_path, language="en", version="1.0"):
         "keys": out
     }
     put_json_file(out_path, meta)
+    return out
 
 
 def scaffold_vocabulary(path, out_path, language="en", version="1.0"):
@@ -154,6 +184,7 @@ def scaffold_vocabulary(path, out_path, language="en", version="1.0"):
             "translations": data
         }
         put_json_file(out_path, vocab)
+        return data
 
 
 def ensure_directory(directory):
@@ -178,7 +209,9 @@ def put_json_file(path, data):
 #   gamepacks/
 #   locales/
 def scaffold_app(app):
+    index = {}
     app_name = app["name"]
+    index["name"] = app_name
     dir = os.path.join("apps", app_name)
     out_dir = os.path.join("tmp", dir)
     app_yaml = load_yaml_file(os.path.join(dir, "app.yaml"))
@@ -190,9 +223,12 @@ def scaffold_app(app):
     out_gamepacks = os.path.join("tmp", gamepack_dir)
     ensure_directory(out_gamepacks)
 
-    scaffold_locales(dir, out_root, app_yaml.get("locales", []) or [])
+    index["locales"] = scaffold_locales(dir, out_root, app_yaml.get("locales", []) or [])
 
-    scaffold_gamepacks(dir, out_root, app_yaml.get("gamepacks", []) or [])
+    index["gamepacks"] = scaffold_gamepacks(dir, out_root, app_yaml.get("gamepacks", []) or [])
+
+    # scaffold resources
+    index["resources"] = scaffold_resources(dir, out_dir, app_yaml.get("resources", {}) or {})
 
     # generate script.js
     scaffold_script(dir, out_root, app_yaml.get("scripts", []) or [])
@@ -201,19 +237,18 @@ def scaffold_app(app):
     scaffold_style(dir, out_root, app_yaml.get("styles", []) or [])
 
     # copy preview.png if it exists
-    scaffold_preview(dir, out_root)
+    index["preview"] = scaffold_preview(dir, out_root)
 
     # copy assets if any
     scaffold_assets(dir, out_root)
 
     # read config.yaml if it exists
-    scaffold_config(dir, out_dir)
+    index["config"] = scaffold_config(dir, out_dir)
 
     # read settings.yaml if it exists
-    scaffold_settings(dir, out_dir)
+    index["settings"] = scaffold_settings(dir, out_dir)
 
-    print "Scaffolding app: %s" % app_name
-    print app
+    return index
 
 
 def load_text_file(path):
@@ -240,9 +275,7 @@ def scaffold_script(src_dir, tgt_dir, script_list=[]):
     scripts.append(load_text_file(os.path.join(src_dir, "script.js")))
     out = "\n".join(scripts)
     outfile = os.path.join(tgt_dir, "script.js")
-    print "Generated script: %s" % outfile
     write_text_file(outfile, out)
-    return out
 
 
 def scaffold_style(src_dir, tgt_dir, style_list=[]):
@@ -253,12 +286,10 @@ def scaffold_style(src_dir, tgt_dir, style_list=[]):
     styles.append(load_text_file(os.path.join(src_dir, "style.css")))
     out = "\n".join(styles)
     outfile = os.path.join(tgt_dir, "style.css")
-    print "Generated style: %s" % outfile
     write_text_file(outfile, out)
-    return out
 
 
-def print_framework_info(data):
+def scaffold_framework_info(data):
     """
     doctype: playonweb-app-scaffold
     version: 1.0
@@ -271,6 +302,11 @@ def print_framework_info(data):
     print "Doctype: %s" % data.get("doctype", "")
     print "Version: %s" % data.get("version", "")
     print "Last update: %s" % data.get("last_update", "")
+    return {
+        "doctype": data.get("doctype"),
+        "version": data.get("version"),
+        "last_update": data.get("last_update")
+    }
 
 
 def load_yaml_file(path):
@@ -282,4 +318,11 @@ def load_yaml_file(path):
 
 path = "main.yaml"
 data = load_yaml_file(path)
-scaffold(data)
+index = scaffold(data)
+print index
+
+
+json.JSONEncoder.default = lambda self,obj: (obj.isoformat() if isinstance(obj, datetime.datetime) else None)
+
+json_str = json.dumps(index, indent=4)
+write_text_file(os.path.join(TGTDIR, "index.json"), json_str)
