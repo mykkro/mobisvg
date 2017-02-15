@@ -1,0 +1,11 @@
+{
+    "keys": {
+        "instructions": null, 
+        "subtitle": null, 
+        "description": null, 
+        "title": "Pick 20"
+    }, 
+    "$type": "playonweb-localized-metadata", 
+    "version": "1.0", 
+    "language": "en"
+}

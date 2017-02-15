@@ -31,3 +31,5 @@ platforms/
 *.tmp
 *.tmp.*
 log.txt
+
+tools/tmp/*

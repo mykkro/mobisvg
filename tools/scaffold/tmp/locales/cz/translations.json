@@ -1,0 +1,25 @@
+{
+    "$type": "playonweb-translation", 
+    "version": "1.0", 
+    "translations": {
+        "Reset": "Reset", 
+        "Both": "Oboj\u00ed", 
+        "Settings": "Nastaven\u00ed", 
+        "attention": "pozornost", 
+        "Results": "V\u00fdsledky", 
+        "Play again": "Hr\u00e1t znovu", 
+        "Start": "Start", 
+        "visual": "visual", 
+        "Exit": "Konec", 
+        "Position": "Pozice", 
+        "Save": "Ulo\u017eit", 
+        "History": "Historie", 
+        "memory": "memory", 
+        "Color": "Barva", 
+        "Back": "Zp\u011bt", 
+        "Sign": "Zna\u010dka", 
+        "spatial": "spatial", 
+        "Instructions": "Instrukce"
+    }, 
+    "language": "cz"
+}
