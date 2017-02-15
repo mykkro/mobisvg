@@ -1,0 +1,21 @@
+name : pick-twenty
+game_class : PickTwentyGame
+author: MKR
+version: 1.0
+tags:
+  - visual
+  - attention
+locales:
+  - en:
+    - title:        Pick 20
+    - subtitle:
+    - description:
+    - instructions:
+scripts:
+styles:
+resources:
+settings:
+gamepacks:
+    - name : default
+      locales:
+        - en:

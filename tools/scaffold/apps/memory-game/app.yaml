@@ -1,0 +1,34 @@
+name : memory-game
+game_class : MemoryGame
+author: MKR
+version: 1.0
+tags:
+  - visual
+  - memory
+  - entertainment
+scripts:
+styles:
+resources:
+settings:
+locales:
+  - en:
+    - title:
+    - subtitle:
+    - description:
+    - instructions:
+  - cz:
+    - title:
+    - subtitle:
+    - description:
+    - instructions:
+gamepacks:
+    - name : animals
+      locales:
+        - en:
+      resources:
+        - tileset:  tileset.json
+    - name : sports
+      locales:
+        - en:
+      resources:
+        - tileset:  tileset.json

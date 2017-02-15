@@ -1,0 +1,20 @@
+name : sequences
+game_class : SequencesGame
+author: MKR
+version: 1.0
+tags:
+  - logical
+locales:
+  - en:
+    - title:        Sequences
+    - subtitle:
+    - description:
+    - instructions:
+scripts:
+styles:
+resources:
+settings:
+gamepacks:
+    - name : default
+      locales:
+        - en:

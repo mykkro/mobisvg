@@ -1,0 +1,10 @@
+{
+  "$type": "playonweb-gamepack",
+  "name": "barthel",
+  "title": "Barthel Index",
+  "version": "1.0",
+  "language": "en",
+  "resources": {
+    "questionary": "questionary.json"
+  }
+}

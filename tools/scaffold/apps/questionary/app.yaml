@@ -1,0 +1,30 @@
+name : questionary
+game_class : Questionary
+author: MKR
+version: 1.0
+tags:
+  - survey
+locales:
+  - en:
+    - title:        Questionary
+    - subtitle:
+    - description:
+    - instructions:
+  - cz:
+scripts:
+styles:
+resources:
+settings:
+gamepacks:
+    - name : barthel-en
+      locales:
+        - en:
+          - title:        Barthel Index
+          - subtitle:
+          - description:
+          - instructions:
+      resources:
+        - questionary:  questionary.json
+    - name : barthel-cz
+      locales:
+        - cz:

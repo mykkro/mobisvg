@@ -1,0 +1,22 @@
+name : sudoku
+game_class : SudokuGame
+author: MKR
+version: 1.0
+tags:
+  - entertainment
+locales:
+  - en:
+    - title:        Sudoku
+    - subtitle:
+    - description:
+    - instructions:
+scripts:
+  - sudoku.js
+styles:
+  - sudoku.css
+resources:
+settings:
+gamepacks:
+    - name : default
+      locales:
+        - en:

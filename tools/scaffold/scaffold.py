@@ -81,9 +81,20 @@ def put_json_file(path, data):
         json.dump(data, fp, ensure_ascii=True, indent=4)
 
 
+# app definition dir may contain:
+#   preview.png
+#   app.yaml
+#   config.yaml
+#   script.js
+#   style.css
+#   assets/
+#   gamepacks/
+#   locales/
 def scaffold_app(app):
     app_name = app["name"]
     dir = os.path.join("apps", app_name)
+    app_yaml = load_yaml_file(os.path.join(dir, "app.yaml"))
+    print "Loaded app data: %s" % app_name, app_yaml
     gamepack_dir = os.path.join(dir, "gamepacks")
     asset_dir = os.path.join(dir, "assets")
     out_dir = os.path.join("tmp", dir)
@@ -93,7 +104,7 @@ def scaffold_app(app):
     out_dir = os.path.join("tmp", asset_dir)
     ensure_directory(out_dir)
 
-    scaffold_locales(dir, app.get("locales", []))
+    scaffold_locales(dir, app_yaml.get("locales", []))
 
     print "Scaffolding app: %s" % app_name
     print app
@@ -114,13 +125,13 @@ def print_framework_info(data):
     print "Last update: %s" % data.get("last_update", "")
 
 
-
+def load_yaml_file(path):
+    with open(path, 'r') as stream:
+        data = yaml.load(stream)
+        return data
 
 ###############################################################################
 
-with open("main.yaml", 'r') as stream:
-    try:
-        data = yaml.load(stream)
-        scaffold(data)
-    except yaml.YAMLError as exc:
-        print(exc)
+path = "main.yaml"
+data = load_yaml_file(path)
+scaffold(data)

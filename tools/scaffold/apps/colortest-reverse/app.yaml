@@ -1,0 +1,18 @@
+name : colortest-reverse
+game_class : ReverseColorTestGame
+author: MKR
+version: 1.0
+tags:
+  - visual
+scripts:
+styles:
+resources:
+settings:
+locales:
+  - en:
+gamepacks:
+    - name : default
+      settings:
+      resources:
+      locales:
+        - en:

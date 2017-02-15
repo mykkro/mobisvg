@@ -1,0 +1,26 @@
+name : slideshow
+game_class : Slideshow
+author: MKR
+version: 1.0
+tags:
+  - instructional
+locales:
+  - en:
+    - title:        Slideshow
+    - subtitle:
+    - description:
+    - instructions:
+scripts:
+styles:
+resources:
+settings:
+gamepacks:
+    - name : body1
+      locales:
+        - en:
+            - title: Sample Exercise
+            - subtitle:
+            - description:
+      resources:
+        - slideshow:  slideshow.json
+
