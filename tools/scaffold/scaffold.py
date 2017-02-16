@@ -152,7 +152,11 @@ def scaffold_gamepack(dir, out_dir, gp):
 
 def scaffold_resources(dir, out_dir, resources):
     print "Scaffolding resources"
-    return resources
+    res = {}
+    for r in resources:
+        for key in r:
+            res[key] = r[key]
+    return res
 
 
 def scaffold_metadata(locale, out_path, language="en", version="1.0"):
