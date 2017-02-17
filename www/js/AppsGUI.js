@@ -3,6 +3,7 @@ var AppsGUI = Base.extend({
     constructor: function() {
         console.log("AppsGUI.constructor");
         this.locale = "en";
+        this.page = 1;
     },
     buttonStyle: {
         fontSize: 30, border: 15, anchor: "middle", radius: 25
@@ -35,8 +36,16 @@ var AppsGUI = Base.extend({
             if(this._onReady) this._onReady(this, val);
         }
     },
-    getSortedAppList: function() {
-        return this.index.appsByLocale(this.locale);
+    getSortedAppList: function(page) {
+        var all = this.index.appsByLocale(this.locale);
+        var pages = Math.floor((all.length+8)/9);
+        var out = [];
+        for(var i=((page-1)*9); i<page*9; i++) {
+            if(i<all.length) {
+                out.push(all[i]);
+            }
+        }
+        return { pages: pages, page: page, contents: out };
     },
     getAllTags: function() {
         var tagMap = {};
@@ -64,7 +73,7 @@ var AppsGUI = Base.extend({
         while(i<apps.length) {
             var appName = apps[i++];
             var app = this.index.app(appName);
-            var gamepack = app.defaultGamepack()
+            var gamepack = app.defaultGamepack(self.locale);
             var gamepackName = gamepack.name;
             var instance = this.index.instance(appName, gamepackName, locale);
             var previewUrl = instance.appBaseUrl + "/"+ instance.res("preview");
@@ -74,7 +83,10 @@ var AppsGUI = Base.extend({
             var gap = 10;
             var x = 115 + (250 + gap)*col;
             var y = 115 + (250 + gap)*row;
-            var launcher = new AppPreviewWidget(previewUrl, instance.tr("$title"), instance.tr("$subtitle"), instance.app.app.tags);
+            var translatedTags = instance.app.app.tags.map(function(t) {
+                return instance.tr(t);
+            });
+            var launcher = new AppPreviewWidget(previewUrl, instance.tr("$title"), instance.tr("$subtitle"), translatedTags);
             launcher.setPosition(x, y);
             (function() {
                 var app2 = instance;
@@ -95,13 +107,31 @@ var AppsGUI = Base.extend({
         }
     },
     // create buttons
-    createMainPageButtons: function() {
+    createMainPageButtons: function(pg) {
+        var self = this;
         var settingsBtn = new ButtonWidget(this.indexLocalized.tr("Settings"), this.buttonStyle);        
         var historyBtn = new ButtonWidget(this.indexLocalized.tr("History"), this.buttonStyle);        
+        var prevBtn, bextBtn;
+        var btns = [];
+        if(pg.page>1) {
+            prevBtn = new ButtonWidget(this.indexLocalized.tr("Previous"), this.buttonStyle);        
+            btns.push(prevBtn);
+            prevBtn.onClick(function() {
+                self.showAppsPage(pg.page-1);
+            });
+        }
+        btns.push(settingsBtn);
+        btns.push(historyBtn);
+        if(pg.page<pg.pages) {
+            nextBtn = new ButtonWidget(this.indexLocalized.tr("Next"), this.buttonStyle);        
+            btns.push(nextBtn);
+            nextBtn.onClick(function() {
+                self.showAppsPage(pg.page+1);
+            });
+        }
         var gap = 40;
         var yy = 900;
-        Widget.layoutButtons([settingsBtn, historyBtn], gap, yy);
-        var self = this;
+        Widget.layoutButtons(btns, gap, yy);
 
         // bind events
         settingsBtn.onClick(function() {
@@ -115,8 +145,14 @@ var AppsGUI = Base.extend({
         return [settingsBtn, historyBtn];
     },
     showMainPage: function() {
-        this.showAppLaunchers(this.getSortedAppList());
-        this.createMainPageButtons();
+        this.showAppsPage(this.page);
+    },
+    showAppsPage: function(page) {
+        var page = page || 1;
+        var pg = this.getSortedAppList(page);
+        this.page = pg.page;
+        this.showAppLaunchers(pg.contents);
+        this.createMainPageButtons(pg);
     },
     /**
      * Clears canvas, removes all widgets.

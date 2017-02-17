@@ -44,7 +44,7 @@ Meta.prototype.appsByLocale = function(loc) {
   var self = this;
   this.apps().forEach(function(a) {
   	var aa = self.app(a);
-  	if(aa.hasLocale(loc)) {
+  	if(aa.hasLocale(loc) && aa.defaultGamepack(loc)) {
     	apps.push(aa.name);
     }
   });
@@ -246,8 +246,21 @@ MetaApp.prototype.locales = function() {
 MetaApp.prototype.gamepacks = function() {
 	return this.app.gamepacks.map(function(l) { return l.name; });
 }
-MetaApp.prototype.defaultGamepack = function() {
-  return this.gamepack("default") || this.gamepack(this.gamepacks()[0]);
+MetaApp.prototype.defaultGamepack = function(loc) {
+  // get all gamepacks that have this locale  
+  var gps = [];
+  var def = this.gamepack("default");
+  if(def && def.hasLocale(loc)) {
+    return def;
+  }
+  var self = this;
+  this.gamepacks().forEach(function(g) {
+    var gp = self.gamepack(g);
+    if(gp.hasLocale(loc)) {
+      gps.push(gp);
+    }
+  });
+  return (gps.length > 0) ? gps[0] : null;
 }
 MetaApp.prototype.hasGamepack = function(name) {
 	return (name in this.gamepackMap) && !!this.gamepackMap[name];

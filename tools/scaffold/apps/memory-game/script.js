@@ -30,7 +30,7 @@ var MemoryGame = Game.extend({
         console.log("Using gamepack:", self.gamepack);
 
         self.tileset = self.gamepack.tileset;      
-        self.tileBackUrl = self.gamepack.url+"/"+self.tileset.tiles.backgrounds[0].url
+        self.tileBackUrl = self.tilesetBaseUrl+"/"+self.tileset.tiles.backgrounds[0].url
 
         self.cards = []
         self.tileset.tiles.game.forEach(function(ttt) {
@@ -53,13 +53,13 @@ var MemoryGame = Game.extend({
         self.foundTiles = {}
         self.cardFlipping = true
 
-        // deal up cards 
+        // deal up cards
         for(var i=0; i<self.totalCards; i++) {
             self.playground.push(self.cards[i])
             self.playground.push($.extend({},self.cards[i]))
         }
 
-        // shuffle... 
+        // shuffle...
         self.playground = self.shuffle(self.playground);
 
         console.log(self.cards, self.totalCards, tilesCnt, self.columns, self.rows, self.cardSize);
@@ -71,7 +71,7 @@ var MemoryGame = Game.extend({
       for(var i=0; i<this.playground.length; i++) {
           var card = this.drawTile(this.playground[i], i)
           this.playground[i].tile = card
-      } 
+      }
 
     },
     drawTile: function(tileObj, j) {
@@ -87,10 +87,10 @@ var MemoryGame = Game.extend({
       var xx = (1000-boardWidth)/2;
       var yy = (1000-boardHeight)/2;
 
-    var img = new ImageWidget(self.gamepack.url + "/" + tileObj.url, cardSize, cardSize); 
+    var img = new ImageWidget(self.tilesetBaseUrl + "/" + tileObj.url, cardSize, cardSize);
     img.setPosition(xx + col*this.cardSize, yy + row*this.cardSize);
 
-    var bkImg = new ImageWidget(self.tileBackUrl, cardSize, cardSize); 
+    var bkImg = new ImageWidget(self.tileBackUrl, cardSize, cardSize);
     bkImg.setPosition(xx + col*this.cardSize, yy + row*this.cardSize);
 
     var clk = new Clickable(bkImg);
@@ -99,7 +99,7 @@ var MemoryGame = Game.extend({
     });
     card = { "face": img, "back": bkImg, "free": true, "index": j };
     return card;
-  }, 
+  },
   uncoverTile: function(index) {
     var self = this;
     var card = this.playground[index].tile;
@@ -162,28 +162,28 @@ var MemoryGame = Game.extend({
     console.log("Tile hidden:", index);
     this.playground[index].tile.free = true;
   },
-  loadGamepack: function(name) {
+  loadGamepackData: function() {
         var self = this;
+        var name = self.meta.gamepackName;
         var dfd = jQuery.Deferred();
-        var gamepackUrl = self.baseUrl + "/gamepacks/" + name;
-        var tilesetUrl = gamepackUrl + "/tileset.json";
+        var gamepackUrl = self.meta.appBaseUrl + "/gamepacks/" + name;
+        var tilesetUrl = self.meta.appBaseUrl + "/"+ self.meta.res("tileset")
         $.getJSON(tilesetUrl).done(function(tileset) {
-            console.log("Tileset data loaded:", tileset);
+            console.log("Tileset data loaded:", tileset, tilesetUrl);
             // call resolve when it is done
-            dfd.resolve({name:name, url:gamepackUrl, tileset:tileset});
+            dfd.resolve({name:name, url:gamepackUrl, tilesetUrl: tilesetUrl, tileset:tileset});
         });
         return dfd.promise();
     },
     start: function(gamedata) {
         this.base(gamedata);
         var self = this;
-        console.log("MemoryGame:start");
+        console.log("MemoryGame:start", self.meta);
 
-        // choose a gamepack
-        var gamepackName = "sports";
-        self.loadGamepack(gamepackName).done(function(gamepack) {
+        self.loadGamepackData().done(function(gamepack) {
             console.log("Gamepack loaded", gamepack);
             self.gamepack = gamepack;
+            self.tilesetBaseUrl = dirname(self.gamepack.tilesetUrl);
             self.task = new NullTask();
             self.renderFrame();
         });

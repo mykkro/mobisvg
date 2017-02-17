@@ -40,7 +40,7 @@ var Slideshow = Game.extend({
     },
     renderSlideBackground: function(slide) {
         if(slide.backgroundUrl) {
-            var img = new ImageWidget(this.gamepackUrl + "/" + slide.backgroundUrl, 1000, 1000); 
+            var img = new ImageWidget(this.gamepack.slideshowBaseUrl + "/" + slide.backgroundUrl, 1000, 1000);
             this.body.addChild(img);
         }
     },
@@ -135,27 +135,25 @@ var Slideshow = Game.extend({
         this.currentFrame++;
         this.renderFrame();
     },    
-    loadGamepack: function(name) {
+    loadGamepackData: function() {
         var self = this;
         var dfd = jQuery.Deferred();
-        var gamepackUrl = self.baseUrl + "/gamepacks/" + name;
-        self.gamepackUrl = gamepackUrl;
-        var tilesetUrl = gamepackUrl + "/slideshow.json";
-        $.getJSON(tilesetUrl).done(function(slideshow) {
+        var gamepackUrl = self.meta.appBaseUrl + "/gamepacks/" + self.meta.gamepackName;
+        var slideshowUrl = self.meta.appBaseUrl + "/"+ self.meta.res("slideshow");
+        var slideshowBaseUrl = dirname(slideshowUrl);
+        $.getJSON(slideshowUrl).done(function(slideshow) {
             console.log("Slideshow data loaded:", slideshow);
             // call resolve when it is done
-            dfd.resolve({name:name, url:gamepackUrl, slideshow:slideshow});
+            dfd.resolve({name:name, url:gamepackUrl, slideshowUrl: slideshowUrl, slideshowBaseUrl: slideshowBaseUrl, slideshow:slideshow});
         });
         return dfd.promise();
     },
     start: function(gamedata) {
         this.base(gamedata);
         var self = this;
-        console.log("Slideshow:start");
+        console.log("Slideshow:start", self.meta);
 
-        // choose a gamepack
-        var gamepackName = "body1";
-        self.loadGamepack(gamepackName).done(function(gamepack) {
+        self.loadGamepackData().done(function(gamepack) {
             console.log("Gamepack loaded", gamepack);
             self.gamepack = gamepack;
             self.slides = gamepack.slideshow.slides;

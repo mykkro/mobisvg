@@ -160,12 +160,38 @@
             ], 
             "gamepacks": [
                 {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
                     "name": "animals", 
                     "settings": null, 
                     "locales": [
                         {
                             "preview": false, 
                             "name": "en", 
+                            "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
                             "metadata": {}
                         }
                     ], 
@@ -182,6 +208,11 @@
                         {
                             "preview": false, 
                             "name": "en", 
+                            "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
                             "metadata": {}
                         }
                     ], 
@@ -203,7 +234,7 @@
                         "instructions": null, 
                         "subtitle": null, 
                         "description": null, 
-                        "title": null
+                        "title": "Memory Game"
                     }
                 }, 
                 {
@@ -216,7 +247,7 @@
                         "instructions": null, 
                         "subtitle": null, 
                         "description": null, 
-                        "title": null
+                        "title": "Pexeso"
                     }
                 }
             ], 
@@ -380,7 +411,7 @@
                     "locales": [
                         {
                             "preview": false, 
-                            "name": "en", 
+                            "name": "cz", 
                             "metadata": {}
                         }
                     ], 
@@ -398,6 +429,16 @@
                         "subtitle": "Test your vocabulary skills", 
                         "description": "This is a simple test where you are shown left and right parts of some words in two columns. Connect the matching parts together!", 
                         "title": "Combine Words"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Two columns are displayed, containing starting and ending parts of words. Starting parts are grouped in the left column, ending parts in the right column. You can match starts and ends by clicking a word in left column then a word in right column (a red connection line will be shown). You can remove the connection line by clicking on it. After all word parts are matched, press the OK button to evaluate the result.", 
+                        "subtitle": "Test your vocabulary skills", 
+                        "description": "This is a simple test where you are shown left and right parts of some words in two columns. Connect the matching parts together!", 
+                        "title": "Spojov\u00e1n\u00ed slov"
                     }
                 }
             ], 
@@ -507,7 +548,7 @@
                             }
                         }
                     ], 
-                    "preview": false, 
+                    "preview": true, 
                     "config": null, 
                     "resources": {
                         "slideshow": "slideshow.json"
@@ -571,45 +612,6 @@
             "resources": {}
         }, 
         {
-            "name": "magicsquare", 
-            "settings": null, 
-            "tags": [
-                "math"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "default", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {}
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {}
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": false, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": "Fill in the missing gaps so the sum of numbers in all rows and columns is exactly 100.", 
-                        "subtitle": "Fill in the blanks to obtain a magic square!", 
-                        "description": "In recreational mathematics, a magic square is an arrangement of distinct numbers (i.e., each number is used once), usually integers, in a square grid, where the numbers in each row, and in each column, and the numbers in the main and secondary diagonals, all add up to the same number. Here, we explore a simpler variant of magic squares, where the numbers can repeat, we do not consider the diagonals and the only constraint is that the sums of numbers in all rows and columns are all equal (e.g. to 100).", 
-                        "title": "Magic Square"
-                    }
-                }
-            ], 
-            "game_class": "MagicSquareGame", 
-            "preview": true, 
-            "config": null, 
-            "resources": {}
-        }, 
-        {
             "name": "pick-twenty", 
             "settings": null, 
             "tags": [
@@ -667,45 +669,6 @@
             "resources": {}
         }, 
         {
-            "name": "sequences", 
-            "settings": null, 
-            "tags": [
-                "logical"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "default", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {}
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {}
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": false, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": null, 
-                        "subtitle": null, 
-                        "description": null, 
-                        "title": "Sequences"
-                    }
-                }
-            ], 
-            "game_class": "SequencesGame", 
-            "preview": true, 
-            "config": null, 
-            "resources": {}
-        }, 
-        {
             "name": "sudoku", 
             "settings": null, 
             "tags": [
@@ -719,6 +682,13 @@
                         {
                             "preview": true, 
                             "name": "en", 
+                            "metadata": {
+                                "title": "Sudoku"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
                             "metadata": {
                                 "title": "Sudoku"
                             }
@@ -739,6 +709,16 @@
                         "description": null, 
                         "title": "Sudoku"
                     }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Sudoku"
+                    }
                 }
             ], 
             "game_class": "SudokuGame", 
@@ -753,21 +733,33 @@
             "translations": {
                 "Reset": "Reset", 
                 "Both": "Both", 
+                "verbal": "verbal", 
                 "Settings": "Settings", 
                 "attention": "attention", 
-                "Results": "Results", 
+                "Next": "Next", 
                 "Play again": "Play again", 
                 "Start": "Start", 
-                "visual": "visual", 
+                "Page count": "Page count", 
+                "Back": "Back", 
                 "Exit": "Exit", 
                 "Position": "Position", 
                 "Save": "Save", 
+                "Previous": "Previous", 
                 "History": "History", 
+                "instructional": "instructional", 
+                "Finish": "Finish", 
                 "memory": "memory", 
+                "entertainment": "entertainment", 
                 "Color": "Color", 
-                "Back": "Back", 
+                "Your score": "Your score", 
+                "Question count": "Question count", 
+                "visual": "visual", 
+                "Results": "Results", 
                 "Sign": "Sign", 
+                "OK": "OK", 
+                "survey": "survey", 
                 "spatial": "spatial", 
+                "Your result": "Your result", 
                 "Instructions": "Instructions"
             }, 
             "name": "en", 
@@ -782,21 +774,33 @@
             "translations": {
                 "Reset": "Reset", 
                 "Both": "Oboj\u00ed", 
+                "verbal": "slovn\u00ed", 
                 "Settings": "Nastaven\u00ed", 
                 "attention": "pozornost", 
-                "Results": "V\u00fdsledky", 
+                "Next": "Dal\u0161\u00ed", 
                 "Play again": "Hr\u00e1t znovu", 
                 "Start": "Start", 
-                "visual": "visual", 
+                "Page count": "Po\u010det stran", 
+                "Back": "Zp\u011bt", 
                 "Exit": "Konec", 
                 "Position": "Pozice", 
                 "Save": "Ulo\u017eit", 
+                "Previous": "P\u0159edchoz\u00ed", 
                 "History": "Historie", 
-                "memory": "memory", 
+                "instructional": "instrukce", 
+                "Finish": "Konec", 
+                "memory": "pam\u011b\u0165", 
+                "entertainment": "z\u00e1bava", 
                 "Color": "Barva", 
-                "Back": "Zp\u011bt", 
+                "Your score": "Va\u0161e sk\u00f3re", 
+                "Question count": "Po\u010det ot\u00e1zek", 
+                "visual": "vizu\u00e1ln\u00ed", 
+                "Results": "V\u00fdsledky", 
                 "Sign": "Zna\u010dka", 
-                "spatial": "spatial", 
+                "OK": "OK", 
+                "survey": "dotazn\u00edk", 
+                "spatial": "prostorov\u00fd", 
+                "Your result": "V\u00e1\u0161 v\u00fdsledek", 
                 "Instructions": "Instrukce"
             }, 
             "name": "cz", 

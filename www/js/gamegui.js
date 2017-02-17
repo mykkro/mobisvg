@@ -217,6 +217,7 @@ var GameGUI = Base.extend({
         console.log("Starting the game!");
         var game = new window[self.instance.app.app.game_class](this.gameSettings);
         game.baseUrl = self.url;
+        game.meta = self.instance;
         game.loc = function(str) {
             return self.instance.tr(str);
         };

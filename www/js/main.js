@@ -48,7 +48,7 @@ $(document).ready(function() {
     appgui = new AppsGUI();
     appgui.onReady(function() {
         console.log("AppGUI ready!");
-        appgui.showMainPage();
+        appgui.showAppsPage();
     });
     appgui.init();
 

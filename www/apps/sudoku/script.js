@@ -1341,16 +1341,12 @@ var SudokuGame = Game.extend({
         this.cells[i][j].setText(value==0 ? "" : ""+value);
         this.cells[i][j].setCssClass("sudoku-digit");
     },
-    loadGamepack: function(name) {
+    loadGamepackData: function() {
         var self = this;
         var dfd = jQuery.Deferred();
-        var gamepackUrl = self.baseUrl + "/gamepacks/" + name;
-        self.gamepackUrl = gamepackUrl;
-        $.getJSON(gamepackUrl + "/gamepack.json").done(function(gamepack) {
-            console.log("Gamepack data loaded:", gamepack);
-            // call resolve when it is done
-            dfd.resolve(gamepack);
-        });
+        // call resolve when it is done
+        // sudoku - empty gamepack so far...
+        dfd.resolve({});
         return dfd.promise();
     },
     start: function(gamedata) {
@@ -1358,9 +1354,7 @@ var SudokuGame = Game.extend({
         var self = this;
         console.log("Sudoku:start");
 
-        // choose a gamepack
-        var gamepackName = "default";
-        self.loadGamepack(gamepackName).done(function(gamepack) {
+        self.loadGamepackData().done(function(gamepack) {
             console.log("Gamepack loaded", gamepack);
             self.gamepack = gamepack;
             self.answer = null;

@@ -5,12 +5,10 @@ var CombineWordsGame = Game.extend({
         this.base(config);
     },
     createGUI: function(r) {
-        // create grid
-        r.rect(0,0,1000,1000).attr({ "fill":"ddd"});
         var self = this;
-        var btn = new HtmlButtonWidget(200, 100, {"class":"btn3"}, "OK");
+        var btn = new ButtonWidget(this.loc("OK"), {fontSize: 40, border: 20, anchor: "middle", radius: 30});
         btn.setDisabled(true);
-        btn.setPosition(400, 800);
+        btn.setPosition(455, 800);
         btn.onClick(function() {
             // evaluate the result...
             console.log("Answer: ", self.answer);

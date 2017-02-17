@@ -22,6 +22,7 @@ var ReactionTimeGame = Game.extend({
         img0.setPosition(100+Math.random()*600, 300+Math.random()*400);
         var clk = new Clickable(img0);
         clk.onClick(function() {
+            player.playSound("click");
             self.targetClicked = true;
             // TODO record the reaction time...
             self.targetReactionTime = self.currentTime;

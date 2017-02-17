@@ -10,6 +10,11 @@ locales:
     - subtitle:
     - description:
     - instructions:
+  - cz:
+    - title:        Sudoku
+    - subtitle:
+    - description:
+    - instructions:
 scripts:
   - sudoku.js
 styles:
@@ -20,4 +25,6 @@ gamepacks:
     - name : default
       locales:
         - en:
+          - title: Sudoku
+        - cz:
           - title: Sudoku

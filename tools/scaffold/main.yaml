@@ -10,6 +10,9 @@ locales:
       - title:        C-Tester
       - subtitle:     C-Tester
       - description:  C-Tester description comes here...
+apps_bak:
+    - name : magicsquare
+    - name : sequences
 apps:
     - name : colortest-reverse
     - name : dual-n-back
@@ -21,7 +24,5 @@ apps:
     - name : reaction-time
     - name : slideshow
     - name : differences
-    - name : magicsquare
     - name : pick-twenty
-    - name : sequences
     - name : sudoku

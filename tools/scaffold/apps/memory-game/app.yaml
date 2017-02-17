@@ -12,23 +12,31 @@ resources:
 settings:
 locales:
   - en:
-    - title:
+    - title: Memory Game
     - subtitle:
     - description:
     - instructions:
   - cz:
-    - title:
+    - title: Pexeso
     - subtitle:
     - description:
     - instructions:
 gamepacks:
+    - name : default
+      locales:
+        - en:
+        - cz:
+      resources:
+        - tileset:  tileset.json
     - name : animals
       locales:
         - en:
+        - cz:
       resources:
         - tileset:  tileset.json
     - name : sports
       locales:
         - en:
+        - cz:
       resources:
         - tileset:  tileset.json

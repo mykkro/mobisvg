@@ -64,7 +64,7 @@ var Questionary = Game.extend({
             }
         }
         var verdict = "unknown";
-        if(ndx > 0) {
+        if(ndx >= 0) {
             verdict = scoring[ndx].verdict;
         }
         console.log("Result:", verdict);
@@ -92,7 +92,7 @@ var Questionary = Game.extend({
     },
     renderSlideBackground: function(slide) {
         if(slide.backgroundUrl) {
-            var img = new ImageWidget(this.gamepackUrl + "/" + slide.backgroundUrl, 1000, 1000); 
+            var img = new ImageWidget(this.gamepack.questionaryBaseUrl + "/" + slide.backgroundUrl, 1000, 1000);
             this.body.addChild(img);
         }
     },
@@ -233,18 +233,18 @@ var Questionary = Game.extend({
         this.body.addChild(tw3);
         this.body.addChild(tw4);
     },
-    loadGamepack: function(name) {
-        console.log("Questionary.loadGamepack", name);
+    loadGamepackData: function() {
         var self = this;
+        var name = self.meta.gamepackName;
+        console.log("Questionary.loadGamepack", name);
         var dfd = jQuery.Deferred();
-        var gamepackUrl = self.baseUrl + "/gamepacks/" + name;
-        self.gamepackUrl = gamepackUrl;
-        var questionaryUrl = gamepackUrl + "/questionary.json";
+        var gamepackUrl = self.meta.appBaseUrl + "/gamepacks/" + name;
+        var questionaryUrl = self.meta.appBaseUrl + "/"+ self.meta.res("questionary");
         console.log("Questionary.loadGamepack:getJSON", questionaryUrl);
         $.getJSON(questionaryUrl).done(function(questionary) {
             console.log("Questionary data loaded:", questionary);
             // call resolve when it is done
-            dfd.resolve({name:name, url:gamepackUrl, questionary:questionary});
+            dfd.resolve({name:name, url:gamepackUrl, questionaryUrl: questionaryUrl, questionaryBaseUrl: dirname(questionaryUrl), questionary:questionary});
         }).fail(function (jqXHR, textStatus) {
             console.error(textStatus);
         });
@@ -253,11 +253,10 @@ var Questionary = Game.extend({
     start: function(gamedata) {
         this.base(gamedata);
         var self = this;
-        console.log("Questionary:start");
+        console.log("Questionary:start", self.meta);
 
         // choose a gamepack
-        var gamepackName = "barthel";
-        self.loadGamepack(gamepackName).done(function(gamepack) {
+        self.loadGamepackData().done(function(gamepack) {
             console.log("Gamepack loaded", gamepack);
             self.gamepack = gamepack;
             self.questionary = gamepack.questionary;
