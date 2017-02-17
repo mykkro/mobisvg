@@ -1,0 +1,10 @@
+{
+    "keys": {
+        "subtitle": null, 
+        "description": null, 
+        "title": "Sample Exercise"
+    }, 
+    "$type": "playonweb-localized-metadata", 
+    "version": "1.0", 
+    "language": "en"
+}

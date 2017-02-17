@@ -1,0 +1,810 @@
+{
+    "info": {
+        "version": 1.0, 
+        "doctype": "playonweb-app-scaffold", 
+        "last_update": null
+    }, 
+    "apps": [
+        {
+            "name": "colortest-reverse", 
+            "settings": null, 
+            "tags": [
+                "visual"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "title": "Reverse Color Test"
+                    }
+                }
+            ], 
+            "game_class": "ReverseColorTestGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "dual-n-back", 
+            "settings": {
+                "dualType": "colors", 
+                "N": 2
+            }, 
+            "tags": [
+                "visual", 
+                "memory", 
+                "attention"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": {
+                        "dualType": "signs", 
+                        "N": 1
+                    }, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "When the game starts, you will see an item (a colored box or a traffic sign) placed at one of 9 possible positions in a 3x3 grid. Remember where the item appeared and also remember its color (or sign type). After a few seconds, another item appears in a different position. The task is, to recall if the currently shown item is at the same position or if it has tyhe same shape as the item shown N frames back (N times ago). If you think the current item has the same position as item shown N frames earlier, press the Position button; if it has the same color (sign type), press the Color/Sign button. Press both buttons if both of position and shape/color are matched. Start with N=2 (2-back), and eventually you will be good enough to try 3-back, 4-back and so on.", 
+                        "subtitle": "Challenge your working memory", 
+                        "description": "The n-back task is a continuous performance task that is commonly used as an assessment in cognitive neuroscience to measure a part of working memory and working memory capacity. The subject is presented with a sequence of stimuli, and the task consists of indicating when the current stimulus matches the one from n steps earlier in the sequence. The load factor n can be adjusted to make the task more or less difficult.", 
+                        "title": "Dual N-Back"
+                    }
+                }
+            ], 
+            "game_class": "NBackDualGame", 
+            "preview": true, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "N", 
+                    "title": "", 
+                    "default": 2, 
+                    "type": "int", 
+                    "maxValue": 3, 
+                    "minValue": 1
+                }, 
+                {
+                    "description": "", 
+                    "name": "L", 
+                    "title": "", 
+                    "default": 10, 
+                    "type": "int", 
+                    "maxValue": 50, 
+                    "minValue": 5
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 2000, 
+                    "maxValue": 10000, 
+                    "minValue": 500, 
+                    "type": "int", 
+                    "by": 100, 
+                    "name": "delay"
+                }, 
+                {
+                    "valueLabels": [
+                        "Colors", 
+                        "Signs"
+                    ], 
+                    "values": [
+                        "colors", 
+                        "signs"
+                    ], 
+                    "description": "", 
+                    "title": "", 
+                    "default": "signs", 
+                    "type": "string", 
+                    "name": "dualType"
+                }, 
+                {
+                    "description": "", 
+                    "name": "nColors", 
+                    "title": "", 
+                    "default": 4, 
+                    "type": "int", 
+                    "maxValue": 8, 
+                    "minValue": 1
+                }, 
+                {
+                    "description": "", 
+                    "name": "nSigns", 
+                    "title": "", 
+                    "default": 5, 
+                    "type": "int", 
+                    "maxValue": 8, 
+                    "minValue": 1
+                }
+            ], 
+            "resources": {}
+        }, 
+        {
+            "name": "memory-game", 
+            "settings": null, 
+            "tags": [
+                "visual", 
+                "memory", 
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "animals", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "sports", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "End"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": null
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "Konec"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": null
+                    }
+                }
+            ], 
+            "game_class": "MemoryGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "questionary", 
+            "settings": null, 
+            "tags": [
+                "survey"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "barthel-en", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "instructions": null, 
+                                "subtitle": null, 
+                                "description": null, 
+                                "title": "Barthel Index"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "questionary": "questionary.json"
+                    }
+                }, 
+                {
+                    "name": "barthel-cz", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "instructions": null, 
+                                "subtitle": null, 
+                                "description": null, 
+                                "title": "Barthel Index"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "questionary": "questionary.json"
+                    }
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Questionary"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {}
+                }
+            ], 
+            "game_class": "Questionary", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "single-n-back", 
+            "settings": null, 
+            "tags": [
+                "visual", 
+                "memory", 
+                "attention"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "When the game starts, you will see a blue box placed at one of 9 possible positions in a 3x3 grid. Remember where the box appeared. After a few seconds, another box appears in a different position. The task is, to recall if the currently shown box is at the same position as the box shown N frames back (N times ago). If you think the current box has the same position as the box shown N frames earlier, press the Position button. Start with N=2 (2-back), and eventually you will be good enough to try 3-back, 4-back and so on.", 
+                        "subtitle": "Challenge your working memory", 
+                        "description": "The n-back task is a continuous performance task that is commonly used as an assessment in cognitive neuroscience to measure a part of working memory and working memory capacity. The subject is presented with a sequence of stimuli, and the task consists of indicating when the current stimulus matches the one from n steps earlier in the sequence. The load factor n can be adjusted to make the task more or less difficult.", 
+                        "title": "Single N-Back"
+                    }
+                }
+            ], 
+            "game_class": "NBackSingleGame", 
+            "preview": true, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "N", 
+                    "title": "", 
+                    "default": 2, 
+                    "type": "int", 
+                    "maxValue": 3, 
+                    "minValue": 1
+                }, 
+                {
+                    "description": "", 
+                    "name": "L", 
+                    "title": "", 
+                    "default": 10, 
+                    "type": "int", 
+                    "maxValue": 50, 
+                    "minValue": 5
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 2000, 
+                    "maxValue": 10000, 
+                    "minValue": 500, 
+                    "type": "int", 
+                    "by": 100, 
+                    "name": "delay"
+                }
+            ], 
+            "resources": {}
+        }, 
+        {
+            "name": "combine-words", 
+            "settings": null, 
+            "tags": [
+                "verbal"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "Two columns are displayed, containing starting and ending parts of words. Starting parts are grouped in the left column, ending parts in the right column. You can match starts and ends by clicking a word in left column then a word in right column (a red connection line will be shown). You can remove the connection line by clicking on it. After all word parts are matched, press the OK button to evaluate the result.", 
+                        "subtitle": "Test your vocabulary skills", 
+                        "description": "This is a simple test where you are shown left and right parts of some words in two columns. Connect the matching parts together!", 
+                        "title": "Combine Words"
+                    }
+                }
+            ], 
+            "game_class": "CombineWordsGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "mental-rotation", 
+            "settings": null, 
+            "tags": [
+                "visual", 
+                "spatial"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "From the pictures offered below, pick the one you think is a rotated version of a shape presented above.", 
+                        "subtitle": "Test your mental rotation skills", 
+                        "description": "Mental rotation is the process in which a person manipulates a two-dimensional or three-dimensional object his or her mind. This activity tends to be centralized in the right cerebral cortex. This process was first tested in 1971 by Roger Shepard and Jacqueline Metzler.  They found that the more angular rotation an object had, the longer the reaction time will be for a person to determine if the new object is congruent to the original object.", 
+                        "title": "Mental Rotation"
+                    }
+                }
+            ], 
+            "game_class": "MentalRotationGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "reaction-time", 
+            "settings": null, 
+            "tags": [
+                "visual", 
+                "attention"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Reaction Time Test"
+                    }
+                }
+            ], 
+            "game_class": "ReactionTimeGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "slideshow", 
+            "settings": null, 
+            "tags": [
+                "instructional"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "body1", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "subtitle": null, 
+                                "description": null, 
+                                "title": "Sample Exercise"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "slideshow": "slideshow.json"
+                    }
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Slideshow"
+                    }
+                }
+            ], 
+            "game_class": "Slideshow", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "differences", 
+            "settings": null, 
+            "tags": [
+                "visual"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "Two pictures will be displayed. There are 9 differences between two pictures. Mark the locations on the left picture, then press OK to evaluate the results.", 
+                        "subtitle": "Can you find all 9 differences between two pictures?", 
+                        "description": "This is a type of the puzzle games where two versions of the same picture are shown side by side, and the player has to find all differences between them.", 
+                        "title": "Find 9 Differences"
+                    }
+                }
+            ], 
+            "game_class": "DifferencesGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "magicsquare", 
+            "settings": null, 
+            "tags": [
+                "math"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "Fill in the missing gaps so the sum of numbers in all rows and columns is exactly 100.", 
+                        "subtitle": "Fill in the blanks to obtain a magic square!", 
+                        "description": "In recreational mathematics, a magic square is an arrangement of distinct numbers (i.e., each number is used once), usually integers, in a square grid, where the numbers in each row, and in each column, and the numbers in the main and secondary diagonals, all add up to the same number. Here, we explore a simpler variant of magic squares, where the numbers can repeat, we do not consider the diagonals and the only constraint is that the sums of numbers in all rows and columns are all equal (e.g. to 100).", 
+                        "title": "Magic Square"
+                    }
+                }
+            ], 
+            "game_class": "MagicSquareGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "pick-twenty", 
+            "settings": null, 
+            "tags": [
+                "visual", 
+                "attention"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Pick 20"
+                    }
+                }
+            ], 
+            "game_class": "PickTwentyGame", 
+            "preview": true, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "N", 
+                    "title": "", 
+                    "default": 10, 
+                    "type": "int", 
+                    "maxValue": 20, 
+                    "minValue": 1
+                }, 
+                {
+                    "default": true, 
+                    "title": "", 
+                    "type": "boolean", 
+                    "description": "", 
+                    "name": "rotateGoals"
+                }
+            ], 
+            "resources": {}
+        }, 
+        {
+            "name": "sequences", 
+            "settings": null, 
+            "tags": [
+                "logical"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Sequences"
+                    }
+                }
+            ], 
+            "game_class": "SequencesGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }, 
+        {
+            "name": "sudoku", 
+            "settings": null, 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": true, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Sudoku"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": true, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Sudoku"
+                    }
+                }
+            ], 
+            "game_class": "SudokuGame", 
+            "preview": true, 
+            "config": null, 
+            "resources": {}
+        }
+    ], 
+    "locales": [
+        {
+            "preview": false, 
+            "translations": {
+                "Reset": "Reset", 
+                "Both": "Both", 
+                "Settings": "Settings", 
+                "attention": "attention", 
+                "Results": "Results", 
+                "Play again": "Play again", 
+                "Start": "Start", 
+                "visual": "visual", 
+                "Exit": "Exit", 
+                "Position": "Position", 
+                "Save": "Save", 
+                "History": "History", 
+                "memory": "memory", 
+                "Color": "Color", 
+                "Back": "Back", 
+                "Sign": "Sign", 
+                "spatial": "spatial", 
+                "Instructions": "Instructions"
+            }, 
+            "name": "en", 
+            "metadata": {
+                "subtitle": "C-Tester", 
+                "description": "C-Tester description comes here...", 
+                "title": "C-Tester"
+            }
+        }, 
+        {
+            "preview": false, 
+            "translations": {
+                "Reset": "Reset", 
+                "Both": "Oboj\u00ed", 
+                "Settings": "Nastaven\u00ed", 
+                "attention": "pozornost", 
+                "Results": "V\u00fdsledky", 
+                "Play again": "Hr\u00e1t znovu", 
+                "Start": "Start", 
+                "visual": "visual", 
+                "Exit": "Konec", 
+                "Position": "Pozice", 
+                "Save": "Ulo\u017eit", 
+                "History": "Historie", 
+                "memory": "memory", 
+                "Color": "Barva", 
+                "Back": "Zp\u011bt", 
+                "Sign": "Zna\u010dka", 
+                "spatial": "spatial", 
+                "Instructions": "Instrukce"
+            }, 
+            "name": "cz", 
+            "metadata": {
+                "subtitle": "C-Tester", 
+                "description": "C-Tester description comes here...", 
+                "title": "C-Tester"
+            }
+        }
+    ]
+}

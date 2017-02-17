@@ -1,0 +1,10 @@
+{
+    "keys": {
+        "subtitle": "C-Tester", 
+        "description": "C-Tester description comes here...", 
+        "title": "C-Tester"
+    }, 
+    "$type": "playonweb-localized-metadata", 
+    "version": "1.0", 
+    "language": "cz"
+}

@@ -10,15 +10,15 @@ from time import mktime
 
 
 SRCDIR = "."
-TGTDIR = "tmp"
+TGTDIR = "../../www"
 
 
-def scaffold(data):
+def scaffold(dir, out_dir, data):
     print "Scaffolding applications..."
     print
     info = scaffold_framework_info(data)
-    loc_index = scaffold_locales("", "tmp", data["locales"])
-    apps_index = scaffold_apps(data["apps"])
+    loc_index = scaffold_locales(dir, out_dir, data["locales"])
+    apps_index = scaffold_apps(dir, out_dir, data["apps"])
     return {
         "info": info,
         "apps": apps_index,
@@ -50,10 +50,10 @@ def scaffold_assets(dir, out_dir):
         copy_tree(dir, out_dir)
 
 
-def scaffold_apps(data):
+def scaffold_apps(dir, out_dir, data):
     apps_index = []
     for app in data:
-        apps_index.append(scaffold_app(app))
+        apps_index.append(scaffold_app(os.path.join(dir, "apps"), os.path.join(out_dir, "apps"), app))
     return apps_index
 
 
@@ -212,20 +212,17 @@ def put_json_file(path, data):
 #   assets/
 #   gamepacks/
 #   locales/
-def scaffold_app(app):
+def scaffold_app(dir, out_dir, app):
     index = {}
     app_name = app["name"]
     index["name"] = app_name
-    dir = os.path.join("apps", app_name)
-    out_dir = os.path.join("tmp", dir)
+
+    dir = os.path.join(dir, app_name)
+    out_dir = os.path.join(out_dir, app_name)
     app_yaml = load_yaml_file(os.path.join(dir, "app.yaml"))
     print "Loaded app data: %s" % app_name, app_yaml
 
     out_root = out_dir
-    ensure_directory(out_dir)
-    gamepack_dir = os.path.join(dir, "gamepacks")
-    out_gamepacks = os.path.join("tmp", gamepack_dir)
-    ensure_directory(out_gamepacks)
 
     index["locales"] = scaffold_locales(dir, out_root, app_yaml.get("locales", []) or [])
 
@@ -251,6 +248,9 @@ def scaffold_app(app):
 
     # read settings.yaml if it exists
     index["settings"] = scaffold_settings(dir, out_dir)
+
+    index["tags"] = app_yaml.get("tags", []) or []
+    index["game_class"] = app_yaml["game_class"]
 
     return index
 
@@ -322,11 +322,14 @@ def load_yaml_file(path):
 
 path = "main.yaml"
 data = load_yaml_file(path)
-index = scaffold(data)
+
+dir = SRCDIR
+out_dir = TGTDIR
+index = scaffold(dir, out_dir, data)
 print index
 
 
 json.JSONEncoder.default = lambda self,obj: (obj.isoformat() if isinstance(obj, datetime.datetime) else None)
 
 json_str = json.dumps(index, indent=4)
-write_text_file(os.path.join(TGTDIR, "index.json"), json_str)
+write_text_file(os.path.join(out_dir, "index.json"), json_str)

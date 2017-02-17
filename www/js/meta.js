@@ -50,6 +50,13 @@ Meta.prototype.appsByLocale = function(loc) {
   });
   return apps;
 }
+Meta.prototype.localized = function(localeName) {
+  if(!this.hasLocale(localeName)) {
+    console.error("Locale not found: "+localeName);
+    return null;
+  }
+  return new MetaLocalized(this, localeName);
+}
 Meta.prototype.instance = function(appName, gamepackName, localeName) {
 	if(!this.hasLocale(localeName)) {
   	console.error("Locale not found: "+localeName);
@@ -69,6 +76,37 @@ Meta.prototype.instance = function(appName, gamepackName, localeName) {
     return null;
   }
   return new MetaInstance(this, appName, gamepackName, localeName);
+}
+
+var MetaLocalized = function(meta, localeName) {
+  this.meta = meta;
+  this.localeName = localeName;
+  this.locale = this.meta.locale(localeName);
+
+  // extract metadata...
+  this.metadata = {};
+  var mm = this.locale.metadata();
+  for(var key in mm) {
+    this.metadata[key] = mm[key];
+  }
+
+  // extract translations...
+  this.translations = {};
+  var tr = this.locale.translations();
+  for(var key in tr) {
+    this.translations[key] = tr[key];
+  }
+
+}
+// translation method
+MetaLocalized.prototype.tr = function(str) {
+  if(str) {
+    if(str.length>0 && str[0]=="$") {
+      str = str.substring(1)
+      return str in this.metadata ? this.metadata[str] : "$" + str;
+    }
+    return str in this.translations ? this.translations[str] : "{" + str + "}";
+  }
 }
 
 var MetaInstance = function(meta, appName, gamepackName, localeName) {
@@ -207,6 +245,9 @@ MetaApp.prototype.locales = function() {
 }
 MetaApp.prototype.gamepacks = function() {
 	return this.app.gamepacks.map(function(l) { return l.name; });
+}
+MetaApp.prototype.defaultGamepack = function() {
+  return this.gamepack("default") || this.gamepack(this.gamepacks()[0]);
 }
 MetaApp.prototype.hasGamepack = function(name) {
 	return (name in this.gamepackMap) && !!this.gamepackMap[name];

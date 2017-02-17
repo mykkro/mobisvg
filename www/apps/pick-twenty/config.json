@@ -1,0 +1,18 @@
+[
+    {
+        "description": "", 
+        "name": "N", 
+        "title": "", 
+        "default": 10, 
+        "type": "int", 
+        "maxValue": 20, 
+        "minValue": 1
+    }, 
+    {
+        "default": true, 
+        "title": "", 
+        "type": "boolean", 
+        "description": "", 
+        "name": "rotateGoals"
+    }
+]

@@ -10,6 +10,7 @@ resources:
 settings:
 locales:
   - en:
+    - title: Reverse Color Test
 gamepacks:
     - name : default
       settings:
