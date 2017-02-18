@@ -1,0 +1,218 @@
+{
+  "$type": "playonweb-questionary",
+  "name": "barthel-test",
+  "title": "INDEX SOBĚSTAČNOSTI DLE BARTHELOVÉ",
+  "subtitle": "INDEX SOBĚSTAČNOSTI DLE BARTHELOVÉ",
+  "description": "Enter description here",
+  "instructions": "Additional instructions come here if needed",
+  "version": "1.0",
+  "language": "cz",
+  "questions": [
+  	{
+  		"question": "NAJEDENÍ, NAPITÍ",
+      "type": "single-choice",
+  		"answers": [
+        {
+          "answer": "SAMOSTATNĚ BEZ POMOCI",
+          "score": 10
+        },
+        {
+          "answer": "S POMOCÍ",
+          "score": 5
+        },
+  			{
+  				"answer": "NEPROVEDE",
+  				"score": 0
+  			}
+  		]
+  	},
+    {
+      "question": "OBLÉKÁNÍ",
+      "type": "single-choice",
+      "answers": [
+        {
+          "answer": "SAMOSTATNĚ BEZ POMOCI",
+          "score": 10
+        },
+        {
+          "answer": "S POMOCÍ",
+          "score": 5
+        },
+        {
+          "answer": "NEPROVEDE",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "question": "KOUPÁNÍ",
+      "type": "single-choice",
+      "answers": [
+        {
+          "answer": "SAMOSTATNĚ BEZ POMOCI",
+          "score": 10
+        },
+        {
+          "answer": "S POMOCÍ",
+          "score": 5
+        },
+        {
+          "answer": "NEPROVEDE",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "question": "OSOBNÍ HYGIENA",
+      "type": "single-choice",
+      "answers": [
+        {
+          "answer": "SAMOSTATNĚ NEBO S POMOCÍ",
+          "score": 5
+        },
+        {
+          "answer": "NEPROVEDE",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "question": "KONTINENCE MOČI",
+      "type": "single-choice",
+      "answers": [
+        {
+          "answer": "PLNĚ KONTINENTNÍ",
+          "score": 10
+        },
+        {
+          "answer": "OBČAS INKONTINENTNÍ",
+          "score": 5
+        },
+        {
+          "answer": "INKONTINENTNÍ",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "question": "KONTINENCE STOLICE",
+      "type": "single-choice",
+      "answers": [
+        {
+          "answer": "PLNĚ KONTINENTNÍ",
+          "score": 10
+        },
+        {
+          "answer": "OBČAS INKONTINENTNÍ",
+          "score": 5
+        },
+        {
+          "answer": "INKONTINENTNÍ",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "question": "POUŽITÍ WC",
+      "type": "single-choice",
+      "answers": [
+        {
+          "answer": "SAMOSTATNĚ BEZ POMOCI",
+          "score": 10
+        },
+        {
+          "answer": "S POMOCÍ",
+          "score": 5
+        },
+        {
+          "answer": "NEPROVEDE",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "question": "PŘESUN LŮŽKO - ŽIDLE",
+      "type": "single-choice",
+      "answers": [
+        {
+          "answer": "SAMOSTATNĚ BEZ POMOCI",
+          "score": 15
+        },
+        {
+          "answer": "S MALOU POMOCÍ",
+          "score": 10
+        },
+        {
+          "answer": "VYDRŽÍ SEDĚT",
+          "score": 5
+        },
+        {
+          "answer": "NEPROVEDE",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "question": "CHŮZE PO ROVINĚ",
+      "type": "single-choice",
+      "answers": [
+        {
+          "answer": "SAMOSTATNĚ NAD 50 M",
+          "score": 15
+        },
+        {
+          "answer": "S POMOCÍ 50 M",
+          "score": 10
+        },
+        {
+          "answer": "NA VOZÍKU 50 M",
+          "score": 5
+        },
+        {
+          "answer": "NEPROVEDE",
+          "score": 0
+        }
+      ]
+    },
+  	{
+  		"question": "CHŮZE PO SCHODECH",
+      "type": "single-choice",
+  		"answers": [
+  			{
+  				"answer": "SAMOSTATNĚ BEZ POMOCI",
+  				"score": 10
+  			},
+  			{
+  				"answer": "S POMOCÍ",
+  				"score": 5
+  			},
+  			{
+  				"answer": "NEPROVEDE",
+  				"score": 0
+  			}
+  		]
+  	}
+  ],
+  "scoring": [
+  	{
+  		"from": 0,
+  		"to": 40,
+  		"verdict": "VYSOCE ZÁVISLÝ"
+  	},
+  	{
+  		"from": 41,
+  		"to": 60,
+  		"verdict": "ZÁVISLOST STŘEDNÍHO STUPNĚ"
+  	},
+  	{
+  		"from": 61,
+  		"to": 95,
+  		"verdict": "LEHKÁ ZÁVISLOST"
+  	},
+  	{
+  		"from": 96,
+  		"to": 105,
+  		"verdict": "NEZÁVISLÝ"
+  	}
+  ]
+}
