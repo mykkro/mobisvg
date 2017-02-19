@@ -11,6 +11,11 @@ locales:
     - subtitle:
     - description:
     - instructions:
+  - cz:
+    - title:        Najdi posloupnost
+    - subtitle:
+    - description:
+    - instructions:
 scripts:
 styles:
 resources:
@@ -19,3 +24,4 @@ gamepacks:
     - name : default
       locales:
         - en:
+        - cz:

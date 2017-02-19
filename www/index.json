@@ -9,7 +9,8 @@
             "name": "colortest-reverse", 
             "settings": null, 
             "tags": [
-                "visual"
+                "visual", 
+                "attention"
             ], 
             "gamepacks": [
                 {
@@ -19,6 +20,11 @@
                         {
                             "preview": false, 
                             "name": "en", 
+                            "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
                             "metadata": {}
                         }
                     ], 
@@ -30,15 +36,46 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": {
+                        "blue": "blue", 
+                        "green": "green", 
+                        "yellow": "yellow", 
+                        "red": "red"
+                    }, 
                     "name": "en", 
                     "metadata": {
-                        "title": "Reverse Color Test"
+                        "instructions": "Choose the colored square which matches the color of the text appearing in the center of the screen as fast as possible.", 
+                        "title": "Reaction time test \u2013 colors"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "blue": "modr\u00e1", 
+                        "green": "zelen\u00e1", 
+                        "yellow": "\u017elut\u00e1", 
+                        "red": "\u010derven\u00e1"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Zvolte v\u017edy co nejrychleji \u010dtverec se shodnou barvou, jakou m\u00e1 n\u00e1pis, kter\u00fd se objev\u00ed uprost\u0159ed.", 
+                        "title": "Reak\u010dn\u00ed test  \u2013 barvy"
                     }
                 }
             ], 
             "game_class": "ReverseColorTestGame", 
             "preview": true, 
-            "config": null, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "N", 
+                    "title": "", 
+                    "default": 10, 
+                    "type": "int", 
+                    "maxValue": 50, 
+                    "minValue": 1
+                }
+            ], 
             "resources": {}
         }, 
         {
@@ -64,6 +101,11 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
                         }
                     ], 
                     "preview": false, 
@@ -79,6 +121,16 @@
                         "instructions": "When the game starts, you will see an item (a colored box or a traffic sign) placed at one of 9 possible positions in a 3x3 grid. Remember where the item appeared and also remember its color (or sign type). After a few seconds, another item appears in a different position. The task is, to recall if the currently shown item is at the same position or if it has tyhe same shape as the item shown N frames back (N times ago). If you think the current item has the same position as item shown N frames earlier, press the Position button; if it has the same color (sign type), press the Color/Sign button. Press both buttons if both of position and shape/color are matched. Start with N=2 (2-back), and eventually you will be good enough to try 3-back, 4-back and so on.", 
                         "subtitle": "Challenge your working memory", 
                         "description": "The n-back task is a continuous performance task that is commonly used as an assessment in cognitive neuroscience to measure a part of working memory and working memory capacity. The subject is presented with a sequence of stimuli, and the task consists of indicating when the current stimulus matches the one from n steps earlier in the sequence. The load factor n can be adjusted to make the task more or less difficult.", 
+                        "title": "Dual N-Back"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Na za\u010d\u00e1tku hry se objev\u00ed modr\u00fd \u010dtverec na jedn\u00e9 z\u00a0dev\u00edti mo\u017en\u00fdch pozic. Zapamatujte si, kde se \u010dtverec objevil. Po n\u011bkolika vte\u0159in\u00e1ch prodlevy se objev\u00ed \u010dtverec znovu na stejn\u00e9m, nebo jin\u00e9m m\u00edst\u011b. Pokud se objevil na takov\u00e9m m\u00edst\u011b, na kter\u00e9m se objevil o N zobrazen\u00ed d\u0159\u00edve, zm\u00e1\u010dkn\u011bte tla\u010d\u00edtko s\u00a0n\u00e1pisem \u201epozice\u201c ve spodn\u00ed \u010d\u00e1sti obrazovky.\nD\u00e1le sledujete, zda barva/tvar zobrazen\u00e9ho \u010dtverce se shoduje s\u00a0barvou/tvarem objektu, kter\u00fd se objevil o N zobrazen\u00ed d\u0159\u00edve. Podle toho, jak\u00e1 varianta nastala, zvol\u00edte tla\u010d\u00edtko ve spodn\u00ed \u010d\u00e1sti obrazovky.\nVhodn\u00e9 je nejprve procvi\u010dit \u00falohu Single N-Back a za\u010d\u00edt od obt\u00ed\u017enosti N=1.\n", 
+                        "subtitle": "Procvi\u010dte svoji pracovn\u00ed pam\u011b\u0165", 
+                        "description": null, 
                         "title": "Dual N-Back"
                     }
                 }
@@ -292,7 +344,7 @@
                             "preview": false, 
                             "name": "cz", 
                             "metadata": {
-                                "instructions": null, 
+                                "instructions": "Barthel Index je standardizovan\u00fd test ur\u010den\u00fd k\u00a0hodnocen\u00ed sob\u011bsta\u010dnosti. Body jsou p\u0159id\u011blov\u00e1ny podle toho, co pacient re\u00e1ln\u011b dok\u00e1\u017ee. Pln\u00fd po\u010det bod\u016f vylu\u010duje i jen minim\u00e1ln\u00ed pomoc, v\u010detn\u011b n\u00e1pov\u011bdy. Pacient m\u016f\u017ee p\u0159i hodnocen\u00fdch \u010dinnostech vyu\u017e\u00edvat mechanick\u00e9 pom\u016fcky (madla na st\u011bn\u00e1ch, hole, berle apod.).", 
                                 "subtitle": null, 
                                 "description": null, 
                                 "title": "Barthel Index"
@@ -345,6 +397,11 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
                         }
                     ], 
                     "preview": false, 
@@ -360,6 +417,16 @@
                         "instructions": "When the game starts, you will see a blue box placed at one of 9 possible positions in a 3x3 grid. Remember where the box appeared. After a few seconds, another box appears in a different position. The task is, to recall if the currently shown box is at the same position as the box shown N frames back (N times ago). If you think the current box has the same position as the box shown N frames earlier, press the Position button. Start with N=2 (2-back), and eventually you will be good enough to try 3-back, 4-back and so on.", 
                         "subtitle": "Challenge your working memory", 
                         "description": "The n-back task is a continuous performance task that is commonly used as an assessment in cognitive neuroscience to measure a part of working memory and working memory capacity. The subject is presented with a sequence of stimuli, and the task consists of indicating when the current stimulus matches the one from n steps earlier in the sequence. The load factor n can be adjusted to make the task more or less difficult.", 
+                        "title": "Single N-Back"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Na za\u010d\u00e1tku hry se objev\u00ed modr\u00fd \u010dtverec na jedn\u00e9 z\u00a0dev\u00edti mo\u017en\u00fdch pozic. Zapamatujte si, kde se \u010dtverec objevil. Po n\u011bkolika vte\u0159in\u00e1ch prodlevy se objev\u00ed \u010dtverec znovu na stejn\u00e9m, nebo jin\u00e9m m\u00edst\u011b. Pokud se objevil na takov\u00e9m m\u00edst\u011b, na kter\u00e9m byl zobrazen\u00fd o N zobrazen\u00ed d\u0159\u00edve, zm\u00e1\u010dkn\u011bte tla\u010d\u00edtko s\u00a0n\u00e1pisem \u201epozice\u201c ve spodn\u00ed \u010d\u00e1sti obrazovky.\nP\u0159i nastaven\u00ed p\u0159edvolby N=1 sledujete, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b dvakr\u00e1t po sob\u011b.\nP\u0159i nastaven\u00ed p\u0159edvolby N=2 vzpom\u00edn\u00e1te, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b ob jedno zobrazen\u00ed d\u0159\u00edve.\nP\u0159i nastaven\u00ed p\u0159edvolby N=3 sledujete, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b jako o t\u0159i zobrazen\u00ed d\u0159\u00edve.\nVhodn\u00e9 je za\u010d\u00edt nejprve od obt\u00ed\u017enosti N=1.\n", 
+                        "subtitle": "Procvi\u010dte svoji pracovn\u00ed pam\u011b\u0165", 
+                        "description": null, 
                         "title": "Single N-Back"
                     }
                 }
@@ -463,6 +530,11 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
                         }
                     ], 
                     "preview": false, 
@@ -479,6 +551,13 @@
                         "subtitle": "Test your mental rotation skills", 
                         "description": "Mental rotation is the process in which a person manipulates a two-dimensional or three-dimensional object his or her mind. This activity tends to be centralized in the right cerebral cortex. This process was first tested in 1971 by Roger Shepard and Jacqueline Metzler.  They found that the more angular rotation an object had, the longer the reaction time will be for a person to determine if the new object is congruent to the original object.", 
                         "title": "Mental Rotation"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {
+                        "title": "Prostorov\u00e1 orientace"
                     }
                 }
             ], 
@@ -503,6 +582,11 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
                         }
                     ], 
                     "preview": false, 
@@ -515,10 +599,20 @@
                     "preview": false, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": null, 
+                        "instructions": "Click the targets immediately after they appear.", 
                         "subtitle": null, 
                         "description": null, 
                         "title": "Reaction Time Test"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Strefte se do c\u00edle co nejrychleji pot\u00e9, co se objev\u00ed.", 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Reak\u010dn\u00ed test"
                     }
                 }
             ], 
@@ -627,6 +721,11 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
                         }
                     ], 
                     "preview": false, 
@@ -643,6 +742,16 @@
                         "subtitle": null, 
                         "description": null, 
                         "title": "Pick 20"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": null, 
+                        "subtitle": null, 
+                        "description": null, 
+                        "title": "Najdi posloupnost"
                     }
                 }
             ], 
@@ -714,7 +823,7 @@
                     "preview": false, 
                     "name": "cz", 
                     "metadata": {
-                        "instructions": null, 
+                        "instructions": "Vypl\u0148te sudoku tak, aby v\u00a0\u017e\u00e1dn\u00e9m \u0159\u00e1dku, sloupci ani nebylo \u017e\u00e1dn\u00e9 \u010d\u00edslo dvakr\u00e1t.", 
                         "subtitle": null, 
                         "description": null, 
                         "title": "Sudoku"
@@ -740,11 +849,10 @@
                 "Play again": "Play again", 
                 "Start": "Start", 
                 "Page count": "Page count", 
-                "Back": "Back", 
+                "Score": "Score", 
                 "Exit": "Exit", 
                 "Position": "Position", 
                 "Save": "Save", 
-                "Previous": "Previous", 
                 "History": "History", 
                 "instructional": "instructional", 
                 "Finish": "Finish", 
@@ -752,15 +860,16 @@
                 "Language": "Language", 
                 "entertainment": "entertainment", 
                 "Color": "Color", 
-                "Your score": "Your score", 
                 "Question count": "Question count", 
                 "visual": "visual", 
                 "Results": "Results", 
+                "Back": "Back", 
                 "Sign": "Sign", 
                 "OK": "OK", 
                 "survey": "survey", 
+                "Result": "Result", 
                 "spatial": "spatial", 
-                "Your result": "Your result", 
+                "Previous": "Previous", 
                 "Instructions": "Instructions"
             }, 
             "name": "en", 
@@ -782,11 +891,10 @@
                 "Play again": "Hr\u00e1t znovu", 
                 "Start": "Start", 
                 "Page count": "Po\u010det stran", 
-                "Back": "Zp\u011bt", 
+                "Score": "Sk\u00f3re", 
                 "Exit": "Konec", 
                 "Position": "Pozice", 
                 "Save": "Ulo\u017eit", 
-                "Previous": "P\u0159edchoz\u00ed", 
                 "History": "Historie", 
                 "instructional": "instrukce", 
                 "Finish": "Konec", 
@@ -794,15 +902,16 @@
                 "Language": "Jazyk", 
                 "entertainment": "z\u00e1bava", 
                 "Color": "Barva", 
-                "Your score": "Va\u0161e sk\u00f3re", 
                 "Question count": "Po\u010det ot\u00e1zek", 
                 "visual": "vizu\u00e1ln\u00ed", 
                 "Results": "V\u00fdsledky", 
+                "Back": "Zp\u011bt", 
                 "Sign": "Zna\u010dka", 
                 "OK": "OK", 
                 "survey": "dotazn\u00edk", 
+                "Result": "V\u00fdsledek", 
                 "spatial": "prostorov\u00fd", 
-                "Your result": "V\u00e1\u0161 v\u00fdsledek", 
+                "Previous": "P\u0159edchoz\u00ed", 
                 "Instructions": "Instrukce"
             }, 
             "name": "cz", 

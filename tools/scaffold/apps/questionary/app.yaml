@@ -31,6 +31,6 @@ gamepacks:
           - title:        Barthel Index
           - subtitle:
           - description:
-          - instructions:
+          - instructions:  Barthel Index je standardizovaný test určený k hodnocení soběstačnosti. Body jsou přidělovány podle toho, co pacient reálně dokáže. Plný počet bodů vylučuje i jen minimální pomoc, včetně nápovědy. Pacient může při hodnocených činnostech využívat mechanické pomůcky (madla na stěnách, hole, berle apod.).
       resources:
         - questionary:  questionary.json

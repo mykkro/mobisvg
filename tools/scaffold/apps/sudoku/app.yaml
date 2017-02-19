@@ -14,7 +14,7 @@ locales:
     - title:        Sudoku
     - subtitle:
     - description:
-    - instructions:
+    - instructions: Vyplňte sudoku tak, aby v žádném řádku, sloupci ani nebylo žádné číslo dvakrát.
 scripts:
   - sudoku.js
 styles:

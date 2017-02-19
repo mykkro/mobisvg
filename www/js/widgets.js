@@ -497,7 +497,7 @@ var AppPreviewWidget = Widget.extend({
     }
 }, {
     backgroundStyle: {"fill":"white", "stroke": "none", "opacity": 0.6},
-    titleStyle: { "fill": "black", "stroke": "none", "font-size": "30", "anchor": "middle"},
-    subtitleStyle: { "fill": "black", "stroke": "none", "font-size": "20", "anchor": "middle"},
-    tagsStyle: { "fill": "blue", "stroke": "none", "font-size": "16", "anchor": "middle"}
+    titleStyle: { "fill": "black", "stroke": "none", "font-size": "22", "anchor": "middle"},
+    subtitleStyle: { "fill": "black", "stroke": "none", "font-size": "16", "anchor": "middle"},
+    tagsStyle: { "fill": "blue", "stroke": "none", "font-size": "14", "anchor": "middle"}
 });

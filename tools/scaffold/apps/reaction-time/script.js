@@ -18,7 +18,7 @@ var ReactionTimeGame = Game.extend({
     },
     showTarget: function() {
         var self = this;        
-        var img0 = new ImageWidget(self.baseUrl + "/assets/3.png", 200, 200); 
+        var img0 = new ImageWidget(self.baseUrl + "/assets/1.png", 200, 200);
         img0.setPosition(100+Math.random()*600, 300+Math.random()*400);
         var clk = new Clickable(img0);
         clk.onClick(function() {

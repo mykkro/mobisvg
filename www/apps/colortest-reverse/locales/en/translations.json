@@ -1,0 +1,11 @@
+{
+    "$type": "playonweb-translation", 
+    "version": "1.0", 
+    "translations": {
+        "blue": "blue", 
+        "green": "green", 
+        "yellow": "yellow", 
+        "red": "red"
+    }, 
+    "language": "en"
+}

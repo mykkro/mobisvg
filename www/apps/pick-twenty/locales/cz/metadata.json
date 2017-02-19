@@ -1,11 +1,11 @@
 {
     "keys": {
-        "instructions": "Click the targets immediately after they appear.", 
+        "instructions": null, 
         "subtitle": null, 
         "description": null, 
-        "title": "Reaction Time Test"
+        "title": "Najdi posloupnost"
     }, 
     "$type": "playonweb-localized-metadata", 
     "version": "1.0", 
-    "language": "en"
+    "language": "cz"
 }

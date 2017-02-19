@@ -1,0 +1,11 @@
+{
+    "keys": {
+        "instructions": "Strefte se do c\u00edle co nejrychleji pot\u00e9, co se objev\u00ed.", 
+        "subtitle": null, 
+        "description": null, 
+        "title": "Reak\u010dn\u00ed test"
+    }, 
+    "$type": "playonweb-localized-metadata", 
+    "version": "1.0", 
+    "language": "cz"
+}

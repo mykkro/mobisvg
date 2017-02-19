@@ -1,6 +1,7 @@
 {
     "keys": {
-        "title": "Reverse Color Test"
+        "instructions": "Choose the colored square which matches the color of the text appearing in the center of the screen as fast as possible.", 
+        "title": "Reaction time test \u2013 colors"
     }, 
     "$type": "playonweb-localized-metadata", 
     "version": "1.0", 

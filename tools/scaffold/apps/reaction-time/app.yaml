@@ -10,7 +10,12 @@ locales:
     - title:        Reaction Time Test
     - subtitle:
     - description:
-    - instructions:
+    - instructions: Click the targets immediately after they appear.
+  - cz:
+    - title:        Reakční test
+    - subtitle:
+    - description:
+    - instructions: Strefte se do cíle co nejrychleji poté, co se objeví.
 scripts:
 styles:
 resources:
@@ -19,3 +24,4 @@ gamepacks:
     - name : default
       locales:
         - en:
+        - cz:

@@ -4,16 +4,22 @@ author: MKR
 version: 1.0
 tags:
   - visual
+  - attention
 scripts:
 styles:
 resources:
 settings:
 locales:
   - en:
-    - title: Reverse Color Test
+    - title: Reaction time test – colors
+    - instructions: Choose the colored square which matches the color of the text appearing in the center of the screen as fast as possible.
+  - cz:
+    - title: Reakční test  – barvy
+    - instructions: Zvolte vždy co nejrychleji čtverec se shodnou barvou, jakou má nápis, který se objeví uprostřed.
 gamepacks:
     - name : default
       settings:
       resources:
       locales:
         - en:
+        - cz:

@@ -4,7 +4,8 @@ var ReverseColorTestGame = Game.extend({
     constructor: function(config) {
         this.base(config);
         this.currentFrame = 0;
-        this.totalFrames = 0;
+        this.N = config.N;
+        this.totalFrames = this.N;
     },
     createGUI: function(r) {
         // create grid
@@ -23,7 +24,7 @@ var ReverseColorTestGame = Game.extend({
     },
     generateTaskData: function(options) {
         var availableColors = ["red", "green", "blue", "yellow"];
-        var sequenceLength = 10;
+        var sequenceLength = this.N;
         var matchedCount = 4;
 
         var correctIndices = makeRange(sequenceLength).shuffle();
@@ -83,7 +84,7 @@ var ReverseColorTestGame = Game.extend({
         this.body.addChild(c3);
         this.body.addChild(c4);
 
-        var labelSvg = new TextWidget(600, 100, "middle", g.label);
+        var labelSvg = new TextWidget(600, 100, "middle", this.loc(g.label));
         labelSvg.setPosition(200, 550)
         labelSvg.setStyle({"fill": g.color});    
         this.body.addChild(labelSvg);    

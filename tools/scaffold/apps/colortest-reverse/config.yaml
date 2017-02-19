@@ -1,0 +1,11 @@
+[
+        {
+            "name": "N",
+            "title": "",
+            "description": "",
+            "type": "int",
+            "minValue": 1,
+            "maxValue": 50,
+            "default": 10
+        }
+]

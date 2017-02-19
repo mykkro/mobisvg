@@ -216,13 +216,13 @@ var Questionary = Game.extend({
     renderResultsPage: function(questionary, score, ndx, verdict) {
         this.renderPageTitle(questionary);
         this.renderResultsButton(questionary);
-        var tw = new TextWidget(600, 30, "middle", this.loc("Your score"));
+        var tw = new TextWidget(600, 30, "middle", this.loc("Score"));
         tw.setStyle({"fill": "gray"})
         tw.setPosition(200, 240);
         var tw2 = new TextWidget(600, 100, "middle", ""+score);
         tw2.setStyle({"fill": "white"})
         tw2.setPosition(200, 300);
-        var tw3 = new TextWidget(600, 30, "middle", this.loc("Your result"));
+        var tw3 = new TextWidget(600, 30, "middle", this.loc("Result"));
         tw3.setStyle({"fill": "gray"})
         tw3.setPosition(200, 490);
         var tw4 = new TextWidget(600, 60, "middle", verdict);
