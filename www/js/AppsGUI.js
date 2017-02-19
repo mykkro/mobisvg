@@ -12,12 +12,41 @@ var AppsGUI = Base.extend({
         console.log("AppsGUI.loadAppIndex");
         $.getJSON("index.json").done(callback);
     },
+    makeConfigForm: function() {
+        var self = this;
+        var configForm = {
+            "title": self.indexLocalized.tr("Settings"),
+            "description": "",
+            "fields": [
+                {
+                    "valueLabels": [
+                        "EN", 
+                        "CZ"
+                    ], 
+                    "values": [
+                        "en", 
+                        "cz"
+                    ], 
+                    "description": "", 
+                    "title": self.indexLocalized.tr("Language"), 
+                    "default": "en", 
+                    "type": "string", 
+                    "name": "language"
+                }, 
+            ]
+        }
+        self.form = new Form(configForm);
+        $("#form").html(self.form.body);
+        return self.form;
+    },
     loadAppsMetadata: function(callback) {
         var self = this;
         self.loadAppIndex(function(index) {
             console.log("AppsGUI.loadAppsMetadata", index);
             self.index = new Meta(index);
             self.indexLocalized = self.index.localized(self.locale);
+            self.makeConfigForm();
+            self.appSettings = self.form.val();
             callback(self);
         });
     },
@@ -59,6 +88,49 @@ var AppsGUI = Base.extend({
         }
         tags.sort();
         return tags;
+    },
+    showSettingsPage: function() {
+        this.resetScene();
+        this.createSettingsPageButtons();
+        $("#settings-form-outer").show();
+    },
+    createSettingsPageButtons: function() {
+        var saveBtn = new ButtonWidget(this.indexLocalized.tr("Save"), this.buttonStyle);        
+        var resetBtn = new ButtonWidget(this.indexLocalized.tr("Reset"), this.buttonStyle);        
+        var backBtn = new ButtonWidget(this.indexLocalized.tr("Back"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        Widget.layoutButtons([saveBtn, resetBtn, backBtn], gap, yy);
+        var self = this;
+
+        // bind events
+        saveBtn.onClick(function() {
+            self.appSettings = self.form.val();
+            console.log("App settings: ", self.appSettings);
+            $("#settings-form-outer").hide();
+            self.applySettings(self.appSettings);
+        });
+
+        resetBtn.onClick(function() {
+            self.form.val(self.appSettings);
+        });
+
+        backBtn.onClick(function() {
+            $("#settings-form-outer").hide();
+            self.showAppsPage(1);
+        });
+
+        return [saveBtn, resetBtn, backBtn];
+    },
+    applySettings: function(settings) {
+        console.log("AppsGUI.applySettings", settings);
+        var self = this;
+        if(settings.language != this.locale) {
+            this.locale = settings.language;
+            this.page = 1;
+            self.indexLocalized = self.index.localized(self.locale);
+        }
+        this.showMainPage();
     },
     showAppLaunchers: function(apps) {
         var self = this;
@@ -145,6 +217,9 @@ var AppsGUI = Base.extend({
         return [settingsBtn, historyBtn];
     },
     showMainPage: function() {
+        var self = this;
+        self.makeConfigForm();
+        self.form.val(self.appSettings);
         this.showAppsPage(this.page);
     },
     showAppsPage: function(page) {
