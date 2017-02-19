@@ -7,9 +7,9 @@ tags:
 locales:
   - en:
     - title:        Questionary
-    - subtitle:
-    - description:
-    - instructions:
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
   - cz:
 scripts:
 styles:
@@ -20,17 +20,25 @@ gamepacks:
       locales:
         - en:
           - title:        Barthel Index
-          - subtitle:
-          - description:
-          - instructions:
+          - subtitle:     " "
+          - description:  " "
+          - instructions: " "
       resources:
         - questionary:  questionary.json
     - name : barthel-cz
       locales:
         - cz:
           - title:        Barthel Index
-          - subtitle:
-          - description:
-          - instructions:  Barthel Index je standardizovaný test určený k hodnocení soběstačnosti. Body jsou přidělovány podle toho, co pacient reálně dokáže. Plný počet bodů vylučuje i jen minimální pomoc, včetně nápovědy. Pacient může při hodnocených činnostech využívat mechanické pomůcky (madla na stěnách, hole, berle apod.).
+          - subtitle:     " "
+          - description:  " "
+          - instructions: |
+                Barthel Index je standardizovaný test určený k hodnocení soběstačnosti. Body jsou přidělovány podle toho, co pacient reálně dokáže. Plný počet bodů vylučuje i jen minimální pomoc, včetně nápovědy. Pacient může při hodnocených činnostech využívat mechanické pomůcky (madla na stěnách, hole, berle apod.).
+
+                Hodnocení soběstačnosti:
+
+                0-40 bodů	vysoce závislý
+                45-60 bodů	závislost středního stupně
+                65-95 bodů	lehká závislost
+                100 bodů	nezávislý
       resources:
         - questionary:  questionary.json

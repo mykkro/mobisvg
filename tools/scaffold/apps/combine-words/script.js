@@ -11,7 +11,6 @@ var CombineWordsGame = Game.extend({
         btn.setPosition(455, 800);
         btn.onClick(function() {
             // evaluate the result...
-            console.log("Answer: ", self.answer);
             self.finish(self.answer);
         });
         this.okButton = btn;
@@ -39,7 +38,6 @@ var CombineWordsGame = Game.extend({
             cB.selected = false;
             noConnections--;
             delete connections[cA.order];
-            console.log(connections);
             self.okButton.setDisabled(true);
         }
 
@@ -58,20 +56,16 @@ var CombineWordsGame = Game.extend({
             r.line(375+10, nA*60+325, 625-10, nB*60+325).attr({
                 "stroke-width": 10, "stroke": "red", 'arrow-end': 'classic-wide-long', 
         'arrow-start': 'classic-wide-long' }).click(function() {
-                console.log("clicked!");
                 this.remove();
                 disconnectComponents(cAs[nA], cBs[nB]);
             });
             connections[nA] = nB;
-            console.log(connections);
             noConnections++;
             if(noConnections == self.orig.length) {
-                console.log("All connected!");      
-                self.answer = [];               
+                self.answer = [];
                 for(var i=0; i<self.orig.length; i++) {
                     var ccA = cAs[i];
                     var ccB = cBs[connections[i]];
-                    console.log(ccA.number, ccB.number);
                     self.answer.push(ccB.number);
                 }
                 self.okButton.setDisabled(false);   
@@ -132,7 +126,6 @@ var CombineWordsGame = Game.extend({
         var p1=[], p2=[], orig=[], perm=[];
         var i=0;
         gamedata.forEach(function(p) {
-            console.log(p);
             var pp = p.split("-");
             p1.push(pp[0]);
             p2.push(pp[1]);  
@@ -144,7 +137,6 @@ var CombineWordsGame = Game.extend({
         this.p2 = p2;
         this.orig = orig;
         this.perm = perm;
-        console.log(p1, p2, orig, perm);
 
         this.task = new SequenceBinaryTask(this.orig);
         this.renderFrame();

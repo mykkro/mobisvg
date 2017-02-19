@@ -127,7 +127,7 @@ var Questionary = Game.extend({
                 }
             });
             // TODO move this stuff to TextWidget
-            var bbox = labelSvg.shape.getBBox();
+            var bbox = labelSvg.getTextboxSize();
             yy += Math.min(100, bbox.height) + 100;
             this.body.addChild(clk);
         }

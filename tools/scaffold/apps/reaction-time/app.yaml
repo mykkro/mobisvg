@@ -8,13 +8,13 @@ tags:
 locales:
   - en:
     - title:        Reaction Time Test
-    - subtitle:
-    - description:
+    - subtitle:     " "
+    - description:  " "
     - instructions: Click the targets immediately after they appear.
   - cz:
     - title:        Reakční test
-    - subtitle:
-    - description:
+    - subtitle:     " "
+    - description:  " "
     - instructions: Strefte se do cíle co nejrychleji poté, co se objeví.
 scripts:
 styles:

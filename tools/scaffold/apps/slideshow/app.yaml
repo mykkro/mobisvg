@@ -7,9 +7,9 @@ tags:
 locales:
   - en:
     - title:        Slideshow
-    - subtitle:
-    - description:
-    - instructions:
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
 scripts:
 styles:
 resources:
@@ -19,8 +19,8 @@ gamepacks:
       locales:
         - en:
             - title: Sample Exercise
-            - subtitle:
-            - description:
+            - subtitle: " "
+            - description: " "
       resources:
         - slideshow:  slideshow.json
 

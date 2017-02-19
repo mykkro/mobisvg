@@ -13,14 +13,14 @@ settings:
 locales:
   - en:
     - title: Memory Game
-    - subtitle:
-    - description:
-    - instructions:
+    - subtitle: " "
+    - description: " "
+    - instructions: " "
   - cz:
     - title: Pexeso
-    - subtitle:
-    - description:
-    - instructions:
+    - subtitle: " "
+    - description: " "
+    - instructions: " "
 gamepacks:
     - name : default
       locales:

@@ -14,7 +14,6 @@ var DifferencesGame = Game.extend({
         for(var i=0; i<this.positions.length; i++) {
             var pp = this.positions[i];
             if(this.pointInEllipse(x, y, pp.x, pp.y, pp.rx, pp.ry)) {
-                console.log("Hit region: "+i);
                 return i;
             }
         }
@@ -29,7 +28,6 @@ var DifferencesGame = Game.extend({
         btn.setPosition(500-btn.w/2, 800);
         btn.onClick(function() {
             // evaluate the result...
-            console.log("Answer: ", self.answer);
             self.finish(self.answer);
         })        
         this.okButton = btn;
@@ -47,7 +45,6 @@ var DifferencesGame = Game.extend({
             self.circles.exclude(marker);
             marker.remove();
             self.okButton.setDisabled(true);
-            console.log("Removing...", self.circles.items.length);
             self.updateBar(self.grp, self.circles.items.length);
             e.stopPropagation();
         }
@@ -57,7 +54,6 @@ var DifferencesGame = Game.extend({
             marker.mousedown(touchMarkerHandler);
         }
         self.circles.push(marker);
-        console.log("Adding...", self.circles.items.length);
         self.updateBar(self.grp, self.circles.items.length);
     },
     updateBar: function(grp, n) {
@@ -110,7 +106,6 @@ var DifferencesGame = Game.extend({
             var ee = MOBILE ? e.targetTouches[0] : e;
             var fx = (ee.clientX - bnds.left)/bnds.width * overlay.attrs.width;
             var fy = (ee.clientY - bnds.top)/bnds.height * overlay.attrs.height;
-            console.log(fx, fy);
 
             var res = self.pointInRegion(fx,fy);
             if(res >= 0) {

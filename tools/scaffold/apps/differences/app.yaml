@@ -10,6 +10,11 @@ locales:
     - subtitle:     Can you find all 9 differences between two pictures?
     - description:  This is a type of the puzzle games where two versions of the same picture are shown side by side, and the player has to find all differences between them.
     - instructions: Two pictures will be displayed. There are 9 differences between two pictures. Mark the locations on the left picture, then press OK to evaluate the results.
+  - cz:
+    - title:        Najdi 9 rozdílů
+    - subtitle:     Dokážeš najít všech 9 rozdílů mezi obrázky?
+    - description:  " "
+    - instructions: Uvidíš 2 obrázky. Budou téměř stejné, liší se pouze na 9 místech. Označ místa, kde se obrázky liší, v levém z obrázků. Až označíš všech 9 míst kde si myslíš že se rozdíly nalézají, klikni na OK pro vyhodnocení.
 scripts:
 styles:
 resources:
@@ -18,3 +23,4 @@ gamepacks:
     - name : default
       locales:
         - en:
+        - cz:

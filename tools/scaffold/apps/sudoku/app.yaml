@@ -7,13 +7,13 @@ tags:
 locales:
   - en:
     - title:        Sudoku
-    - subtitle:
-    - description:
-    - instructions:
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
   - cz:
     - title:        Sudoku
-    - subtitle:
-    - description:
+    - subtitle:     " "
+    - description:  " "
     - instructions: Vyplňte sudoku tak, aby v žádném řádku, sloupci ani nebylo žádné číslo dvakrát.
 scripts:
   - sudoku.js

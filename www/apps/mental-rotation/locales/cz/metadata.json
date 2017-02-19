@@ -1,5 +1,8 @@
 {
     "keys": {
+        "instructions": " ", 
+        "subtitle": " ", 
+        "description": " ", 
         "title": "Prostorov\u00e1 orientace"
     }, 
     "$type": "playonweb-localized-metadata", 

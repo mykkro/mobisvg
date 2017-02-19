@@ -13,6 +13,9 @@ locales:
     - instructions: From the pictures offered below, pick the one you think is a rotated version of a shape presented above.
   - cz:
     - title:        Prostorová orientace
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
 scripts:
 styles:
 resources:

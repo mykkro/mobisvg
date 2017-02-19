@@ -64,7 +64,6 @@ var ReverseColorTestGame = Game.extend({
 
         this.updateCounter();
         var g = this.goals[this.currentFrame];
-        console.log(g);
 
         var _colorSelected = function(color) {
             var matched = (color == g.color);
@@ -108,7 +107,6 @@ var ReverseColorTestGame = Game.extend({
 
         // prepare data...
         this.gamedata.forEach(function(gd) {
-            console.log("Gamedata:", gd);
             self.goals.push(gd);
             self.answer.push(null);
         });

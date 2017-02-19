@@ -339,30 +339,51 @@ var TextWidget = Widget.extend({
     },
     setStyle: function(attr) {
         this.base(attr);
-        this.shape.attr(attr);
+        this.shapes.forEach(function(s) { s.attr(attr); });
     },
     // TODO test it...
     setCssClass: function(css) {
         TTT = this;
-        this.shape[0].node.setAttribute("class", css);
-    },
+        this.shapes.forEach(function(s) { s[0].node.setAttribute("class", css); })
+    },    
     setText: function(text) {
-        this.text = text;
+        var self = this;
+        this.text = text || "";
         var x = 0;
         if(this.anchor == "middle") {
             x = this.maxWidth/2;                            
         } else if(this.anchor == "end") {
             x = this.maxWidth;
         }
-        this.shape = r.paragraph({x : x, y : this.fontSize / 2, maxWidth : this.maxWidth, text : this.text, textStyle : this.textStyle });
+        this.lines = this.text.split("\n"); //.filter(function(l) { return l != ""; });
+        var yy = this.fontSize / 2; 
+        this.shapes = [];
+        this.lines.forEach(function(l) {
+            var shape = r.paragraph({
+                x : x, 
+                y : yy, 
+                maxWidth : self.maxWidth, 
+                text : l, 
+                textStyle : self.textStyle,
+                lineHeight : self.fontSize * 1.35
+                // TODO maxHeight
+            });
+            var bbox = shape.getBBox();
+            yy += Math.max(bbox.height, self.fontSize * 1.15);
+            self.shapes.push(shape);
+        });
         // clear Raphael set
         var set = this.root;
         set.forEach(function(el, idx) {
             el.remove();
             set.exclude(el);
         });
-        this.root.push(this.shape);
+        this.shapes.forEach(function(s) { self.root.push(s); });
         this.setPosition(this.x, this.y);
+    },
+    getTextboxSize: function() {
+        var bbox = this.root.getBBox();
+        return { width: bbox.x2 - this.x, height: bbox.y2 - this.y };
     }
 });
 

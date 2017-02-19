@@ -8,14 +8,14 @@ tags:
 locales:
   - en:
     - title:        Pick 20
-    - subtitle:
-    - description:
-    - instructions:
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
   - cz:
     - title:        Najdi posloupnost
-    - subtitle:
-    - description:
-    - instructions:
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
 scripts:
 styles:
 resources:

@@ -1,8 +1,8 @@
 {
     "keys": {
         "instructions": "Click the targets immediately after they appear.", 
-        "subtitle": null, 
-        "description": null, 
+        "subtitle": " ", 
+        "description": " ", 
         "title": "Reaction Time Test"
     }, 
     "$type": "playonweb-localized-metadata", 

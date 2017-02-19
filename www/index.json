@@ -45,6 +45,8 @@
                     "name": "en", 
                     "metadata": {
                         "instructions": "Choose the colored square which matches the color of the text appearing in the center of the screen as fast as possible.", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Reaction time test \u2013 colors"
                     }
                 }, 
@@ -59,6 +61,8 @@
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Zvolte v\u017edy co nejrychleji \u010dtverec se shodnou barvou, jakou m\u00e1 n\u00e1pis, kter\u00fd se objev\u00ed uprost\u0159ed.", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Reak\u010dn\u00ed test  \u2013 barvy"
                     }
                 }
@@ -283,9 +287,9 @@
                     }, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": null, 
-                        "subtitle": null, 
-                        "description": null, 
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Memory Game"
                     }
                 }, 
@@ -296,9 +300,9 @@
                     }, 
                     "name": "cz", 
                     "metadata": {
-                        "instructions": null, 
-                        "subtitle": null, 
-                        "description": null, 
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Pexeso"
                     }
                 }
@@ -323,9 +327,9 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {
-                                "instructions": null, 
-                                "subtitle": null, 
-                                "description": null, 
+                                "instructions": " ", 
+                                "subtitle": " ", 
+                                "description": " ", 
                                 "title": "Barthel Index"
                             }
                         }
@@ -344,9 +348,9 @@
                             "preview": false, 
                             "name": "cz", 
                             "metadata": {
-                                "instructions": "Barthel Index je standardizovan\u00fd test ur\u010den\u00fd k\u00a0hodnocen\u00ed sob\u011bsta\u010dnosti. Body jsou p\u0159id\u011blov\u00e1ny podle toho, co pacient re\u00e1ln\u011b dok\u00e1\u017ee. Pln\u00fd po\u010det bod\u016f vylu\u010duje i jen minim\u00e1ln\u00ed pomoc, v\u010detn\u011b n\u00e1pov\u011bdy. Pacient m\u016f\u017ee p\u0159i hodnocen\u00fdch \u010dinnostech vyu\u017e\u00edvat mechanick\u00e9 pom\u016fcky (madla na st\u011bn\u00e1ch, hole, berle apod.).", 
-                                "subtitle": null, 
-                                "description": null, 
+                                "instructions": "Barthel Index je standardizovan\u00fd test ur\u010den\u00fd k\u00a0hodnocen\u00ed sob\u011bsta\u010dnosti. Body jsou p\u0159id\u011blov\u00e1ny podle toho, co pacient re\u00e1ln\u011b dok\u00e1\u017ee. Pln\u00fd po\u010det bod\u016f vylu\u010duje i jen minim\u00e1ln\u00ed pomoc, v\u010detn\u011b n\u00e1pov\u011bdy. Pacient m\u016f\u017ee p\u0159i hodnocen\u00fdch \u010dinnostech vyu\u017e\u00edvat mechanick\u00e9 pom\u016fcky (madla na st\u011bn\u00e1ch, hole, berle apod.).\n\nHodnocen\u00ed sob\u011bsta\u010dnosti:\n\n0-40 bod\u016f\tvysoce z\u00e1visl\u00fd\n45-60 bod\u016f\tz\u00e1vislost st\u0159edn\u00edho stupn\u011b\n65-95 bod\u016f\tlehk\u00e1 z\u00e1vislost\n100 bod\u016f\tnez\u00e1visl\u00fd\n", 
+                                "subtitle": " ", 
+                                "description": " ", 
                                 "title": "Barthel Index"
                             }
                         }
@@ -363,9 +367,9 @@
                     "preview": false, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": null, 
-                        "subtitle": null, 
-                        "description": null, 
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Questionary"
                     }
                 }, 
@@ -557,6 +561,9 @@
                     "preview": false, 
                     "name": "cz", 
                     "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Prostorov\u00e1 orientace"
                     }
                 }
@@ -600,8 +607,8 @@
                     "name": "en", 
                     "metadata": {
                         "instructions": "Click the targets immediately after they appear.", 
-                        "subtitle": null, 
-                        "description": null, 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Reaction Time Test"
                     }
                 }, 
@@ -610,8 +617,8 @@
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Strefte se do c\u00edle co nejrychleji pot\u00e9, co se objev\u00ed.", 
-                        "subtitle": null, 
-                        "description": null, 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Reak\u010dn\u00ed test"
                     }
                 }
@@ -636,8 +643,8 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {
-                                "subtitle": null, 
-                                "description": null, 
+                                "subtitle": " ", 
+                                "description": " ", 
                                 "title": "Sample Exercise"
                             }
                         }
@@ -654,9 +661,9 @@
                     "preview": false, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": null, 
-                        "subtitle": null, 
-                        "description": null, 
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Slideshow"
                     }
                 }
@@ -681,6 +688,11 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
                         }
                     ], 
                     "preview": false, 
@@ -697,6 +709,16 @@
                         "subtitle": "Can you find all 9 differences between two pictures?", 
                         "description": "This is a type of the puzzle games where two versions of the same picture are shown side by side, and the player has to find all differences between them.", 
                         "title": "Find 9 Differences"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Uvid\u00ed\u0161 2 obr\u00e1zky. Budou t\u00e9m\u011b\u0159 stejn\u00e9, li\u0161\u00ed se pouze na 9 m\u00edstech. Ozna\u010d m\u00edsta, kde se obr\u00e1zky li\u0161\u00ed, v lev\u00e9m z obr\u00e1zk\u016f. A\u017e ozna\u010d\u00ed\u0161 v\u0161ech 9 m\u00edst kde si mysl\u00ed\u0161 \u017ee se rozd\u00edly nal\u00e9zaj\u00ed, klikni na OK pro vyhodnocen\u00ed.", 
+                        "subtitle": "Dok\u00e1\u017ee\u0161 naj\u00edt v\u0161ech 9 rozd\u00edl\u016f mezi obr\u00e1zky?", 
+                        "description": " ", 
+                        "title": "Najdi 9 rozd\u00edl\u016f"
                     }
                 }
             ], 
@@ -738,9 +760,9 @@
                     "preview": false, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": null, 
-                        "subtitle": null, 
-                        "description": null, 
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Pick 20"
                     }
                 }, 
@@ -748,9 +770,9 @@
                     "preview": false, 
                     "name": "cz", 
                     "metadata": {
-                        "instructions": null, 
-                        "subtitle": null, 
-                        "description": null, 
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Najdi posloupnost"
                     }
                 }
@@ -813,9 +835,9 @@
                     "preview": true, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": null, 
-                        "subtitle": null, 
-                        "description": null, 
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Sudoku"
                     }
                 }, 
@@ -824,8 +846,8 @@
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Vypl\u0148te sudoku tak, aby v\u00a0\u017e\u00e1dn\u00e9m \u0159\u00e1dku, sloupci ani nebylo \u017e\u00e1dn\u00e9 \u010d\u00edslo dvakr\u00e1t.", 
-                        "subtitle": null, 
-                        "description": null, 
+                        "subtitle": " ", 
+                        "description": " ", 
                         "title": "Sudoku"
                     }
                 }
