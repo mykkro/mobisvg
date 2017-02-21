@@ -16,7 +16,7 @@ var MentalRotationGame = Game.extend({
         this.label = labelSvg;
         this.updateCounter();
 
-        this.label2 = new TextWidget(500, 30, "start", "Which of the shapes below is a rotated version of the shape shown left?");
+        this.label2 = new TextWidget(500, 30, "start", this.loc("Which of the shapes below is a rotated version of the shape shown left?"));
         //this.label2.addClass("instruction");
         this.label2.setPosition(300, 300);       
         

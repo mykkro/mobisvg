@@ -2,7 +2,7 @@
 var AppsGUI = Base.extend({
     constructor: function() {
         console.log("AppsGUI.constructor");
-        this.locale = "en";
+        this.locale = "cz";
         this.page = 1;
     },
     buttonStyle: {

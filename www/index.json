@@ -549,6 +549,9 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": {
+                        "Which of the shapes below is a rotated version of the shape shown left?": "Which of the shapes below is a rotated version of the shape shown left?"
+                    }, 
                     "name": "en", 
                     "metadata": {
                         "instructions": "From the pictures offered below, pick the one you think is a rotated version of a shape presented above.", 
@@ -559,6 +562,9 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": {
+                        "Which of the shapes below is a rotated version of the shape shown left?": "Vyberte z obr\u00e1zk\u016f dole ten, kter\u00fd je po nato\u010den\u00ed shodn\u00fd s obr\u00e1zkem noho\u0159e"
+                    }, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": " ", 
