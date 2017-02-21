@@ -2,7 +2,8 @@
     "$type": "playonweb-translation", 
     "version": "1.0", 
     "translations": {
-        "End": "End"
+        "End": "End", 
+        "All cards found!": "All cards found!"
     }, 
     "language": "en"
 }

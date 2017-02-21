@@ -269,7 +269,7 @@ var GameGUI = Base.extend({
                 "description": "",
                 "fields": self.instance.config
             }
-            self.form = new Form(configForm);
+            self.form = new Form(configForm, function(loc) { return self.instance.tr(loc); });
             $("#form").html(self.form.body);
             self.gameSettings = self.form.val();
 

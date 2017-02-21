@@ -160,12 +160,13 @@ var RadioInput = Input.extend({
 
 
 var Field = Base.extend({
-    constructor: function(fld) {
+    constructor: function(fld, loc) {
+        this.loc = loc || function(t) { return t; };
         this.name = fld.name;
         this.title = fld.title || fld.name;
         this.input = renderInput(fld);
         this.body = $("<div>").addClass("formix-field").append(
-            renderLabel(this.title),
+            renderLabel(this.loc(this.title)),
             this.input.input
             );
     },
@@ -178,7 +179,8 @@ var Field = Base.extend({
     }
 });
 var Form = Base.extend({
-    constructor: function(frm) {
+    constructor: function(frm, loc) {
+        this.loc = loc || function(t) { return t; };
         this.fields = [];
         var self = this;
         var out = $("<div>").addClass("formix");
@@ -188,7 +190,7 @@ var Form = Base.extend({
             body
             );
         frm.fields.forEach(function(fld) {
-            var f = new Field(fld);
+            var f = new Field(fld, self.loc);
             self.fields.push(f);
             body.append(f.body);
         });

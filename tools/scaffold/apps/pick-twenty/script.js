@@ -36,8 +36,8 @@ var PickTwentyGame = Game.extend({
     },    
     generateReport: function(evalResult) {
         return [
-        "Total time: "+ sprintf("%.1f sec", evalResult.totalTime /1000),
-        "Mistakes total: "+evalResult.mistakes
+        this.loc("Total time") + ": " + sprintf("%.1f sec", evalResult.totalTime /1000),
+        this.loc("Mistakes total")+ ": " + evalResult.mistakes
         ];
     },        
     start: function(gamedata) {

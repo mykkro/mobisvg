@@ -2,7 +2,7 @@
     {
         "description": "", 
         "name": "N", 
-        "title": "", 
+        "title": "Repeat count", 
         "default": 10, 
         "type": "int", 
         "maxValue": 50, 

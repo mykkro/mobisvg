@@ -38,6 +38,7 @@
                     "preview": false, 
                     "translations": {
                         "blue": "blue", 
+                        "Repeat count": "Repeat count", 
                         "green": "green", 
                         "yellow": "yellow", 
                         "red": "red"
@@ -54,6 +55,7 @@
                     "preview": false, 
                     "translations": {
                         "blue": "modr\u00e1", 
+                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed", 
                         "green": "zelen\u00e1", 
                         "yellow": "\u017elut\u00e1", 
                         "red": "\u010derven\u00e1"
@@ -73,7 +75,7 @@
                 {
                     "description": "", 
                     "name": "N", 
-                    "title": "", 
+                    "title": "Repeat count", 
                     "default": 10, 
                     "type": "int", 
                     "maxValue": 50, 
@@ -120,6 +122,9 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": {
+                        "Repeat count": "Repeat count"
+                    }, 
                     "name": "en", 
                     "metadata": {
                         "instructions": "When the game starts, you will see an item (a colored box or a traffic sign) placed at one of 9 possible positions in a 3x3 grid. Remember where the item appeared and also remember its color (or sign type). After a few seconds, another item appears in a different position. The task is, to recall if the currently shown item is at the same position or if it has tyhe same shape as the item shown N frames back (N times ago). If you think the current item has the same position as item shown N frames earlier, press the Position button; if it has the same color (sign type), press the Color/Sign button. Press both buttons if both of position and shape/color are matched. Start with N=2 (2-back), and eventually you will be good enough to try 3-back, 4-back and so on.", 
@@ -130,6 +135,9 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": {
+                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed"
+                    }, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Na za\u010d\u00e1tku hry se objev\u00ed modr\u00fd \u010dtverec na jedn\u00e9 z\u00a0dev\u00edti mo\u017en\u00fdch pozic. Zapamatujte si, kde se \u010dtverec objevil. Po n\u011bkolika vte\u0159in\u00e1ch prodlevy se objev\u00ed \u010dtverec znovu na stejn\u00e9m, nebo jin\u00e9m m\u00edst\u011b. Pokud se objevil na takov\u00e9m m\u00edst\u011b, na kter\u00e9m se objevil o N zobrazen\u00ed d\u0159\u00edve, zm\u00e1\u010dkn\u011bte tla\u010d\u00edtko s\u00a0n\u00e1pisem \u201epozice\u201c ve spodn\u00ed \u010d\u00e1sti obrazovky.\nD\u00e1le sledujete, zda barva/tvar zobrazen\u00e9ho \u010dtverce se shoduje s\u00a0barvou/tvarem objektu, kter\u00fd se objevil o N zobrazen\u00ed d\u0159\u00edve. Podle toho, jak\u00e1 varianta nastala, zvol\u00edte tla\u010d\u00edtko ve spodn\u00ed \u010d\u00e1sti obrazovky.\nVhodn\u00e9 je nejprve procvi\u010dit \u00falohu Single N-Back a za\u010d\u00edt od obt\u00ed\u017enosti N=1.\n", 
@@ -145,7 +153,7 @@
                 {
                     "description": "", 
                     "name": "N", 
-                    "title": "", 
+                    "title": "N", 
                     "default": 2, 
                     "type": "int", 
                     "maxValue": 3, 
@@ -154,7 +162,7 @@
                 {
                     "description": "", 
                     "name": "L", 
-                    "title": "", 
+                    "title": "Repeat count", 
                     "default": 10, 
                     "type": "int", 
                     "maxValue": 50, 
@@ -162,7 +170,7 @@
                 }, 
                 {
                     "description": "", 
-                    "title": "", 
+                    "title": "delay", 
                     "default": 2000, 
                     "maxValue": 10000, 
                     "minValue": 500, 
@@ -283,7 +291,8 @@
                 {
                     "preview": false, 
                     "translations": {
-                        "End": "End"
+                        "End": "End", 
+                        "All cards found!": "All cards found!"
                     }, 
                     "name": "en", 
                     "metadata": {
@@ -296,7 +305,8 @@
                 {
                     "preview": false, 
                     "translations": {
-                        "End": "Konec"
+                        "End": "Konec", 
+                        "All cards found!": "V\u0161echny dvojice nalezeny!"
                     }, 
                     "name": "cz", 
                     "metadata": {
@@ -365,6 +375,7 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": null, 
                     "name": "en", 
                     "metadata": {
                         "instructions": " ", 
@@ -375,6 +386,7 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": null, 
                     "name": "cz", 
                     "metadata": {}
                 }
@@ -416,6 +428,7 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": null, 
                     "name": "en", 
                     "metadata": {
                         "instructions": "When the game starts, you will see a blue box placed at one of 9 possible positions in a 3x3 grid. Remember where the box appeared. After a few seconds, another box appears in a different position. The task is, to recall if the currently shown box is at the same position as the box shown N frames back (N times ago). If you think the current box has the same position as the box shown N frames earlier, press the Position button. Start with N=2 (2-back), and eventually you will be good enough to try 3-back, 4-back and so on.", 
@@ -426,6 +439,7 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": null, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Na za\u010d\u00e1tku hry se objev\u00ed modr\u00fd \u010dtverec na jedn\u00e9 z\u00a0dev\u00edti mo\u017en\u00fdch pozic. Zapamatujte si, kde se \u010dtverec objevil. Po n\u011bkolika vte\u0159in\u00e1ch prodlevy se objev\u00ed \u010dtverec znovu na stejn\u00e9m, nebo jin\u00e9m m\u00edst\u011b. Pokud se objevil na takov\u00e9m m\u00edst\u011b, na kter\u00e9m byl zobrazen\u00fd o N zobrazen\u00ed d\u0159\u00edve, zm\u00e1\u010dkn\u011bte tla\u010d\u00edtko s\u00a0n\u00e1pisem \u201epozice\u201c ve spodn\u00ed \u010d\u00e1sti obrazovky.\nP\u0159i nastaven\u00ed p\u0159edvolby N=1 sledujete, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b dvakr\u00e1t po sob\u011b.\nP\u0159i nastaven\u00ed p\u0159edvolby N=2 vzpom\u00edn\u00e1te, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b ob jedno zobrazen\u00ed d\u0159\u00edve.\nP\u0159i nastaven\u00ed p\u0159edvolby N=3 sledujete, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b jako o t\u0159i zobrazen\u00ed d\u0159\u00edve.\nVhodn\u00e9 je za\u010d\u00edt nejprve od obt\u00ed\u017enosti N=1.\n", 
@@ -504,6 +518,7 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": null, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Two columns are displayed, containing starting and ending parts of words. Starting parts are grouped in the left column, ending parts in the right column. You can match starts and ends by clicking a word in left column then a word in right column (a red connection line will be shown). You can remove the connection line by clicking on it. After all word parts are matched, press the OK button to evaluate the result.", 
@@ -610,6 +625,10 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": {
+                        "Average delay": "Average delay", 
+                        "Hit ratio": "Hit ratio"
+                    }, 
                     "name": "en", 
                     "metadata": {
                         "instructions": "Click the targets immediately after they appear.", 
@@ -620,6 +639,10 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": {
+                        "Average delay": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+                        "Hit ratio": "Procento z\u00e1sah\u016f"
+                    }, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Strefte se do c\u00edle co nejrychleji pot\u00e9, co se objev\u00ed.", 
@@ -665,6 +688,7 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": null, 
                     "name": "en", 
                     "metadata": {
                         "instructions": " ", 
@@ -709,6 +733,7 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": null, 
                     "name": "en", 
                     "metadata": {
                         "instructions": "Two pictures will be displayed. There are 9 differences between two pictures. Mark the locations on the left picture, then press OK to evaluate the results.", 
@@ -719,6 +744,7 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": null, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Uvid\u00ed\u0161 2 obr\u00e1zky. Budou t\u00e9m\u011b\u0159 stejn\u00e9, li\u0161\u00ed se pouze na 9 m\u00edstech. Ozna\u010d m\u00edsta, kde se obr\u00e1zky li\u0161\u00ed, v lev\u00e9m z obr\u00e1zk\u016f. A\u017e ozna\u010d\u00ed\u0161 v\u0161ech 9 m\u00edst kde si mysl\u00ed\u0161 \u017ee se rozd\u00edly nal\u00e9zaj\u00ed, klikni na OK pro vyhodnocen\u00ed.", 
@@ -764,6 +790,10 @@
             "locales": [
                 {
                     "preview": false, 
+                    "translations": {
+                        "Total time": "Total time", 
+                        "Mistakes total": "Mistakes total"
+                    }, 
                     "name": "en", 
                     "metadata": {
                         "instructions": " ", 
@@ -774,6 +804,10 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": {
+                        "Total time": "Celkov\u00fd \u010das", 
+                        "Mistakes total": "Po\u010det chyb"
+                    }, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": " ", 
@@ -839,6 +873,9 @@
             "locales": [
                 {
                     "preview": true, 
+                    "translations": {
+                        "Show mistakes": "Show mistakes"
+                    }, 
                     "name": "en", 
                     "metadata": {
                         "instructions": " ", 
@@ -849,6 +886,9 @@
                 }, 
                 {
                     "preview": false, 
+                    "translations": {
+                        "Show mistakes": "Zv\u00fdraznit chyby"
+                    }, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Vypl\u0148te sudoku tak, aby v\u00a0\u017e\u00e1dn\u00e9m \u0159\u00e1dku, sloupci ani nebylo \u017e\u00e1dn\u00e9 \u010d\u00edslo dvakr\u00e1t.", 
@@ -860,7 +900,15 @@
             ], 
             "game_class": "SudokuGame", 
             "preview": true, 
-            "config": null, 
+            "config": [
+                {
+                    "default": true, 
+                    "title": "Show mistakes", 
+                    "type": "boolean", 
+                    "description": "", 
+                    "name": "showMistakes"
+                }
+            ], 
             "resources": {}
         }
     ], 
@@ -868,37 +916,38 @@
         {
             "preview": false, 
             "translations": {
-                "Reset": "Reset", 
-                "Both": "Both", 
                 "verbal": "verbal", 
-                "Settings": "Settings", 
-                "attention": "attention", 
                 "Next": "Next", 
                 "Play again": "Play again", 
                 "Start": "Start", 
                 "Page count": "Page count", 
                 "Score": "Score", 
                 "Exit": "Exit", 
-                "Position": "Position", 
                 "Save": "Save", 
+                "Finish": "Finish", 
+                "entertainment": "entertainment", 
+                "spatial": "spatial", 
+                "Instructions": "Instructions", 
+                "Reset": "Reset", 
+                "Both": "Both", 
+                "Language": "Language", 
+                "Settings": "Settings", 
+                "attention": "attention", 
+                "Correctness": "Correctness", 
+                "visual": "visual", 
+                "Position": "Position", 
                 "History": "History", 
                 "instructional": "instructional", 
-                "Finish": "Finish", 
                 "memory": "memory", 
-                "Language": "Language", 
-                "entertainment": "entertainment", 
-                "Color": "Color", 
                 "Question count": "Question count", 
-                "visual": "visual", 
+                "Color": "Color", 
                 "Results": "Results", 
                 "Back": "Back", 
                 "Sign": "Sign", 
                 "OK": "OK", 
                 "survey": "survey", 
                 "Result": "Result", 
-                "spatial": "spatial", 
-                "Previous": "Previous", 
-                "Instructions": "Instructions"
+                "Previous": "Previous"
             }, 
             "name": "en", 
             "metadata": {
@@ -910,37 +959,38 @@
         {
             "preview": false, 
             "translations": {
-                "Reset": "Reset", 
-                "Both": "Oboj\u00ed", 
                 "verbal": "slovn\u00ed", 
-                "Settings": "Nastaven\u00ed", 
-                "attention": "pozornost", 
                 "Next": "Dal\u0161\u00ed", 
                 "Play again": "Hr\u00e1t znovu", 
                 "Start": "Start", 
                 "Page count": "Po\u010det stran", 
                 "Score": "Sk\u00f3re", 
                 "Exit": "Konec", 
-                "Position": "Pozice", 
                 "Save": "Ulo\u017eit", 
+                "Finish": "Konec", 
+                "entertainment": "z\u00e1bava", 
+                "spatial": "prostorov\u00fd", 
+                "Instructions": "Instrukce", 
+                "Reset": "Reset", 
+                "Both": "Oboj\u00ed", 
+                "Language": "Jazyk", 
+                "Settings": "Nastaven\u00ed", 
+                "attention": "pozornost", 
+                "Correctness": "\u00dasp\u011b\u0161nost", 
+                "visual": "vizu\u00e1ln\u00ed", 
+                "Position": "Pozice", 
                 "History": "Historie", 
                 "instructional": "instrukce", 
-                "Finish": "Konec", 
                 "memory": "pam\u011b\u0165", 
-                "Language": "Jazyk", 
-                "entertainment": "z\u00e1bava", 
-                "Color": "Barva", 
                 "Question count": "Po\u010det ot\u00e1zek", 
-                "visual": "vizu\u00e1ln\u00ed", 
+                "Color": "Barva", 
                 "Results": "V\u00fdsledky", 
                 "Back": "Zp\u011bt", 
                 "Sign": "Zna\u010dka", 
                 "OK": "OK", 
                 "survey": "dotazn\u00edk", 
                 "Result": "V\u00fdsledek", 
-                "spatial": "prostorov\u00fd", 
-                "Previous": "P\u0159edchoz\u00ed", 
-                "Instructions": "Instrukce"
+                "Previous": "P\u0159edchoz\u00ed"
             }, 
             "name": "cz", 
             "metadata": {

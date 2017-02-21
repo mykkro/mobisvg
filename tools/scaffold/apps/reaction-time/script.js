@@ -35,8 +35,8 @@ var ReactionTimeGame = Game.extend({
     },
     generateReport: function(evalResult) {
         return [
-            "Hit ratio: "+ sprintf("%.1f %%", evalResult.hitRatio * 100),
-            "Average delay: "+ sprintf("%.2f s", evalResult.avgDelay / 1000),
+            this.loc("Hit ratio") + + ": "+ sprintf("%.1f %%", evalResult.hitRatio * 100),
+            this.loc("Average delay") + + ": "+ sprintf("%.2f s", evalResult.avgDelay / 1000),
         ];
     },
     start: function(gamedata) {

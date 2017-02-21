@@ -1,0 +1,9 @@
+{
+    "$type": "playonweb-translation", 
+    "version": "1.0", 
+    "translations": {
+        "Average delay": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+        "Hit ratio": "Procento z\u00e1sah\u016f"
+    }, 
+    "language": "cz"
+}

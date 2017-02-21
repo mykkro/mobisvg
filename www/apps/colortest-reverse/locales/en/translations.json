@@ -3,6 +3,7 @@
     "version": "1.0", 
     "translations": {
         "blue": "blue", 
+        "Repeat count": "Repeat count", 
         "green": "green", 
         "yellow": "yellow", 
         "red": "red"

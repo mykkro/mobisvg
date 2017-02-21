@@ -8,6 +8,7 @@ var SudokuGame = Game.extend({
         this.cellsize = 90;
         this.x0 = 95;
         this.y0 = 95;
+        this.showMistakes = this.config.showMistakes;
     },
     // set default embedding options for this Game
     getEmbeddingOptions: function() {
@@ -115,10 +116,18 @@ var SudokuGame = Game.extend({
         if((val = this.solver.gameFinished()) != 0)
         {
             console.log("Game finished!", val);
-            // TODO put something meaningful here...
-            this.answer = [];
-            this.finish(this.answer);
+            this.timer.stop();
+            // total time: in seconds
+            this.answer = { totalTime: Math.floor(this.currentTime / 1000) };
+            this.notifyFinished(function() {
+                self.finish(self.answer);
+            });
+
         }
+    },
+    notifyFinished: function(callback) {
+        // TODO show modal splash dialog
+        setTimeout(callback, 500);
     },
     checkCell: function(row, col) {
         for (var i = 0; i < 9; i++)
@@ -161,7 +170,7 @@ var SudokuGame = Game.extend({
         }
     },
     updateCellErrorView: function(row, col, err) {
-        this.cells[row][col].setStyle({fill: err ? "red" : "black"});
+        this.cells[row][col].setStyle({fill: (err && this.showMistakes) ? "red" : "black"});
     },
     makeCell: function(i,j) {
         var labelSvg = new TextWidget(this.cellsize,this.cellsize*0.8, "middle", "");
@@ -198,7 +207,8 @@ var SudokuGame = Game.extend({
         });
     },
     generateReport: function(evalResult) {
-        return [            
+        return [
+            this.loc("Total time") + ": " + evalResult.totalTime
         ];
     },
     startTimer: function() {

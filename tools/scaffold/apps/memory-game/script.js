@@ -149,7 +149,7 @@ var MemoryGame = Game.extend({
     this.finish();
   },
     generateReport: function(evalResult) {
-        return ["All cards found!"];
+        return [this.loc("All cards found!")];
     },
   turnTilesBack: function() {
     var self = this;

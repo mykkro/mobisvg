@@ -1,0 +1,9 @@
+{
+    "$type": "playonweb-translation", 
+    "version": "1.0", 
+    "translations": {
+        "Average delay": "Average delay", 
+        "Hit ratio": "Hit ratio"
+    }, 
+    "language": "en"
+}

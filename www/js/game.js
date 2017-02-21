@@ -41,7 +41,7 @@ var Game = Base.extend({
         this.onFinish(result, messages);
     },
     generateReport: function(evalResult) {
-        return ["Correctness: "+ sprintf("%.1f%%", evalResult.correctness * 100)];
+        return [this.loc("Correctness") + ": "+ sprintf("%.1f%%", evalResult.correctness * 100)];
     },
     onStart: function(val) {
         if(typeof(val)=="function") {

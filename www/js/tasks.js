@@ -19,6 +19,9 @@ var BinaryTask = ScalarTask.extend({
 });
 
 var NullTask = Task.extend({
+    validate: function(answer) {
+        return !!answer;
+    },
     evaluate: function(answer) {
         return answer;
     }

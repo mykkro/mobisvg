@@ -2,7 +2,7 @@
     {
         "description": "", 
         "name": "N", 
-        "title": "", 
+        "title": "N", 
         "default": 2, 
         "type": "int", 
         "maxValue": 3, 
@@ -11,7 +11,7 @@
     {
         "description": "", 
         "name": "L", 
-        "title": "", 
+        "title": "Repeat count", 
         "default": 10, 
         "type": "int", 
         "maxValue": 50, 
@@ -19,7 +19,7 @@
     }, 
     {
         "description": "", 
-        "title": "", 
+        "title": "delay", 
         "default": 2000, 
         "maxValue": 10000, 
         "minValue": 500, 

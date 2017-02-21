@@ -1,0 +1,8 @@
+{
+    "$type": "playonweb-translation", 
+    "version": "1.0", 
+    "translations": {
+        "Show mistakes": "Show mistakes"
+    }, 
+    "language": "en"
+}

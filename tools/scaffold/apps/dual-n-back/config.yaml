@@ -1,7 +1,7 @@
 [
         { 
             "name": "N",
-            "title": "",
+            "title": "N",
             "description": "",
             "type": "int",
             "minValue": 1,
@@ -10,7 +10,7 @@
         },
         { 
             "name": "L",
-            "title": "",
+            "title": "Repeat count",
             "description": "",
             "type": "int",
             "minValue": 5,
@@ -19,7 +19,7 @@
         },
         { 
             "name": "delay",
-            "title": "",
+            "title": "delay",
             "description": "",
             "type": "int",
             "minValue": 500,

@@ -1,7 +1,7 @@
 [
         {
             "name": "N",
-            "title": "",
+            "title": "Repeat count",
             "description": "",
             "type": "int",
             "minValue": 1,

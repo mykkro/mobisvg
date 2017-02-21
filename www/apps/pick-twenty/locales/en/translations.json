@@ -1,0 +1,9 @@
+{
+    "$type": "playonweb-translation", 
+    "version": "1.0", 
+    "translations": {
+        "Total time": "Total time", 
+        "Mistakes total": "Mistakes total"
+    }, 
+    "language": "en"
+}
