@@ -2,7 +2,8 @@
     "$type": "playonweb-translation", 
     "version": "1.0", 
     "translations": {
-        "Show mistakes": "Zv\u00fdraznit chyby"
+        "Show mistakes": "Zv\u00fdraznit chyby", 
+        "Total time": "Celkov\u00fd \u010das [s]"
     }, 
     "language": "cz"
 }

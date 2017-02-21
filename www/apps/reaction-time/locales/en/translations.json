@@ -2,8 +2,14 @@
     "$type": "playonweb-translation", 
     "version": "1.0", 
     "translations": {
+        "allowedShift": "Time tolerance [ms]", 
+        "Average reaction time": "Average reaction time", 
+        "avgFrameLen": "Time until next object [ms]", 
+        "Best reaction time": "Best reaction time", 
+        "targetTimeout": "Object disappears after [ms]", 
         "Average delay": "Average delay", 
-        "Hit ratio": "Hit ratio"
+        "Hit ratio": "Hit ratio", 
+        "N": "Repeat count"
     }, 
     "language": "en"
 }

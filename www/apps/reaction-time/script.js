@@ -35,8 +35,9 @@ var ReactionTimeGame = Game.extend({
     },
     generateReport: function(evalResult) {
         return [
-            this.loc("Hit ratio") + + ": "+ sprintf("%.1f %%", evalResult.hitRatio * 100),
-            this.loc("Average delay") + + ": "+ sprintf("%.2f s", evalResult.avgDelay / 1000),
+            this.loc("Hit ratio") + ": "+ sprintf("%.1f %%", evalResult.hitRatio * 100),
+            this.loc("Best reaction time") + ": "+ sprintf("%.2f s", evalResult.bestReactionTime / 1000),
+            this.loc("Average reaction time") + ": "+ sprintf("%.2f s", evalResult.avgReactionTime / 1000),
         ];
     },
     start: function(gamedata) {
@@ -92,11 +93,10 @@ var ReactionTimeGame = Game.extend({
         // events:
         //   showtarget [time, type, x, y]
         //   cleartarget [time]
-        var N = 12; // number of frames
-        var totalTime = 60000;
-        var allowedShift = 1000;
-        var targetTimeout = 3000;
-        var avgFrameLen = totalTime/12;
+        var N = this.config.N || 12; // number of frames
+        var allowedShift = this.config.allowedShift || 1000;
+        var targetTimeout = this.config.targetTimeout || 3000;
+        var avgFrameLen = this.config.avgFrameLen || 5000;
         var events = [];
         var startTimes = [];
         for(var i=0; i<N; i++) {

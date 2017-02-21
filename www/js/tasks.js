@@ -70,22 +70,30 @@ var ReactionTimeTask = Task.extend({
         var cuesHit = 0;
         var delay = 0;
         var successfulHits = []
+        var reactionTime;
+        var avgReactionTime = 0;
+        var bestReactionTime = 0;
         for(var i=0; i<answer.length; i++) {
             cuesTotal++;
             if(answer[i].reaction >= 0) {
                 cuesHit++;
                 successfulHits.push(1);
-                delay += answer[i].reaction - answer[i].cue;
+                reactionTime = answer[i].reaction - answer[i].cue;
+                if(i==0 || (reactionTime < bestReactionTime)) {
+                    bestReactionTime = reactionTime;
+                }
+                delay += reactionTime;
             } else {
                 successfulHits.push(0);
             }
         }
-        var avgDelay = (cuesHit>0) ? (delay/cuesHit) : 0;
+        var avgReactionTime = (cuesHit>0) ? (delay/cuesHit) : 0;
         return {
             cuesTotal: cuesTotal,
             cuesHit: cuesHit,
             hitRatio: cuesHit/cuesTotal,
-            avgDelay: avgDelay
+            avgReactionTime: avgReactionTime,
+            bestReactionTime: bestReactionTime
         }
     }
 });

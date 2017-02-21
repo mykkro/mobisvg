@@ -2,7 +2,8 @@
     "$type": "playonweb-translation", 
     "version": "1.0", 
     "translations": {
-        "Show mistakes": "Show mistakes"
+        "Show mistakes": "Show mistakes", 
+        "Total time": "Total Time [s]"
     }, 
     "language": "en"
 }

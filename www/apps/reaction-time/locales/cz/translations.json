@@ -2,8 +2,14 @@
     "$type": "playonweb-translation", 
     "version": "1.0", 
     "translations": {
+        "allowedShift": "Povolen\u00e1 odchylka \u010dasu [ms]", 
+        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+        "avgFrameLen": "\u010cas do dal\u0161\u00edho objektu [ms]", 
+        "Best reaction time": "Nejkrat\u0161\u00ed doba reakce", 
+        "targetTimeout": "Objekt zmiz\u00ed za [ms]", 
         "Average delay": "Pr\u016fm\u011brn\u00e1 doba reakce", 
-        "Hit ratio": "Procento z\u00e1sah\u016f"
+        "Hit ratio": "Procento z\u00e1sah\u016f", 
+        "N": "Po\u010det opakov\u00e1n\u00ed"
     }, 
     "language": "cz"
 }

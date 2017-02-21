@@ -1,2 +1,8 @@
 ﻿"Hit ratio": "Procento zásahů"
 "Average delay": "Průměrná doba reakce"
+N: Počet opakování
+avgFrameLen: Čas do dalšího objektu [ms]
+allowedShift: Povolená odchylka času [ms]
+targetTimeout: Objekt zmizí za [ms]
+Best reaction time: Nejkratší doba reakce
+Average reaction time: Průměrná doba reakce

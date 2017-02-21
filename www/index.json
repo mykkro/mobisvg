@@ -673,8 +673,14 @@
                 {
                     "preview": false, 
                     "translations": {
+                        "allowedShift": "Time tolerance [ms]", 
+                        "Average reaction time": "Average reaction time", 
+                        "avgFrameLen": "Time until next object [ms]", 
+                        "Best reaction time": "Best reaction time", 
+                        "targetTimeout": "Object disappears after [ms]", 
                         "Average delay": "Average delay", 
-                        "Hit ratio": "Hit ratio"
+                        "Hit ratio": "Hit ratio", 
+                        "N": "Repeat count"
                     }, 
                     "name": "en", 
                     "metadata": {
@@ -687,8 +693,14 @@
                 {
                     "preview": false, 
                     "translations": {
+                        "allowedShift": "Povolen\u00e1 odchylka \u010dasu [ms]", 
+                        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+                        "avgFrameLen": "\u010cas do dal\u0161\u00edho objektu [ms]", 
+                        "Best reaction time": "Nejkrat\u0161\u00ed doba reakce", 
+                        "targetTimeout": "Objekt zmiz\u00ed za [ms]", 
                         "Average delay": "Pr\u016fm\u011brn\u00e1 doba reakce", 
-                        "Hit ratio": "Procento z\u00e1sah\u016f"
+                        "Hit ratio": "Procento z\u00e1sah\u016f", 
+                        "N": "Po\u010det opakov\u00e1n\u00ed"
                     }, 
                     "name": "cz", 
                     "metadata": {
@@ -701,7 +713,47 @@
             ], 
             "game_class": "ReactionTimeGame", 
             "preview": true, 
-            "config": null, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "N", 
+                    "title": "", 
+                    "default": 12, 
+                    "type": "int", 
+                    "maxValue": 20, 
+                    "minValue": 1
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 1000, 
+                    "maxValue": 10000, 
+                    "minValue": 100, 
+                    "type": "int", 
+                    "by": 100, 
+                    "name": "allowedShift"
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 3000, 
+                    "maxValue": 10000, 
+                    "minValue": 100, 
+                    "type": "int", 
+                    "by": 100, 
+                    "name": "targetTimeout"
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 5000, 
+                    "maxValue": 10000, 
+                    "minValue": 100, 
+                    "type": "int", 
+                    "by": 1000, 
+                    "name": "avgFrameLen"
+                }
+            ], 
             "resources": {}
         }, 
         {
@@ -925,7 +977,8 @@
                 {
                     "preview": true, 
                     "translations": {
-                        "Show mistakes": "Show mistakes"
+                        "Show mistakes": "Show mistakes", 
+                        "Total time": "Total Time [s]"
                     }, 
                     "name": "en", 
                     "metadata": {
@@ -938,7 +991,8 @@
                 {
                     "preview": false, 
                     "translations": {
-                        "Show mistakes": "Zv\u00fdraznit chyby"
+                        "Show mistakes": "Zv\u00fdraznit chyby", 
+                        "Total time": "Celkov\u00fd \u010das [s]"
                     }, 
                     "name": "cz", 
                     "metadata": {
