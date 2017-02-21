@@ -20,11 +20,21 @@
     {
         "description": "", 
         "title": "", 
-        "default": 2000, 
+        "default": 1000, 
         "maxValue": 10000, 
         "minValue": 500, 
         "type": "int", 
         "by": 100, 
-        "name": "delay"
+        "name": "displayDuration"
+    }, 
+    {
+        "description": "", 
+        "title": "", 
+        "default": 3000, 
+        "maxValue": 10000, 
+        "minValue": 500, 
+        "type": "int", 
+        "by": 100, 
+        "name": "repeatAfter"
     }
 ]

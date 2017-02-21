@@ -1,6 +1,12 @@
 {
     "$type": "playonweb-translation", 
     "version": "1.0", 
-    "translations": null, 
+    "translations": {
+        "displayDuration": "Display for [ms]", 
+        "dualType": "Shape type", 
+        "L": "Repeat count", 
+        "repeatAfter": "Repeat after [ms]", 
+        "N": "N"
+    }, 
     "language": "en"
 }

@@ -114,6 +114,12 @@ var GameGUI = Base.extend({
         var exitBtn = new ButtonWidget(this.instance.tr("Exit"), this.buttonStyle);        
         var historyBtn = new ButtonWidget(this.instance.tr("History"), this.buttonStyle);        
 
+        var configFields = this.instance.config || [];
+        console.log("Config fields:", configFields);
+        if(configFields.length == 0) {
+            settingsBtn.setEnabled(false);
+        }
+
         var gap = 40;
         var yy = 900;
         Widget.layoutButtons([startBtn, settingsBtn, instrBtn, historyBtn, exitBtn], gap, yy);

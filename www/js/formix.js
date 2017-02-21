@@ -6,30 +6,31 @@ var renderLabel = function(label) {
     return $("<label>").text(label);    
 }
 
-var renderInput = function(fld) {
+var renderInput = function(fld, loc) {
     if(fld.type == "boolean") {
-        return new CheckboxInput(fld);
+        return new CheckboxInput(fld, loc);
     }
     if(fld.type == "int") {
         if(fld.maxValue-fld.minValue < 10) {
             if(fld.maxValue-fld.minValue < 5) {
-                return new RadioInput(fld);
+                return new RadioInput(fld, loc);
             }
-            return new SelectInput(fld);
+            return new SelectInput(fld, loc);
         }
-        return new NumberInput(fld);    
+        return new NumberInput(fld, loc);    
     }
     if(fld.values) {
         if(fld.values.length < 5) {
-            return new RadioInput(fld);
+            return new RadioInput(fld, loc);
         }
-        return new SelectInput(fld);
+        return new SelectInput(fld, loc);
     }
-    return new TextInput(fld);
+    return new TextInput(fld, loc);
 }
 
 var Input = Base.extend({
-    constructor: function(fld) {                    
+    constructor: function(fld, loc) {                    
+        this.loc = loc || function(t) { return t; };
         this.fld = fld;
     },
     val: function(val) {
@@ -46,8 +47,8 @@ var Input = Base.extend({
 });
 
 var TextInput = Input.extend({
-    constructor: function(fld) {                    
-        this.base(fld);
+    constructor: function(fld, loc) {                    
+        this.base(fld, loc);
         this.input = $("<input>").attr({"type":"text", "name":fld.name, "value": fld.default});
     },
     _setValue: function(val) {
@@ -59,8 +60,8 @@ var TextInput = Input.extend({
 });
 
 var NumberInput = Input.extend({
-    constructor: function(fld) {
-        this.base(fld);
+    constructor: function(fld, loc) {                    
+        this.base(fld, loc);
         this.input = $("<input>").attr({"type":"text", "name":fld.name, "value": fld.default});
     },
     _setValue: function(val) {
@@ -72,8 +73,8 @@ var NumberInput = Input.extend({
 });
 
 var CheckboxInput = Input.extend({
-    constructor: function(fld) {
-        this.base(fld);
+    constructor: function(fld, loc) {                    
+        this.base(fld, loc);
         var inp = $("<input>").attr({"type":"checkbox", "name":fld.name});
         inp.prop('checked', fld.default);
         this.input = inp;
@@ -87,12 +88,14 @@ var CheckboxInput = Input.extend({
 });
 
 var SelectInput = Input.extend({
-    constructor: function(fld) {
-        this.base(fld);
+    constructor: function(fld, loc) {                    
+        this.base(fld, loc);
+        var self = this;
         console.log("Rendering select input", fld);
         var out = $("<select>").attr({"name":fld.name});
         var values = fld.values;
-        var valueLabels = fld.valueLabels || values;
+        var valueLabels = fld.valueLabels || values || [];
+        valueLabels = valueLabels.map(function(l) { return self.loc(l); });
         if(fld.type=="int") {
             values = [];
             valueLabels = [];
@@ -121,12 +124,14 @@ var SelectInput = Input.extend({
 });
 
 var RadioInput = Input.extend({
-    constructor: function(fld) {
-        this.base(fld);
+    constructor: function(fld, loc) {                    
+        this.base(fld, loc);
+        var self = this;
         console.log("Rendering radio input", fld);
         var out = $("<div class=\"formix-radiogroup\">");
         var values = fld.values;
-        var valueLabels = fld.valueLabels || fld.values;
+        var valueLabels = fld.valueLabels || fld.values || [];
+        valueLabels = valueLabels.map(function(l) { return self.loc(l); });
         if(fld.type=="int") {
             values = [];
             valueLabels = [];
@@ -164,7 +169,7 @@ var Field = Base.extend({
         this.loc = loc || function(t) { return t; };
         this.name = fld.name;
         this.title = fld.title || fld.name;
-        this.input = renderInput(fld);
+        this.input = renderInput(fld, this.loc);
         this.body = $("<div>").addClass("formix-field").append(
             renderLabel(this.loc(this.title)),
             this.input.input

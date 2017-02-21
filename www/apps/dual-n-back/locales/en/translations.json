@@ -2,7 +2,15 @@
     "$type": "playonweb-translation", 
     "version": "1.0", 
     "translations": {
-        "Repeat count": "Repeat count"
+        "repeatAfter": "Repeat after [ms]", 
+        "displayDuration": "Display for [ms]", 
+        "dualType": "Shape type", 
+        "nSigns": "Number of signs", 
+        "N": "N", 
+        "Colors": "Colors", 
+        "Signs": "Signs", 
+        "Repeat count": "Repeat count", 
+        "nColors": "Number of colors"
     }, 
     "language": "en"
 }

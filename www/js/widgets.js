@@ -369,7 +369,7 @@ var TextWidget = Widget.extend({
                 // TODO maxHeight
             });
             var bbox = shape.getBBox();
-            yy += Math.max(bbox.height, self.fontSize * 1.15);
+            yy += Math.max(bbox.height + self.fontSize * 0.5, self.fontSize * 1.15);
             self.shapes.push(shape);
         });
         // clear Raphael set

@@ -19,7 +19,7 @@ locales:
   - cz:
     - title:        Dual N-Back
     - subtitle:     Procvičte svoji pracovní paměť
-    - description:
+    - description:  " "
     - instructions: |
         Na začátku hry se objeví modrý čtverec na jedné z devíti možných pozic. Zapamatujte si, kde se čtverec objevil. Po několika vteřinách prodlevy se objeví čtverec znovu na stejném, nebo jiném místě. Pokud se objevil na takovém místě, na kterém se objevil o N zobrazení dříve, zmáčkněte tlačítko s nápisem „pozice“ ve spodní části obrazovky.
         Dále sledujete, zda barva/tvar zobrazeného čtverce se shoduje s barvou/tvarem objektu, který se objevil o N zobrazení dříve. Podle toho, jaká varianta nastala, zvolíte tlačítko ve spodní části obrazovky.

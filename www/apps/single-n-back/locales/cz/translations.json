@@ -1,6 +1,11 @@
 {
     "$type": "playonweb-translation", 
     "version": "1.0", 
-    "translations": null, 
+    "translations": {
+        "displayDuration": "Doba zobrazen\u00ed [ms]", 
+        "L": "Po\u010det opakov\u00e1n\u00ed", 
+        "repeatAfter": "Opakuj za [ms]", 
+        "N": "N"
+    }, 
     "language": "cz"
 }

@@ -11,6 +11,8 @@ var NBackGame = Game.extend({
         this.dualType = config.dualType;
         this.N = config.N;
         this.L = config.L;
+        this.displayDuration = config.displayDuration || 1000;
+        this.repeatAfter = config.repeatAfter || 3000;
         this.maxColors = Math.min(config.nColors, NBackGame.colors.length);
         this.maxSigns = Math.min(config.nSigns, NBackGame.signImages.length);
     },
@@ -53,8 +55,8 @@ var NBackGame = Game.extend({
             this.timer.stop();
             return;
         }
-        var delay1 = 1000;
-        var delay2 = 2000;
+        var delay1 = this.displayDuration;
+        var delay2 = this.repeatAfter - this.displayDuration;
         //console.log("Time: ", elapsedMillis, "Frame:", this.currentFrame, "Last time:", this.lastFrameTime);
         if((elapsedMillis >= this.lastFrameTime + delay1) && this.lastBox) {
             this.lastBox.remove();

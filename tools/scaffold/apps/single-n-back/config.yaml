@@ -18,13 +18,23 @@
             "default": 10
         },
         { 
-            "name": "delay",
+            "name": "displayDuration",
             "title": "",
             "description": "",
             "type": "int",
             "minValue": 500,
             "maxValue": 10000,
             "by": 100,
-            "default": 2000 
+            "default": 1000
+        },
+        {
+            "name": "repeatAfter",
+            "title": "",
+            "description": "",
+            "type": "int",
+            "minValue": 500,
+            "maxValue": 10000,
+            "by": 100,
+            "default": 3000
         }
 ]               

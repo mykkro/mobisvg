@@ -123,7 +123,15 @@
                 {
                     "preview": false, 
                     "translations": {
-                        "Repeat count": "Repeat count"
+                        "repeatAfter": "Repeat after [ms]", 
+                        "displayDuration": "Display for [ms]", 
+                        "dualType": "Shape type", 
+                        "nSigns": "Number of signs", 
+                        "N": "N", 
+                        "Colors": "Colors", 
+                        "Signs": "Signs", 
+                        "Repeat count": "Repeat count", 
+                        "nColors": "Number of colors"
                     }, 
                     "name": "en", 
                     "metadata": {
@@ -136,13 +144,21 @@
                 {
                     "preview": false, 
                     "translations": {
-                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed"
+                        "repeatAfter": "Opakuj za [ms]", 
+                        "displayDuration": "Doba zobrazen\u00ed [ms]", 
+                        "dualType": "Typ objekt\u016f", 
+                        "nSigns": "Po\u010det zna\u010dek", 
+                        "N": "N", 
+                        "Colors": "Barvy", 
+                        "Signs": "Zna\u010dky", 
+                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed", 
+                        "nColors": "Po\u010det barev"
                     }, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Na za\u010d\u00e1tku hry se objev\u00ed modr\u00fd \u010dtverec na jedn\u00e9 z\u00a0dev\u00edti mo\u017en\u00fdch pozic. Zapamatujte si, kde se \u010dtverec objevil. Po n\u011bkolika vte\u0159in\u00e1ch prodlevy se objev\u00ed \u010dtverec znovu na stejn\u00e9m, nebo jin\u00e9m m\u00edst\u011b. Pokud se objevil na takov\u00e9m m\u00edst\u011b, na kter\u00e9m se objevil o N zobrazen\u00ed d\u0159\u00edve, zm\u00e1\u010dkn\u011bte tla\u010d\u00edtko s\u00a0n\u00e1pisem \u201epozice\u201c ve spodn\u00ed \u010d\u00e1sti obrazovky.\nD\u00e1le sledujete, zda barva/tvar zobrazen\u00e9ho \u010dtverce se shoduje s\u00a0barvou/tvarem objektu, kter\u00fd se objevil o N zobrazen\u00ed d\u0159\u00edve. Podle toho, jak\u00e1 varianta nastala, zvol\u00edte tla\u010d\u00edtko ve spodn\u00ed \u010d\u00e1sti obrazovky.\nVhodn\u00e9 je nejprve procvi\u010dit \u00falohu Single N-Back a za\u010d\u00edt od obt\u00ed\u017enosti N=1.\n", 
                         "subtitle": "Procvi\u010dte svoji pracovn\u00ed pam\u011b\u0165", 
-                        "description": null, 
+                        "description": " ", 
                         "title": "Dual N-Back"
                     }
                 }
@@ -170,13 +186,23 @@
                 }, 
                 {
                     "description": "", 
-                    "title": "delay", 
-                    "default": 2000, 
+                    "title": "", 
+                    "default": 1000, 
                     "maxValue": 10000, 
                     "minValue": 500, 
                     "type": "int", 
                     "by": 100, 
-                    "name": "delay"
+                    "name": "displayDuration"
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 3000, 
+                    "maxValue": 10000, 
+                    "minValue": 500, 
+                    "type": "int", 
+                    "by": 100, 
+                    "name": "repeatAfter"
                 }, 
                 {
                     "valueLabels": [
@@ -428,7 +454,13 @@
             "locales": [
                 {
                     "preview": false, 
-                    "translations": null, 
+                    "translations": {
+                        "displayDuration": "Display for [ms]", 
+                        "dualType": "Shape type", 
+                        "L": "Repeat count", 
+                        "repeatAfter": "Repeat after [ms]", 
+                        "N": "N"
+                    }, 
                     "name": "en", 
                     "metadata": {
                         "instructions": "When the game starts, you will see a blue box placed at one of 9 possible positions in a 3x3 grid. Remember where the box appeared. After a few seconds, another box appears in a different position. The task is, to recall if the currently shown box is at the same position as the box shown N frames back (N times ago). If you think the current box has the same position as the box shown N frames earlier, press the Position button. Start with N=2 (2-back), and eventually you will be good enough to try 3-back, 4-back and so on.", 
@@ -439,7 +471,12 @@
                 }, 
                 {
                     "preview": false, 
-                    "translations": null, 
+                    "translations": {
+                        "displayDuration": "Doba zobrazen\u00ed [ms]", 
+                        "L": "Po\u010det opakov\u00e1n\u00ed", 
+                        "repeatAfter": "Opakuj za [ms]", 
+                        "N": "N"
+                    }, 
                     "name": "cz", 
                     "metadata": {
                         "instructions": "Na za\u010d\u00e1tku hry se objev\u00ed modr\u00fd \u010dtverec na jedn\u00e9 z\u00a0dev\u00edti mo\u017en\u00fdch pozic. Zapamatujte si, kde se \u010dtverec objevil. Po n\u011bkolika vte\u0159in\u00e1ch prodlevy se objev\u00ed \u010dtverec znovu na stejn\u00e9m, nebo jin\u00e9m m\u00edst\u011b. Pokud se objevil na takov\u00e9m m\u00edst\u011b, na kter\u00e9m byl zobrazen\u00fd o N zobrazen\u00ed d\u0159\u00edve, zm\u00e1\u010dkn\u011bte tla\u010d\u00edtko s\u00a0n\u00e1pisem \u201epozice\u201c ve spodn\u00ed \u010d\u00e1sti obrazovky.\nP\u0159i nastaven\u00ed p\u0159edvolby N=1 sledujete, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b dvakr\u00e1t po sob\u011b.\nP\u0159i nastaven\u00ed p\u0159edvolby N=2 vzpom\u00edn\u00e1te, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b ob jedno zobrazen\u00ed d\u0159\u00edve.\nP\u0159i nastaven\u00ed p\u0159edvolby N=3 sledujete, zda se zobrazil \u010dtverec na stejn\u00e9m m\u00edst\u011b jako o t\u0159i zobrazen\u00ed d\u0159\u00edve.\nVhodn\u00e9 je za\u010d\u00edt nejprve od obt\u00ed\u017enosti N=1.\n", 
@@ -473,12 +510,22 @@
                 {
                     "description": "", 
                     "title": "", 
-                    "default": 2000, 
+                    "default": 1000, 
                     "maxValue": 10000, 
                     "minValue": 500, 
                     "type": "int", 
                     "by": 100, 
-                    "name": "delay"
+                    "name": "displayDuration"
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 3000, 
+                    "maxValue": 10000, 
+                    "minValue": 500, 
+                    "type": "int", 
+                    "by": 100, 
+                    "name": "repeatAfter"
                 }
             ], 
             "resources": {}
@@ -791,8 +838,10 @@
                 {
                     "preview": false, 
                     "translations": {
+                        "rotateGoals": "Rotate goals", 
                         "Total time": "Total time", 
-                        "Mistakes total": "Mistakes total"
+                        "Mistakes total": "Mistakes total", 
+                        "N": "Number of goals"
                     }, 
                     "name": "en", 
                     "metadata": {
@@ -805,8 +854,10 @@
                 {
                     "preview": false, 
                     "translations": {
+                        "rotateGoals": "Rotovat c\u00edle", 
                         "Total time": "Celkov\u00fd \u010das", 
-                        "Mistakes total": "Po\u010det chyb"
+                        "Mistakes total": "Po\u010det chyb", 
+                        "N": "Po\u010det c\u00edl\u016f"
                     }, 
                     "name": "cz", 
                     "metadata": {
