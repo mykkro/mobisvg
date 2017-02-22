@@ -1,7 +1,5 @@
 
-
-
-var MemoryGame = Game.extend({
+var MemoryGame = TimedGame.extend({
     constructor: function(config) {
         this.base(config);
     },
@@ -148,9 +146,12 @@ var MemoryGame = Game.extend({
     //alert("Well done!");
     this.finish();
   },
-    generateReport: function(evalResult) {
-        return [this.loc("All cards found!")];
-    },
+  generateReport: function(evalResult) {
+      return [
+        this.loc("All cards found!"),
+        this.loc("Total time") + ": " + (this.currentTime / 1000) + " s"
+      ];
+  },
   turnTilesBack: function() {
     var self = this;
     this.turned.forEach(function(t) {
@@ -161,6 +162,8 @@ var MemoryGame = Game.extend({
   _hidden: function(index) {
     console.log("Tile hidden:", index);
     this.playground[index].tile.free = true;
+  },
+  update: function(elapsedMillis) {
   },
   loadGamepackData: function() {
         var self = this;
@@ -175,20 +178,11 @@ var MemoryGame = Game.extend({
         });
         return dfd.promise();
     },
-    start: function(gamedata) {
-        this.base(gamedata);
+    initializeTask: function() {
+        var gamedata = this.gamedata;
         var self = this;
-        console.log("MemoryGame:start", self.meta);
-
-        self.loadGamepackData().done(function(gamepack) {
-            console.log("Gamepack loaded", gamepack);
-            self.gamepack = gamepack;
-            self.tilesetBaseUrl = dirname(self.gamepack.tilesetUrl);
-            self.task = new NullTask();
-            self.renderFrame();
-        });
-
-
+        self.tilesetBaseUrl = dirname(self.gamepack.tilesetUrl);
+        self.task = new NullTask();
     }
 },{
 });

@@ -1,6 +1,6 @@
 
 
-var ReverseColorTestGame = Game.extend({
+var ReverseColorTestGame = TimedGame.extend({
     constructor: function(config) {
         this.base(config);
         this.currentFrame = 0;
@@ -18,6 +18,8 @@ var ReverseColorTestGame = Game.extend({
         this.updateCounter();
 
         this.body = new GroupWidget(); 
+    },
+    update: function(elapsedMillis) {
     },
     updateCounter: function() {
         this.label.setText((this.currentFrame+1)+"/"+this.totalFrames);
@@ -44,10 +46,26 @@ var ReverseColorTestGame = Game.extend({
             }
             out.push({label: labelColor, color: color});
         }
-
-        // TODO color names must be localized
         return out;
     },    
+    generateReport: function(evalResult) {
+        console.log("Generate report", evalResult, this.times);
+        var minDelay = -1;
+        var avgDelay = 0;
+        this.times.forEach(function(t) {
+            if(minDelay < 0 || t < minDelay) {
+                minDelay = t;
+            }
+            avgDelay += t;
+        })
+        avgDelay /= this.times.length;
+        return [
+            this.loc("Correctness") + ": "+ sprintf("%.1f%%", evalResult.correctness * 100),
+            this.loc("Total time") + ": " + (this.currentTime / 1000) + " s",
+            this.loc("Minimum reaction time") + ": " + (minDelay / 1000) + " s",
+            this.loc("Average reaction time") + ": " + (avgDelay / 1000) + " s"
+        ];
+    },
     _colorButton: function(color, x, y, callback) {
         var r1 = new RectWidget(180, 180);
         r1.setStyle({"fill":color, "stroke":"none"});
@@ -66,7 +84,9 @@ var ReverseColorTestGame = Game.extend({
         var g = this.goals[this.currentFrame];
 
         var _colorSelected = function(color) {
+            var delay = self.currentTime - self.lastAppeareanceTime;
             var matched = (color == g.color);
+            self.times[self.currentFrame] = delay;
             self.answer[self.currentFrame] = matched;
             self.body.clearContents();
             setTimeout(function() {
@@ -86,7 +106,9 @@ var ReverseColorTestGame = Game.extend({
         var labelSvg = new TextWidget(600, 100, "middle", this.loc(g.label));
         labelSvg.setPosition(200, 550)
         labelSvg.setStyle({"fill": g.color});    
-        this.body.addChild(labelSvg);    
+        this.body.addChild(labelSvg);
+
+        this.lastAppeareanceTime = this.currentTime;
     },
     advanceFrame: function() {
         this.currentFrame++;
@@ -96,25 +118,23 @@ var ReverseColorTestGame = Game.extend({
             this.renderFrame();
         }
     },
-    start: function(gamedata) {
-        this.base(gamedata);
-
+    initializeTask: function() {
         var self = this;
         this.currentFrame = 0;
-        self.totalFrames = gamedata.length;
+        this.lastAppeareanceTime = 0;
+        self.totalFrames = this.gamedata.length;
         self.answer = [];
+        self.times = [];
         self.goals = [];
 
         // prepare data...
         this.gamedata.forEach(function(gd) {
             self.goals.push(gd);
             self.answer.push(null);
+            self.times.push(0);
         });
 
         self.task = new BinaryMultiTask();
-
-        self.renderFrame();
-
     }
 },{
 });

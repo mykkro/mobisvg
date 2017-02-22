@@ -38,10 +38,12 @@
                     "preview": false, 
                     "translations": {
                         "blue": "blue", 
-                        "Repeat count": "Repeat count", 
+                        "Minimum reaction time": "Minimum reaction time", 
                         "green": "green", 
-                        "yellow": "yellow", 
-                        "red": "red"
+                        "red": "red", 
+                        "Average reaction time": "Average reaction time", 
+                        "Repeat count": "Repeat count", 
+                        "yellow": "yellow"
                     }, 
                     "name": "en", 
                     "metadata": {
@@ -55,10 +57,12 @@
                     "preview": false, 
                     "translations": {
                         "blue": "modr\u00e1", 
-                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed", 
+                        "Minimum reaction time": "Nejkrat\u0161\u00ed doba reakce", 
                         "green": "zelen\u00e1", 
-                        "yellow": "\u017elut\u00e1", 
-                        "red": "\u010derven\u00e1"
+                        "red": "\u010derven\u00e1", 
+                        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed", 
+                        "yellow": "\u017elut\u00e1"
                     }, 
                     "name": "cz", 
                     "metadata": {
@@ -1031,12 +1035,13 @@
                 "Save": "Save", 
                 "Finish": "Finish", 
                 "entertainment": "entertainment", 
+                "Settings": "Settings", 
                 "spatial": "spatial", 
                 "Instructions": "Instructions", 
                 "Reset": "Reset", 
                 "Both": "Both", 
                 "Language": "Language", 
-                "Settings": "Settings", 
+                "Total time": "Total time", 
                 "attention": "attention", 
                 "Correctness": "Correctness", 
                 "visual": "visual", 
@@ -1074,12 +1079,13 @@
                 "Save": "Ulo\u017eit", 
                 "Finish": "Konec", 
                 "entertainment": "z\u00e1bava", 
+                "Settings": "Nastaven\u00ed", 
                 "spatial": "prostorov\u00fd", 
                 "Instructions": "Instrukce", 
                 "Reset": "Reset", 
                 "Both": "Oboj\u00ed", 
                 "Language": "Jazyk", 
-                "Settings": "Nastaven\u00ed", 
+                "Total time": "Celkov\u00fd \u010das", 
                 "attention": "pozornost", 
                 "Correctness": "\u00dasp\u011b\u0161nost", 
                 "visual": "vizu\u00e1ln\u00ed", 

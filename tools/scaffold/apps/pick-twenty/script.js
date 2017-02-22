@@ -1,6 +1,6 @@
 
 
-var PickTwentyGame = Game.extend({
+var PickTwentyGame = TimedGame.extend({
     constructor: function(config) {
         this.base(config);
         this.locations = [];
@@ -18,6 +18,10 @@ var PickTwentyGame = Game.extend({
             }
         }
         return true;
+    },
+    renderFrame: function() {
+    },
+    update: function(elapsedMillis) {
     },
     placeGoal: function(x1, x2, y1, y2, rad, goal) {
         var p = randomPoint(x1, x2, y1, y2);
@@ -40,8 +44,8 @@ var PickTwentyGame = Game.extend({
         this.loc("Mistakes total")+ ": " + evalResult.mistakes
         ];
     },        
-    start: function(gamedata) {
-        this.base(gamedata);
+    initializeTask: function() {
+        var gamedata = this.gamedata;
         this.locations = [];
         this.mistakes = 0;
         var self = this;
@@ -98,7 +102,7 @@ var PickTwentyGame = Game.extend({
             aa.onClick(function(btn) {
                 player.playSound("click");
                 // which index?
-                var elapsedTime = new Date().getTime() - self.startTime;
+                var elapsedTime = self.currentTime;
                 if(self.correct) {
                     console.log("Correct!", self.counter, elapsedTime);
                     // log success (time) + relevant data
@@ -118,7 +122,6 @@ var PickTwentyGame = Game.extend({
         }
 
         self.task = new NullTask();
-        self.startTime = new Date().getTime();        
 
     }
 },{

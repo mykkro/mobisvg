@@ -1,23 +1,20 @@
 
-
-
-var ReactionTimeGame = Game.extend({
+var ReactionTimeGame = TimedGame.extend({
     constructor: function(config) {
         this.base(config);
         this.totalFrames = 0;
         this.currentFrame = 0;
         this.targetClicked = false;
-        this.currentTime = 0;
     },
     createGUI: function(r) {
         var labelSvg = new TextWidget(600, 50, "middle", "");
         labelSvg.setPosition(200, 140)
-        labelSvg.setStyle({"fill": "black"});        
+        labelSvg.setStyle({"fill": "black"});
         this.label = labelSvg;
-        this.body = new GroupWidget(); 
+        this.body = new GroupWidget();
     },
     showTarget: function() {
-        var self = this;        
+        var self = this;
         var img0 = new ImageWidget(self.baseUrl + "/assets/1.png", 200, 200);
         img0.setPosition(100+Math.random()*600, 300+Math.random()*400);
         var clk = new Clickable(img0);
@@ -40,18 +37,19 @@ var ReactionTimeGame = Game.extend({
             this.loc("Average reaction time") + ": "+ sprintf("%.2f s", evalResult.avgReactionTime / 1000),
         ];
     },
-    start: function(gamedata) {
-        this.base(gamedata);
+    initializeTask: function() {
         this.totalFrames = this.gamedata.length/2;
         this.task = new ReactionTimeTask();
         this.events = this.gamedata.slice(0);
         this.targetShowTime = -1;
         this.targetReactionTime = -1;
         this.answer = [];
-        this.updateCounter();
-        this.startTimer();
     },
-    checkFrame: function(elapsedMillis) {
+    renderFrame: function() {
+        this.updateCounter();
+    },
+    update: function(elapsedMillis) {
+        // console.log("ReactionTimeGame.update", elapsedMillis);
         this.currentTime = elapsedMillis;
         if(this.events.length == 0) {
             this.timer.stop();
@@ -78,16 +76,6 @@ var ReactionTimeGame = Game.extend({
     updateCounter: function() {
         this.label.setText((this.currentFrame+1)+"/"+this.totalFrames);
     },
-    startTimer: function() {
-        this.currentFrame = 0;
-        var self = this;
-        var timer = new Timer();
-        this.timer = timer;
-        timer.start({precision: 'secondTenths', callback: function (values) {
-            var elapsedMillis = values.secondTenths * 100 + values.seconds * 1000 + values.minutes * 60000 + values.hours * 3600000;
-            self.checkFrame(elapsedMillis);
-        }});
-    },
     generateTaskData: function(options) {
         // generate event sequence
         // events:
@@ -107,15 +95,8 @@ var ReactionTimeGame = Game.extend({
             events.push({"type": "cleartarget", "time": eventStartTime + targetTimeout});
         }
         return events;
-    },
-    abort: function() {
-        this.base();       
-        this.timer.stop(); 
-    },
-    finish: function(result) {
-        this.timer.stop(); 
-        this.base(result);       
     }
 
 });
+
 

@@ -3,10 +3,12 @@
     "version": "1.0", 
     "translations": {
         "blue": "blue", 
-        "Repeat count": "Repeat count", 
+        "Minimum reaction time": "Minimum reaction time", 
         "green": "green", 
-        "yellow": "yellow", 
-        "red": "red"
+        "red": "red", 
+        "Average reaction time": "Average reaction time", 
+        "Repeat count": "Repeat count", 
+        "yellow": "yellow"
     }, 
     "language": "en"
 }
