@@ -192,7 +192,7 @@ var GameGUI = Base.extend({
         return [saveBtn, resetBtn, backBtn];
     },
     createResultsPageButtons: function() {
-        var againBtn = new ButtonWidget(this.instance.tr("Play again"), this.buttonStyle);        
+        var againBtn = new ButtonWidget(this.instance.tr("Run again"), this.buttonStyle);        
         var backBtn = new ButtonWidget(this.instance.tr("Back"), this.buttonStyle);        
         var gap = 40;
         var yy = 900;

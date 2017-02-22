@@ -55,30 +55,33 @@ var NBackGame = Game.extend({
             this.timer.stop();
             return;
         }
-        var delay1 = this.displayDuration;
-        var delay2 = this.repeatAfter - this.displayDuration;
-        //console.log("Time: ", elapsedMillis, "Frame:", this.currentFrame, "Last time:", this.lastFrameTime);
-        if((elapsedMillis >= this.lastFrameTime + delay1) && this.lastBox) {
+        if(this.boxMode == "show" && elapsedMillis >= this.timeToHide) {
             this.lastBox.remove();
             this.lastBox = null;
+            this.boxMode = "hide";
         }
-        if(elapsedMillis >= this.lastFrameTime + delay1 + delay2) {
+        if(this.boxMode == "hide" && elapsedMillis >= this.timeToNext) {
             this.currentFrame++;
-            this.lastFrameTime += (delay1 + delay2);
+            this.timeToNext = elapsedMillis +  this.repeatAfter;
+            this.timeToHide = elapsedMillis +  this.displayDuration;
             this.updateCounter();
             this.showFrame();
+            this.boxMode = "show";
         }
     },
     showFrame: function() {
+        // to be overridden in subclasses
     },
     startTimer: function() {
         this.currentFrame = 0;
         this.lastBox = null;
         this.showFrame();
+        this.boxMode = "show";
+        this.timeToNext = this.repeatAfter;
+        this.timeToHide = this.displayDuration;
         var self = this;
         var timer = new Timer();
         this.timer = timer;
-        this.lastFrameTime = 0;
         timer.start({precision: 'secondTenths', callback: function (values) {
             var elapsedMillis = values.secondTenths * 100 + values.seconds * 1000 + values.minutes * 60000 + values.hours * 3600000;
             self.checkFrame(elapsedMillis);
