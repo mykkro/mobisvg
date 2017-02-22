@@ -59,14 +59,16 @@ var NBackGame = Game.extend({
             this.lastBox.remove();
             this.lastBox = null;
             this.boxMode = "hide";
+            this.timeToNext = elapsedMillis +  this.repeatAfter - this.displayDuration;
+            return;
         }
         if(this.boxMode == "hide" && elapsedMillis >= this.timeToNext) {
             this.currentFrame++;
-            this.timeToNext = elapsedMillis +  this.repeatAfter;
             this.timeToHide = elapsedMillis +  this.displayDuration;
             this.updateCounter();
             this.showFrame();
             this.boxMode = "show";
+            return;
         }
     },
     showFrame: function() {
@@ -77,7 +79,6 @@ var NBackGame = Game.extend({
         this.lastBox = null;
         this.showFrame();
         this.boxMode = "show";
-        this.timeToNext = this.repeatAfter;
         this.timeToHide = this.displayDuration;
         var self = this;
         var timer = new Timer();
