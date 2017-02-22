@@ -8,18 +8,58 @@ var randomPoint = function(x1, x2, y1, y2) {
     }
 };
 
-
+/**
+ *  Returns random number from range <0, n-1>
+ */
 var randomInt = function(max) {
 	return Math.floor(Math.random()*max);
+};
+
+/**
+ *  Returns random number from range <0, n-1>
+ */
+var randomIntVector = function(len, max) {
+  var vec = makeZeroes(len);
+  for(var i=0; i<len; i++) {
+    vec[i] = randomInt(max);
+  }
+  return vec;
+};
+
+/**
+ *  Returns random number from range <0, n-1>, except 
+ */
+var randomIntExcept = function(max, except) {
+    var index = 0;
+    if(max>1) {
+      do {
+        index = randomInt(max);
+      }
+      while(index == except);
+      return index;
+    }
 };
 
 /**
  *  Returns random item from an array.
  */
 var pickRandom = function(arr) {
-    return arr[Math.floor(Math.random()*arr.length)];
+    return arr[randomInt(arr.length)];
 };
 
+/**
+ *  Returns random item from an array.
+ */
+var pickRandomExcludeIndex = function(arr, excludeIndex) {
+    var index = 0;
+    if(arr.length>1) {
+      do {
+        index = randomInt(arr.length);
+      }
+      while(index == excludeIndex);
+      return arr[index];
+    }
+};
 
 /**
  *  Shuffles an array in place.

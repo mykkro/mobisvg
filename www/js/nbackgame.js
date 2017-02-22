@@ -91,6 +91,30 @@ var NBackGame = Game.extend({
     },
     generateTaskData: function(options) {
     },
+    /**
+     *  Generate random sequence of numbers for N-Back task.
+     *  L - length of the sequence
+     *  N - look-behind distance
+     *  pMatch - percentage of values that matches their predecessor (seq[i] == seq[i-N])
+     *  levels - output range (numbers in range 0..levels-1)
+     */
+    generateNBackSequence: function(L, N, pMatch, levels) {
+        var seq = randomIntVector(L, levels);
+        var M = L - N;
+        var indices = [];
+        for(var i=0; i<M; i++) {
+            indices.push(i+N);
+        }
+        indices.shuffle();
+        // take first pMatch*M numbers...
+        var MM = Math.floor(M*pMatch);
+        indices = indices.slice(0, MM);
+        indices.sort();
+        indices.forEach(function(j) {
+            seq[j+N] = seq[j];
+        });
+        return seq;
+    },
     abort: function() {
         this.base();       
         this.timer.stop(); 

@@ -33,10 +33,8 @@ var NBackSingleGame = NBackGame.extend({
         }
     },
     generateTaskData: function(options) {
-        var sequence = [], sequence1=[], sequence2=[];
-        for(var i=0; i<this.L; i++) {
-            sequence.push(randomInt(9));
-        }        
+        var sequence = this.generateNBackSequence(this.L, this.N, 0.25, 9);
+        console.log("NBackSingleGame.generateTaskData", sequence);
         return sequence;
     },
     start: function(gamedata) {
