@@ -183,6 +183,7 @@ var AppsGUI = Base.extend({
         var self = this;
         var settingsBtn = new ButtonWidget(this.indexLocalized.tr("Settings"), this.buttonStyle);        
         var historyBtn = new ButtonWidget(this.indexLocalized.tr("History"), this.buttonStyle);        
+        /**/historyBtn.setEnabled(false);/**/    
         var prevBtn, bextBtn;
         var btns = [];
         if(pg.page>1) {

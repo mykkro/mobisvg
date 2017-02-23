@@ -112,7 +112,8 @@ var GameGUI = Base.extend({
         var settingsBtn = new ButtonWidget(this.instance.tr("Settings"), this.buttonStyle);        
         var instrBtn = new ButtonWidget(this.instance.tr("Instructions"), this.buttonStyle);        
         var exitBtn = new ButtonWidget(this.instance.tr("Exit"), this.buttonStyle);        
-        var historyBtn = new ButtonWidget(this.instance.tr("History"), this.buttonStyle);        
+        var historyBtn = new ButtonWidget(this.instance.tr("History"), this.buttonStyle);    
+        /**/historyBtn.setEnabled(false);/**/    
 
         var configFields = this.instance.config || [];
         console.log("Config fields:", configFields);

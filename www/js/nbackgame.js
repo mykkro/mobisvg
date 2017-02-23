@@ -1,5 +1,5 @@
 
-var NBackGame = Game.extend({
+var NBackGame = TimedGame.extend({
     constructor: function(config) {
         console.log("Starting N-Back game with config", config);
         this.base(config);
@@ -50,43 +50,44 @@ var NBackGame = Game.extend({
         var cs = this.cellSize - 40;
         return r.image(image, this.x0+col*this.cellSize+20, this.y0+row*this.cellSize+20, cs, cs);
     },
-    checkFrame: function(elapsedMillis) {
+    update: function(elapsedMillis) {
         if(this.finished) {
             this.timer.stop();
             return;
         }
-        if(this.boxMode == "show" && elapsedMillis >= this.timeToHide) {
-            this.lastBox.remove();
+        // console.log(this.boxMode, this.lastBox, elapsedMillis, this.timeToHide, this.timeToNext);
+        if(this.boxMode == "show" && (elapsedMillis >= this.timeToHide)) {
+            if(this.lastBox) {
+                this.lastBox.remove();
+            }
             this.lastBox = null;
             this.boxMode = "hide";
             this.timeToNext = elapsedMillis +  this.repeatAfter - this.displayDuration;
             return;
         }
-        if(this.boxMode == "hide" && elapsedMillis >= this.timeToNext) {
+        // console.log(this.currentFrame, this.L, this.N);
+        if(this.boxMode == "hide" && (elapsedMillis >= this.timeToNext)) {
             this.currentFrame++;
-            this.timeToHide = elapsedMillis +  this.displayDuration;
-            this.updateCounter();
-            this.showFrame();
-            this.boxMode = "show";
-            return;
+            if(this.currentFrame == this.L) {
+                this.finish(this.answer);
+            } else {
+                this.timeToHide = elapsedMillis +  this.displayDuration;
+                this.updateCounter();
+                this.showObject();
+                this.boxMode = "show";
+            }
         }
     },
-    showFrame: function() {
+    showObject: function() {
         // to be overridden in subclasses
     },
     startTimer: function() {
         this.currentFrame = 0;
         this.lastBox = null;
-        this.showFrame();
         this.boxMode = "show";
         this.timeToHide = this.displayDuration;
-        var self = this;
-        var timer = new Timer();
-        this.timer = timer;
-        timer.start({precision: 'secondTenths', callback: function (values) {
-            var elapsedMillis = values.secondTenths * 100 + values.seconds * 1000 + values.minutes * 60000 + values.hours * 3600000;
-            self.checkFrame(elapsedMillis);
-        }});
+        this.showObject();
+        this.base();
     },
     indexAsPosition: function(index) {
         var px = index % 3;
@@ -118,10 +119,6 @@ var NBackGame = Game.extend({
             seq[j+N] = seq[j];
         });
         return seq;
-    },
-    abort: function() {
-        this.base();       
-        this.timer.stop(); 
     }
 }, {
     colors: [
