@@ -10,12 +10,12 @@ locales:
     - title:        Pick 20
     - subtitle:     " "
     - description:  " "
-    - instructions: " "
+    - instructions: "In this game, your goal is to find a sequence of numbers as fast as you can. Start with clicking on number one and then continue with higher numbers. If you click on wrong number, it will be shortly highlighted in red. The game ends when you find the whole sequence and click on its last number."
   - cz:
     - title:        Najdi posloupnost
     - subtitle:     " "
     - description:  " "
-    - instructions: " "
+    - instructions: "V této hře máte za úkol hledat posloupnost čísel. Na obrazovce se objeví náhodně čísla počínaje od jedné. Pokud kliknete na správné číslo v posloupnosti (jedničkou počínaje), číslo zezelená a vy můžete pokračovat dalším. Zvolíte-li číslo špatně, číslo na chvíli zčervená. Hra končí jakmile projdete celou posloupnost a zvolíte její poslední číslo."
 scripts:
 styles:
 resources:

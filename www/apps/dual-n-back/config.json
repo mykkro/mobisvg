@@ -38,6 +38,16 @@
         "name": "repeatAfter"
     }, 
     {
+        "description": "", 
+        "title": "", 
+        "default": 0.4, 
+        "maxValue": 0.8, 
+        "minValue": 0.2, 
+        "type": "float", 
+        "by": 0.05, 
+        "name": "matchProbability"
+    }, 
+    {
         "valueLabels": [
             "Colors", 
             "Signs"

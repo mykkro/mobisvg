@@ -36,5 +36,15 @@
             "maxValue": 10000,
             "by": 100,
             "default": 3000
+        },
+        {
+            "name": "matchProbability",
+            "title": "",
+            "description": "",
+            "type": "float",
+            "minValue": 0.2,
+            "maxValue": 0.8,
+            "by": 0.05,
+            "default": 0.4
         }
-]               
+]

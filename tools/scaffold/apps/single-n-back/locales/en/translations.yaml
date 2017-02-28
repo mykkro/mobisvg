@@ -3,3 +3,4 @@ N: N
 displayDuration: Display for [ms]
 repeatAfter: Repeat after [ms]
 dualType: Shape type
+matchProbability: Match Probability

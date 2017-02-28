@@ -3,6 +3,7 @@
     "version": "1.0", 
     "translations": {
         "repeatAfter": "Repeat after [ms]", 
+        "matchProbability": "Match probability", 
         "displayDuration": "Display for [ms]", 
         "dualType": "Shape type", 
         "nSigns": "Number of signs", 

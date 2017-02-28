@@ -34,7 +34,7 @@ var NBackSingleGame = NBackGame.extend({
         ];
     },
     generateTaskData: function(options) {
-        var sequence = this.generateNBackSequence(this.L, this.N, 0.25, 9);
+        var sequence = this.generateNBackSequence(this.L, this.N, this.matchProbability, 9);
         console.log("NBackSingleGame.generateTaskData", sequence);
         return sequence;
     },

@@ -11,6 +11,7 @@ var NBackGame = TimedGame.extend({
         this.dualType = config.dualType;
         this.N = config.N;
         this.L = config.L;
+        this.matchProbability = config.matchProbability || 0.4;
         this.displayDuration = config.displayDuration || 1000;
         this.repeatAfter = config.repeatAfter || 3000;
         this.maxColors = Math.min(config.nColors, NBackGame.colors.length);

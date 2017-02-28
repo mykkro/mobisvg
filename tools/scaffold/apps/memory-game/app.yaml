@@ -14,13 +14,13 @@ locales:
   - en:
     - title: Memory Game
     - subtitle: " "
-    - description: " "
-    - instructions: " "
+    - description: "This is a memory game where you need to find matching pairs of tiles."
+    - instructions: "Turn one tile and then try to find a matching tile. If the tiles match, they will remain turned face up. Repeat until all pairs are matched (all tiles are turned face up)."
   - cz:
     - title: Pexeso
     - subtitle: " "
-    - description: " "
-    - instructions: " "
+    - description: "Pexeso je oblíbená hra, kdy je úkolem hledat stejné obrázkové dvojice."
+    - instructions: "Na začátku hry jsou všechna políčka (karty) obrácena obrázkem dolů. Hráč může najednou otočit dvě karty. Pokud se jejich obrázky shodují, karty zůstanou otočené a hra pokračuje do té doby než jsou odkryty všechny obrázkové dvojice. Cílem hráče je zde nalézt všechny dvojice v co nejkratším čase."
 gamepacks:
     - name : default
       locales:

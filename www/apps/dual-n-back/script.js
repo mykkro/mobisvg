@@ -52,8 +52,8 @@ var NBackDualGame = NBackGame.extend({
         player.playSound("newBox");
     },
     generateTaskData: function(options) {
-        var sequence1 = this.generateNBackSequence(this.L, this.N, 0.25, 9);
-        var sequence2 = this.generateNBackSequence(this.L, this.N, 0.25, this.dualType == "colors" ? this.maxColors : this.maxSigns);
+        var sequence1 = this.generateNBackSequence(this.L, this.N, this.matchProbability, 9);
+        var sequence2 = this.generateNBackSequence(this.L, this.N, this.matchProbability, this.dualType == "colors" ? this.maxColors : this.maxSigns);
         console.log("NBackDualGame.generateTaskData", sequence1, sequence2);
         return [sequence1, sequence2];
     },

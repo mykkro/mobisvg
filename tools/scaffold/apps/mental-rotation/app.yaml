@@ -15,7 +15,7 @@ locales:
     - title:        Prostorová orientace
     - subtitle:     " "
     - description:  " "
-    - instructions: " "
+    - instructions: "V horní části obrazovky je zobrazen trojrozměrný objekt, složený z jednotlivých kostek (kterých je typicky 6-10). Dole je zobrazeno několik dalších objektů. Vyberte ten z nich, který se po natočení bude shodovat s objektem nahoře. Pouze jedna možnost je správná!"
 scripts:
 styles:
 resources:

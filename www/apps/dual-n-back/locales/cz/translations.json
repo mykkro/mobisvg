@@ -3,6 +3,7 @@
     "version": "1.0", 
     "translations": {
         "repeatAfter": "Opakuj za [ms]", 
+        "matchProbability": "Pravd\u011bpodobnost shody", 
         "displayDuration": "Doba zobrazen\u00ed [ms]", 
         "dualType": "Typ objekt\u016f", 
         "nSigns": "Po\u010det zna\u010dek", 
