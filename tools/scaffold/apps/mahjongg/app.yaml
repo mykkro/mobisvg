@@ -1,0 +1,29 @@
+name : mahjongg
+game_class : Mahjongg
+author: MKR
+version: 1.0
+tags:
+  - entertainment
+locales:
+  - en:
+    - title:        Mahjongg
+    - subtitle:     " "
+    - description:  "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org)."
+    - instructions: " "
+  - cz:
+    - title:        Mahjongg
+    - subtitle:     " "
+    - description:  "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org)."
+    - instructions: " "
+scripts:
+styles:
+resources:
+    - tileset:  tileset.json
+settings:
+gamepacks:
+    - name : default
+      locales:
+        - en:
+          - title: Mahjongg
+        - cz:
+          - title: Mahjongg

@@ -1043,6 +1043,78 @@
                 }
             ], 
             "resources": {}
+        }, 
+        {
+            "name": "mahjongg", 
+            "settings": null, 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": true, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Mahjongg"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Mahjongg"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": true, 
+                    "translations": {
+                        "No more moves left!": "No more moves left!", 
+                        "Total time": "Total Time [s]", 
+                        "Show mistakes": "Show mistakes", 
+                        "All pairs found!": "All pairs found!"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org).", 
+                        "title": "Mahjongg"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "No more moves left!": "Dal\u0161\u00ed tah nen\u00ed mo\u017en\u00fd!", 
+                        "Total time": "Celkov\u00fd \u010das [s]", 
+                        "Show mistakes": "Zv\u00fdraznit chyby", 
+                        "All pairs found!": "Dobr\u00e1 pr\u00e1ce!"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org).", 
+                        "title": "Mahjongg"
+                    }
+                }
+            ], 
+            "game_class": "Mahjongg", 
+            "preview": true, 
+            "config": null, 
+            "resources": {
+                "tileset": "tileset.json"
+            }
         }
     ], 
     "locales": [

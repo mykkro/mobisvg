@@ -26,3 +26,4 @@ apps:
     - name : differences
     - name : pick-twenty
     - name : sudoku
+    - name : mahjongg
