@@ -1,0 +1,8 @@
+{
+    "$type": "playonweb-translation", 
+    "version": "1.0", 
+    "translations": {
+        "Total time": "Celkov\u00fd \u010das [s]"
+    }, 
+    "language": "cz"
+}

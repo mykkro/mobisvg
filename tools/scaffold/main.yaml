@@ -27,3 +27,4 @@ apps:
     - name : pick-twenty
     - name : sudoku
     - name : mahjongg
+    - name : fifteen

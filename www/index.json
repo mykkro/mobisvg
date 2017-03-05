@@ -1115,6 +1115,72 @@
             "resources": {
                 "tileset": "tileset.json"
             }
+        }, 
+        {
+            "name": "fifteen", 
+            "settings": null, 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": true, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Fifteen"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Patn\u00e1ctka"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": true, 
+                    "translations": {
+                        "Total time": "Total Time [s]"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Fifteen"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "Total time": "Celkov\u00fd \u010das [s]"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Patn\u00e1ctka"
+                    }
+                }
+            ], 
+            "game_class": "Fifteen", 
+            "preview": true, 
+            "config": null, 
+            "resources": {
+                "tileset": "tileset.json"
+            }
         }
     ], 
     "locales": [
