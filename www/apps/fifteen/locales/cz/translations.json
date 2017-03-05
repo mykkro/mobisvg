@@ -2,6 +2,8 @@
     "$type": "playonweb-translation", 
     "version": "1.0", 
     "translations": {
+        "randomMovesNo": "Po\u010det n\u00e1hodn\u00fdch tah\u016f", 
+        "Number of moves": "Po\u010det tah\u016f", 
         "Total time": "Celkov\u00fd \u010das [s]"
     }, 
     "language": "cz"

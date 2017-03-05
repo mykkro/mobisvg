@@ -1070,14 +1070,14 @@
                             }
                         }
                     ], 
-                    "preview": true, 
+                    "preview": false, 
                     "config": null, 
                     "resources": {}
                 }
             ], 
             "locales": [
                 {
-                    "preview": true, 
+                    "preview": false, 
                     "translations": {
                         "No more moves left!": "No more moves left!", 
                         "Total time": "Total Time [s]", 
@@ -1128,7 +1128,7 @@
                     "settings": null, 
                     "locales": [
                         {
-                            "preview": true, 
+                            "preview": false, 
                             "name": "en", 
                             "metadata": {
                                 "title": "Fifteen"
@@ -1149,8 +1149,10 @@
             ], 
             "locales": [
                 {
-                    "preview": true, 
+                    "preview": false, 
                     "translations": {
+                        "randomMovesNo": "Number of random moves", 
+                        "Number of moves": "Number of moves", 
                         "Total time": "Total Time [s]"
                     }, 
                     "name": "en", 
@@ -1164,6 +1166,8 @@
                 {
                     "preview": false, 
                     "translations": {
+                        "randomMovesNo": "Po\u010det n\u00e1hodn\u00fdch tah\u016f", 
+                        "Number of moves": "Po\u010det tah\u016f", 
                         "Total time": "Celkov\u00fd \u010das [s]"
                     }, 
                     "name": "cz", 
@@ -1177,7 +1181,17 @@
             ], 
             "game_class": "Fifteen", 
             "preview": true, 
-            "config": null, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "randomMovesNo", 
+                    "title": "", 
+                    "default": 30, 
+                    "type": "int", 
+                    "maxValue": 100, 
+                    "minValue": 1
+                }
+            ], 
             "resources": {
                 "tileset": "tileset.json"
             }

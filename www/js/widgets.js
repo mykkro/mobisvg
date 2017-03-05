@@ -413,13 +413,13 @@ var Clickable = SizedWidget.extend({
         if(MOBILE) {
             overlay.touchstart(function(e) {
                 if(!self.disabled) {
-                    self.onClick();
+                    self.onClick(e);
                 }
             });
         } else {
             overlay.mousedown(function(e) {
                 if(!self.disabled) {
-                    self.onClick();
+                    self.onClick(e);
                 }
             });            
         }
