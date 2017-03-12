@@ -12,19 +12,10 @@ Requirements:
 
 ### Howto: Create Release version of the Android build
 
- 1. Make release build: 
+ 1. Generate a keystore (necessary for signing the APK):
     ```
-    cordova build --release android
+    USAGE: keytool -genkey -v -keystore <keystoreName>.keystore -alias <Keystore AliasName> -keyalg <Key algorithm> -keysize <Key size> -validity <Key Validity in Days>
     ```
-    this will generate error by default: 
-    ```
-    INSTALL_PARSE_FAILED_NO_CERTIFICATES
-    Sign the build using '-- --keystore' or '--buildConfig' or sign and deploy the unsigned apk manually using Android tools.
-    ```
-2. Generate a keystore (necessary for signing the APK):
-	```
-	USAGE: keytool -genkey -v -keystore <keystoreName>.keystore -alias <Keystore AliasName> -keyalg <Key algorithm> -keysize <Key size> -validity <Key Validity in Days>
-	```
     Let's name our keystore ```ctester-mobileapps``` with alias ```ctestermobileapps```:
     ```
     keytool -genkey -v -keystore ctester-mobileapps.keystore -alias ctestermobileapps -keyalg RSA -keysize 2048 -validity 10000
@@ -45,7 +36,7 @@ Requirements:
     ...
     [Storing ctester-mobileapps.keystore]
     ```
- 3. place generated keystore to target directory and sign the generated APK
+ 2. place generated keystore to target directory and sign the generated APK
     ```
     # copy the keystore to the dir where the APKs are built
     cp ctester-mobileapps.keystore platforms/android/build/outputs/apk/ctester-mobileapps.keystore
@@ -59,7 +50,7 @@ Requirements:
     Warning:
     No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2044-07-28) or after any future revocation date.
     ```
- 4. use zipalign tool to optimize generated APK
+ 3. use zipalign tool to optimize generated APK
     ```
     # path to build tools directory may be something like:
     # c:/Users/<USER>/AppData/Local/Android/sdk/build-tools/25.0.1/
@@ -69,11 +60,11 @@ Requirements:
     ```
     Verification successful!
     ```
- 5. deploy the apk to the device
+ 4. deploy the apk to the device
     ```
     cordova run android --release --nobuild
     ```
-    All steps done! The release build of the application is deployed on the device.
+All steps done! The release build of the application is deployed on the device.
 
 
 
