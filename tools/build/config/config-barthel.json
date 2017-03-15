@@ -1,0 +1,10 @@
+{
+    "id": "org.mykkro.kote.allgames",
+    "name": "Kote (Barthel Index)",
+    "description": "Kognitivní testování",
+    "version": "1.0.0",
+    "author": {
+        "name": "Myrousz",
+        "email": "myrousz@gmail.com"
+    }
+}

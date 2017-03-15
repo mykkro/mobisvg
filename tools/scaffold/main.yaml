@@ -65,3 +65,12 @@ projects:
         gamepack: default
       - name : reaction-time
         gamepack: default
+  - name: barthel
+    version: 1.0
+    author: MKR
+    apps:
+      - name : questionary
+        gamepack: barthel-cz
+      - name : questionary
+        gamepack: barthel-en
+
