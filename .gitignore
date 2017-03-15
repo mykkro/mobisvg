@@ -34,4 +34,5 @@ log.txt
 
 keystore/
 tools/scaffold/tmp/
+tools/build/target
 !.gitkeep

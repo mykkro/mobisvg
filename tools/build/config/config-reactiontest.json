@@ -1,0 +1,10 @@
+{
+    "id": "org.mykkro.kote.reactiontest",
+    "name": "Kote (reakční testy)",
+    "description": "Kognitivní testování",
+    "version": "1.0.0",
+    "author": {
+        "name": "Myrousz",
+        "email": "myrousz@gmail.com"
+    }
+}
