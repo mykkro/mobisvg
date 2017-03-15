@@ -8,15 +8,16 @@ var Meta = function(index) {
   this.appMap = {};
   this.localeMap = {};
   this.index.apps.forEach(function(a) {
-  	self.appMap[a.name] = a;
+    var fullName = a.name + ":" + (a.gamepackName || "default");
+  	self.appMap[fullName] = a;
   });
   this.index.locales.forEach(function(a) {
   	self.localeMap[a.name] = a;
   });
   console.log("Main:", index);
 }
-Meta.prototype.app = function(name) {
-  var app = this.appMap[name];
+Meta.prototype.app = function(fullName) {
+  var app = this.appMap[fullName];
   if(app) {
     return new MetaApp(app);
   }
@@ -30,22 +31,29 @@ Meta.prototype.locale = function(name) {
 Meta.prototype.hasLocale = function(name) {
 	return (name in this.localeMap) && !!this.localeMap[name];
 }
-Meta.prototype.hasApp = function(name) {
-	return (name in this.appMap) && !!this.appMap[name];
+Meta.prototype.hasApp = function(fullName) {
+	return (fullName in this.appMap) && !!this.appMap[fullName];
 }
 Meta.prototype.locales = function() {
 	return this.index.locales.map(function(l) { return l.name; });
 }
 Meta.prototype.apps = function() {
-	return this.index.apps.map(function(l) { return l.name; });
+	return this.index.apps.map(function(a) { 
+    return { name: a.name, gamepackName: (a.gamepackName || "default") }; 
+  });
 }
 Meta.prototype.appsByLocale = function(loc) {
 	var apps = [];
   var self = this;
   this.apps().forEach(function(a) {
-  	var aa = self.app(a);
-  	if(aa.hasLocale(loc) && aa.defaultGamepack(loc)) {
-    	apps.push(aa.name);
+    var fullName = a.name +":" + a.gamepackName;
+  	var aa = self.app(fullName);
+  	if(aa.hasLocale(loc)) {
+      var gamepackName = (aa.gamepackName || "default");
+      var gp = aa.gamepack(gamepackName);
+      if(gp && gp.hasLocale(loc)) {
+        apps.push({ name: a.name, gamepackName: gamepackName });
+      }
     }
   });
   return apps;
@@ -62,9 +70,9 @@ Meta.prototype.instance = function(appName, gamepackName, localeName) {
   	console.error("Locale not found: "+localeName);
     return null;
   }
-  var app = this.app(appName);
+  var app = this.app(appName + ":" + gamepackName);
   if(!app) {
-  	console.error("App not found: "+appName);
+  	console.error("App not found: "+appName + ":" + gamepackName);
     return null;
   }
 	if(!app.hasLocale(localeName)) {
@@ -114,7 +122,7 @@ var MetaInstance = function(meta, appName, gamepackName, localeName) {
 	this.appName = appName;
   this.gamepackName = gamepackName;
   this.localeName = localeName;
-  this.app = meta.app(appName);
+  this.app = meta.app(appName + ":" + gamepackName);
   this.gamepack = this.app.gamepack(gamepackName);
   this.locale = this.meta.locale(localeName);
   this.appLocale = this.app.locale(localeName);
@@ -228,6 +236,8 @@ var MetaApp = function(app) {
   var self = this;
 	this.app = app;
   this.name = app.name;
+  this.gamepackName = app.gamepackName || "default";
+  this.fullName = this.name + ":" + this.gamepackName;
   this.gamepackMap = {};
   this.localeMap = {};
   this.app.gamepacks.forEach(function(g) {

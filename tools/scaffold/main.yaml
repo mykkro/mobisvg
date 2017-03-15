@@ -16,30 +16,52 @@ projects:
     author: MKR
     apps:
       - name : colortest-reverse
+        gamepack: default
       - name : dual-n-back
+        gamepack: default
       - name : memory-game
+        gamepack: default
       - name : questionary
+        gamepack: default
       - name : single-n-back
+        gamepack: default
       - name : combine-words
+        gamepack: default
       - name : mental-rotation
+        gamepack: default
       - name : reaction-time
+        gamepack: default
       - name : slideshow
+        gamepack: default
       - name : differences
+        gamepack: default
       - name : pick-twenty
+        gamepack: default
       - name : sudoku
+        gamepack: default
       - name : mahjongg
+        gamepack: default
       - name : fifteen
+        gamepack: default
   - name: entertainment
     version: 1.0
     author: MKR
     apps:
       - name : memory-game
+        gamepack: sports
+      - name : memory-game
+        gamepack: animals
       - name : sudoku
+        gamepack: default
       - name : mahjongg
+        gamepack: default
       - name : fifteen
+        gamepack: default
   - name: reactiontest
     version: 1.0
     author: MKR
     apps:
       - name : colortest-reverse
+        gamepack: default
       - name : reaction-time
+        gamepack: default

@@ -8,6 +8,7 @@
         {
             "name": "memory-game", 
             "settings": null, 
+            "config": null, 
             "tags": [
                 "visual", 
                 "memory", 
@@ -42,15 +43,19 @@
                         {
                             "preview": false, 
                             "name": "en", 
-                            "metadata": {}
+                            "metadata": {
+                                "title": "Memory Game (Animals)"
+                            }
                         }, 
                         {
                             "preview": false, 
                             "name": "cz", 
-                            "metadata": {}
+                            "metadata": {
+                                "title": "Pexeso (zv\u00ed\u0159ata)"
+                            }
                         }
                     ], 
-                    "preview": false, 
+                    "preview": true, 
                     "config": null, 
                     "resources": {
                         "tileset": "tileset.json"
@@ -63,12 +68,16 @@
                         {
                             "preview": false, 
                             "name": "en", 
-                            "metadata": {}
+                            "metadata": {
+                                "title": "Memory Game (Sports)"
+                            }
                         }, 
                         {
                             "preview": false, 
                             "name": "cz", 
-                            "metadata": {}
+                            "metadata": {
+                                "title": "Pexeso (sport)"
+                            }
                         }
                     ], 
                     "preview": false, 
@@ -108,14 +117,140 @@
                     }
                 }
             ], 
-            "game_class": "MemoryGame", 
             "preview": true, 
+            "gamepackName": "sports", 
+            "resources": {}, 
+            "gameClass": "MemoryGame"
+        }, 
+        {
+            "name": "memory-game", 
+            "settings": null, 
             "config": null, 
-            "resources": {}
+            "tags": [
+                "visual", 
+                "memory", 
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "animals", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Animals)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (zv\u00ed\u0159ata)"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "sports", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Sports)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (sport)"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "End", 
+                        "All cards found!": "All cards found!"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "Turn one tile and then try to find a matching tile. If the tiles match, they will remain turned face up. Repeat until all pairs are matched (all tiles are turned face up).", 
+                        "subtitle": " ", 
+                        "description": "This is a memory game where you need to find matching pairs of tiles.", 
+                        "title": "Memory Game"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "Konec", 
+                        "All cards found!": "V\u0161echny dvojice nalezeny!"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Na za\u010d\u00e1tku hry jsou v\u0161echna pol\u00ed\u010dka (karty) obr\u00e1cena obr\u00e1zkem dol\u016f. Hr\u00e1\u010d m\u016f\u017ee najednou oto\u010dit dv\u011b karty. Pokud se jejich obr\u00e1zky shoduj\u00ed, karty z\u016fstanou oto\u010den\u00e9 a hra pokra\u010duje do t\u00e9 doby ne\u017e jsou odkryty v\u0161echny obr\u00e1zkov\u00e9 dvojice. C\u00edlem hr\u00e1\u010de je zde nal\u00e9zt v\u0161echny dvojice v co nejkrat\u0161\u00edm \u010dase.", 
+                        "subtitle": " ", 
+                        "description": "Pexeso je obl\u00edben\u00e1 hra, kdy je \u00fakolem hledat stejn\u00e9 obr\u00e1zkov\u00e9 dvojice.", 
+                        "title": "Pexeso"
+                    }
+                }
+            ], 
+            "preview": true, 
+            "gamepackName": "animals", 
+            "resources": {}, 
+            "gameClass": "MemoryGame"
         }, 
         {
             "name": "sudoku", 
             "settings": null, 
+            "config": [
+                {
+                    "default": true, 
+                    "title": "Show mistakes", 
+                    "type": "boolean", 
+                    "description": "", 
+                    "name": "showMistakes"
+                }
+            ], 
             "tags": [
                 "entertainment"
             ], 
@@ -174,22 +309,15 @@
                     }
                 }
             ], 
-            "game_class": "SudokuGame", 
             "preview": true, 
-            "config": [
-                {
-                    "default": true, 
-                    "title": "Show mistakes", 
-                    "type": "boolean", 
-                    "description": "", 
-                    "name": "showMistakes"
-                }
-            ], 
-            "resources": {}
+            "gamepackName": "default", 
+            "resources": {}, 
+            "gameClass": "SudokuGame"
         }, 
         {
             "name": "mahjongg", 
             "settings": null, 
+            "config": null, 
             "tags": [
                 "entertainment"
             ], 
@@ -252,16 +380,27 @@
                     }
                 }
             ], 
-            "game_class": "Mahjongg", 
             "preview": true, 
-            "config": null, 
+            "gamepackName": "default", 
             "resources": {
                 "tileset": "tileset.json"
-            }
+            }, 
+            "gameClass": "Mahjongg"
         }, 
         {
             "name": "fifteen", 
             "settings": null, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "randomMovesNo", 
+                    "title": "", 
+                    "default": 30, 
+                    "type": "int", 
+                    "maxValue": 100, 
+                    "minValue": 1
+                }
+            ], 
             "tags": [
                 "entertainment"
             ], 
@@ -322,22 +461,12 @@
                     }
                 }
             ], 
-            "game_class": "Fifteen", 
             "preview": true, 
-            "config": [
-                {
-                    "description": "", 
-                    "name": "randomMovesNo", 
-                    "title": "", 
-                    "default": 30, 
-                    "type": "int", 
-                    "maxValue": 100, 
-                    "minValue": 1
-                }
-            ], 
+            "gamepackName": "default", 
             "resources": {
                 "tileset": "tileset.json"
-            }
+            }, 
+            "gameClass": "Fifteen"
         }
     ], 
     "locales": [

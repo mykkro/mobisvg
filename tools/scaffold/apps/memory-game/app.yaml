@@ -31,12 +31,16 @@ gamepacks:
     - name : animals
       locales:
         - en:
+          - title: Memory Game (Animals)
         - cz:
+          - title: Pexeso (zvířata)
       resources:
         - tileset:  tileset.json
     - name : sports
       locales:
         - en:
+          - title: Memory Game (Sports)
         - cz:
+          - title: Pexeso (sport)
       resources:
         - tileset:  tileset.json

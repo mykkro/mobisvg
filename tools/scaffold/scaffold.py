@@ -224,6 +224,7 @@ def scaffold_app(dir, out_dir, app):
     index = {}
     app_name = app["name"]
     index["name"] = app_name
+    index["gamepackName"] = app["gamepack"] or "default"
 
     dir = os.path.join(dir, app_name)
     out_dir = os.path.join(out_dir, app_name)
@@ -258,7 +259,7 @@ def scaffold_app(dir, out_dir, app):
     index["settings"] = scaffold_settings(dir, out_dir)
 
     index["tags"] = app_yaml.get("tags", []) or []
-    index["game_class"] = app_yaml["game_class"]
+    index["gameClass"] = app_yaml["game_class"]
 
     return index
 

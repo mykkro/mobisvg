@@ -143,10 +143,11 @@ var AppsGUI = Base.extend({
         var i = 0;
         var locale = this.locale;
         while(i<apps.length) {
-            var appName = apps[i++];
-            var app = this.index.app(appName);
-            var gamepack = app.defaultGamepack(self.locale);
-            var gamepackName = gamepack.name;
+            var appName = apps[i].name;
+            var gamepackName = apps[i].gamepackName;
+            var fullName = appName + ":" + gamepackName;
+            var app = this.index.app(fullName);
+            i++;
             var instance = this.index.instance(appName, gamepackName, locale);
             var previewUrl = instance.appBaseUrl + "/"+ instance.res("preview");
             console.log("Game launcher instance:", instance);            

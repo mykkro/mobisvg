@@ -98,7 +98,8 @@ var GameGUI = Base.extend({
         return labelSvg;
     }, 
     showGamePreviewImage: function() {
-        var img = new ImageWidget(this.url + "/preview.png", 500, 500); 
+        var previewUrl = this.instance.appBaseUrl + "/"+ this.instance.res("preview");
+        var img = new ImageWidget(previewUrl, 500, 500); 
         img.setPosition(250, 200);
         return img;
     },
@@ -222,7 +223,7 @@ var GameGUI = Base.extend({
     startGame: function() {
         var self = this;
         console.log("Starting the game!");
-        var game = new window[self.instance.app.app.game_class](this.gameSettings);
+        var game = new window[self.instance.app.app.gameClass](this.gameSettings);
         game.baseUrl = self.url;
         game.meta = self.instance;
         game.loc = function(str) {
@@ -268,7 +269,7 @@ var GameGUI = Base.extend({
             // put code here...
             self.appgui.resetScene();
 
-            self.game = new window[self.instance.app.app.game_class]({});
+            self.game = new window[self.instance.app.app.gameClass]({});
             self.game.baseUrl = self.url;
 
             var configForm = {
