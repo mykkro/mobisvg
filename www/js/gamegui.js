@@ -110,21 +110,30 @@ var GameGUI = Base.extend({
     // create buttons
     createGameLauncherButtons: function() {
         var startBtn = new ButtonWidget(this.instance.tr("Start"), this.buttonStyle);        
-        var settingsBtn = new ButtonWidget(this.instance.tr("Settings"), this.buttonStyle);        
+        var settingsBtn = null;
         var instrBtn = new ButtonWidget(this.instance.tr("Instructions"), this.buttonStyle);        
         var exitBtn = new ButtonWidget(this.instance.tr("Exit"), this.buttonStyle);        
+        /*
         var historyBtn = new ButtonWidget(this.instance.tr("History"), this.buttonStyle);    
-        /**/historyBtn.setEnabled(false);/**/    
-
+        historyBtn.setEnabled(false);
+        historyBtn.onClick(function() {
+            self.showHistoryPage();
+        });
+        */
+        
         var configFields = this.instance.config || [];
         console.log("Config fields:", configFields);
-        if(configFields.length == 0) {
-            settingsBtn.setEnabled(false);
+        if(configFields.length > 0) {
+            settingsBtn = new ButtonWidget(this.instance.tr("Settings"), this.buttonStyle);        
+            settingsBtn.onClick(function() {
+                self.showSettingsPage();
+            });
         }
 
         var gap = 40;
         var yy = 900;
-        Widget.layoutButtons([startBtn, settingsBtn, instrBtn, historyBtn, exitBtn], gap, yy);
+        var btns = settingsBtn ? [startBtn, settingsBtn, instrBtn, exitBtn] : [startBtn, instrBtn, exitBtn];
+        Widget.layoutButtons(btns, gap, yy);
         var self = this;
 
         // bind events
@@ -132,23 +141,16 @@ var GameGUI = Base.extend({
             self.startGame();
         });
 
-        settingsBtn.onClick(function() {
-            self.showSettingsPage();
-        });
 
         instrBtn.onClick(function() {
             self.showInstructionsPage();
-        });
-
-        historyBtn.onClick(function() {
-            self.showHistoryPage();
         });
 
         exitBtn.onClick(function() {
             self.showGameSelectionPage();
         });
 
-        return [startBtn, settingsBtn, instrBtn, historyBtn, exitBtn];
+        return btns;
     },
     createInstructionsPageButtons: function() {
         var backBtn = new ButtonWidget(this.instance.tr("Back"), this.buttonStyle);        

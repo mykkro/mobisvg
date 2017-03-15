@@ -183,8 +183,13 @@ var AppsGUI = Base.extend({
     createMainPageButtons: function(pg) {
         var self = this;
         var settingsBtn = new ButtonWidget(this.indexLocalized.tr("Settings"), this.buttonStyle);        
+        /*
         var historyBtn = new ButtonWidget(this.indexLocalized.tr("History"), this.buttonStyle);        
-        /**/historyBtn.setEnabled(false);/**/    
+        historyBtn.setEnabled(false);
+        historyBtn.onClick(function() {
+            self.showHistoryPage();
+        });
+        */
         var prevBtn, bextBtn;
         var btns = [];
         if(pg.page>1) {
@@ -195,7 +200,7 @@ var AppsGUI = Base.extend({
             });
         }
         btns.push(settingsBtn);
-        btns.push(historyBtn);
+        //btns.push(historyBtn);
         if(pg.page<pg.pages) {
             nextBtn = new ButtonWidget(this.indexLocalized.tr("Next"), this.buttonStyle);        
             btns.push(nextBtn);
@@ -212,11 +217,8 @@ var AppsGUI = Base.extend({
             self.showSettingsPage();
         });
 
-        historyBtn.onClick(function() {
-            self.showHistoryPage();
-        });
 
-        return [settingsBtn, historyBtn];
+        return [settingsBtn];
     },
     showMainPage: function() {
         var self = this;

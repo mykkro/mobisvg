@@ -7,5 +7,14 @@
             "minValue": 1,
             "maxValue": 50,
             "default": 10
+        },
+        {
+            "name": "matchProbability",
+            "title": "",
+            "description": "",
+            "type": "int",
+            "minValue": 0,
+            "maxValue": 100,
+            "default": 35
         }
 ]

@@ -4,11 +4,12 @@
     "translations": {
         "blue": "modr\u00e1", 
         "Minimum reaction time": "Nejkrat\u0161\u00ed doba reakce", 
-        "green": "zelen\u00e1", 
-        "red": "\u010derven\u00e1", 
         "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+        "yellow": "\u017elut\u00e1", 
+        "matchProbability": "Pravd\u011bpodobnost shody v %", 
+        "green": "zelen\u00e1", 
         "Repeat count": "Po\u010det opakov\u00e1n\u00ed", 
-        "yellow": "\u017elut\u00e1"
+        "red": "\u010derven\u00e1"
     }, 
     "language": "cz"
 }

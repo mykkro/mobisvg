@@ -5,6 +5,7 @@ var ReverseColorTestGame = TimedGame.extend({
         this.base(config);
         this.currentFrame = 0;
         this.N = config.N;
+        this.matchProbability = config.matchProbability;
         this.totalFrames = this.N;
     },
     createGUI: function(r) {
@@ -27,7 +28,7 @@ var ReverseColorTestGame = TimedGame.extend({
     generateTaskData: function(options) {
         var availableColors = ["red", "green", "blue", "yellow"];
         var sequenceLength = this.N;
-        var matchedCount = 4;
+        var matchedCount = Math.floor(this.N * this.matchProbability / 100);
 
         var correctIndices = makeRange(sequenceLength).shuffle();
         var correct = {};
