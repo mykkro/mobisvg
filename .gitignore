@@ -35,4 +35,9 @@ log.txt
 keystore/
 tools/scaffold/tmp/
 tools/build/target
+
+www/index.json
+tools/build/config.xml
+config.xml
+
 !.gitkeep
