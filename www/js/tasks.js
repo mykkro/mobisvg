@@ -71,15 +71,15 @@ var ReactionTimeTask = Task.extend({
         var delay = 0;
         var successfulHits = []
         var reactionTime;
-        var avgReactionTime = 0;
-        var bestReactionTime = 0;
+        var avgReactionTime = null;
+        var bestReactionTime = null;
         for(var i=0; i<answer.length; i++) {
             cuesTotal++;
             if(answer[i].reaction >= 0) {
                 cuesHit++;
                 successfulHits.push(1);
                 reactionTime = answer[i].reaction - answer[i].cue;
-                if(i==0 || (reactionTime < bestReactionTime)) {
+                if(bestReactionTime===null || (reactionTime < bestReactionTime)) {
                     bestReactionTime = reactionTime;
                 }
                 delay += reactionTime;
@@ -87,7 +87,7 @@ var ReactionTimeTask = Task.extend({
                 successfulHits.push(0);
             }
         }
-        var avgReactionTime = (cuesHit>0) ? (delay/cuesHit) : 0;
+        var avgReactionTime = (cuesHit>0) ? (delay/cuesHit) : null;
         return {
             cuesTotal: cuesTotal,
             cuesHit: cuesHit,

@@ -22,6 +22,7 @@
         "Total time": "Total time", 
         "attention": "attention", 
         "Correctness": "Correctness", 
+        "N/A": "N/A", 
         "visual": "visual", 
         "Position": "Position", 
         "History": "History", 

@@ -6,154 +6,204 @@
     }, 
     "apps": [
         {
-            "name": "questionary", 
+            "name": "colortest-reverse", 
             "settings": null, 
-            "config": null, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "N", 
+                    "title": "Repeat count", 
+                    "default": 10, 
+                    "type": "int", 
+                    "maxValue": 50, 
+                    "minValue": 1
+                }
+            ], 
             "tags": [
-                "survey"
+                "visual", 
+                "attention"
             ], 
             "gamepacks": [
                 {
-                    "name": "barthel-en", 
+                    "name": "default", 
                     "settings": null, 
                     "locales": [
                         {
                             "preview": false, 
                             "name": "en", 
-                            "metadata": {
-                                "instructions": " ", 
-                                "subtitle": " ", 
-                                "description": " ", 
-                                "title": "Barthel Index"
-                            }
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {
-                        "questionary": "questionary.json"
-                    }
-                }, 
-                {
-                    "name": "barthel-cz", 
-                    "settings": null, 
-                    "locales": [
+                            "metadata": {}
+                        }, 
                         {
                             "preview": false, 
                             "name": "cz", 
-                            "metadata": {
-                                "instructions": "Barthel Index je standardizovan\u00fd test ur\u010den\u00fd k\u00a0hodnocen\u00ed sob\u011bsta\u010dnosti. Body jsou p\u0159id\u011blov\u00e1ny podle toho, co pacient re\u00e1ln\u011b dok\u00e1\u017ee. Pln\u00fd po\u010det bod\u016f vylu\u010duje i jen minim\u00e1ln\u00ed pomoc, v\u010detn\u011b n\u00e1pov\u011bdy. Pacient m\u016f\u017ee p\u0159i hodnocen\u00fdch \u010dinnostech vyu\u017e\u00edvat mechanick\u00e9 pom\u016fcky (madla na st\u011bn\u00e1ch, hole, berle apod.).\n\nHodnocen\u00ed sob\u011bsta\u010dnosti:\n\n0-40 bod\u016f\tvysoce z\u00e1visl\u00fd\n45-60 bod\u016f\tz\u00e1vislost st\u0159edn\u00edho stupn\u011b\n65-95 bod\u016f\tlehk\u00e1 z\u00e1vislost\n100 bod\u016f\tnez\u00e1visl\u00fd\n", 
-                                "subtitle": " ", 
-                                "description": " ", 
-                                "title": "Barthel Index"
-                            }
+                            "metadata": {}
                         }
                     ], 
                     "preview": false, 
                     "config": null, 
-                    "resources": {
-                        "questionary": "questionary.json"
-                    }
+                    "resources": {}
                 }
             ], 
             "locales": [
                 {
                     "preview": false, 
-                    "translations": null, 
+                    "translations": {
+                        "blue": "blue", 
+                        "Minimum reaction time": "Minimum reaction time", 
+                        "green": "green", 
+                        "red": "red", 
+                        "Average reaction time": "Average reaction time", 
+                        "Repeat count": "Repeat count", 
+                        "yellow": "yellow"
+                    }, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": " ", 
+                        "instructions": "Choose the colored square which matches the color of the text appearing in the center of the screen as fast as possible.", 
                         "subtitle": " ", 
                         "description": " ", 
-                        "title": "Questionary"
+                        "title": "Reaction time test \u2013 colors"
                     }
                 }, 
                 {
                     "preview": false, 
-                    "translations": null, 
+                    "translations": {
+                        "blue": "modr\u00e1", 
+                        "Minimum reaction time": "Nejkrat\u0161\u00ed doba reakce", 
+                        "green": "zelen\u00e1", 
+                        "red": "\u010derven\u00e1", 
+                        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed", 
+                        "yellow": "\u017elut\u00e1"
+                    }, 
                     "name": "cz", 
-                    "metadata": {}
+                    "metadata": {
+                        "instructions": "Zvolte v\u017edy co nejrychleji \u010dtverec se shodnou barvou, jakou m\u00e1 n\u00e1pis, kter\u00fd se objev\u00ed uprost\u0159ed.", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Reak\u010dn\u00ed test  \u2013 barvy"
+                    }
                 }
             ], 
             "preview": true, 
-            "gamepackName": "barthel-cz", 
+            "gamepackName": "default", 
             "resources": {}, 
-            "gameClass": "Questionary"
+            "gameClass": "ReverseColorTestGame"
         }, 
         {
-            "name": "questionary", 
+            "name": "reaction-time", 
             "settings": null, 
-            "config": null, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "N", 
+                    "title": "", 
+                    "default": 12, 
+                    "type": "int", 
+                    "maxValue": 20, 
+                    "minValue": 1
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 1000, 
+                    "maxValue": 10000, 
+                    "minValue": 100, 
+                    "type": "int", 
+                    "by": 100, 
+                    "name": "allowedShift"
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 3000, 
+                    "maxValue": 10000, 
+                    "minValue": 100, 
+                    "type": "int", 
+                    "by": 100, 
+                    "name": "targetTimeout"
+                }, 
+                {
+                    "description": "", 
+                    "title": "", 
+                    "default": 5000, 
+                    "maxValue": 10000, 
+                    "minValue": 100, 
+                    "type": "int", 
+                    "by": 1000, 
+                    "name": "avgFrameLen"
+                }
+            ], 
             "tags": [
-                "survey"
+                "visual", 
+                "attention"
             ], 
             "gamepacks": [
                 {
-                    "name": "barthel-en", 
+                    "name": "default", 
                     "settings": null, 
                     "locales": [
                         {
                             "preview": false, 
                             "name": "en", 
-                            "metadata": {
-                                "instructions": " ", 
-                                "subtitle": " ", 
-                                "description": " ", 
-                                "title": "Barthel Index"
-                            }
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {
-                        "questionary": "questionary.json"
-                    }
-                }, 
-                {
-                    "name": "barthel-cz", 
-                    "settings": null, 
-                    "locales": [
+                            "metadata": {}
+                        }, 
                         {
                             "preview": false, 
                             "name": "cz", 
-                            "metadata": {
-                                "instructions": "Barthel Index je standardizovan\u00fd test ur\u010den\u00fd k\u00a0hodnocen\u00ed sob\u011bsta\u010dnosti. Body jsou p\u0159id\u011blov\u00e1ny podle toho, co pacient re\u00e1ln\u011b dok\u00e1\u017ee. Pln\u00fd po\u010det bod\u016f vylu\u010duje i jen minim\u00e1ln\u00ed pomoc, v\u010detn\u011b n\u00e1pov\u011bdy. Pacient m\u016f\u017ee p\u0159i hodnocen\u00fdch \u010dinnostech vyu\u017e\u00edvat mechanick\u00e9 pom\u016fcky (madla na st\u011bn\u00e1ch, hole, berle apod.).\n\nHodnocen\u00ed sob\u011bsta\u010dnosti:\n\n0-40 bod\u016f\tvysoce z\u00e1visl\u00fd\n45-60 bod\u016f\tz\u00e1vislost st\u0159edn\u00edho stupn\u011b\n65-95 bod\u016f\tlehk\u00e1 z\u00e1vislost\n100 bod\u016f\tnez\u00e1visl\u00fd\n", 
-                                "subtitle": " ", 
-                                "description": " ", 
-                                "title": "Barthel Index"
-                            }
+                            "metadata": {}
                         }
                     ], 
                     "preview": false, 
                     "config": null, 
-                    "resources": {
-                        "questionary": "questionary.json"
-                    }
+                    "resources": {}
                 }
             ], 
             "locales": [
                 {
                     "preview": false, 
-                    "translations": null, 
+                    "translations": {
+                        "allowedShift": "Time tolerance [ms]", 
+                        "Average reaction time": "Average reaction time", 
+                        "avgFrameLen": "Time until next object [ms]", 
+                        "Best reaction time": "Best reaction time", 
+                        "targetTimeout": "Object disappears after [ms]", 
+                        "Average delay": "Average delay", 
+                        "Hit ratio": "Hit ratio", 
+                        "N": "Repeat count"
+                    }, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": " ", 
+                        "instructions": "Click the targets immediately after they appear.", 
                         "subtitle": " ", 
                         "description": " ", 
-                        "title": "Questionary"
+                        "title": "Reaction Time Test"
                     }
                 }, 
                 {
                     "preview": false, 
-                    "translations": null, 
+                    "translations": {
+                        "allowedShift": "Povolen\u00e1 odchylka \u010dasu [ms]", 
+                        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+                        "avgFrameLen": "\u010cas do dal\u0161\u00edho objektu [ms]", 
+                        "Best reaction time": "Nejkrat\u0161\u00ed doba reakce", 
+                        "targetTimeout": "Objekt zmiz\u00ed za [ms]", 
+                        "Average delay": "Pr\u016fm\u011brn\u00e1 doba reakce", 
+                        "Hit ratio": "Procento z\u00e1sah\u016f", 
+                        "N": "Po\u010det opakov\u00e1n\u00ed"
+                    }, 
                     "name": "cz", 
-                    "metadata": {}
+                    "metadata": {
+                        "instructions": "Strefte se do c\u00edle co nejrychleji pot\u00e9, co se objev\u00ed.", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Reak\u010dn\u00ed test"
+                    }
                 }
             ], 
             "preview": true, 
-            "gamepackName": "barthel-en", 
+            "gamepackName": "default", 
             "resources": {}, 
-            "gameClass": "Questionary"
+            "gameClass": "ReactionTimeGame"
         }
     ], 
     "locales": [
@@ -180,6 +230,7 @@
                 "Total time": "Total time", 
                 "attention": "attention", 
                 "Correctness": "Correctness", 
+                "N/A": "N/A", 
                 "visual": "visual", 
                 "Position": "Position", 
                 "History": "History", 
@@ -225,6 +276,7 @@
                 "Total time": "Celkov\u00fd \u010das", 
                 "attention": "pozornost", 
                 "Correctness": "\u00dasp\u011b\u0161nost", 
+                "N/A": "N/A", 
                 "visual": "vizu\u00e1ln\u00ed", 
                 "Position": "Pozice", 
                 "History": "Historie", 

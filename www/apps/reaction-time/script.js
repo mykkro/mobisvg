@@ -30,11 +30,18 @@ var ReactionTimeGame = TimedGame.extend({
     hideTarget: function() {
         this.body.clearContents();
     },
+    printTime: function(msecs) {
+        if(msecs === null) {
+            return this.loc("N/A");
+        } else {
+            return sprintf("%.2f s", msecs / 1000);
+        }
+    },
     generateReport: function(evalResult) {
         return [
             this.loc("Hit ratio") + ": "+ sprintf("%.1f %%", evalResult.hitRatio * 100),
-            this.loc("Best reaction time") + ": "+ sprintf("%.2f s", evalResult.bestReactionTime / 1000),
-            this.loc("Average reaction time") + ": "+ sprintf("%.2f s", evalResult.avgReactionTime / 1000),
+            this.loc("Best reaction time") + ": "+ this.printTime(evalResult.bestReactionTime),
+            this.loc("Average reaction time") + ": "+ this.printTime(evalResult.avgReactionTime),
         ];
     },
     initializeTask: function() {
