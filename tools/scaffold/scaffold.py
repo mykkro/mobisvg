@@ -13,12 +13,20 @@ SRCDIR = "."
 TGTDIR = "../../www"
 
 
-def scaffold(dir, out_dir, data):
-    print "Scaffolding applications..."
+def get_project_data(data, project_name):
+    for proj in data["projects"]:
+        if proj["name"] == project_name:
+            return proj
+    return None
+
+
+def scaffold(dir, out_dir, data, project_name):
+    print "Scaffolding applications for project %s..." % project_name
     print
     info = scaffold_framework_info(data)
     loc_index = scaffold_locales(dir, out_dir, data["locales"])
-    apps_index = scaffold_apps(dir, out_dir, data["apps"])
+    project = get_project_data(data, project_name)
+    apps_index = scaffold_apps(dir, out_dir, project["apps"])
     return {
         "info": info,
         "apps": apps_index,
@@ -321,11 +329,18 @@ def load_yaml_file(path):
 ###############################################################################
 
 path = "main.yaml"
+project = "allgames"
+
+if len(sys.argv) > 1:
+    path = sys.argv[1]
+    if len(sys.argv) > 2:
+        project = sys.argv[2]
+
 data = load_yaml_file(path)
 
 dir = SRCDIR
 out_dir = TGTDIR
-index = scaffold(dir, out_dir, data)
+index = scaffold(dir, out_dir, data, project)
 print index
 
 

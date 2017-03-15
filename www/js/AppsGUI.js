@@ -134,7 +134,7 @@ var AppsGUI = Base.extend({
     },
     showAppLaunchers: function(apps) {
         var self = this;
-        console.log(apps);
+        console.log("AppsGUI.showAppLaunchers", apps);
         this.resetScene();
         // display up to 9 launchers
         // each launcher is 250x250 px

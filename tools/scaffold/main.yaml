@@ -10,21 +10,36 @@ locales:
       - title:        C-Tester
       - subtitle:     C-Tester
       - description:  C-Tester description comes here...
-apps_bak:
-    - name : magicsquare
-    - name : sequences
-apps:
-    - name : colortest-reverse
-    - name : dual-n-back
-    - name : memory-game
-    - name : questionary
-    - name : single-n-back
-    - name : combine-words
-    - name : mental-rotation
-    - name : reaction-time
-    - name : slideshow
-    - name : differences
-    - name : pick-twenty
-    - name : sudoku
-    - name : mahjongg
-    - name : fifteen
+projects:
+  - name: allgames
+    version: 1.0
+    author: MKR
+    apps:
+      - name : colortest-reverse
+      - name : dual-n-back
+      - name : memory-game
+      - name : questionary
+      - name : single-n-back
+      - name : combine-words
+      - name : mental-rotation
+      - name : reaction-time
+      - name : slideshow
+      - name : differences
+      - name : pick-twenty
+      - name : sudoku
+      - name : mahjongg
+      - name : fifteen
+  - name: entertainment
+    version: 1.0
+    author: MKR
+    apps:
+      - name : memory-game
+      - name : sudoku
+      - name : mahjongg
+      - name : fifteen
+  - name: reactiontest
+    version: 1.0
+    author: MKR
+    apps:
+      - name : colortest-reverse
+      - name : reaction-time
