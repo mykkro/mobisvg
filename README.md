@@ -6,6 +6,7 @@ C-Tester is a platform for running small applications (games, questionaries, tes
 Requirements:
  * Cordova (6.4.0.)
  * Python 2.7+ (tools, scaffolding)
+   * packages Jinja2, pyaml
 
 
 ## Cordova Development Notes
