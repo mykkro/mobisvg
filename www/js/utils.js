@@ -157,3 +157,11 @@ function dirname (path) {
   return path.replace(/\\/g, '/')
     .replace(/\/[^/]*\/?$/, '')
 }
+
+
+// required for older versions of Android (<4.4 ?)
+if (!('remove' in Element.prototype)) {
+    Element.prototype.remove = function() {
+        this.parentNode.removeChild(this);
+    };
+}

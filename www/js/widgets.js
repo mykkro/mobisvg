@@ -350,15 +350,19 @@ var TextWidget = Widget.extend({
         var self = this;
         this.text = text || "";
         var x = 0;
+        /*
         if(this.anchor == "middle") {
             x = this.maxWidth/2;                            
         } else if(this.anchor == "end") {
             x = this.maxWidth;
         }
+        */
         this.lines = this.text.split("\n"); //.filter(function(l) { return l != ""; });
         var yy = this.fontSize / 2; 
         this.shapes = [];
         this.lines.forEach(function(l) {
+            /* 
+            // obsolete...
             var shape = r.paragraph({
                 x : x, 
                 y : yy, 
@@ -368,6 +372,17 @@ var TextWidget = Widget.extend({
                 lineHeight : self.fontSize * 1.35
                 // TODO maxHeight
             });
+            */
+            var shape = r.multitext({
+                x : x, 
+                y : yy, 
+                maxWidth : self.maxWidth, 
+                text : l, 
+                textStyle : self.textStyle,
+                lineHeight : self.fontSize * 1.35
+                // TODO maxHeight
+            });
+
             var bbox = shape.getBBox();
             yy += Math.max(bbox.height + self.fontSize * 0.5, self.fontSize * 1.15);
             self.shapes.push(shape);
