@@ -2,7 +2,7 @@
 
 METAFILE="main.yaml"
 MASTERPREFIX="kote"
-VERSION="1.0.0"
+VERSION="1.0.1"
 PROJECT="$1"
 if [ -z "$1" ]
   then

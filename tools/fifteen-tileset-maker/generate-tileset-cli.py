@@ -7,12 +7,12 @@ import json
 
 # Tileset generator for the game 'Fifteen'
 
-srcImagePath = "media/15.png"
-targetDir = "target/tileset1"
+srcImagePath = "media/fifteen.png"
+targetDir = "target/tileset2"
 x = 0
 y = 0
-width = 204
-height = 204
+width = 256
+height = 256
 prefix = "tile"
 gridRows = 4
 gridCols = 4

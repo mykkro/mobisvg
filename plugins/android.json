@@ -15,9 +15,6 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.mykkro.mobisvg"
-        },
-        "org.jshybugger.cordova": {
-            "PACKAGE_NAME": "org.mykkro.kote.allgames"
         }
     },
     "dependent_plugins": {}
