@@ -179,6 +179,20 @@ var AppsGUI = Base.extend({
             }
         }
     },
+    launchApp: function(selectedApp) {
+        var self = this;
+        console.log("AppsGUI.launchApp", selectedApp);
+        this.resetScene();
+        var locale = this.locale;
+        var appName = selectedApp.name;
+        var gamepackName = selectedApp.gamepackName;
+        var fullName = appName + ":" + gamepackName;
+        var instance = this.index.instance(appName, gamepackName, locale);
+        console.log("AppsGUI.launchApp: Start app", instance);
+        // TODO do not show "End" button
+        var engine = new GameGUI(self, instance, { hideEndButton: true });
+        engine.start();
+    },
     // create buttons
     createMainPageButtons: function(pg) {
         var self = this;
@@ -229,9 +243,15 @@ var AppsGUI = Base.extend({
     showAppsPage: function(page) {
         var page = page || 1;
         var pg = this.getSortedAppList(page);
-        this.page = pg.page;
-        this.showAppLaunchers(pg.contents);
-        this.createMainPageButtons(pg);
+        console.log("AppsGUI.showAppsPage", pg);
+        if(pg.contents.length == 1) {
+            // collection contains only one app - show its start page directly...
+            this.launchApp(pg.contents[0]);
+        } else {
+            this.page = pg.page;
+            this.showAppLaunchers(pg.contents);
+            this.createMainPageButtons(pg);
+        }
     },
     /**
      * Clears canvas, removes all widgets.

@@ -1,11 +1,12 @@
 
 /* Game GUI manager. */
 var GameGUI = Base.extend({
-    constructor: function(appgui, instance) {
+    constructor: function(appgui, instance, options) {
         console.log("Creating Game GUI", instance);
         this.appgui = appgui;
         this.instance = instance;
         this.url = instance.appBaseUrl;
+        this.options = options || {};
     },
     loadScriptAndStyle: function() {
         var dfd = jQuery.Deferred();
@@ -109,10 +110,17 @@ var GameGUI = Base.extend({
     },
     // create buttons
     createGameLauncherButtons: function() {
+        var self = this;
         var startBtn = new ButtonWidget(this.instance.tr("Start"), this.buttonStyle);        
         var settingsBtn = null;
-        var instrBtn = new ButtonWidget(this.instance.tr("Instructions"), this.buttonStyle);        
-        var exitBtn = new ButtonWidget(this.instance.tr("Exit"), this.buttonStyle);        
+        var instrBtn = new ButtonWidget(this.instance.tr("Instructions"), this.buttonStyle);    
+        var exitBtn = null;
+        if(!(this.options.hideEndButton)) {
+            exitBtn = new ButtonWidget(this.instance.tr("Exit"), this.buttonStyle);        
+            exitBtn.onClick(function() {
+                self.showGameSelectionPage();
+            });
+        }
         /*
         var historyBtn = new ButtonWidget(this.instance.tr("History"), this.buttonStyle);    
         historyBtn.setEnabled(false);
@@ -132,9 +140,16 @@ var GameGUI = Base.extend({
 
         var gap = 40;
         var yy = 900;
-        var btns = settingsBtn ? [startBtn, settingsBtn, instrBtn, exitBtn] : [startBtn, instrBtn, exitBtn];
+        var btns = [];
+        btns.push(startBtn);
+        if(settingsBtn) {
+            btns.push(settingsBtn);
+        }
+        btns.push(instrBtn);
+        if(exitBtn) {
+            btns.push(exitBtn);
+        }
         Widget.layoutButtons(btns, gap, yy);
-        var self = this;
 
         // bind events
         startBtn.onClick(function() {
@@ -144,10 +159,6 @@ var GameGUI = Base.extend({
 
         instrBtn.onClick(function() {
             self.showInstructionsPage();
-        });
-
-        exitBtn.onClick(function() {
-            self.showGameSelectionPage();
         });
 
         return btns;
