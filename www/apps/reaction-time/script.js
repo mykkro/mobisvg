@@ -22,7 +22,7 @@ var ReactionTimeGame = TimedGame.extend({
             player.playSound("click");
             self.targetClicked = true;
             // TODO record the reaction time...
-            self.targetReactionTime = self.currentTime;
+            self.targetReactionTime = self.stopwatch.millis();
             self.hideTarget();
         });
         this.body.addChild(clk);
@@ -56,19 +56,19 @@ var ReactionTimeGame = TimedGame.extend({
         this.updateCounter();
     },
     update: function(elapsedMillis) {
-        // console.log("ReactionTimeGame.update", elapsedMillis);
-        this.currentTime = elapsedMillis;
+        console.log("ReactionTimeGame.update", elapsedMillis, this.stopwatch.millis());
+        this.currentTime = this.stopwatch.millis();
         if(this.events.length == 0) {
             this.timer.stop();
             this.finish(this.answer);
             return;
         }
         var topEvent = this.events[0];
-        if(elapsedMillis >= topEvent.time) {
+        if(this.currentTime >= topEvent.time) {
             this.events.shift();
             if(topEvent.type == "showtarget") {
                 this.showTarget();
-                this.targetShowTime = elapsedMillis;
+                this.targetShowTime = this.currentTime;
                 this.targetReactionTime = -1;
             } else if(topEvent.type == "cleartarget") {
                 this.hideTarget();

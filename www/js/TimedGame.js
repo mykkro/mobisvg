@@ -1,9 +1,40 @@
 // TimedGame.js
 
+
+var StopWatch = Base.extend({
+    constructor: function() {
+        this.frozen = null;
+        this.reset();
+    },
+    reset: function() {
+        this.lastTime = window.performance.now();
+    },
+    now: function() {
+        if(this.frozen !== null) {
+            return this.frozen;
+        }
+        return window.performance.now() - this.lastTime;
+    },
+    millis: function() {
+        return Math.floor(this.now());
+    },
+    seconds: function() {
+        return this.now() / 1000;
+    },
+    freeze: function() {
+        this.frozen = this.now();
+    },
+    unfreeze: function() {
+        this.frozen = null;
+    }
+})
+
+
 var TimedGame = Game.extend({
     constructor: function(config) {
         this.base(config);
         this.currentTime = 0;        
+        this.stopwatch = new StopWatch();
     },
     // override in subclasses
     // return a promise returning a gamepack
@@ -51,6 +82,7 @@ var TimedGame = Game.extend({
     startTimer: function() {
         var self = this;
         self.currentTime = 0;
+        self.stopwatch.reset();
         var timer = new Timer();
         this.timer = timer;
         timer.start({precision: 'secondTenths', callback: function (values) {
@@ -61,7 +93,7 @@ var TimedGame = Game.extend({
     },
     // override in subclasses
     update: function(elapsedMillis) {
-    	console.log("TimedGame.update", elapsedMillis);
+    	console.log("TimedGame.update", elapsedMillis, this.stopwatch.millis());
     },
     abort: function() {
         this.base();       

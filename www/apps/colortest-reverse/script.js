@@ -62,9 +62,9 @@ var ReverseColorTestGame = TimedGame.extend({
         avgDelay /= this.times.length;
         return [
             this.loc("Correctness") + ": "+ sprintf("%.1f%%", evalResult.correctness * 100),
-            this.loc("Total time") + ": " + (this.currentTime / 1000) + " s",
-            this.loc("Minimum reaction time") + ": " + (minDelay / 1000) + " s",
-            this.loc("Average reaction time") + ": " + (avgDelay / 1000) + " s"
+            this.loc("Total time") + ": " + sprintf("%.2f s", this.stopwatch.millis() / 1000),
+            this.loc("Minimum reaction time") + ": " + sprintf("%.2f s", minDelay / 1000),
+            this.loc("Average reaction time") + ": " + sprintf("%.2f s", avgDelay / 1000)
         ];
     },
     _colorButton: function(color, x, y, callback) {
@@ -85,7 +85,7 @@ var ReverseColorTestGame = TimedGame.extend({
         var g = this.goals[this.currentFrame];
 
         var _colorSelected = function(color) {
-            var delay = self.currentTime - self.lastAppeareanceTime;
+            var delay = self.stopwatch.millis() - self.lastAppeareanceTime;
             var matched = (color == g.color);
             self.times[self.currentFrame] = delay;
             self.answer[self.currentFrame] = matched;
@@ -109,11 +109,12 @@ var ReverseColorTestGame = TimedGame.extend({
         labelSvg.setStyle({"fill": g.color});    
         this.body.addChild(labelSvg);
 
-        this.lastAppeareanceTime = this.currentTime;
+        this.lastAppeareanceTime = this.stopwatch.millis();
     },
     advanceFrame: function() {
         this.currentFrame++;
         if(this.currentFrame == this.goals.length) {
+            this.stopwatch.freeze();
             this.finish(this.answer);
         } else {
             this.renderFrame();
