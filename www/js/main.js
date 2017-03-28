@@ -81,6 +81,9 @@ function onResize() {
 
     // resize stage
     var boxsize = Math.min(ww, hh);
+    console.log("Resized:", ww, hh, boxsize);
+    var fontSize = Math.floor(boxsize/55);
+    $("#form-wrapper").css("font-size", fontSize+"px");
     $("#stage").width(boxsize);
     $("#stage").height(boxsize);
     $("#stage").css({
