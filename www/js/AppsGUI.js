@@ -12,7 +12,8 @@ var AppsGUI = Base.extend({
         console.log("AppsGUI.loadAppIndex");
         $.getJSON("index.json").done(callback);
     },
-    makeConfigForm: function() {
+    makeConfigForm: function(settings) {
+        var settings = settings || {};
         var self = this;
         var configForm = {
             "title": self.indexLocalized.tr("Settings"),
@@ -29,7 +30,7 @@ var AppsGUI = Base.extend({
                     ], 
                     "description": "", 
                     "title": self.indexLocalized.tr("Language"), 
-                    "default": "en", 
+                    "default": settings.language || self.locale, 
                     "type": "string", 
                     "name": "language"
                 }, 
@@ -42,10 +43,14 @@ var AppsGUI = Base.extend({
     loadAppsMetadata: function(callback) {
         var self = this;
         self.loadAppIndex(function(index) {
-            console.log("AppsGUI.loadAppsMetadata", index);
+            var settings = index.settings || {}; 
+            if('language' in settings) {
+                self.locale = settings['language']
+            }         
+            console.log("AppsGUI.loadAppsMetadata", index, settings);
             self.index = new Meta(index);
             self.indexLocalized = self.index.localized(self.locale);
-            self.makeConfigForm();
+            self.makeConfigForm(settings);
             self.appSettings = self.form.val();
             callback(self);
         });

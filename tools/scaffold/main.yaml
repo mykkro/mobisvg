@@ -14,6 +14,7 @@ projects:
   - name: allgames
     version: 1.0
     author: MKR
+    icon: kote
     apps:
       - name : colortest-reverse
         gamepack: default
@@ -46,6 +47,7 @@ projects:
   - name: entertainment
     version: 1.0
     author: MKR
+    icon: kote
     apps:
       - name : memory-game
         gamepack: sports
@@ -60,17 +62,27 @@ projects:
   - name: reactiontest
     version: 1.0
     author: MKR
+    icon: kote
     apps:
       - name : colortest-reverse
         gamepack: default
       - name : reaction-time
         gamepack: default
-  - name: barthel
+  - name: barthelcz
     version: 1.0
     author: MKR
+    icon: barthel
+    settings:
+      language: cz
     apps:
       - name : questionary
         gamepack: barthel-cz
+  - name: barthelen
+    version: 1.0
+    author: MKR
+    icon: barthel
+    settings:
+      language: en
+    apps:
       - name : questionary
         gamepack: barthel-en
-

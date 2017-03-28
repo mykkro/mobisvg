@@ -27,11 +27,32 @@ def scaffold(dir, out_dir, data, project_name):
     loc_index = scaffold_locales(dir, out_dir, data["locales"])
     project = get_project_data(data, project_name)
     apps_index = scaffold_apps(dir, out_dir, project["apps"])
+    icon = scaffold_icon(dir, out_dir, project.get("icon", "kote"))
+    settings = scaffold_global_settings(dir, out_dir, project.get("settings", {}))
     return {
         "info": info,
         "apps": apps_index,
-        "locales": loc_index
+        "locales": loc_index,
+        "icon": icon,
+        "settings": settings
     }
+
+
+def scaffold_global_settings(src_dir, out_dir, settings):
+    print "Scaffolding global settings", settings
+    """
+        dst_path = os.path.join(out_dir, "settings.json")
+        settings = load_yaml_file(src_path)
+        write_json_file(dst_path, settings)
+        return settings
+    """
+    return settings
+
+
+def scaffold_icon(dir, out_dir, icon_name):
+    print "Scaffolding icon %s" % icon_name
+    ## return copy_file_if_exists(os.path.join(src_dir, "preview.png"), os.path.join(out_dir, "preview.png"))
+    return icon_name
 
 
 def scaffold_locales(dir, out_dir, data):

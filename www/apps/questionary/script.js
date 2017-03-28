@@ -296,12 +296,14 @@ var Questionary = Game.extend({
         timer.start({precision: 'secondTenths', callback: function (values) {
             var elapsedMillis = values.secondTenths * 100 + values.seconds * 1000 + values.minutes * 60000 + values.hours * 3600000;
             self.currentTime = elapsedMillis;
-            console.log("Time", self.currentTime);
+            // console.log("Time", self.currentTime);
         }});
     },
     abort: function() {
         this.base();       
-        this.timer.stop(); 
+        if(this.timer) {
+            this.timer.stop();
+        }
     },
     finish: function(result) {
         this.timer.stop(); 

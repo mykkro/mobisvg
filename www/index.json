@@ -4,6 +4,7 @@
         "doctype": "playonweb-app-scaffold", 
         "last_update": null
     }, 
+    "settings": {}, 
     "apps": [
         {
             "name": "colortest-reverse", 
@@ -1323,5 +1324,6 @@
                 "title": "C-Tester"
             }
         }
-    ]
+    ], 
+    "icon": "kote"
 }
