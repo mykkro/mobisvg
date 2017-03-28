@@ -40,12 +40,6 @@ def scaffold(dir, out_dir, data, project_name):
 
 def scaffold_global_settings(src_dir, out_dir, settings):
     print "Scaffolding global settings", settings
-    """
-        dst_path = os.path.join(out_dir, "settings.json")
-        settings = load_yaml_file(src_path)
-        write_json_file(dst_path, settings)
-        return settings
-    """
     return settings
 
 

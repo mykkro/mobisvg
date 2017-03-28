@@ -1,8 +1,8 @@
 {
-    "id": "org.mykkro.kote.barthel",
+    "id": "org.mykkro.kote.barthelen",
     "name": "Kote (Barthel Index) EN",
     "description": "Cognitive testing",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": {
         "name": "Myrousz",
         "email": "myrousz@gmail.com"
