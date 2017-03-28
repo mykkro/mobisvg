@@ -71,8 +71,24 @@ var GameGUI = Base.extend({
 
         var yy = 250;    
         messages.forEach(function(m) {
-            var msg = new TextWidget(600, 30, "middle", m);
-            msg.setPosition(200, yy);
+            // m can be object!
+            var textItems = [];
+            if(m.text || m.items) {
+                if(m.text) {
+                    textItems.push(m);
+                } else {
+                    textItems = m.items;
+                }
+            } else {
+                textItems.push({text: m});
+            }
+            textItems.forEach(function(ti) {
+                var x = ti.x || 0;
+                var fontSize = ti.fontSize || 30;
+                var textAnchor = ti.textAnchor || "middle";
+                var msg = new TextWidget(600, fontSize, textAnchor, ti.text);
+                msg.setPosition(200+x, yy);
+            })
             yy += 40;
         });
 

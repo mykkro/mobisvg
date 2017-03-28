@@ -45,17 +45,6 @@ var InstructionalTask = Task.extend({
     }
 });
 
-var QuestionaryTask = Task.extend({
-    validate: function(answer) {
-        return (answer.length > 0);
-    },
-    evaluate: function(answer) {
-        var questionsTotal = answer.length;
-        return {
-            questionsTotal: questionsTotal
-        }
-    }
-});
 
 
 var ReactionTimeTask = Task.extend({

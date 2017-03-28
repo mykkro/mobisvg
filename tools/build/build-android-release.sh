@@ -2,7 +2,9 @@
 
 METAFILE="main.yaml"
 MASTERPREFIX="kote"
-VERSION="1.0.1"
+
+# TODO read version from config files (JSON)
+VERSION="1.0.2"
 PROJECT="$1"
 if [ -z "$1" ]
   then
@@ -31,6 +33,7 @@ KEYSTOREPATH="$ROOTDIR/keystore/$KEYSTORENAME"
 ZIPALIGNPATH="c:/apps/android/build-tools/25.0.2/zipalign.exe"
 TARGETNAME="$MASTERPREFIX-$PROJECT-$VERSION-release.apk"
 DISTDIR="$ROOTDIR/tools/build/target"
+
 
 # clear the APK directory
 rm -rf $TARGETDIR

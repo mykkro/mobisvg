@@ -5,7 +5,7 @@
         "last_update": null
     }, 
     "settings": {
-        "language": "en"
+        "language": "cz"
     }, 
     "apps": [
         {
@@ -79,7 +79,7 @@
                 }
             ], 
             "preview": true, 
-            "gamepackName": "barthel-en", 
+            "gamepackName": "barthel-cz", 
             "resources": {}, 
             "gameClass": "Questionary"
         }

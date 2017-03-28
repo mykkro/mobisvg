@@ -1,3 +1,14 @@
+var QuestionaryTask = Task.extend({
+    validate: function(answer) {
+        return (answer.length > 0);
+    },
+    evaluate: function(answer) {
+        var questionsTotal = answer.length;
+        return {
+            questionsTotal: questionsTotal
+        }
+    }
+});
 
 
 
@@ -284,9 +295,29 @@ var Questionary = Game.extend({
         }
     },
     generateReport: function(evalResult) {
-        return [
-            this.loc("Question count") + ": " + evalResult.questionsTotal
+        var qa = this.questionary.questions;
+        var totalScore = 0;
+        for(var i=0; i<qa.length; i++) {
+            var question = truncateOnWord(qa[i].question, 25);
+            var score = qa[i].answers[this.answer[i]].score;
+            totalScore += score;
+        }
+        console.log("Questions:", qa, "answers:", this.answer);
+        var out = [
+            this.loc("Score") + ": " + totalScore,
+            this.loc("Question count") + ": " + evalResult.questionsTotal,
+            ""
         ];
+        for(var i=0; i<qa.length; i++) {
+            var question = truncateOnWord(qa[i].question, 25);
+            var score = qa[i].answers[this.answer[i]].score + "";
+            out.push({"items":[
+                {x:0, text: (i+1)+".", textAnchor: "start"},
+                {x:50, text: question, textAnchor: "start"},
+                {x:600, text: score, textAnchor: "start"}
+            ]});
+        }
+        return out;
     },
     startTimer: function() {
         var self = this;
