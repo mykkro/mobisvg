@@ -415,6 +415,12 @@ var ImageWidget = ResizableWidget.extend({
     },
     setSrc: function(url) {
         this.image.attr('src', url);
+    },
+    getSrc: function() {
+        return this.image.attr('src');
+    },
+    setBlank: function() {
+        this.setSrc("assets/blank.png");
     }
 });
 

@@ -1,20 +1,20 @@
 var Minefield = TimedGame.extend({
 
-	constructor: function(config) {
+    constructor: function(config) {
         this.base(config);
-	},
+    },
 
-	/**
-	 *  Creates a matrix filled by a value.
-	 */
-	createMatrix: function(rows, cols, value) {
-	    var mat = [];
-	    var filler = value || 0;
-	    if(typeof(value) != "function") {
-	        filler = function(row, col) {
-	            return value;
-	        }
-	    }
+    /**
+     *  Creates a matrix filled by a value.
+     */
+    createMatrix: function(rows, cols, value) {
+        var mat = [];
+        var filler = value || 0;
+        if(typeof(value) != "function") {
+            filler = function(row, col) {
+                return value;
+            }
+        }
         for(var i=0; i<rows; i++) {
             var row = [];
             for(var j=0; j<cols; j++) {
@@ -23,14 +23,14 @@ var Minefield = TimedGame.extend({
             mat.push(row);
         }
         return mat;
-	},
-	forEachInMatrix: function(matrix, fun) {
+    },
+    forEachInMatrix: function(matrix, fun) {
         for(var i=0; i<matrix.length; i++) {
             for(var j=0; j<matrix[0].length; j++) {
                 fun(matrix[i][j], i, j);
             }
         }
-	},
+    },
     swapMatrixValues: function(matrix, row1, col1, row2, col2) {
         var val1 = matrix[row1][col1];
         var val2 = matrix[row2][col2];
@@ -38,12 +38,18 @@ var Minefield = TimedGame.extend({
         matrix[row2][col2] = val1;
     },
 
-	renderBoard: function() {
-	    console.log("Fifteen.renderBoard");
+    renderBoard: function() {
+        console.log("Minefield.renderBoard");
         var self = this;
 
-        var gridRows = 4;
-        var gridCols = 4;
+        var gridWidth = 10;
+        var gridHeight = 10;
+        var mineCount = 20;
+        var modeUncover = true;
+        var background, minefield, numbers, cover, flagged;
+
+        var gridRows = gridWidth;
+        var gridCols = gridHeight;
         var x = 100;
         var y = 100;
         var width = 800;
@@ -51,186 +57,186 @@ var Minefield = TimedGame.extend({
         var tileWidth = Math.floor(width / gridCols);
         var tileHeight = Math.floor(height / gridRows);
 
-        this.completed = false;
-        this.numberOfMoves = 0;
 
-        // return position where to draw grid cell with coordinates (gridX,gridY)
-        this.gridPos = function(gridX,gridY) {
-            return { x: x + gridX * tileWidth, y: y + gridY * tileHeight };
+        var ts = self.gamepack.tileset.tiles;
+        var tsmap = {};
+        ts.forEach(function(t) { tsmap[t.name] = self.tilesetBaseUrl + "/" + t.url;});
+        console.log(tsmap);
+
+        var finished = false;
+/*
+        var updateControls = function() {
+            $("#controls button").removeClass("selected");
+            $(modeUncover ? "#uncover" : "#flag").addClass("selected");
         }
 
-        this.tileMatrix = this.createMatrix(gridRows, gridCols, function(r, c) {
-            var index = c + r*gridCols;
-            var tile = self.gamepack.tileset.tiles[index].url;
-            var img = new ImageWidget(self.tilesetBaseUrl + "/" + tile, tileWidth, tileHeight);
-            return img;
+        $("#flag").click(function() {
+            modeUncover = false;
+            updateControls();
         });
 
-        this.clickedOn = function(r, c) {
-            console.log("Click!", r, c);
-        }
-
-        this.clickableMatrix = this.createMatrix(gridRows, gridCols, function(r, c) {
-            /* Create overlay clickable matrix */
-            var overlay = new RectWidget(tileWidth, tileHeight);
-            var pos = self.gridPos(c, r);
-            overlay.setPosition(pos.x, pos.y);
-            overlay.setStyle({"fill": "white", "fill-opacity": 0.001, "stroke": "none"});
-            var clk = new Clickable(overlay);
-            clk.onClick(function(clickable, e) {
-                self.clickedOn(r, c);
-            });
-            return clk;
+        $("#uncover").click(function() {
+            modeUncover = true;
+            updateControls();
         });
 
-        this.emptyTile = this.tileMatrix[gridRows-1][gridCols-1];
-        this.emptyTile.clear();
+        updateControls();
+*/
 
-        this.permutationMatrix = this.createMatrix(gridRows, gridCols, function(r, c) {
-            return { row: r, column: c, x: c, y: r };
-        });
 
-        this.reversePermutation = function(row, column) {
-            var rr, cc;
-            self.forEachInMatrix(self.permutationMatrix, function(pos, r, c) {
-                    if(pos.row == row && pos.column == column) {
-                        rr = r;
-                        cc = c;
-                    }
-            });
-            return { row: rr, column: cc, x: cc, y: rr };
-        }
-
-        this.tileAtGridPosition = function(row, column) {
-            var pos = self.reversePermutation(row, column);
-            return self.tileMatrix[pos.row][pos.column];
-        }
-
-        this.canMoveTo = function(row, column) {
-            return self.tileAtGridPosition(row, column) == self.emptyTile;
-        }
-
-        this.availableDirections = function(row, column) {
-            var dirs = [];
-            // down?
-            if(row < gridRows-1) {
-                dirs.push("down");
-            }
-            if(row > 0) {
-                dirs.push("up");
-            }
-            if(column < gridCols-1) {
-                dirs.push("right");
-            }
-            if(column > 0) {
-                dirs.push("left");
-            }
-            return dirs;
-        }
-
-        this.dirMap = { "left": [0,-1], "right": [0,1], "down": [1,0], "up": [-1,0] };
-
-        this.availableMoves = function(row, column) {
-            var dirs = self.availableDirections(row, column);
-            var moves = [];
-            for(var i=0; i<dirs.length; i++) {
-                var dir = dirs[i];
-                var rr = row + self.dirMap[dir][0];
-                var cc = column + self.dirMap[dir][1];
-                if(self.canMoveTo(rr, cc)) {
-                    moves.push(dir);
-                }
-            }
-            return moves;
-        }
-
-        this.tilesThatCanBeMoved = function() {
-            // return list of tiles (positions) that have available moves...
-            var movables = [];
-            for(var i=0; i<gridRows; i++) {
-                for(var j=0; j<gridCols; j++) {
-                    if(self.availableMoves(i, j).length > 0) {
-                        movables.push({row: i, column: j, x: j, y: i});
-                    }
-                }
-            }
-            return movables;
-        }
-
-        this.randomizeTiles = function(steps) {
-            var steps = steps || 10;
-            for(var i=0; i<steps; i++) {
-                var movables = self.tilesThatCanBeMoved();
-                var movable = movables[Math.floor(Math.random()*movables.length)];
-                self.moveTile(movable.row, movable.column);
-            }
-        }
-
-        this.moveTile = function(r, c) {
-            var moves = self.availableMoves(r, c);
-            if(moves.length > 0) {
-                // we expect a single possible move...
-                var move = moves[0];
-                var rr = r + self.dirMap[move][0];
-                var cc = c + self.dirMap[move][1];
-                // swap tiles at positions (r,c) and (rr,cc)
-                p1 = self.reversePermutation(r, c);
-                p2 = self.reversePermutation(rr, cc);
-                self.swapMatrixValues(self.permutationMatrix, p1.row, p1.column, p2.row, p2.column);
-                return move;
-            } else {
-                return null;
-            }
-        }
-
-        this.clickedOn = function(r, c) {
-            if(this.completed) {
-                return;
-            }
-            var move = self.moveTile(r, c);
-            if(move) {
-                self.numberOfMoves++;
-                self.updateTileDisplay();
-                if(self.inGoalPosition()) {
-                    self.puzzleFinished();
-                }
-            } else {
-                // console.error("Tile cannot be moved", r, c, move);
-            }
-        }
-
-        this.inGoalPosition = function() {
-            for(var i=0; i<gridRows; i++) {
-                for(var j=0; j<gridCols; j++) {
-                    var cc = self.permutationMatrix[i][j];
-                    if(cc.row != i || cc.column != j) {
-                        return false;
-                    }
-                }
-            }
+        var uncoverTile = function(mat, i,j) {
+          if(i<0 || i>gridHeight-1 || j<0 || j>gridWidth-1) {
+            return false;
+          } 
+          if(!cover.getValue(i,j)) {
+            return false;
+          }
+          cover.setValue(i, j, false);
+          flagged.setValue(i, j, false);
+          mat[i][j].cover.setBlank();
+          mat[i][j].flag.setBlank();
+          if(minefield.getValue(i,j)) {
             return true;
+          }
+          if(numbers.getValue(i,j) == 0) {
+            uncoverTile(mat, i-1, j-1);
+            uncoverTile(mat, i-1, j);
+            uncoverTile(mat, i-1, j+1);
+            uncoverTile(mat, i, j-1);
+            uncoverTile(mat, i, j+1);
+            uncoverTile(mat, i+1, j-1);
+            uncoverTile(mat, i+1, j);
+            uncoverTile(mat, i+1, j+1);
+          }
+          return false;
         }
 
-        this.puzzleFinished = function() {
-            self.completed = true;
-            console.log("Finished!");
-            setTimeout(function() {
-                self.finish();
-            }, 1000);
-        }
-
-        this.updateTileDisplay = function() {
-            self.forEachInMatrix(self.tileMatrix, function(elem, row, column) {
-                    var perm = self.permutationMatrix[row][column];
-                    var pos = self.gridPos(perm.x, perm.y);
-                    elem.setPosition(pos.x, pos.y);
+        var allUncovered = function() {
+            // all non-mine tiles are uncovered
+            var coveredEmpty = false;
+            minefield.forEach(function(i, j, value) {
+                if(!value) {
+                    // something is hidden...
+                    if(cover.getValue(i,j)) {
+                        coveredEmpty = true;
+                        return;
+                    }
+                }
             });
+            return !coveredEmpty;
         }
 
-        this.randomizeTiles(this.config.randomMovesNo || 10);
-        this.updateTileDisplay();
+        modeUncover = true;
+        background = new Grid(gridHeight, gridWidth, true);
+        minefield = new Grid(gridHeight, gridWidth, false).filledRandomlyBy("mine", mineCount);
+        numbers = new Grid(gridHeight, gridWidth, function(i,j) {
+            var num = 
+                ((j>0           && i>0            && minefield.grid[i-1][j-1]) ? 1 : 0) +
+                ((                 i>0            && minefield.grid[i-1][j  ]) ? 1 : 0) +
+                ((j<gridWidth-1 && i>0            && minefield.grid[i-1][j+1]) ? 1 : 0) +
+                ((j>0           && i<gridHeight-1 && minefield.grid[i+1][j-1]) ? 1 : 0) +
+                ((                 i<gridHeight-1 && minefield.grid[i+1][j  ]) ? 1 : 0) +
+                ((j<gridWidth-1 && i<gridHeight-1 && minefield.grid[i+1][j+1]) ? 1 : 0) +
+                ((j>0                             && minefield.grid[i  ][j-1]) ? 1 : 0) +
+                ((j<gridWidth-1                   && minefield.grid[i  ][j+1]) ? 1 : 0)
+            ;
+            return num;
+        });
+        cover = new Grid(gridHeight, gridWidth, true);
+        flagged = new Grid(gridHeight, gridWidth, false);
 
-	},
+
+        var hitTile = function(mat, i, j, modeUncover) {
+            if(modeUncover) {
+                turnTile(mat, i, j);
+            } else {
+                flagTile(mat, i, j);
+            }                            
+        }
+
+        var turnTile = function(mat, i, j) {
+            if(!flagged.getValue(i,j) && cover.getValue(i,j)) {
+                var exploded = uncoverTile(mat, i,j);
+                if(exploded) {
+                    minefield.setValue(i, j, "mine-exploded");
+                    mat[i][j].mineOrNumber.setSrc(tsmap["mine-exploded"]);
+                    gameLost(mat);
+                } else if(allUncovered()) {
+                    gameWon(mat);
+                }
+            }
+        }
+
+        var gameLost = function(mat) {
+            explodeAllMines(mat);
+            finished = true;
+            console.log("Kaboom!");
+        }
+
+        var gameWon = function(mat) {
+            finished = true;
+            console.log("You win");
+        }
+
+        var flagTile = function(mat, i, j) {
+            if(cover.getValue(i,j)) {
+                flagged.setValue(i,j,!flagged.getValue(i,j));
+                // update flag view
+                if(flagged.getValue(i,j)) {
+                    mat[i][j].flag.setSrc(tsmap["flag"]);
+                } else {
+                    mat[i][j].flag.setBlank();
+                }
+            }
+        }                            
+
+        /* Create view */
+        var createView = function() {
+            var mat = [];
+            for(var i=0; i<gridHeight; i++) {
+                var row = [];
+                for(var j=0; j<gridWidth; j++) {
+                    var tile = {
+                        background: new ImageWidget(tsmap["empty"], tileWidth, tileHeight),
+                        mineOrNumber: new ImageWidget(minefield.getValue(i,j) ? tsmap["mine"] : (numbers.getValue(i,j)>0 ? tsmap["number"+numbers.getValue(i,j)] : "assets/blank.png"), tileWidth, tileHeight),
+                        cover: new ImageWidget(tsmap["cover"], tileWidth, tileHeight),
+                        flag: new ImageWidget("assets/blank.png", tileWidth, tileHeight)
+                    };
+                    tile.background.setPosition(x+tileWidth*j, y+tileHeight*i);
+                    tile.mineOrNumber.setPosition(x+tileWidth*j, y+tileHeight*i);
+                    tile.cover.setPosition(x+tileWidth*j, y+tileHeight*i);
+                    tile.flag.setPosition(x+tileWidth*j, y+tileHeight*i);
+                    tile.clickable = new Clickable(tile.flag);
+                    (function(i,j){
+                        tile.clickable.onClick(function() {
+                            if(!finished) {
+                                hitTile(mat, i, j, modeUncover);
+                            } 
+                        })
+                    })(i,j);
+                    row.push(tile);
+                }
+                mat.push(row);
+            }
+            return mat;
+        }
+
+        var explodeAllMines = function(mat) {
+            for(var i=0; i<gridHeight; i++) {
+                for(var j=0; j<gridWidth; j++) {
+                    if(minefield.getValue(i,j)) {
+                        mat[i][j].flag.setBlank();
+                        mat[i][j].cover.setBlank();
+                        mat[i][j].mineOrNumber.setSrc(tsmap["mine-exploded"]);
+                    };
+                }
+            }
+        }
+
+        var mat = createView();
+        //modeUncover = false;
+
+    },
 
     // set default embedding options for this Game
     getEmbeddingOptions: function() {
