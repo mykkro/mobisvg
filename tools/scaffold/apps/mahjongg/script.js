@@ -93,6 +93,7 @@ var MahjonggTileWidget = GroupWidget.extend({
         this.tileStyle = {"fill": mahjongg.layersColors[z], "stroke": "none", "opacity": 1.0};
         this.overlay = rect;
         this.clickable = new Clickable(img);
+        this.addChild(bordr);
         this.addChild(img);
         this.addChild(rect);
         this.addChild(this.clickable);
