@@ -1,0 +1,30 @@
+name : twenty-forty-eight
+game_class : TwentyFortyEight
+author: MKR
+version: 1.0
+tags:
+  - entertainment
+locales:
+  - en:
+    - title:        Yet Another 2048 Clone
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
+  - cz:
+    - title:        "2048"
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
+scripts:
+  - 2048.js
+styles:
+resources:
+    - tileset:  tileset.json
+settings:
+gamepacks:
+    - name : default
+      locales:
+        - en:
+          - title: "2048"
+        - cz:
+          - title: "2048"

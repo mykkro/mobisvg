@@ -412,6 +412,9 @@ var ImageWidget = ResizableWidget.extend({
     setSize: function(w, h) {
         this.base(w, h);
         this.image.attr({"width": this.w, "height": this.h});
+    },
+    setSrc: function(url) {
+        this.image.attr('src', url);
     }
 });
 

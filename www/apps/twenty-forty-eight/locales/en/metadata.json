@@ -1,0 +1,11 @@
+{
+    "keys": {
+        "instructions": " ", 
+        "subtitle": " ", 
+        "description": " ", 
+        "title": "Yet Another 2048 Clone"
+    }, 
+    "$type": "playonweb-localized-metadata", 
+    "version": "1.0", 
+    "language": "en"
+}

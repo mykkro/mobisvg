@@ -1,0 +1,29 @@
+name : minefield
+game_class : Minefield
+author: MKR
+version: 1.0
+tags:
+  - entertainment
+locales:
+  - en:
+    - title:        Minefield
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
+  - cz:
+    - title:        Minové pole
+    - subtitle:     " "
+    - description:  " "
+    - instructions: " "
+scripts:
+styles:
+resources:
+    - tileset:  tileset.json
+settings:
+gamepacks:
+    - name : default
+      locales:
+        - en:
+          - title: Minefield
+        - cz:
+          - title: Minové pole
