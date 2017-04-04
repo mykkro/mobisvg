@@ -84,6 +84,8 @@ var MahjonggTileWidget = GroupWidget.extend({
 	    var xx = (42*x - 7*z);
 	    var yy = (64*y + 14*z);
 	    var imgname = mahjongg.tiles[type].icons[index];
+        var bordr = new ImageWidget(mahjongg.tilesetBaseUrl + "/" + "mahjongg-border.png", 90 * k, 140 * k);
+        bordr.setPosition(xx * k, 100 + (yy-6) * k);
         var img = new ImageWidget(mahjongg.tilesetBaseUrl + "/" + imgname, 84 * k, 128 * k);
         img.setPosition(xx * k, 100 + yy * k);
         var rect = new RectWidget(84 * k, 128 * k, 8);

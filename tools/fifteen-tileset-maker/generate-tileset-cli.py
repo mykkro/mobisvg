@@ -7,12 +7,16 @@ import json
 
 # Tileset generator for the game 'Fifteen'
 
-srcImagePath = "media/fifteen.png"
-targetDir = "target/tileset2"
+srcImagePath = "media/2048.png"
+targetDir = "target/2048"
+tilesetType = '2048'
+tilesetTitle = "Default 2048 tileset"
+tilesetName = "game2048Tileset"
+tilesetVersion = "1.0"
 x = 0
 y = 0
-width = 256
-height = 256
+width = 1024
+height = 1024
 prefix = "tile"
 gridRows = 4
 gridCols = 4
@@ -36,10 +40,10 @@ def cut_image(x, y, tileWidth, tileHeight, gridRows, gridCols):
 
 
 tileset = {
-  "$type": "playonweb-fifteen-tileset",
-  "name": "sampleTileset",
-  "title": "Sample Tileset",
-  "version": "1.0",
+  "$type": "playonweb-%s-tileset" % tilesetType,
+  "name": tilesetName,
+  "title": tilesetTitle,
+  "version": tilesetVersion,
   "tiles": []
 }
 tiles = cut_image(x, y, tileWidth, tileHeight, gridRows, gridCols)

@@ -4,84 +4,470 @@
         "doctype": "playonweb-app-scaffold", 
         "last_update": null
     }, 
-    "settings": {
-        "language": "cz"
-    }, 
+    "settings": {}, 
     "apps": [
         {
-            "name": "questionary", 
+            "name": "memory-game", 
             "settings": null, 
             "config": null, 
             "tags": [
-                "survey"
+                "visual", 
+                "memory", 
+                "entertainment"
             ], 
             "gamepacks": [
                 {
-                    "name": "barthel-en", 
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "animals", 
                     "settings": null, 
                     "locales": [
                         {
                             "preview": false, 
                             "name": "en", 
                             "metadata": {
-                                "instructions": " ", 
-                                "subtitle": " ", 
-                                "description": " ", 
-                                "title": "Barthel Index"
+                                "title": "Memory Game (Animals)"
                             }
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {
-                        "questionary": "questionary.json"
-                    }
-                }, 
-                {
-                    "name": "barthel-cz", 
-                    "settings": null, 
-                    "locales": [
+                        }, 
                         {
                             "preview": false, 
                             "name": "cz", 
                             "metadata": {
-                                "instructions": "Barthel Index je standardizovan\u00fd test ur\u010den\u00fd k\u00a0hodnocen\u00ed sob\u011bsta\u010dnosti. Body jsou p\u0159id\u011blov\u00e1ny podle toho, co pacient re\u00e1ln\u011b dok\u00e1\u017ee. Pln\u00fd po\u010det bod\u016f vylu\u010duje i jen minim\u00e1ln\u00ed pomoc, v\u010detn\u011b n\u00e1pov\u011bdy. Pacient m\u016f\u017ee p\u0159i hodnocen\u00fdch \u010dinnostech vyu\u017e\u00edvat mechanick\u00e9 pom\u016fcky (madla na st\u011bn\u00e1ch, hole, berle apod.).\n\nHodnocen\u00ed sob\u011bsta\u010dnosti:\n\n0-40 bod\u016f\tvysoce z\u00e1visl\u00fd\n45-60 bod\u016f\tz\u00e1vislost st\u0159edn\u00edho stupn\u011b\n65-95 bod\u016f\tlehk\u00e1 z\u00e1vislost\n100 bod\u016f\tnez\u00e1visl\u00fd\n", 
-                                "subtitle": " ", 
-                                "description": " ", 
-                                "title": "Barthel Index"
+                                "title": "Pexeso (zv\u00ed\u0159ata)"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "sports", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Sports)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (sport)"
                             }
                         }
                     ], 
                     "preview": false, 
                     "config": null, 
                     "resources": {
-                        "questionary": "questionary.json"
+                        "tileset": "tileset.json"
                     }
                 }
             ], 
             "locales": [
                 {
                     "preview": false, 
-                    "translations": null, 
+                    "translations": {
+                        "End": "End", 
+                        "All cards found!": "All cards found!"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "Turn one tile and then try to find a matching tile. If the tiles match, they will remain turned face up. Repeat until all pairs are matched (all tiles are turned face up).", 
+                        "subtitle": " ", 
+                        "description": "This is a memory game where you need to find matching pairs of tiles.", 
+                        "title": "Memory Game"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "Konec", 
+                        "All cards found!": "V\u0161echny dvojice nalezeny!"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Na za\u010d\u00e1tku hry jsou v\u0161echna pol\u00ed\u010dka (karty) obr\u00e1cena obr\u00e1zkem dol\u016f. Hr\u00e1\u010d m\u016f\u017ee najednou oto\u010dit dv\u011b karty. Pokud se jejich obr\u00e1zky shoduj\u00ed, karty z\u016fstanou oto\u010den\u00e9 a hra pokra\u010duje do t\u00e9 doby ne\u017e jsou odkryty v\u0161echny obr\u00e1zkov\u00e9 dvojice. C\u00edlem hr\u00e1\u010de je zde nal\u00e9zt v\u0161echny dvojice v co nejkrat\u0161\u00edm \u010dase.", 
+                        "subtitle": " ", 
+                        "description": "Pexeso je obl\u00edben\u00e1 hra, kdy je \u00fakolem hledat stejn\u00e9 obr\u00e1zkov\u00e9 dvojice.", 
+                        "title": "Pexeso"
+                    }
+                }
+            ], 
+            "preview": true, 
+            "gamepackName": "sports", 
+            "resources": {}, 
+            "gameClass": "MemoryGame"
+        }, 
+        {
+            "name": "memory-game", 
+            "settings": null, 
+            "config": null, 
+            "tags": [
+                "visual", 
+                "memory", 
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {}
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {}
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "animals", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Animals)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (zv\u00ed\u0159ata)"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "sports", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Sports)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (sport)"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "End", 
+                        "All cards found!": "All cards found!"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "Turn one tile and then try to find a matching tile. If the tiles match, they will remain turned face up. Repeat until all pairs are matched (all tiles are turned face up).", 
+                        "subtitle": " ", 
+                        "description": "This is a memory game where you need to find matching pairs of tiles.", 
+                        "title": "Memory Game"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "Konec", 
+                        "All cards found!": "V\u0161echny dvojice nalezeny!"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Na za\u010d\u00e1tku hry jsou v\u0161echna pol\u00ed\u010dka (karty) obr\u00e1cena obr\u00e1zkem dol\u016f. Hr\u00e1\u010d m\u016f\u017ee najednou oto\u010dit dv\u011b karty. Pokud se jejich obr\u00e1zky shoduj\u00ed, karty z\u016fstanou oto\u010den\u00e9 a hra pokra\u010duje do t\u00e9 doby ne\u017e jsou odkryty v\u0161echny obr\u00e1zkov\u00e9 dvojice. C\u00edlem hr\u00e1\u010de je zde nal\u00e9zt v\u0161echny dvojice v co nejkrat\u0161\u00edm \u010dase.", 
+                        "subtitle": " ", 
+                        "description": "Pexeso je obl\u00edben\u00e1 hra, kdy je \u00fakolem hledat stejn\u00e9 obr\u00e1zkov\u00e9 dvojice.", 
+                        "title": "Pexeso"
+                    }
+                }
+            ], 
+            "preview": true, 
+            "gamepackName": "animals", 
+            "resources": {}, 
+            "gameClass": "MemoryGame"
+        }, 
+        {
+            "name": "sudoku", 
+            "settings": null, 
+            "config": [
+                {
+                    "default": true, 
+                    "title": "Show mistakes", 
+                    "type": "boolean", 
+                    "description": "", 
+                    "name": "showMistakes"
+                }
+            ], 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": true, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Sudoku"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Sudoku"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": true, 
+                    "translations": {
+                        "Show mistakes": "Show mistakes", 
+                        "Total time": "Total Time [s]"
+                    }, 
                     "name": "en", 
                     "metadata": {
                         "instructions": " ", 
                         "subtitle": " ", 
                         "description": " ", 
-                        "title": "Questionary"
+                        "title": "Sudoku"
                     }
                 }, 
                 {
                     "preview": false, 
-                    "translations": null, 
+                    "translations": {
+                        "Show mistakes": "Zv\u00fdraznit chyby", 
+                        "Total time": "Celkov\u00fd \u010das [s]"
+                    }, 
                     "name": "cz", 
-                    "metadata": {}
+                    "metadata": {
+                        "instructions": "Vypl\u0148te sudoku tak, aby v\u00a0\u017e\u00e1dn\u00e9m \u0159\u00e1dku, sloupci ani nebylo \u017e\u00e1dn\u00e9 \u010d\u00edslo dvakr\u00e1t.", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Sudoku"
+                    }
                 }
             ], 
             "preview": true, 
-            "gamepackName": "barthel-cz", 
+            "gamepackName": "default", 
             "resources": {}, 
-            "gameClass": "Questionary"
+            "gameClass": "SudokuGame"
+        }, 
+        {
+            "name": "mahjongg", 
+            "settings": null, 
+            "config": null, 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": true, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Mahjongg"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Mahjongg"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "translations": {
+                        "No more moves left!": "No more moves left!", 
+                        "Total time": "Total Time [s]", 
+                        "Show mistakes": "Show mistakes", 
+                        "All pairs found!": "All pairs found!"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org).", 
+                        "title": "Mahjongg"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "No more moves left!": "Dal\u0161\u00ed tah nen\u00ed mo\u017en\u00fd!", 
+                        "Total time": "Celkov\u00fd \u010das [s]", 
+                        "Show mistakes": "Zv\u00fdraznit chyby", 
+                        "All pairs found!": "Dobr\u00e1 pr\u00e1ce!"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org).", 
+                        "title": "Mahjongg"
+                    }
+                }
+            ], 
+            "preview": true, 
+            "gamepackName": "default", 
+            "resources": {
+                "tileset": "tileset.json"
+            }, 
+            "gameClass": "Mahjongg"
+        }, 
+        {
+            "name": "fifteen", 
+            "settings": null, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "randomMovesNo", 
+                    "title": "", 
+                    "default": 30, 
+                    "type": "int", 
+                    "maxValue": 100, 
+                    "minValue": 1
+                }
+            ], 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Fifteen"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Patn\u00e1ctka"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "translations": {
+                        "randomMovesNo": "Number of random moves", 
+                        "Number of moves": "Number of moves", 
+                        "Total time": "Total Time [s]"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Fifteen"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "randomMovesNo": "Po\u010det n\u00e1hodn\u00fdch tah\u016f", 
+                        "Number of moves": "Po\u010det tah\u016f", 
+                        "Total time": "Celkov\u00fd \u010das [s]"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Patn\u00e1ctka"
+                    }
+                }
+            ], 
+            "preview": true, 
+            "gamepackName": "default", 
+            "resources": {
+                "tileset": "tileset.json"
+            }, 
+            "gameClass": "Fifteen"
         }
     ], 
     "locales": [
@@ -178,5 +564,5 @@
             }
         }
     ], 
-    "icon": "barthel"
+    "icon": "kote"
 }
