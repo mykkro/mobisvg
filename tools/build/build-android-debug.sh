@@ -1,6 +1,8 @@
 #!/bin/bash
 
 METAFILE="main.yaml"
+VERSION=`cat version`
+
 PROJECT="$1"
 if [ -z "$1" ]
   then

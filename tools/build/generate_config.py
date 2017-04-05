@@ -17,6 +17,12 @@ SRC = sys.argv[1]
 with open(SRC) as data_file:
     context = json.load(data_file)
 
+with open('version', 'r') as myfile:
+    version = myfile.read().strip()
+
+# ovwerride version from JSON by version in version file
+context["version"] = version
+
 result = render(TMPL, context)
 
 with open("config.xml", "w") as text_file:

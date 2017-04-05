@@ -6,8 +6,8 @@
 
 METAFILE="main.yaml"
 MASTERPREFIX="kote"
-# TODO read version from config files (JSON)
-VERSION="1.0.3"
+VERSION=`cat version`
+
 
 PROJECT="$1"
 if [ -z "$1" ]
