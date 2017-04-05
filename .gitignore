@@ -35,6 +35,7 @@ log.txt
 keystore/
 tools/scaffold/tmp/
 tools/build/target
+tools/build/tmp/
 
 www/index.json
 tools/build/config.xml

@@ -22,7 +22,16 @@ gamepacks:
           - title:        Barthel Index
           - subtitle:     " "
           - description:  " "
-          - instructions: " "
+          - instructions: |
+                The Barthel scale or Barthel ADL index is an ordinal scale used to measure performance in activities of daily living. Each performance item is rated on this scale with a given number of points assigned to each level or ranking. The maximum score corresponds to full independence - the patient does not need help at all, not even verbal cues.
+
+                Dependency score:
+
+                0-20 points: total dependency
+                21-60 points: dependency
+                61-90 points: moderate dependency
+                91-99 points: slight dependency
+                100 points: independency
       resources:
         - questionary:  questionary.json
     - name : barthel-cz

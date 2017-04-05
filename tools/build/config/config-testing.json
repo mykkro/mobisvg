@@ -1,11 +1,11 @@
 {
-    "id": "org.mykkro.kote.barthelcz",
-    "name": "Barthel Index CZ",
+    "id": "org.mykkro.kote.testing",
+    "name": "Kote (new games)",
     "description": "Kognitivní testování",
     "version": "1.0.3",
     "author": {
         "name": "Myrousz",
         "email": "myrousz@gmail.com"
     },
-    "icon": "barthel"
+    "icon": "kote"
 }

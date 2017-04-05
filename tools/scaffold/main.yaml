@@ -44,10 +44,6 @@ projects:
         gamepack: default
       - name : fifteen
         gamepack: default
-      - name : twenty-forty-eight
-        gamepack: default
-      - name : minefield
-        gamepack: default
   - name: entertainment
     version: 1.0
     author: MKR
@@ -62,10 +58,6 @@ projects:
       - name : mahjongg
         gamepack: default
       - name : fifteen
-        gamepack: default
-      - name : twenty-forty-eight
-        gamepack: default
-      - name : minefield
         gamepack: default
   - name: reactiontest
     version: 1.0
@@ -94,3 +86,12 @@ projects:
     apps:
       - name : questionary
         gamepack: barthel-en
+  - name: testing
+    version: 1.0
+    author: MKR
+    icon: kote
+    apps:
+      - name : twenty-forty-eight
+        gamepack: default
+      - name : minefield
+        gamepack: default

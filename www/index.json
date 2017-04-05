@@ -403,14 +403,14 @@
                             "preview": false, 
                             "name": "en", 
                             "metadata": {
-                                "instructions": " ", 
+                                "instructions": "The Barthel scale or Barthel ADL index is an ordinal scale used to measure performance in activities of daily living. Each performance item is rated on this scale with a given number of points assigned to each level or ranking. The maximum score corresponds to full independence - the patient does not need help at all, not even verbal cues.\n\nDependency score:\n\n0-20 points: total dependency\n21-60 points: dependency\n61-90 points: moderate dependency\n91-99 points: slight dependency\n100 points: independency\n", 
                                 "subtitle": " ", 
                                 "description": " ", 
                                 "title": "Barthel Index"
                             }
                         }
                     ], 
-                    "preview": false, 
+                    "preview": true, 
                     "config": null, 
                     "resources": {
                         "questionary": "questionary.json"
@@ -431,7 +431,7 @@
                             }
                         }
                     ], 
-                    "preview": false, 
+                    "preview": true, 
                     "config": null, 
                     "resources": {
                         "questionary": "questionary.json"
@@ -1229,158 +1229,6 @@
                 "tileset": "tileset.json"
             }, 
             "gameClass": "Fifteen"
-        }, 
-        {
-            "name": "twenty-forty-eight", 
-            "settings": null, 
-            "config": null, 
-            "tags": [
-                "entertainment"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "default", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {
-                                "title": "2048"
-                            }
-                        }, 
-                        {
-                            "preview": false, 
-                            "name": "cz", 
-                            "metadata": {
-                                "title": "2048"
-                            }
-                        }
-                    ], 
-                    "preview": true, 
-                    "config": null, 
-                    "resources": {}
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": false, 
-                    "translations": {
-                        "randomMovesNo": "Number of random moves", 
-                        "Number of moves": "Number of moves", 
-                        "Total time": "Total Time [s]"
-                    }, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": " ", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Yet Another 2048 Clone"
-                    }
-                }, 
-                {
-                    "preview": false, 
-                    "translations": {
-                        "randomMovesNo": "Po\u010det n\u00e1hodn\u00fdch tah\u016f", 
-                        "Number of moves": "Po\u010det tah\u016f", 
-                        "Total time": "Celkov\u00fd \u010das [s]"
-                    }, 
-                    "name": "cz", 
-                    "metadata": {
-                        "instructions": " ", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "2048"
-                    }
-                }
-            ], 
-            "preview": true, 
-            "gamepackName": "default", 
-            "resources": {
-                "tileset": "tileset.json"
-            }, 
-            "gameClass": "TwentyFortyEight"
-        }, 
-        {
-            "name": "minefield", 
-            "settings": null, 
-            "config": [
-                {
-                    "description": "", 
-                    "name": "randomMovesNo", 
-                    "title": "", 
-                    "default": 30, 
-                    "type": "int", 
-                    "maxValue": 100, 
-                    "minValue": 1
-                }
-            ], 
-            "tags": [
-                "entertainment"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "default", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {
-                                "title": "Minefield"
-                            }
-                        }, 
-                        {
-                            "preview": false, 
-                            "name": "cz", 
-                            "metadata": {
-                                "title": "Minov\u00e9 pole"
-                            }
-                        }
-                    ], 
-                    "preview": true, 
-                    "config": null, 
-                    "resources": {}
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": false, 
-                    "translations": {
-                        "randomMovesNo": "Number of random moves", 
-                        "Number of moves": "Number of moves", 
-                        "Total time": "Total Time [s]"
-                    }, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": " ", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Minefield"
-                    }
-                }, 
-                {
-                    "preview": false, 
-                    "translations": {
-                        "randomMovesNo": "Po\u010det n\u00e1hodn\u00fdch tah\u016f", 
-                        "Number of moves": "Po\u010det tah\u016f", 
-                        "Total time": "Celkov\u00fd \u010das [s]"
-                    }, 
-                    "name": "cz", 
-                    "metadata": {
-                        "instructions": " ", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Minov\u00e9 pole"
-                    }
-                }
-            ], 
-            "preview": true, 
-            "gamepackName": "default", 
-            "resources": {
-                "tileset": "tileset.json"
-            }, 
-            "gameClass": "Minefield"
         }
     ], 
     "locales": [
