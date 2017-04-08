@@ -54,6 +54,24 @@ var GameGUI = Base.extend({
         this.createSettingsPageButtons();
         $("#settings-form-outer").show();
     },
+    showAboutPage: function() {
+        r.clear();
+        this.showGameTitle();
+        this.createAboutPageButtons();
+    },
+    createAboutPageButtons: function() {
+        var backBtn = new ButtonWidget(this.instance.tr("Back"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        Widget.layoutButtons([backBtn], gap, yy);
+        var self = this;
+
+        backBtn.onClick(function() {
+            self.showGameLauncherPage();
+        });
+
+        return [backBtn];
+    },
     showResultsPage: function(results, messages) {
         r.clear();
         this.showGameTitle();    
@@ -144,6 +162,13 @@ var GameGUI = Base.extend({
             self.showHistoryPage();
         });
         */
+
+        var aboutBtn = new ButtonWidget(this.instance.tr("About"), this.buttonStyle);    
+        aboutBtn.setEnabled(true);
+        aboutBtn.onClick(function() {
+            self.showAboutPage();
+        });
+
         
         var configFields = this.instance.config || [];
         console.log("Config fields:", configFields);
@@ -162,6 +187,7 @@ var GameGUI = Base.extend({
             btns.push(settingsBtn);
         }
         btns.push(instrBtn);
+        btns.push(aboutBtn);
         if(exitBtn) {
             btns.push(exitBtn);
         }

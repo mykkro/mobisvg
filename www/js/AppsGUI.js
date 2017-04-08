@@ -127,6 +127,23 @@ var AppsGUI = Base.extend({
 
         return [saveBtn, resetBtn, backBtn];
     },
+    showAboutPage: function() {
+        this.resetScene();
+        this.createAboutPageButtons();
+    },
+    createAboutPageButtons: function() {
+        var backBtn = new ButtonWidget(this.indexLocalized.tr("Back"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        Widget.layoutButtons([backBtn], gap, yy);
+        var self = this;
+
+        backBtn.onClick(function() {
+            self.showAppsPage(1);
+        });
+
+        return [backBtn];
+    },
     applySettings: function(settings) {
         console.log("AppsGUI.applySettings", settings);
         var self = this;
@@ -202,6 +219,8 @@ var AppsGUI = Base.extend({
     createMainPageButtons: function(pg) {
         var self = this;
         var settingsBtn = new ButtonWidget(this.indexLocalized.tr("Settings"), this.buttonStyle);        
+        var aboutBtn = new ButtonWidget(this.indexLocalized.tr("About"), this.buttonStyle);        
+
         /*
         var historyBtn = new ButtonWidget(this.indexLocalized.tr("History"), this.buttonStyle);        
         historyBtn.setEnabled(false);
@@ -219,6 +238,7 @@ var AppsGUI = Base.extend({
             });
         }
         btns.push(settingsBtn);
+        btns.push(aboutBtn);
         //btns.push(historyBtn);
         if(pg.page<pg.pages) {
             nextBtn = new ButtonWidget(this.indexLocalized.tr("Next"), this.buttonStyle);        
@@ -236,6 +256,9 @@ var AppsGUI = Base.extend({
             self.showSettingsPage();
         });
 
+        aboutBtn.onClick(function() {
+            self.showAboutPage();
+        });
 
         return [settingsBtn];
     },
