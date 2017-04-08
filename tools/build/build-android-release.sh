@@ -33,6 +33,8 @@ ZIPALIGNPATH="c:/apps/android/build-tools/25.0.2/zipalign.exe"
 TARGETNAME="$MASTERPREFIX-$PROJECT-$VERSION-release.apk"
 DISTDIR="$ROOTDIR/tools/build/target"
 
+KEYSTOREPASS=`cat $ROOTDIR/keystore/keystorepass`
+
 
 # clear the APK directory
 rm -rf $TARGETDIR
@@ -48,7 +50,7 @@ cp $KEYSTOREPATH $TARGETDIR/$KEYSTORENAME
 cd $TARGETDIR
 
 # sign the APK
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $KEYSTORENAME android-release-unsigned.apk $KEYSTOREALIAS
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $KEYSTORENAME -storepass $KEYSTOREPASS android-release-unsigned.apk $KEYSTOREALIAS
 
 # use zipalign tool to optimize generated APK
 $ZIPALIGNPATH -v 4 android-release-unsigned.apk $TARGETNAME

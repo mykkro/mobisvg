@@ -133,10 +133,15 @@ var GameGUI = Base.extend({
         return labelSvg;
     }, 
     showGamePreviewImage: function() {
+        var self = this;
         var previewUrl = this.instance.appBaseUrl + "/"+ this.instance.res("preview");
         var img = new ImageWidget(previewUrl, 500, 500); 
         img.setPosition(250, 200);
-        return img;
+        var clk = new Clickable(img);
+        clk.onClick(function() {
+            self.startGame();
+        });
+        return clk;
     },
     // lays out buttons in centered layout
     buttonStyle: {
