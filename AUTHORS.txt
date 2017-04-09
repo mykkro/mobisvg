@@ -1,0 +1,11 @@
+Authors ordered by first contribution:
+
+Myrousz <myrousz@gmail.com>
+LeMarek <marek.lenart.eu@gmail.com>
+
+
+The applications and games use artwork authored by:
+
+Tiles for Mahjongg game by Martin Persson <http://www.martinpersson.org>
+Various vector icons used in the GUI by FlatIcon <http://www.flaticon.com>
+Font Awesome by Dave Gandy <http://fontawesome.io>
