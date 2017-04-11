@@ -7,31 +7,13 @@
     "settings": {}, 
     "apps": [
         {
-            "name": "colortest-reverse", 
+            "name": "memory-game", 
             "settings": null, 
-            "config": [
-                {
-                    "description": "", 
-                    "name": "N", 
-                    "title": "Repeat count", 
-                    "default": 10, 
-                    "type": "int", 
-                    "maxValue": 50, 
-                    "minValue": 1
-                }, 
-                {
-                    "description": "", 
-                    "name": "matchProbability", 
-                    "title": "", 
-                    "default": 35, 
-                    "type": "int", 
-                    "maxValue": 100, 
-                    "minValue": 0
-                }
-            ], 
+            "config": null, 
             "tags": [
                 "visual", 
-                "attention"
+                "memory", 
+                "entertainment"
             ], 
             "gamepacks": [
                 {
@@ -51,103 +33,104 @@
                     ], 
                     "preview": false, 
                     "config": null, 
-                    "resources": {}
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "animals", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Animals)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (zv\u00ed\u0159ata)"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "sports", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Sports)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (sport)"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
                 }
             ], 
             "locales": [
                 {
                     "preview": false, 
                     "translations": {
-                        "blue": "blue", 
-                        "Minimum reaction time": "Minimum reaction time", 
-                        "Average reaction time": "Average reaction time", 
-                        "yellow": "yellow", 
-                        "matchProbability": "Match probability in %", 
-                        "green": "green", 
-                        "Repeat count": "Repeat count", 
-                        "red": "red"
+                        "End": "End", 
+                        "All cards found!": "All cards found!"
                     }, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": "Choose the colored square which matches the color of the text appearing in the center of the screen as fast as possible.", 
+                        "instructions": "Turn one tile and then try to find a matching tile. If the tiles match, they will remain turned face up. Repeat until all pairs are matched (all tiles are turned face up).", 
                         "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Reaction time test \u2013 colors"
+                        "description": "This is a memory game where you need to find matching pairs of tiles.", 
+                        "title": "Memory Game"
                     }
                 }, 
                 {
                     "preview": false, 
                     "translations": {
-                        "blue": "modr\u00e1", 
-                        "Minimum reaction time": "Nejkrat\u0161\u00ed doba reakce", 
-                        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
-                        "yellow": "\u017elut\u00e1", 
-                        "matchProbability": "Pravd\u011bpodobnost shody v %", 
-                        "green": "zelen\u00e1", 
-                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed", 
-                        "red": "\u010derven\u00e1"
+                        "End": "Konec", 
+                        "All cards found!": "V\u0161echny dvojice nalezeny!"
                     }, 
                     "name": "cz", 
                     "metadata": {
-                        "instructions": "Zvolte v\u017edy co nejrychleji \u010dtverec se shodnou barvou, jakou m\u00e1 n\u00e1pis, kter\u00fd se objev\u00ed uprost\u0159ed.", 
+                        "instructions": "Na za\u010d\u00e1tku hry jsou v\u0161echna pol\u00ed\u010dka (karty) obr\u00e1cena obr\u00e1zkem dol\u016f. Hr\u00e1\u010d m\u016f\u017ee najednou oto\u010dit dv\u011b karty. Pokud se jejich obr\u00e1zky shoduj\u00ed, karty z\u016fstanou oto\u010den\u00e9 a hra pokra\u010duje do t\u00e9 doby ne\u017e jsou odkryty v\u0161echny obr\u00e1zkov\u00e9 dvojice. C\u00edlem hr\u00e1\u010de je zde nal\u00e9zt v\u0161echny dvojice v co nejkrat\u0161\u00edm \u010dase.", 
                         "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Reak\u010dn\u00ed test  \u2013 barvy"
+                        "description": "Pexeso je obl\u00edben\u00e1 hra, kdy je \u00fakolem hledat stejn\u00e9 obr\u00e1zkov\u00e9 dvojice.", 
+                        "title": "Pexeso"
                     }
                 }
             ], 
             "preview": true, 
-            "gamepackName": "default", 
+            "gamepackName": "sports", 
             "resources": {}, 
-            "gameClass": "ReverseColorTestGame"
+            "gameClass": "MemoryGame"
         }, 
         {
-            "name": "reaction-time", 
+            "name": "memory-game", 
             "settings": null, 
-            "config": [
-                {
-                    "description": "", 
-                    "name": "N", 
-                    "title": "", 
-                    "default": 12, 
-                    "type": "int", 
-                    "maxValue": 20, 
-                    "minValue": 1
-                }, 
-                {
-                    "description": "", 
-                    "title": "", 
-                    "default": 1000, 
-                    "maxValue": 10000, 
-                    "minValue": 100, 
-                    "type": "int", 
-                    "by": 100, 
-                    "name": "allowedShift"
-                }, 
-                {
-                    "description": "", 
-                    "title": "", 
-                    "default": 3000, 
-                    "maxValue": 10000, 
-                    "minValue": 100, 
-                    "type": "int", 
-                    "by": 100, 
-                    "name": "targetTimeout"
-                }, 
-                {
-                    "description": "", 
-                    "title": "", 
-                    "default": 5000, 
-                    "maxValue": 10000, 
-                    "minValue": 100, 
-                    "type": "int", 
-                    "by": 1000, 
-                    "name": "avgFrameLen"
-                }
-            ], 
+            "config": null, 
             "tags": [
                 "visual", 
-                "attention"
+                "memory", 
+                "entertainment"
             ], 
             "gamepacks": [
                 {
@@ -167,6 +150,290 @@
                     ], 
                     "preview": false, 
                     "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "animals", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Animals)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (zv\u00ed\u0159ata)"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }, 
+                {
+                    "name": "sports", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Memory Game (Sports)"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Pexeso (sport)"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {
+                        "tileset": "tileset.json"
+                    }
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "End", 
+                        "All cards found!": "All cards found!"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": "Turn one tile and then try to find a matching tile. If the tiles match, they will remain turned face up. Repeat until all pairs are matched (all tiles are turned face up).", 
+                        "subtitle": " ", 
+                        "description": "This is a memory game where you need to find matching pairs of tiles.", 
+                        "title": "Memory Game"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "End": "Konec", 
+                        "All cards found!": "V\u0161echny dvojice nalezeny!"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Na za\u010d\u00e1tku hry jsou v\u0161echna pol\u00ed\u010dka (karty) obr\u00e1cena obr\u00e1zkem dol\u016f. Hr\u00e1\u010d m\u016f\u017ee najednou oto\u010dit dv\u011b karty. Pokud se jejich obr\u00e1zky shoduj\u00ed, karty z\u016fstanou oto\u010den\u00e9 a hra pokra\u010duje do t\u00e9 doby ne\u017e jsou odkryty v\u0161echny obr\u00e1zkov\u00e9 dvojice. C\u00edlem hr\u00e1\u010de je zde nal\u00e9zt v\u0161echny dvojice v co nejkrat\u0161\u00edm \u010dase.", 
+                        "subtitle": " ", 
+                        "description": "Pexeso je obl\u00edben\u00e1 hra, kdy je \u00fakolem hledat stejn\u00e9 obr\u00e1zkov\u00e9 dvojice.", 
+                        "title": "Pexeso"
+                    }
+                }
+            ], 
+            "preview": true, 
+            "gamepackName": "animals", 
+            "resources": {}, 
+            "gameClass": "MemoryGame"
+        }, 
+        {
+            "name": "sudoku", 
+            "settings": null, 
+            "config": [
+                {
+                    "default": true, 
+                    "title": "Show mistakes", 
+                    "type": "boolean", 
+                    "description": "", 
+                    "name": "showMistakes"
+                }
+            ], 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": true, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Sudoku"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Sudoku"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "preview": true, 
+                    "translations": {
+                        "Show mistakes": "Show mistakes", 
+                        "Total time": "Total Time [s]"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Sudoku"
+                    }
+                }, 
+                {
+                    "preview": false, 
+                    "translations": {
+                        "Show mistakes": "Zv\u00fdraznit chyby", 
+                        "Total time": "Celkov\u00fd \u010das [s]"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": "Vypl\u0148te sudoku tak, aby v\u00a0\u017e\u00e1dn\u00e9m \u0159\u00e1dku, sloupci ani nebylo \u017e\u00e1dn\u00e9 \u010d\u00edslo dvakr\u00e1t.", 
+                        "subtitle": " ", 
+                        "description": " ", 
+                        "title": "Sudoku"
+                    }
+                }
+            ], 
+            "preview": true, 
+            "gamepackName": "default", 
+            "resources": {}, 
+            "gameClass": "SudokuGame"
+        }, 
+        {
+            "name": "mahjongg", 
+            "settings": null, 
+            "config": null, 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "credits": null, 
+                            "preview": true, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Mahjongg"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Mahjongg"
+                            }
+                        }
+                    ], 
+                    "preview": false, 
+                    "config": null, 
+                    "resources": {}
+                }
+            ], 
+            "locales": [
+                {
+                    "credits": [
+                        "Tiles for Mahjongg game by Martin Persson <http://www.martinpersson.org>"
+                    ], 
+                    "preview": false, 
+                    "translations": {
+                        "No more moves left!": "No more moves left!", 
+                        "Total time": "Total Time [s]", 
+                        "Show mistakes": "Show mistakes", 
+                        "All pairs found!": "All pairs found!"
+                    }, 
+                    "name": "en", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org).", 
+                        "title": "Mahjongg"
+                    }
+                }, 
+                {
+                    "credits": [
+                        "Tiles for Mahjongg game by Martin Persson <http://www.martinpersson.org>"
+                    ], 
+                    "preview": false, 
+                    "translations": {
+                        "No more moves left!": "Dal\u0161\u00ed tah nen\u00ed mo\u017en\u00fd!", 
+                        "Total time": "Celkov\u00fd \u010das [s]", 
+                        "Show mistakes": "Zv\u00fdraznit chyby", 
+                        "All pairs found!": "Dobr\u00e1 pr\u00e1ce!"
+                    }, 
+                    "name": "cz", 
+                    "metadata": {
+                        "instructions": " ", 
+                        "subtitle": " ", 
+                        "description": "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org).", 
+                        "title": "Mahjongg"
+                    }
+                }
+            ], 
+            "preview": true, 
+            "gamepackName": "default", 
+            "resources": {
+                "tileset": "tileset.json"
+            }, 
+            "gameClass": "Mahjongg"
+        }, 
+        {
+            "name": "fifteen", 
+            "settings": null, 
+            "config": [
+                {
+                    "description": "", 
+                    "name": "randomMovesNo", 
+                    "title": "", 
+                    "default": 30, 
+                    "type": "int", 
+                    "maxValue": 100, 
+                    "minValue": 1
+                }
+            ], 
+            "tags": [
+                "entertainment"
+            ], 
+            "gamepacks": [
+                {
+                    "name": "default", 
+                    "settings": null, 
+                    "locales": [
+                        {
+                            "preview": false, 
+                            "name": "en", 
+                            "metadata": {
+                                "title": "Fifteen"
+                            }
+                        }, 
+                        {
+                            "preview": false, 
+                            "name": "cz", 
+                            "metadata": {
+                                "title": "Patn\u00e1ctka"
+                            }
+                        }
+                    ], 
+                    "preview": true, 
+                    "config": null, 
                     "resources": {}
                 }
             ], 
@@ -174,52 +441,48 @@
                 {
                     "preview": false, 
                     "translations": {
-                        "allowedShift": "Time tolerance [ms]", 
-                        "Average reaction time": "Average reaction time", 
-                        "avgFrameLen": "Time until next object [ms]", 
-                        "Best reaction time": "Best reaction time", 
-                        "targetTimeout": "Object disappears after [ms]", 
-                        "Average delay": "Average delay", 
-                        "Hit ratio": "Hit ratio", 
-                        "N": "Repeat count"
+                        "randomMovesNo": "Number of random moves", 
+                        "Number of moves": "Number of moves", 
+                        "Total time": "Total Time [s]"
                     }, 
                     "name": "en", 
                     "metadata": {
-                        "instructions": "Click the targets immediately after they appear.", 
+                        "instructions": " ", 
                         "subtitle": " ", 
                         "description": " ", 
-                        "title": "Reaction Time Test"
+                        "title": "Fifteen"
                     }
                 }, 
                 {
                     "preview": false, 
                     "translations": {
-                        "allowedShift": "Povolen\u00e1 odchylka \u010dasu [ms]", 
-                        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
-                        "avgFrameLen": "\u010cas do dal\u0161\u00edho objektu [ms]", 
-                        "Best reaction time": "Nejkrat\u0161\u00ed doba reakce", 
-                        "targetTimeout": "Objekt zmiz\u00ed za [ms]", 
-                        "Average delay": "Pr\u016fm\u011brn\u00e1 doba reakce", 
-                        "Hit ratio": "Procento z\u00e1sah\u016f", 
-                        "N": "Po\u010det opakov\u00e1n\u00ed"
+                        "randomMovesNo": "Po\u010det n\u00e1hodn\u00fdch tah\u016f", 
+                        "Number of moves": "Po\u010det tah\u016f", 
+                        "Total time": "Celkov\u00fd \u010das [s]"
                     }, 
                     "name": "cz", 
                     "metadata": {
-                        "instructions": "Strefte se do c\u00edle co nejrychleji pot\u00e9, co se objev\u00ed.", 
+                        "instructions": " ", 
                         "subtitle": " ", 
                         "description": " ", 
-                        "title": "Reak\u010dn\u00ed test"
+                        "title": "Patn\u00e1ctka"
                     }
                 }
             ], 
             "preview": true, 
             "gamepackName": "default", 
-            "resources": {}, 
-            "gameClass": "ReactionTimeGame"
+            "resources": {
+                "tileset": "tileset.json"
+            }, 
+            "gameClass": "Fifteen"
         }
     ], 
     "locales": [
         {
+            "credits": [
+                "Various vector icons used in the GUI by FlatIcon <http://www.flaticon.com>", 
+                "Font Awesome by Dave Gandy <http://fontawesome.io>"
+            ], 
             "preview": false, 
             "translations": {
                 "verbal": "verbal", 
@@ -267,6 +530,10 @@
             }
         }, 
         {
+            "credits": [
+                "Various vector icons used in the GUI by FlatIcon <http://www.flaticon.com>", 
+                "Font Awesome by Dave Gandy <http://fontawesome.io>"
+            ], 
             "preview": false, 
             "translations": {
                 "verbal": "slovn\u00ed", 

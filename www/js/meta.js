@@ -105,6 +105,7 @@ var MetaLocalized = function(meta, localeName) {
     this.translations[key] = tr[key];
   }
 
+  this.credits = this.locale.credits();
 }
 // translation method
 MetaLocalized.prototype.tr = function(str) {
@@ -165,6 +166,18 @@ var MetaInstance = function(meta, appName, gamepackName, localeName) {
       this.translations[key] = tr[key];
     }
   }
+
+  // extract credits...
+  var self = this;
+  this.credits = [];
+  var cr;
+  cr = this.gamepackLocale.credits()
+  cr.forEach(function(c) { self.credits.push(c);});
+  cr = this.appLocale.credits();
+  cr.forEach(function(c) { self.credits.push(c);});
+  cr = this.locale.credits();
+  cr.forEach(function(c) { self.credits.push(c);});
+
 
   // find preview url
   this.appBaseUrl = "apps/" + appName;
@@ -308,6 +321,9 @@ MetaLocale.prototype.metadata = function() {
 }
 MetaLocale.prototype.translations = function() {
   return this.locale.translations || {};
+}
+MetaLocale.prototype.credits = function() {
+  return this.locale.credits || [];
 }
 MetaLocale.prototype.hasPreview = function() {
   return !!this.locale.preview;

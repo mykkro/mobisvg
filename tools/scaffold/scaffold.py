@@ -131,6 +131,11 @@ def scaffold_locale(dir, out_dir, loc):
         out_path = os.path.join(out_dir, "translations.json")
         index["translations"] = scaffold_vocabulary(path, out_path, language=name)
 
+    path = os.path.join(dir, "credits.yaml")
+    if os.path.exists(path):
+        out_path = os.path.join(out_dir, "credits.json")
+        index["credits"] = scaffold_credits(path, out_path, language=name)
+
     # copy preview.png if it exists
     index["preview"] = scaffold_preview(dir, out_dir)
 
@@ -209,6 +214,21 @@ def scaffold_vocabulary(path, out_path, language="en", version="1.0"):
             "version": version,
             "language": language,
             "translations": data
+        }
+        put_json_file(out_path, vocab)
+        return data
+
+
+def scaffold_credits(path, out_path, language="en", version="1.0"):
+    # generate credits.json
+    print "Generating credits.json"
+    with open(path, 'r') as stream:
+        data = yaml.load(stream)
+        vocab = {
+            "$type": "playonweb-credits",
+            "version": version,
+            "language": language,
+            "credits": data
         }
         put_json_file(out_path, vocab)
         return data
