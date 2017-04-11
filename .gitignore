@@ -38,7 +38,7 @@ tools/build/target
 tools/build/tmp/
 
 www/index.json
-www/apps
+www/apps/
 tools/build/config.xml
 config.xml
 
