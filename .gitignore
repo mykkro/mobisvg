@@ -38,7 +38,10 @@ tools/build/target
 tools/build/tmp/
 
 www/index.json
+www/apps
 tools/build/config.xml
 config.xml
 
 !.gitkeep
+www.tar.gz
+
