@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 
 import os, sys, yaml, json
-from shutil import copyfile
+from shutil import copyfile, rmtree
 from distutils.dir_util import copy_tree
 import datetime
 from time import mktime
@@ -356,6 +356,9 @@ data = load_yaml_file(path)
 
 dir = SRCDIR
 out_dir = TGTDIR
+apps_dir = os.path.join(TGTDIR, "apps")
+rmtree(apps_dir)
+os.mkdir(apps_dir)
 index = scaffold(dir, out_dir, data, project)
 print index
 

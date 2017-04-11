@@ -98,7 +98,7 @@ h1 {
 @media screen and (orientation: landscape) {
   /* landscape-specific styles */
   body {
-    background-color: red;
+    background-color: #2020FF;
     color: black;
   }
 }

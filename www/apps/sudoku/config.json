@@ -1,9 +1,0 @@
-[
-    {
-        "default": true, 
-        "title": "Show mistakes", 
-        "type": "boolean", 
-        "description": "", 
-        "name": "showMistakes"
-    }
-]
