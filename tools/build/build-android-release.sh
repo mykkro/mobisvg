@@ -10,6 +10,12 @@ if [ -z "$1" ]
     PROJECT="allgames"
 fi
 
+DEPLOY="$2"
+if [ -z "$1" ]
+  then
+    DEPLOY=""
+fi
+
 # Make release build of selected project
 ROOTDIR="/cygdrive/c/Work/mobisvg"
 CWD=$(pwd)
@@ -59,8 +65,11 @@ $ZIPALIGNPATH -v 4 android-release-unsigned.apk $TARGETNAME
 mkdir -p $DISTDIR
 cp $TARGETDIR/$TARGETNAME $DISTDIR/$TARGETNAME
 
-# deploy to the device
-cordova run android --release --nobuild
+if [ -n "$DEPLOY" ]
+  then
+	# deploy to the device
+	cordova run android --release --nobuild
+fi
 
 # change back to the original dir
 cd $CWD
