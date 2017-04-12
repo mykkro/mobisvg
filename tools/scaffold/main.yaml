@@ -7,8 +7,8 @@ locales:
       - subtitle:     C-Tester
       - description:  C-Tester description comes here...
   - cz:
-      - title:        C-Tester
-      - subtitle:     C-Tester
+      - title:        KoTe
+      - subtitle:     Kognitivní testování
       - description:  C-Tester description comes here...
 projects:
   - name: allgames

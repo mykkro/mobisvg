@@ -57,8 +57,17 @@ var GameGUI = Base.extend({
     showAboutPage: function() {
         r.clear();
         this.showGameTitle();
+        this.showCredits();
         this.createAboutPageButtons();
     },
+    showCredits: function() {
+        var credits = this.instance.credits;
+        var creditsText = credits.join("\n");
+        console.log("Credits:", creditsText);
+        var tw = new TextWidget(800, 20, "start", creditsText);
+        tw.setStyle({"fill": "white"})
+        tw.setPosition(100, 200);        
+    },    
     createAboutPageButtons: function() {
         var backBtn = new ButtonWidget(this.instance.tr("Back"), this.buttonStyle);        
         var gap = 40;

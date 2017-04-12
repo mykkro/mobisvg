@@ -129,7 +129,23 @@ var AppsGUI = Base.extend({
     },
     showAboutPage: function() {
         this.resetScene();
+        this.showCredits();
+        this.showFrameworkTitle();
         this.createAboutPageButtons();
+    },
+    showFrameworkTitle: function() {
+        var labelSvg = new TextWidget(600, 40, "middle", this.indexLocalized.tr("$title"));
+        labelSvg.setPosition(200, 60)
+        labelSvg.setStyle({"fill": "orange"})
+        return labelSvg;
+    }, 
+    showCredits: function() {
+        var credits = this.indexLocalized.credits;
+        var creditsText = credits.join("\n");
+        console.log("Credits:", creditsText);
+        var tw = new TextWidget(800, 20, "start", creditsText);
+        tw.setStyle({"fill": "white"})
+        tw.setPosition(100, 200);        
     },
     createAboutPageButtons: function() {
         var backBtn = new ButtonWidget(this.indexLocalized.tr("Back"), this.buttonStyle);        
