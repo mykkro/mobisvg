@@ -171,11 +171,23 @@ var Minefield = TimedGame.extend({
             explodeAllMines(mat);
             finished = true;
             console.log("Kaboom!");
+
+            notifyFinished(function() {
+                self.finish(self.answer);
+            });
         }
 
         var gameWon = function(mat) {
             finished = true;
             console.log("You win");
+            notifyFinished(function() {
+                self.finish(self.answer);
+            });
+        }
+
+        var notifyFinished = function(callback) {
+            // TODO show modal splash dialog
+            setTimeout(callback, 500);
         }
 
         var flagTile = function(mat, i, j) {

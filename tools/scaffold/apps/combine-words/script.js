@@ -16,7 +16,7 @@ var CombineWordsGame = Game.extend({
         this.okButton = btn;
     },
     generateTaskData: function(options) {
-        return CombineWordsGame.words;
+        return pickRandom(CombineWordsGame.sets);
     },            
     renderFrame: function() {
         var self = this;
@@ -150,5 +150,58 @@ var CombineWordsGame = Game.extend({
         "EKO-LOGIE",
         "KALKU-LACE",
         "DOMOV-NICE"
+    ],
+    sets: [
+        [
+            "AUTO-MOBIL",
+            "TELE-VIZE",
+            "PREZI-DENT",
+            "EKO-LOGIE",
+            "KALKU-LACE",
+            "DOMOV-NICE"
+        ],
+        [
+            "DINO-SAURUS",
+            "ABE-CEDA",
+            "NOSO-ROŽEC",
+            "ANTI-LOPA",
+            "MANDA-RINKA",
+            "ČOKO-LÁDA"
+        ], [
+            "TRAKTO-RISTA",
+            "PALA-ČINKA",
+            "ROVNO-VÁHA",
+            "KOLO-BĚŽKA",
+            "ZELE-NINA",
+            "ALI-GÁTOR"
+        ], [
+            "PÍSKO-VIŠTĚ",
+            "ANA-KONDA",
+            "POLI-CIE",
+            "KORMI-DELNÍK",
+            "AKVÁ-RIUM",
+            "LOKOMO-TIVA"
+        ], [
+            "ORAN-GUTAN",
+            "KATE-DRÁLA",
+            "MODE-LÍNA",
+            "DALE-KOHLED",
+            "LIMO-NÁDA",
+            "KAPI-TOLA"
+        ], [
+            "HORO-LEZEC",
+            "FANTA-ZIE",
+            "VYSVĚD-ČENÍ",
+            "CHAME-LEON",
+            "NOHA-VICE",
+            "HARMO-NIKA"
+        ], [
+            "NÁPO-VĚDA",
+            "ŘEDI-TELNA",
+            "MUCHO-LAPKA",
+            "KAPI-TOLA",
+            "GRAVI-TACE",
+            "SITU-ACE"
+        ]
     ]
 });

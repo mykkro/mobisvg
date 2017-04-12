@@ -9,12 +9,12 @@ locales:
     - title:        Fifteen
     - subtitle:     " "
     - description:  " "
-    - instructions: " "
+    - instructions: 'The Fifteen puzzle consists of 15 squares numbered from 1 to 15 that are placed in a 4×4 "box" leaving one position out of the 16 empty. The goal is to reposition the squares from a given arbitrary starting arrangement by sliding them one at a time into the correct configuration (from 1 to 15).'
   - cz:
     - title:        Patnáctka
     - subtitle:     " "
     - description:  " "
-    - instructions: " "
+    - instructions: 'Hlavolam Patnáctka je tvořen šestnácti poli. V patnácti z nich jsou obsaženy dílky, v jednom poli je "mezera". Ta umožňuje přesouvání jednotlivých dílků. Cílem hlavolamu je seřadit dílky tak, aby tvořily posloupnost čísel od 1 do 15 a zároveň umístit mezeru do pravého dolního rohu hlavolamu.'
 scripts:
 styles:
 resources:
