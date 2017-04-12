@@ -31,7 +31,7 @@ KEYSTOREALIAS="ctestermobileapps"
 KEYSTOREPATH="$ROOTDIR/keystore/$KEYSTORENAME"
 ZIPALIGNPATH="c:/apps/android/build-tools/25.0.2/zipalign.exe"
 TARGETNAME="$MASTERPREFIX-$PROJECT-$VERSION-release.apk"
-DISTDIR="$ROOTDIR/tools/build/target"
+DISTDIR="$ROOTDIR/tools/build/target/$VERSION"
 
 KEYSTOREPASS=`cat $ROOTDIR/keystore/keystorepass`
 
@@ -56,6 +56,7 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $KEYSTORENAME -
 $ZIPALIGNPATH -v 4 android-release-unsigned.apk $TARGETNAME
 
 # copy to dist directory
+mkdir -p $DISTDIR
 cp $TARGETDIR/$TARGETNAME $DISTDIR/$TARGETNAME
 
 # deploy to the device

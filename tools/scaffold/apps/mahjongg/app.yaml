@@ -13,8 +13,10 @@ locales:
   - cz:
     - title:        Mahjongg
     - subtitle:     " "
-    - description:  "Mahjongg artwork created by Martin Persson (http://www.martinpersson.org)."
-    - instructions: " "
+    - description:  "Kameny pro hru Mahjongg vytvořil Martin Persson (http://www.martinpersson.org)."
+    - instructions: |
+          Cílem hry je odstranit z herního pole 144 kamenů, kdy hráč postupně kliká na dvojice stejných kamenů. Přitom musí hráč dávat pozor, aby na příslušných kamenech neležely žádné jiné, a aby byly z levé nebo z pravé strany volně přístupné. 
+          Hra končí, pokud jsou z herního pole odstraněny všechny kameny.
 scripts:
 styles:
 resources:

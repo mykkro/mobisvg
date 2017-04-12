@@ -25,7 +25,7 @@ fi
 ROOTDIR="/cygdrive/c/Work/mobisvg"
 SRCDIR="$ROOTDIR/platforms/browser/www"
 TARGETNAME="$MASTERPREFIX-$PROJECT-$VERSION-web"
-DISTDIR="$ROOTDIR/tools/build/target"
+DISTDIR="$ROOTDIR/tools/build/target/$VERSION"
 TMPDIR="$ROOTDIR/tools/build/tmp"
 
 CWD=$(pwd)
@@ -43,6 +43,7 @@ if [ -n "$MAKEPACKAGE" ]
 	rm -rf $TMPDIR/$TARGETNAME
 	cp -r platforms/browser/www $TMPDIR/$TARGETNAME
 	cd $TMPDIR
+	mkdir -p $DISTDIR
 	zip -r $DISTDIR/$TARGETNAME.zip $TARGETNAME
 fi
 
