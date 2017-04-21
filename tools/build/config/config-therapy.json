@@ -1,11 +1,11 @@
-{
+﻿{
     "id": "org.mykkro.kote.therapy",
     "name": "Kote (terapie)",
     "description": "Kognitivní testování",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "author": {
         "name": "Myrousz",
         "email": "myrousz@gmail.com"
     },
-    "icon": "kote"
+    "icon": "kote2"
 }

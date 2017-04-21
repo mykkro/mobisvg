@@ -7,11 +7,11 @@ import json
 
 # Tileset generator for the game 'Fifteen'
 
-srcImagePath = "media/2048.png"
-targetDir = "target/2048"
-tilesetType = '2048'
-tilesetTitle = "Default 2048 tileset"
-tilesetName = "game2048Tileset"
+srcImagePath = "media/fifteen-tiles.png"
+targetDir = "target/fifteen"
+tilesetType = 'fifteen'
+tilesetTitle = "Default Fifteen tileset"
+tilesetName = "fifteenTileset"
 tilesetVersion = "1.0"
 x = 0
 y = 0

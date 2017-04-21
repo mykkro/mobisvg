@@ -14,7 +14,7 @@ projects:
   - name: allgames
     version: 1.0
     author: MKR
-    icon: kote
+    icon: kote2
     apps:
       - name : colortest-reverse
         gamepack: default
@@ -47,7 +47,7 @@ projects:
   - name: therapy
     version: 1.0
     author: MKR
-    icon: kote
+    icon: kote2
     apps:
       - name : colortest-reverse
         gamepack: default
@@ -70,7 +70,7 @@ projects:
   - name: entertainment
     version: 1.0
     author: MKR
-    icon: kote
+    icon: kote2
     apps:
       - name : memory-game
         gamepack: sports
@@ -85,12 +85,14 @@ projects:
   - name: reactiontest
     version: 1.0
     author: MKR
-    icon: kote
+    icon: reactiontest
     apps:
       - name : colortest-reverse
         gamepack: default
+        tags: []
       - name : reaction-time
         gamepack: default
+        tags: []
   - name: barthelcz
     version: 1.0
     author: MKR
@@ -112,7 +114,7 @@ projects:
   - name: testing
     version: 1.0
     author: MKR
-    icon: kote
+    icon: kote2
     apps:
       - name : twenty-forty-eight
         gamepack: default

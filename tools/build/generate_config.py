@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from jinja2 import Environment, FileSystemLoader
-import os, json, sys
+import os, sys
 import shutil
+import simplejson as json
 
 def render(tpl_path, context):
     path, filename = os.path.split(tpl_path)
@@ -14,6 +15,7 @@ def render(tpl_path, context):
 TMPL = "skel/config.xml"
 SRC = sys.argv[1]
 
+print "Reading configuration from %s" % SRC
 with open(SRC) as data_file:
     context = json.load(data_file)
 

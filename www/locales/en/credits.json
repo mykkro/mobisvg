@@ -4,6 +4,10 @@
     "language": "en", 
     "credits": [
         "Various vector icons used in the GUI by FlatIcon <http://www.flaticon.com>", 
-        "Font Awesome by Dave Gandy <http://fontawesome.io>"
+        "Font Awesome by Dave Gandy <http://fontawesome.io>", 
+        null, 
+        "This application was created at at the 1st Faculty of Medicine of Charles University.", 
+        "For more applications visit Albertov research center", 
+        "<https://play.google.com/store/search?q=albertov%20research%20center>"
     ]
 }
