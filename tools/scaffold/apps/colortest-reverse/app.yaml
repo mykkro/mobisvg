@@ -11,7 +11,7 @@ resources:
 settings:
 locales:
   - en:
-    - title: Reaction time test – colors
+    - title: Color Reaction Test
     - subtitle: " "
     - description: " "
     - instructions: Choose the colored square which matches the color of the text appearing in the center of the screen as fast as possible.

@@ -12,7 +12,7 @@ resources:
 settings:
 locales:
   - en:
-    - title: Memory Game
+    - title: Pairs
     - subtitle: " "
     - description: "This is a memory game where you need to find matching pairs of tiles."
     - instructions: "Turn one tile and then try to find a matching tile. If the tiles match, they will remain turned face up. Repeat until all pairs are matched (all tiles are turned face up)."
@@ -31,7 +31,7 @@ gamepacks:
     - name : animals
       locales:
         - en:
-          - title: Memory Game (Animals)
+          - title: Pairs (Animals)
         - cz:
           - title: Pexeso (zvířata)
       resources:
@@ -39,7 +39,7 @@ gamepacks:
     - name : sports
       locales:
         - en:
-          - title: Memory Game (Sports)
+          - title: Pairs (Sports)
         - cz:
           - title: Pexeso (sport)
       resources:
