@@ -59,6 +59,7 @@ var GameGUI = Base.extend({
         this.showGameTitle();
         this.showCredits();
         this.createAboutPageButtons();
+        ////$("#about-form-outer").show();
     },
     showCredits: function() {
         var credits = this.instance.credits;
@@ -76,6 +77,7 @@ var GameGUI = Base.extend({
         var self = this;
 
         backBtn.onClick(function() {
+           $("#about-form-outer").hide();
             self.showGameLauncherPage();
         });
 

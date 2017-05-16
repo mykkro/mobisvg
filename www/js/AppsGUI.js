@@ -132,6 +132,7 @@ var AppsGUI = Base.extend({
         this.showCredits();
         this.showFrameworkTitle();
         this.createAboutPageButtons();
+        ////$("#about-form-outer").show();
     },
     showFrameworkTitle: function() {
         var labelSvg = new TextWidget(600, 40, "middle", this.indexLocalized.tr("$title"));
@@ -155,7 +156,8 @@ var AppsGUI = Base.extend({
         var self = this;
 
         backBtn.onClick(function() {
-            self.showAppsPage(1);
+            $("#about-form-outer").hide();
+            self.showAppsPage(1);            
         });
 
         return [backBtn];
