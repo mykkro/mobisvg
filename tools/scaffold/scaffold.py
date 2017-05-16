@@ -293,7 +293,7 @@ def scaffold_app(dir, out_dir, app):
     # read settings.yaml if it exists
     index["settings"] = scaffold_settings(dir, out_dir)
 
-    index["tags"] = app_yaml.get("tags", []) or []
+    index["tags"] = app.get("tags", app_yaml.get("tags", [])) or []
     index["gameClass"] = app_yaml["game_class"]
 
     return index
