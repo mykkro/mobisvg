@@ -180,6 +180,30 @@ var AppsGUI = Base.extend({
         var col = 0;
         var i = 0;
         var locale = this.locale;
+
+        var gap = 10;
+        var size = 250;
+        var x0 = 115;
+        var y0 = 115;
+        var ncols = 3;
+        if(apps.length <= 6) {
+            // use layout 3x2
+            y0 = 245;
+        }
+        if(apps.length <= 4) {
+            x0 = 120;
+            y0 = 120;
+            gap = 20;
+            size = 380;
+        }
+        if(apps.length <= 2) {
+            y0 = 310;
+        }
+        if(apps.length == 1) {
+            x0 = 150;
+            y0 = 150;
+            size = 700;
+        }
         while(i<apps.length) {
             var appName = apps[i].name;
             var gamepackName = apps[i].gamepackName;
@@ -191,10 +215,8 @@ var AppsGUI = Base.extend({
             console.log("Game launcher instance:", instance);            
             // create launcher and position it...
             console.log("Creating launcher for app", app, row, col);
-            var gap = 10;
-            var x = 115 + (250 + gap)*col;
-            var y = 115 + (250 + gap)*row;
-            var size = 250;
+            var x = x0 + (size + gap)*col;
+            var y = y0 + (size + gap)*row;
             var translatedTags = instance.app.app.tags.map(function(t) {
                 return instance.tr(t);
             });
@@ -209,7 +231,7 @@ var AppsGUI = Base.extend({
                 })
             })();
             col += 1;
-            if(col == 3) {
+            if(col == ncols) {
                 col = 0;
                 row += 1;
                 if(row == 3) {
