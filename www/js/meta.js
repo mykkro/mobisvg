@@ -171,11 +171,11 @@ var MetaInstance = function(meta, appName, gamepackName, localeName) {
   var self = this;
   this.credits = [];
   var cr;
-  cr = this.gamepackLocale.credits()
+  cr = this.locale.credits();
   cr.forEach(function(c) { self.credits.push(c);});
   cr = this.appLocale.credits();
   cr.forEach(function(c) { self.credits.push(c);});
-  cr = this.locale.credits();
+  cr = this.gamepackLocale.credits()
   cr.forEach(function(c) { self.credits.push(c);});
 
 

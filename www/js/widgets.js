@@ -329,7 +329,7 @@ var PieWidget = ResizableWidget.extend({
 // anchor - one of: start middle end
 // !!!!! multiline works properly only for anchor=start!
 var TextWidget = Widget.extend({
-    constructor: function(maxWidth, fontSize, anchor, text) {
+    constructor: function(maxWidth, fontSize, anchor, text, style) {
         this.base();
         this.maxWidth = maxWidth;
         this.fontSize = fontSize;

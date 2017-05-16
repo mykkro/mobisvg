@@ -142,11 +142,7 @@ var AppsGUI = Base.extend({
     }, 
     showCredits: function() {
         var credits = this.indexLocalized.credits;
-        var creditsText = credits.join("\n");
-        console.log("Credits:", creditsText);
-        var tw = new TextWidget(800, 20, "start", creditsText);
-        tw.setStyle({"fill": "white"})
-        tw.setPosition(100, 200);        
+        AppsGUI.displayCreditsText(credits);
     },
     createAboutPageButtons: function() {
         var backBtn = new ButtonWidget(this.indexLocalized.tr("Back"), this.buttonStyle);        
@@ -342,5 +338,38 @@ var AppsGUI = Base.extend({
         var rh = RaphaelHelper;
         if(DEBUG) rh.drawGrid(paper, "#ccc");    
         return paper;
+    }
+}, {
+    displayCreditsText: function(credits) {
+        var credits = credits || [];
+        console.log("Credits:", credits);
+        var yy = 200;
+        credits.forEach(function(c) {
+            // does the line contain formatting metadata?
+            var c = c || "";
+            var ndx = c.indexOf("@");
+            var m = {};
+            if(ndx >= 0) {
+                // separate the string into two...
+                var meta = c.substring(0,ndx);
+                var parts = meta.trim().split(",");
+                parts.forEach(function(p) {
+                    var pp = p.split("=");
+                    var key = pp[0];
+                    var val = pp[1];
+                    m[key] = val;
+                });
+                console.log("META", m);
+                // metadata is sequence of aa=bb,cc=dd 
+                c = c.substring(ndx+1);
+            }
+            var fontSize = m.fontSize || 20;
+            var lineHeight = Math.floor(fontSize*1.5);
+            var tw = new TextWidget(800, fontSize, "start", c);
+            tw.setStyle({"fill": "white"})
+            tw.setPosition(100, yy);        
+            yy += Math.floor(Math.max(tw.getTextboxSize().height, fontSize) + lineHeight - fontSize);
+        });
+
     }
 });
