@@ -191,10 +191,11 @@ var AppsGUI = Base.extend({
             y0 = 245;
         }
         if(apps.length <= 4) {
-            x0 = 120;
-            y0 = 120;
+            x0 = 140;
+            y0 = 140;
             gap = 20;
-            size = 380;
+            size = 350;
+            ncols = 2;
         }
         if(apps.length <= 2) {
             y0 = 310;
