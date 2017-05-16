@@ -1,6 +1,5 @@
 
-
-var CombineWordsGame = Game.extend({
+var CombineWordsGame = TimedGame.extend({
     constructor: function(config) {
         this.base(config);
     },
@@ -16,7 +15,7 @@ var CombineWordsGame = Game.extend({
         this.okButton = btn;
     },
     generateTaskData: function(options) {
-        return pickRandom(CombineWordsGame.sets);
+        return pickRandom(this.gamepack.wordlist.sets);
     },            
     renderFrame: function() {
         var self = this;
@@ -53,7 +52,7 @@ var CombineWordsGame = Game.extend({
             lastCB = null;
             var nA = cA.order;
             var nB = cB.order;
-            r.line(375+10, nA*60+325, 625-10, nB*60+325).attr({
+            r.line(350+10, nA*self.lineHeight+300+self.boxHeight/2, 650-10, nB*self.lineHeight+300+self.boxHeight/2).attr({
                 "stroke-width": 10, "stroke": "red", 'arrow-end': 'classic-wide-long', 
         'arrow-start': 'classic-wide-long' }).click(function() {
                 this.remove();
@@ -72,15 +71,23 @@ var CombineWordsGame = Game.extend({
             }
         }
 
+        var boxHeight = 60;
+        this.boxHeight = boxHeight;
+        var gap = 20;
+        var lineHeight = boxHeight + gap;
+        this.lineHeight = lineHeight;
+        var fontSize = 35;
+        var labelBoxWidth = 200;
+        var labelWidth = 150;
         for(var i=0; i<self.orig.length; i++) {
-            var bkgrA = new RectWidget(150, 50);
-            bkgrA.setPosition(225, 300+60*i);
-            var bkgrB = new RectWidget(150, 50);
-            bkgrB.setPosition(625, 300+60*i);
-            var labelA = new TextWidget(100, 30, "middle", self.p1[self.orig[i]]);
-            labelA.setPosition(225+25, 300+10+60*i);
-            var labelB = new TextWidget(100, 30, "middle", self.p2[self.perm[i]]);
-            labelB.setPosition(625+25, 300+10+60*i);
+            var bkgrA = new RectWidget(labelBoxWidth, boxHeight);
+            bkgrA.setPosition(150, 300+lineHeight*i);
+            var bkgrB = new RectWidget(labelBoxWidth, boxHeight);
+            bkgrB.setPosition(650, 300+lineHeight*i);
+            var labelA = new TextWidget(labelWidth, fontSize, "middle", self.p1[self.orig[i]]);
+            labelA.setPosition(150+25, 300+10+lineHeight*i);
+            var labelB = new TextWidget(labelWidth, fontSize, "middle", self.p2[self.perm[i]]);
+            labelB.setPosition(650+25, 300+10+lineHeight*i);
             var cA = new Clickable(bkgrA);
             cA.order = self.orig[i];
             cA.number = self.orig[i];
@@ -121,8 +128,35 @@ var CombineWordsGame = Game.extend({
         }
 
     },
-    start: function(gamedata) {
-        this.base(gamedata);
+
+    generateReport: function(evalResult) {
+        console.log("Generate report", evalResult);
+        return [
+            this.loc("Correctness") + ": "+ sprintf("%.1f%%", evalResult.correctness * 100),
+            this.loc("Total time") + ": " + sprintf("%.2f s", this.stopwatch.millis() / 1000)
+        ];
+    },
+
+  update: function(elapsedMillis) {
+  },
+  loadGamepackData: function() {
+        var self = this;
+        var name = self.meta.gamepackName;
+        var dfd = jQuery.Deferred();
+        var gamepackUrl = self.meta.appBaseUrl + "/gamepacks/" + name;
+        var tilesetUrl = self.meta.appBaseUrl + "/"+ self.meta.res("wordlist")
+        $.getJSON(tilesetUrl).done(function(tileset) {
+            console.log("Tileset data loaded:", tileset, tilesetUrl);
+            // call resolve when it is done
+            dfd.resolve({name:name, url:gamepackUrl, wordlistUrl: tilesetUrl, wordlist:tileset});
+        });
+        return dfd.promise();
+    },
+    initializeTask: function() {
+        var gamedata = this.gamedata;
+        var self = this;
+        self.wordlistBaseUrl = dirname(self.gamepack.wordlistUrl);
+
         var p1=[], p2=[], orig=[], perm=[];
         var i=0;
         gamedata.forEach(function(p) {
@@ -139,18 +173,8 @@ var CombineWordsGame = Game.extend({
         this.perm = perm;
 
         this.task = new SequenceBinaryTask(this.orig);
-        this.renderFrame();
-
     }
 },{
-    words: [
-        "AUTO-MOBIL",
-        "TELE-VIZE",
-        "PREZI-DENT",
-        "EKO-LOGIE",
-        "KALKU-LACE",
-        "DOMOV-NICE"
-    ],
     sets: [
         [
             "AUTO-MOBIL",

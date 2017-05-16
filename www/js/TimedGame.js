@@ -45,19 +45,20 @@ var TimedGame = Game.extend({
         dfd.resolve({});
         return dfd.promise();
     },
-    start: function(gamedata) {
-        this.base(gamedata);
+    start: function() {
         var self = this;
         console.log("TimedGame.start");
 
         self.loadGamepackData().done(function(gamepack) {
-        	self.gamepackLoaded(gamepack);
+        	self.gamepackLoaded(gamepack);            
+            self.onStart(self.gamedata);
         });
     },
     gamepackLoaded: function(gamepack) {
     	var self = this;
         console.log("TimedGame.gamepackLoaded", gamepack);
         self.gamepack = gamepack;
+        self.gamedata = self.generateTaskData();
         self.initializeTask();
         self.renderFrame();
         self.startTimer();

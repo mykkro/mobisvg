@@ -24,9 +24,9 @@ var Game = Base.extend({
         // generate data for game session
         return null;
     },
-    start: function(gamedata) {
-        this.gamedata = gamedata;
-        this.onStart(gamedata);
+    start: function() {
+        this.gamedata = this.generateTaskData();
+        this.onStart(this.gamedata);
     },
     abort: function() {
         console.log("Game aborted!");

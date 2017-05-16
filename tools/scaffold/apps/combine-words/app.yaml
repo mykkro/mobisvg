@@ -20,6 +20,13 @@ styles:
 resources:
 settings:
 gamepacks:
-    - name : default
+    - name : english
+      locales:
+        - en:
+      resources:
+        - wordlist:  wordlist.json
+    - name : czech
       locales:
         - cz:
+      resources:
+        - wordlist:  wordlist.json

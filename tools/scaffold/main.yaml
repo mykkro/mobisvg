@@ -27,7 +27,9 @@ projects:
       - name : single-n-back
         gamepack: default
       - name : combine-words
-        gamepack: default
+        gamepack: czech
+      - name : combine-words
+        gamepack: ebglish
       - name : mental-rotation
         gamepack: default
       - name : reaction-time
@@ -60,7 +62,9 @@ projects:
       - name : memory-game
         gamepack: animals
       - name : combine-words
-        gamepack: default
+        gamepack: czech
+      - name : combine-words
+        gamepack: english
       - name : single-n-back
         gamepack: default
       - name : dual-n-back

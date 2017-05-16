@@ -299,7 +299,6 @@ var GameGUI = Base.extend({
             return self.instance.tr(str);
         };
         this.gameInstance = game;
-        var sequence = game.generateTaskData();
         this.appgui.resetScene();
 
         game.createGUI(r);                        
@@ -326,7 +325,7 @@ var GameGUI = Base.extend({
             console.log("Aborted!");
             self.showGameLauncherPage();
         });
-        game.start(sequence);                        
+        game.start();                        
     },
     start: function() {
         var self = this;
