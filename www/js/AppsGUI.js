@@ -194,10 +194,11 @@ var AppsGUI = Base.extend({
             var gap = 10;
             var x = 115 + (250 + gap)*col;
             var y = 115 + (250 + gap)*row;
+            var size = 250;
             var translatedTags = instance.app.app.tags.map(function(t) {
                 return instance.tr(t);
             });
-            var launcher = new AppPreviewWidget(previewUrl, instance.tr("$title"), instance.tr("$subtitle"), translatedTags);
+            var launcher = new AppPreviewWidget(previewUrl, instance.tr("$title"), instance.tr("$subtitle"), translatedTags, size);
             launcher.setPosition(x, y);
             (function() {
                 var app2 = instance;

@@ -495,17 +495,26 @@ var GroupWidget = Widget.extend({
 // bb = new AppPreviewWidget("apps/mental-rotation/preview.png", "Title", "Subtitle", ["perception", "memory"])
 // TODO button behaviour merge with Clickable
 var AppPreviewWidget = Widget.extend({    
-    constructor: function(previewUrl, title, subtitle, tags) {
+    constructor: function(previewUrl, title, subtitle, tags, size) {
         this.base();
-        var previewWidth = 250;
-        var previewHeight = 250;
-        var previewImageWidth = 150;
-        var previewImageHeight = 150;
-        this.background = r.roundedRectangle(0, 0, previewWidth, previewHeight, 5, 5, 30, 5).attr(AppPreviewWidget.backgroundStyle);
-        this.image = r.image(previewUrl, (previewWidth-previewImageWidth)/2, 10, previewImageWidth, previewImageHeight);                
-        this.title = r.text(previewWidth/2,previewImageHeight + 30,title).attr(AppPreviewWidget.titleStyle);
+        var size = size || 250.0;
+        var alpha = size/250.0;
+        var previewWidth = Math.floor(250*alpha);
+        var previewHeight = Math.floor(250*alpha);
+        var previewImageWidth = Math.floor(150*alpha);
+        var previewImageHeight = Math.floor(150*alpha);
+        var titleStyle = { "fill": "black", "stroke": "none", "font-size": Math.floor(22*alpha), "anchor": "middle"};
+        var tagsStyle = { "fill": "blue", "stroke": "none", "font-size": Math.floor(14*alpha), "anchor": "middle"};
+        var roundingSmall = Math.floor(5*alpha);
+        var roundingBig = Math.floor(30*alpha);
+        var imageY = Math.floor(10*alpha);
+        var titleY = Math.floor(30*alpha);
+        var tagsY = Math.floor(80*alpha);
+        this.background = r.roundedRectangle(0, 0, previewWidth, previewHeight, roundingSmall, roundingSmall, roundingBig, roundingSmall).attr(AppPreviewWidget.backgroundStyle);
+        this.image = r.image(previewUrl, (previewWidth-previewImageWidth)/2, imageY, previewImageWidth, previewImageHeight);                
+        this.title = r.text(previewWidth/2,previewImageHeight + titleY,title).attr(titleStyle);
         //this.subtitle = r.text(previewWidth/2,previewImageHeight + 57,subtitle).attr(AppPreviewWidget.subtitleStyle);
-        this.tags = r.text(previewWidth/2,previewImageHeight + 80,(tags || []).join(", ")).attr(AppPreviewWidget.tagsStyle);
+        this.tags = r.text(previewWidth/2,previewImageHeight + tagsY,(tags || []).join(", ")).attr(tagsStyle);
         this.overlay = r.rect(0, 0, previewWidth, previewHeight).attr(ButtonWidget.emptyStyle);
         var bbb = this.overlay;
         bbb.node.setAttribute("class","svgbutton");
