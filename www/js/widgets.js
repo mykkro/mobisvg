@@ -155,7 +155,7 @@ var ButtonWidget = Widget.extend({
     emptyStyle: {"fill": "none", "stroke":"none"},
     backgroundStyle: {"fill": "#aac", "stroke":"#333", "stroke-width": 2},
     clickedBackgroundStyle: {"fill": "#77a", "stroke":"#333", "stroke-width": 2},
-    highlightedBackgroundStyle: {"fill": "#aac", "stroke":"#333", "stroke-width": 2},
+    highlightedBackgroundStyle: {"fill": "#c66", "stroke":"#333", "stroke-width": 2},
     disabledBackgroundStyle: {"fill": "#eee", "stroke":"#333", "stroke-width": 2}
 });
 

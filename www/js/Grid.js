@@ -22,6 +22,7 @@ var Grid = Base.extend({
 			indices.push(i);
 		}
 		shuffle(indices);
+		/**/shuffle(indices);
 		for(var i=0; i<Math.min(count, indices.length); i++) {
 			var ndx = indices[i];
 			this.grid[Math.floor(ndx/this.cols)][ndx & this.cols] = val;

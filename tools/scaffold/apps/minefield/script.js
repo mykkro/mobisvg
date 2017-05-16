@@ -246,7 +246,28 @@ var Minefield = TimedGame.extend({
         }
 
         var mat = createView();
-        //modeUncover = false;
+        modeUncover = true;
+
+
+        var buttonStyle = {fontSize: 30, border: 15, anchor: "middle", radius: 20};
+
+        this.button1 = new ButtonWidget(this.loc("Uncover"), buttonStyle);
+        this.button1.setPosition(400-this.button1.w/2, 910);
+        this.button1.onClick(function() {
+            modeUncover = true;
+            self.button1.setHighlighted(true);
+            self.button2.setHighlighted(false);
+        });
+        this.button2 = new ButtonWidget(this.loc("Flag"), buttonStyle);
+        this.button2.setPosition(600-this.button2.w/2, 910);
+        this.button2.onClick(function() {
+            modeUncover = false;
+            self.button1.setHighlighted(false);
+            self.button2.setHighlighted(true);
+        });
+
+        //self.button1.setHighlighted(true);
+        //self.button2.setHighlighted(false);
 
     },
 
@@ -288,7 +309,7 @@ var Minefield = TimedGame.extend({
     },
     generateReport: function(evalResult) {
         return [
-            this.loc("Number of moves") + ": " + this.numberOfMoves,
+            //this.loc("Number of moves") + ": " + this.numberOfMoves,
             this.loc("Total time") + ": " + (this.currentTime / 1000) + " s"
         ];
     },
