@@ -2,6 +2,9 @@ var Minefield = TimedGame.extend({
 
     constructor: function(config) {
         this.base(config);
+        this.gridRows = config.gridRows || 10;
+        this.gridCols = config.gridCols || 10;
+        this.gridMines = config.gridMines || 25;
     },
 
     /**
@@ -42,9 +45,9 @@ var Minefield = TimedGame.extend({
         console.log("Minefield.renderBoard");
         var self = this;
 
-        var gridWidth = 10;
-        var gridHeight = 10;
-        var mineCount = 20;
+        var gridWidth = this.gridCols;
+        var gridHeight = this.gridRows;
+        var mineCount = this.gridMines;
         var modeUncover = true;
         var background, minefield, numbers, cover, flagged;
 
@@ -173,7 +176,10 @@ var Minefield = TimedGame.extend({
             console.log("Kaboom!");
 
             notifyFinished(function() {
-                self.finish(self.answer);
+                // TODO add clickable overlay...
+                setTimeout(function() {
+                    self.finish(self.answer);
+                }, 5000);
             });
         }
 
@@ -253,21 +259,21 @@ var Minefield = TimedGame.extend({
 
         this.button1 = new ButtonWidget(this.loc("Uncover"), buttonStyle);
         this.button1.setPosition(400-this.button1.w/2, 910);
-        this.button1.onClick(function() {
+        this.button1.onClickAnimationComplete(function() {
             modeUncover = true;
             self.button1.setHighlighted(true);
             self.button2.setHighlighted(false);
         });
         this.button2 = new ButtonWidget(this.loc("Flag"), buttonStyle);
         this.button2.setPosition(600-this.button2.w/2, 910);
-        this.button2.onClick(function() {
+        this.button2.onClickAnimationComplete(function() {
             modeUncover = false;
             self.button1.setHighlighted(false);
             self.button2.setHighlighted(true);
         });
 
-        //self.button1.setHighlighted(true);
-        //self.button2.setHighlighted(false);
+        self.button1.setHighlighted(true);
+        self.button2.setHighlighted(false);
 
     },
 

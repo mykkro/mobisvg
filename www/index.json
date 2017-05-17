@@ -482,11 +482,29 @@
             "config": [
                 {
                     "description": "", 
-                    "name": "randomMovesNo", 
+                    "name": "gridRows", 
                     "title": "", 
-                    "default": 30, 
+                    "default": 10, 
                     "type": "int", 
-                    "maxValue": 100, 
+                    "maxValue": 20, 
+                    "minValue": 6
+                }, 
+                {
+                    "description": "", 
+                    "name": "gridCols", 
+                    "title": "", 
+                    "default": 10, 
+                    "type": "int", 
+                    "maxValue": 20, 
+                    "minValue": 6
+                }, 
+                {
+                    "description": "", 
+                    "name": "gridMines", 
+                    "title": "", 
+                    "default": 20, 
+                    "type": "int", 
+                    "maxValue": 200, 
                     "minValue": 1
                 }
             ], 
@@ -522,9 +540,14 @@
                 {
                     "preview": false, 
                     "translations": {
-                        "randomMovesNo": "Number of random moves", 
+                        "Total time": "Total Time [s]", 
+                        "gridCols": "No. of grid columns", 
+                        "gridMines": "No. of mines", 
+                        "Flag": "Flag", 
                         "Number of moves": "Number of moves", 
-                        "Total time": "Total Time [s]"
+                        "randomMovesNo": "Number of random moves", 
+                        "Uncover": "Uncover", 
+                        "gridRows": "No. of grid rows"
                     }, 
                     "name": "en", 
                     "metadata": {
@@ -538,10 +561,13 @@
                     "preview": false, 
                     "translations": {
                         "Total time": "Celkov\u00fd \u010das [s]", 
-                        "randomMovesNo": "Po\u010det n\u00e1hodn\u00fdch tah\u016f", 
+                        "gridCols": "Po\u010det sloupc\u016f m\u0159\u00ed\u017eky", 
+                        "gridMines": "Po\u010det min", 
                         "Flag": "Ozna\u010dit", 
                         "Number of moves": "Po\u010det tah\u016f", 
-                        "Uncover": "Odkr\u00fdt"
+                        "randomMovesNo": "Po\u010det n\u00e1hodn\u00fdch tah\u016f", 
+                        "Uncover": "Odkr\u00fdt", 
+                        "gridRows": "Po\u010det \u0159\u00e1dk\u016f m\u0159\u00ed\u017eky"
                     }, 
                     "name": "cz", 
                     "metadata": {

@@ -132,10 +132,12 @@ var ButtonWidget = Widget.extend({
             : this.o.backgroundStyle);
     },
     setHighlighted: function(flag, style) {
+        var st = this.o.backgroundStyle;
+        if(flag) {
+            st = $.extend(this.o.highlightedBackgroundStyle, style);
+        }
         this.highlighted = flag;
-        this.buttonBackground.attr(flag 
-            ? $.extend(this.o.highlightedBackgroundStyle, style)
-            : this.o.backgroundStyle);
+        this.buttonBackground.attr(st);
     },
     onClick: function(val) {
         if(typeof(val)=="function") {
@@ -144,11 +146,22 @@ var ButtonWidget = Widget.extend({
             // animate button
             var self = this;            
             if(self._beforeClick) self._beforeClick(self);
+            var originalBackgroundStyle = self.buttonBackground.attr();
             self.buttonBackground.animate(self.o.clickedBackgroundStyle, 100, ">", function() {
-                self.buttonBackground.animate(self.o.backgroundStyle, 100, "<", function() {            
+                self.buttonBackground.animate(originalBackgroundStyle, 100, "<", function() {            
+                    if(self._onClickAnimationComplete) self._onClickAnimationComplete(self);
                 });
                 if(self._onClick) self._onClick(self);
             });
+        }
+    },
+    // TODO change it - way too complicated...
+    onClickAnimationComplete: function(val) {
+        if(typeof(val)=="function") {
+            this._onClickAnimationComplete = val;
+        } else {
+            var self = this;            
+            if(self._onClickAnimationComplete) self._onClickAnimationComplete(self);
         }
     }
 }, {

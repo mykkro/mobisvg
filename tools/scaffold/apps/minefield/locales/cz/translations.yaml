@@ -1,5 +1,8 @@
 ﻿Total time: Celkový čas [s]
 randomMovesNo: Počet náhodných tahů
+gridRows: Počet řádků mřížky
+gridCols: Počet sloupců mřížky
+gridMines: Počet min
 Number of moves: Počet tahů
 Uncover: Odkrýt
 Flag: Označit
