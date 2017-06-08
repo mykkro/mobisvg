@@ -34,8 +34,14 @@ def scaffold(dir, out_dir, data, project_name):
         "apps": apps_index,
         "locales": loc_index,
         "icon": icon,
-        "settings": settings
+        "settings": settings,
+        "languages": scaffold_languages(dir, out_dir, project.get("languages", ['en']))
     }
+
+
+def scaffold_languages(src_dir, out_dir, languages):
+    print "Scaffolding languages", languages
+    return languages
 
 
 def scaffold_global_settings(src_dir, out_dir, settings):

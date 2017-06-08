@@ -1,7 +1,7 @@
 ﻿{
-    "id": "org.mykkro.kote.entertainment",
-    "name": "Kote (zábava)",
-    "description": "Kognitivní testování",
+    "id": "org.mykkro.kote.testing",
+    "name": "Kote (new games)",
+    "description": "Cognitive testing",
     "version": "1.0.7",
     "author": {
         "name": "Myrousz",

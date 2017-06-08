@@ -14,26 +14,22 @@ var AppsGUI = Base.extend({
     },
     makeConfigForm: function(settings) {
         var settings = settings || {};
+        var languages = this.index.index.languages;
         var self = this;
+        var languageLabels = languages.map(function(l) { return l.toUpperCase(); });
         var configForm = {
             "title": self.indexLocalized.tr("Settings"),
             "description": "",
             "fields": [
                 {
-                    "valueLabels": [
-                        "EN", 
-                        "CZ"
-                    ], 
-                    "values": [
-                        "en", 
-                        "cz"
-                    ], 
+                    "valueLabels": languageLabels,
+                    "values": languages,
                     "description": "", 
                     "title": self.indexLocalized.tr("Language"), 
                     "default": settings.language || self.locale, 
                     "type": "string", 
                     "name": "language"
-                }, 
+                }
             ]
         }
         self.form = new Form(configForm);

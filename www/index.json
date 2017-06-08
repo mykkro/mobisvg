@@ -4,7 +4,9 @@
         "doctype": "playonweb-app-scaffold", 
         "last_update": null
     }, 
-    "settings": {}, 
+    "settings": {
+        "language": "en"
+    }, 
     "apps": [
         {
             "name": "memory-game", 
@@ -585,6 +587,9 @@
             }, 
             "gameClass": "Minefield"
         }
+    ], 
+    "languages": [
+        "en"
     ], 
     "locales": [
         {

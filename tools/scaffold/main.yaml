@@ -15,6 +15,52 @@ projects:
     version: 1.0
     author: MKR
     icon: kote2
+    languages:
+      - en
+      - cz
+    settings:
+      language: cz
+    apps:
+      - name : colortest-reverse
+        gamepack: default
+      - name : dual-n-back
+        gamepack: default
+      - name : memory-game
+        gamepack: default
+      - name : questionary
+        gamepack: default
+      - name : single-n-back
+        gamepack: default
+      - name : combine-words
+        gamepack: czech
+      - name : combine-words
+        gamepack: ebglish
+      - name : mental-rotation
+        gamepack: default
+      - name : reaction-time
+        gamepack: default
+      - name : slideshow
+        gamepack: default
+      - name : differences
+        gamepack: default
+      - name : pick-twenty
+        gamepack: default
+      - name : sudoku
+        gamepack: default
+      - name : mahjongg
+        gamepack: default
+      - name : fifteen
+        gamepack: default
+      - name : minefield
+        gamepack: default
+  - name: allgamesen
+    version: 1.0
+    author: MKR
+    icon: kote2
+    languages:
+      - en
+    settings:
+      language: en
     apps:
       - name : colortest-reverse
         gamepack: default
@@ -52,6 +98,40 @@ projects:
     version: 1.0
     author: MKR
     icon: kote2
+    languages:
+      - en
+      - cz
+    settings:
+      language: cz
+    apps:
+      - name : colortest-reverse
+        gamepack: default
+      - name : reaction-time
+        gamepack: default
+      - name : fifteen
+        gamepack: default
+      - name : memory-game
+        gamepack: sports
+      - name : memory-game
+        gamepack: animals
+      - name : combine-words
+        gamepack: czech
+      - name : combine-words
+        gamepack: english
+      - name : single-n-back
+        gamepack: default
+      - name : dual-n-back
+        gamepack: default
+      - name : pick-twenty
+        gamepack: default
+  - name: therapyen
+    version: 1.0
+    author: MKR
+    icon: kote2
+    languages:
+      - en
+    settings:
+      language: en
     apps:
       - name : colortest-reverse
         gamepack: default
@@ -77,6 +157,32 @@ projects:
     version: 1.0
     author: MKR
     icon: kote2
+    languages:
+      - en
+      - cz
+    settings:
+      language: cz
+    apps:
+      - name : memory-game
+        gamepack: sports
+      - name : memory-game
+        gamepack: animals
+      - name : sudoku
+        gamepack: default
+      - name : mahjongg
+        gamepack: default
+      - name : fifteen
+        gamepack: default
+      - name : minefield
+        gamepack: default
+  - name: entertainmenten
+    version: 1.0
+    author: MKR
+    icon: kote2
+    languages:
+      - en
+    settings:
+      language: en
     apps:
       - name : memory-game
         gamepack: sports
@@ -94,6 +200,26 @@ projects:
     version: 1.0
     author: MKR
     icon: reactiontest
+    languages:
+      - en
+      - cz
+    settings:
+      language: cz
+    apps:
+      - name : colortest-reverse
+        gamepack: default
+        tags: []
+      - name : reaction-time
+        gamepack: default
+        tags: []
+  - name: reactiontesten
+    version: 1.0
+    author: MKR
+    icon: reactiontest
+    languages:
+      - en
+    settings:
+      language: en
     apps:
       - name : colortest-reverse
         gamepack: default
@@ -114,6 +240,8 @@ projects:
     version: 1.0
     author: MKR
     icon: barthel
+    languages:
+      - en
     settings:
       language: en
     apps:
@@ -123,6 +251,22 @@ projects:
     version: 1.0
     author: MKR
     icon: kote2
+    languages:
+      - en
+      - cz
+    settings:
+      language: cz
+    apps:
+      - name : twenty-forty-eight
+        gamepack: default
+  - name: testingen
+    version: 1.0
+    author: MKR
+    icon: kote2
+    languages:
+      - en
+    settings:
+      language: en
     apps:
       - name : twenty-forty-eight
         gamepack: default

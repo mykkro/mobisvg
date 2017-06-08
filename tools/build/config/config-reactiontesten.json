@@ -1,7 +1,7 @@
 ﻿{
-    "id": "org.mykkro.kote.reactiontest",
+    "id": "org.mykkro.kote.reactiontesten",
     "name": "Reakční test",
-    "description": "Kognitivní testování",
+    "description": "Cognitive testing",
     "version": "1.0.7",
     "author": {
         "name": "Myrousz",
