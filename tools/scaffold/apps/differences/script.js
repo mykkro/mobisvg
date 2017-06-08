@@ -132,6 +132,8 @@ var DifferencesGame = Game.extend({
 
     },
     start: function(gamedata) {
+        // alert("Starting game!");
+        gamedata = gamedata || this.generateTaskData();
         this.base(gamedata);
         this.regions = gamedata;
         positions = [];

@@ -34,7 +34,7 @@ projects:
       - name : combine-words
         gamepack: czech
       - name : combine-words
-        gamepack: ebglish
+        gamepack: english
       - name : mental-rotation
         gamepack: default
       - name : reaction-time
@@ -75,7 +75,7 @@ projects:
       - name : combine-words
         gamepack: czech
       - name : combine-words
-        gamepack: ebglish
+        gamepack: english
       - name : mental-rotation
         gamepack: default
       - name : reaction-time
