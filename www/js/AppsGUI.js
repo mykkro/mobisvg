@@ -125,10 +125,22 @@ var AppsGUI = Base.extend({
     },
     showAboutPage: function() {
         this.resetScene();
-        this.showCredits();
+        /* display SVG About Page */
+        if(!AppsGUI.showHTML) {
+            this.showCredits();
+        } else {
+            this.showHtmlAboutPage();
+        }
         this.showFrameworkTitle();
         this.createAboutPageButtons();
-        ////$("#about-form-outer").show();
+    },
+    showHtmlAboutPage: function() {
+        $("#about-form-outer").show();
+        var credits = this.indexLocalized.credits;
+        AppsGUI.displayCreditsTextHtml(credits);
+    },
+    hideHtmlAboutPage: function() {
+        $("#about-form-outer").hide();
     },
     showFrameworkTitle: function() {
         var labelSvg = new TextWidget(600, 40, "middle", this.indexLocalized.tr("$title"));
@@ -148,7 +160,7 @@ var AppsGUI = Base.extend({
         var self = this;
 
         backBtn.onClick(function() {
-            $("#about-form-outer").hide();
+            self.hideHtmlAboutPage();
             self.showAppsPage(1);            
         });
 
@@ -336,11 +348,9 @@ var AppsGUI = Base.extend({
         return paper;
     }
 }, {
-    displayCreditsText: function(credits) {
-        var credits = credits || [];
-        console.log("Credits:", credits);
-        var yy = 200;
-        credits.forEach(function(c) {
+    showHTML: true,
+    parseCredits: function(credits) {
+        return credits.map(function(c) {
             // does the line contain formatting metadata?
             var c = c || "";
             var ndx = c.indexOf("@");
@@ -359,13 +369,103 @@ var AppsGUI = Base.extend({
                 // metadata is sequence of aa=bb,cc=dd 
                 c = c.substring(ndx+1);
             }
-            var fontSize = m.fontSize || 20;
+            m.fontSize = parseInt(m.fontSize || 20);
+            return { "line": c, "style": m }
+        });
+    },
+    displayCreditsText: function(credits) {
+        var credits = credits || [];
+        console.log("Credits:", credits);
+        var yy = 200;
+        var pc = AppsGUI.parseCredits(credits);
+        console.log(pc);
+        pc.forEach(function(ppc) {
+            var c = ppc.line;
+            var fontSize = ppc.fontSize || 20;
             var lineHeight = Math.floor(fontSize*1.5);
             var tw = new TextWidget(800, fontSize, "start", c);
             tw.setStyle({"fill": "white"})
             tw.setPosition(100, yy);        
             yy += Math.floor(Math.max(tw.getTextboxSize().height, fontSize) + lineHeight - fontSize);
         });
-
+    },
+    parseLinks: function(line) {
+        var c = line;
+        var arr = [];
+        var curr = {"type":"text", "content":""};
+        arr.push(curr);
+        var state = "TEXT";
+        for(var i=0; i<c.length; i++) {
+            var cc = c[i];
+            if(state=="TEXT") {
+                if(cc != "<") {
+                    curr.content += cc;
+                } else {
+                    // switch to link
+                    curr = {"type":"link", "content":"", "title": ""};
+                    arr.push(curr);
+                    state = "LINK";
+                }
+            } else if(state=="LINK") {
+                if(cc == "|") {
+                    state = "LINKTITLE";
+                } else if(cc != ">") {
+                    curr.content += cc;
+                } else {
+                    // switch back to text
+                    curr = {"type":"text", "content":""};
+                    arr.push(curr);
+                    state = "TEXT";
+                }
+            } else if(state=="LINKTITLE") {
+                if(cc != ">") {
+                    curr.title += cc;
+                } else {
+                    // switch back to text
+                    curr = {"type":"text", "content":""};
+                    arr.push(curr);
+                    state = "TEXT";
+                }
+            } else {
+                console.error("Unsupported state: ", state)
+            }
+        }
+        arr = arr.filter(function(a) { return a.content; });
+        return arr;
+    },
+    // TODO correct resizing 
+    // maybe by css3 transform/zoom?
+    displayCreditsTextHtml: function(credits) {
+        var credits = credits || [];
+        console.log("Credits:", credits);
+        var pc = AppsGUI.parseCredits(credits);
+        console.log(pc);
+        var out = $("#about-form");
+        var coeff = ($("#about-form-outer").width()/218.0)*0.3;
+        out.empty();
+        pc.forEach(function(ppc) {
+            var c = ppc.line;
+            var fontSize = ppc.style.fontSize;
+            var lineHeight = Math.floor(fontSize*1.5);
+            var arr = AppsGUI.parseLinks(c);
+            var div = $("<div>").addClass("credits-line");
+            console.log("ARR", arr);
+            arr.forEach(function(a) {
+                if(a.type == "link") {
+                    var o = $("<a>").attr("href", a.content).attr("target", "_blank").text(a.title || a.content);
+                    div.append(o);
+                } else if(a.type == "text") {
+                    var o = $("<span>").text(a.content);
+                    div.append(o);
+                }
+            });
+            var fs = (fontSize * coeff);
+            var lh = (lineHeight * coeff);
+            div.css("font-size", fs+"px");
+            div.css("line-height", lh+"px");
+            div.css("margin-bottom", (fs*0.8)+"px")
+            out.append(div);
+            console.log(c);
+        });
     }
 });

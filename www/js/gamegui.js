@@ -56,10 +56,22 @@ var GameGUI = Base.extend({
     },
     showAboutPage: function() {
         r.clear();
+        /* display SVG About Page */
+        if(!AppsGUI.showHTML) {
+            this.showCredits();
+        } else {
+            this.showHtmlAboutPage();
+        }
         this.showGameTitle();
-        this.showCredits();
         this.createAboutPageButtons();
-        ////$("#about-form-outer").show();
+    },
+    showHtmlAboutPage: function() {
+        $("#about-form-outer").show();
+        var credits = this.instance.credits;
+        AppsGUI.displayCreditsTextHtml(credits);
+    },
+    hideHtmlAboutPage: function() {
+        $("#about-form-outer").hide();
     },
     showCredits: function() {
         var credits = this.instance.credits;
@@ -73,7 +85,7 @@ var GameGUI = Base.extend({
         var self = this;
 
         backBtn.onClick(function() {
-           $("#about-form-outer").hide();
+            self.hideHtmlAboutPage();
             self.showGameLauncherPage();
         });
 

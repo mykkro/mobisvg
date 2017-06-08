@@ -1181,7 +1181,7 @@
                     "locales": [
                         {
                             "credits": null, 
-                            "preview": true, 
+                            "preview": false, 
                             "name": "en", 
                             "metadata": {
                                 "title": "Mahjongg"
