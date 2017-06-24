@@ -22,9 +22,10 @@ $(document).ready(function() {
 
         /* PouchDB stuff... */
         var db = new PouchDB('kote');
-        if(db.adapter) {
-            console.log("Connected to the database...");
-        }
+        startup((db && db.adapter) ? db : null);
+
+        /* Example on how to use PouchDB... */
+        /*
          var todo = {
             _id: new Date().toISOString(),
             title: "New TODO!",
@@ -32,20 +33,26 @@ $(document).ready(function() {
           };
           db.put(todo, function callback(err, result) {
             if (!err) {
-              alert('Successfully posted a todo!');
+              console.log('Successfully posted a todo!');
+                db.allDocs({
+                  include_docs: true,
+                  attachments: true
+                }).then(function (result) {
+                  console.log(result);
+                  console.log("Rows: "+result.rows.length);
+
+                  // start - logging enabled...
+                  
+
+                }).catch(function (err) {
+                  console.log(err);
+                  alert("Database connection error!");
+                });
             } else {
-                console.err("Connection error!");
+               alert("Database connection error!");
             }
           });
-        db.allDocs({
-          include_docs: true,
-          attachments: true
-        }).then(function (result) {
-          console.log(result);
-          alert("Rows: "+result.rows.length);
-        }).catch(function (err) {
-          console.log(err);
-        });
+          */
 
     });
 
@@ -54,15 +61,40 @@ $(document).ready(function() {
     //for devices that don't fire orientationchange
     window.addEventListener("resize", onResize, false);
 
+    
+});
+
+function testPost() {
+    // testing sending request to server...
+    // works on browser but not on Android
+    var url = 'http://download.mykkro.cz/testing/api.php';
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        contentType: 'application/json',
+        data: '{ "username": "C-Tester", "another_thing" : "thing" }',
+        success: function(data) {
+            console.log("Got data:", data);
+            alert("Success! "+ data.success);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, jqXHR.responseText);
+            alert("Error! " + jqXHR.responseText);
+        }
+    }); 
+}
+
+function startup(db) {
+    console.log("Starting up!", db)
+
     onResize();
 
     var storage = window.localStorage;
     var value = storage.getItem("mobisvg") || 0;
     //alert(value);
     //storage.setItem("mobisvg", value+1);
-
-    // TODO is this still necessary?
-    var gameBaseUrl = "apps/differences";
 
     appgui = new AppsGUI();
     appgui.onReady(function() {
@@ -71,7 +103,8 @@ $(document).ready(function() {
     });
     appgui.init();
 
-});
+    ////testPost();
+}
 
 function show(text) {
     $(".event.received").text(text);
