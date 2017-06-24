@@ -5,13 +5,6 @@ $(document).ready(function() {
     // jQuery is properly loaded at this point
     // so proceed to bind the Cordova's deviceready event
     $(document).bind("deviceready", function() {
-        // Now Cordova is loaded
-        // its great JS API can be used to access low-level
-        // features as accelerometer, contacts and so on
-        // alert("Ready!");
-        $(".event.listening").hide();
-        $(".event.received").show();
-
         // get networn and platform info...
         var networkState = navigator.connection.type;
         var states = {};
@@ -27,7 +20,33 @@ $(document).ready(function() {
         console.log('Connection type: ' + states[networkState]);
         console.log(device.platform);
 
-        updatePage();
+        /* PouchDB stuff... */
+        var db = new PouchDB('kote');
+        if(db.adapter) {
+            console.log("Connected to the database...");
+        }
+         var todo = {
+            _id: new Date().toISOString(),
+            title: "New TODO!",
+            completed: false
+          };
+          db.put(todo, function callback(err, result) {
+            if (!err) {
+              alert('Successfully posted a todo!');
+            } else {
+                console.err("Connection error!");
+            }
+          });
+        db.allDocs({
+          include_docs: true,
+          attachments: true
+        }).then(function (result) {
+          console.log(result);
+          alert("Rows: "+result.rows.length);
+        }).catch(function (err) {
+          console.log(err);
+        });
+
     });
 
     window.addEventListener('orientationchange',
