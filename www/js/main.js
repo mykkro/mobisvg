@@ -20,9 +20,16 @@ $(document).ready(function() {
         console.log('Connection type: ' + states[networkState]);
         console.log(device.platform);
 
-        /* PouchDB stuff... */
-        var db = new PouchDB('kote');
-        startup((db && db.adapter) ? db : null);
+        // detect locale...
+        var globalization = navigator.globalization;
+        globalization.getLocaleName(function(locale) {
+            // locale.value can be something like "en-US", "cs-CZ"
+            var loc = (locale ? locale.value : null);
+            /* PouchDB stuff... */
+            var db = new PouchDB('kote');
+            startup((db && db.adapter) ? db : null, loc);
+        });
+
 
         /* Example on how to use PouchDB... */
         /*
@@ -86,17 +93,17 @@ function testPost() {
     }); 
 }
 
-function startup(db) {
-    console.log("Starting up!", db)
+function startup(db, locale) {
+    console.log("Starting up!", db, locale);
 
     onResize();
 
-    var storage = window.localStorage;
-    var value = storage.getItem("mobisvg") || 0;
+    //var storage = window.localStorage;
+    //var value = storage.getItem("mobisvg") || 0;
     //alert(value);
     //storage.setItem("mobisvg", value+1);
 
-    appgui = new AppsGUI();
+    appgui = new AppsGUI(db, locale);
     appgui.onReady(function() {
         console.log("AppGUI ready!");
         appgui.showAppsPage();

@@ -4,9 +4,7 @@
         "doctype": "playonweb-app-scaffold", 
         "last_update": null
     }, 
-    "settings": {
-        "language": "cz"
-    }, 
+    "settings": null, 
     "apps": [
         {
             "name": "colortest-reverse", 

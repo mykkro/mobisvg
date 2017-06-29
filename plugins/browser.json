@@ -15,6 +15,9 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.mykkro.mobisvg"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "org.mykkro.kote.allgames"
         }
     },
     "dependent_plugins": {}

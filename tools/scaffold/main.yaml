@@ -19,7 +19,7 @@ projects:
       - en
       - cz
     settings:
-      language: cz
+      #language: cz
     apps:
       - name : colortest-reverse
         gamepack: default

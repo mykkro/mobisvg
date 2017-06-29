@@ -1,8 +1,16 @@
 
 var AppsGUI = Base.extend({
-    constructor: function() {
-        console.log("AppsGUI.constructor");
-        this.locale = "cz";
+    constructor: function(db, locale) {
+        console.log("AppsGUI.constructor", db, locale);
+        var localeMap = {
+            "en-US": "en",
+            "cs-CZ": "cz"
+        }
+        this.db = db;
+        this.locale = "en";
+        if(locale in localeMap) {
+            this.locale = localeMap[locale];
+        }
         this.page = 1;
     },
     buttonStyle: {
