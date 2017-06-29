@@ -1,11 +1,19 @@
 ﻿{
     "id": "org.mykkro.kote.reactiontesten",
-    "name": "Reakční test",
+    "name": "Reaction Test",
     "description": "Cognitive testing",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "author": {
         "name": "Myrousz",
         "email": "myrousz@gmail.com"
     },
-    "icon": "reactiontest"
+    "icon": "reactiontest",
+    "strings": {
+    	"en": {
+    		"app_name": "Reaction Test"
+    	},
+    	"cz": {
+    		"app_name": "Reakční test"
+    	}
+    }
 }

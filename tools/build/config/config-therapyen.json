@@ -2,10 +2,18 @@
     "id": "org.mykkro.kote.therapy",
     "name": "Kote",
     "description": "Cognitive testing",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "author": {
         "name": "Myrousz",
         "email": "myrousz@gmail.com"
     },
-    "icon": "kote2"
+    "icon": "kote2",
+    "strings": {
+    	"en": {
+    		"app_name": "Kote"
+    	},
+    	"cz": {
+    		"app_name": "Kote"
+    	}
+    }
 }

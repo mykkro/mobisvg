@@ -2,10 +2,18 @@
     "id": "org.mykkro.kote.allgames",
     "name": "Kote (všechny hry)",
     "description": "Kognitivní testování",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "author": {
         "name": "Myrousz",
         "email": "myrousz@gmail.com"
     },
-    "icon": "kote2"
+    "icon": "kote2",
+    "strings": {
+    	"en": {
+    		"app_name": "Kote (all games)"
+    	},
+    	"cz": {
+    		"app_name": "Kote (všechny hry)"
+    	}
+    }
 }

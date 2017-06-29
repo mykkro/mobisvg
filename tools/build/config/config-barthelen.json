@@ -2,10 +2,18 @@
     "id": "org.mykkro.kote.barthelen",
     "name": "Barthel Index EN",
     "description": "Cognitive testing",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "author": {
         "name": "Myrousz",
         "email": "myrousz@gmail.com"
     },
-    "icon": "barthel"
+    "icon": "barthel",
+    "strings": {
+    	"en": {
+    		"app_name": "Barthel Index EN"
+    	},
+    	"cz": {
+    		"app_name": "Barthel Index EN"
+    	}
+    }
 }

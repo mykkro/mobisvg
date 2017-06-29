@@ -1,11 +1,19 @@
 ﻿{
     "id": "org.mykkro.kote.testing",
-    "name": "Kote (new games)",
+    "name": "Kote (nové hry)",
     "description": "Kognitivní testování",
-    "version": "1.0.6",
+    "version": "1.0.8",
     "author": {
         "name": "Myrousz",
         "email": "myrousz@gmail.com"
     },
-    "icon": "kote2"
+    "icon": "kote2",
+    "strings": {
+    	"en": {
+    		"app_name": "Kote (new games)"
+    	},
+    	"cz": {
+    		"app_name": "Kote (nové hry)"
+    	}
+    }
 }

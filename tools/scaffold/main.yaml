@@ -102,7 +102,7 @@ projects:
       - en
       - cz
     settings:
-      language: cz
+      #language: cz
     apps:
       - name : colortest-reverse
         gamepack: default
@@ -161,7 +161,7 @@ projects:
       - en
       - cz
     settings:
-      language: cz
+      #language: cz
     apps:
       - name : memory-game
         gamepack: sports
@@ -204,7 +204,7 @@ projects:
       - en
       - cz
     settings:
-      language: cz
+      #language: cz
     apps:
       - name : colortest-reverse
         gamepack: default
@@ -255,7 +255,7 @@ projects:
       - en
       - cz
     settings:
-      language: cz
+      #language: cz
     apps:
       - name : twenty-forty-eight
         gamepack: default

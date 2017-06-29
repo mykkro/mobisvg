@@ -40,5 +40,17 @@ for dd in dirs:
     dst_file = os.path.join("../../platforms/android/res", dd, "icon.png")
     shutil.copy(src_file, dst_file)
 
-
+# TODO update res/values-en/strings.xml and res/values-cz/strings.xml
+strings = context.get("strings")
+for loc in strings:
+    app_name = strings[loc]["app_name"]
+    xml = """<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">%s</string>
+    <string name="launcher_name">@string/app_name</string>
+    <string name="activity_name">@string/launcher_name</string>
+</resources>""" % app_name
+    path = os.path.join("../../platforms/android/res", "values-%s" % loc, "strings.xml")
+    with open(path, "wb") as outfile:
+        outfile.write(xml.encode("UTF-8"))
 
