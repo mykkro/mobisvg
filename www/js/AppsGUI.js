@@ -1,7 +1,7 @@
 var historyLogger = null;
 
 var AppsGUI = Base.extend({
-    constructor: function(db, locale) {
+    constructor: function(db, locale, usertoken) {
         console.log("AppsGUI.constructor", db, locale);
         var localeMap = {
             "en-US": "en",
@@ -13,7 +13,8 @@ var AppsGUI = Base.extend({
             this.locale = localeMap[locale];
         }
         this.page = 1;
-        historyLogger = new HistoryLogger(db, this.locale);
+        this.usertoken = usertoken;
+        historyLogger = new HistoryLogger(db, this.locale, usertoken);
     },
     buttonStyle: {
         fontSize: 30, border: 15, anchor: "middle", radius: 25

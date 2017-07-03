@@ -21,13 +21,15 @@ $(document).ready(function() {
         console.log(device.platform);
 
         // detect locale...
+        // TODO user token will be used to distinguish records in the database...
+        var usertoken = "7505d64a54e061b7acd54ccd58b49dc43500b635"; 
         var globalization = navigator.globalization;
         globalization.getLocaleName(function(locale) {
             // locale.value can be something like "en-US", "cs-CZ"
             var loc = (locale ? locale.value : null);
             /* PouchDB stuff... */
             var db = new PouchDB('kote');
-            startup((db && db.adapter) ? db : null, loc);
+            startup((db && db.adapter) ? db : null, loc, usertoken);
         });
 
 
@@ -93,7 +95,7 @@ function testPost() {
     }); 
 }
 
-function startup(db, locale) {
+function startup(db, locale, usertoken) {
     console.log("Starting up!", db, locale);
 
     onResize();
@@ -103,7 +105,7 @@ function startup(db, locale) {
     //alert(value);
     //storage.setItem("mobisvg", value+1);
 
-    appgui = new AppsGUI(db, locale);
+    appgui = new AppsGUI(db, locale, usertoken);
     appgui.onReady(function() {
         console.log("AppGUI ready!");
         appgui.showAppsPage();

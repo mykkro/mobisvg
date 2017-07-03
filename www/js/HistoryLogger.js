@@ -1,9 +1,10 @@
 
 var HistoryLogger = Base.extend({
-    constructor: function(db, locale) {
-        console.log("History.constructor", db, locale);
+    constructor: function(db, locale, usertoken) {
+        console.log("History.constructor", db, locale, usertoken);
         this.db = db;
         this.locale = locale;
+        this.usertoken = usertoken;
     },
     stringifySettings: function(settings) {
         out = [];
@@ -16,10 +17,11 @@ var HistoryLogger = Base.extend({
         var timestamp = new Date().toISOString();
         var settingsStr = this.stringifySettings(settings);
         var idStr = game + ":" + gamepack + ":" + locale + ":" + settingsStr;
-        console.log("Log game event:", timestamp, idStr, idStr.hashCode(), eventType, eventData);
+        console.log("Log game event:", this.usertoken, timestamp, idStr, idStr.hashCode(), eventType, eventData);
         var logItem = {
             "$type": "game-event",
             "_id": timestamp,
+            "usertoken": this.usertoken,
             "timestamp": timestamp,
             "game": game,
             "gamepack": gamepack,
