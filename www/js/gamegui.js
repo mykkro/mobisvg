@@ -8,8 +8,8 @@ var GameGUI = Base.extend({
         this.url = instance.appBaseUrl;
         this.options = options || {};
     },
-    logGameEvent: function(eventType, eventData) {
-        historyLogger.logGameEvent(this.instance.appName, this.instance.gamepackName, this.appgui.locale, this.gameSettings, eventType, eventData);
+    logGameEvent: function(eventType, eventData, eventData2, eventData3) {
+        historyLogger.logGameEvent(this.instance.appName, this.instance.gamepackName, this.appgui.locale, this.gameSettings, eventType, eventData, eventData2, eventData3);
     },
     loadScriptAndStyle: function() {
         var dfd = jQuery.Deferred();

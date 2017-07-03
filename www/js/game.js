@@ -38,8 +38,9 @@ var Game = Base.extend({
         console.log("Game finished!", result);
         this.finished = true;
         console.log("Validating the answer...");
-        var messages = this.generateReport(this.task.evaluate(result));
-        this.onFinish(result, messages);
+        var evaluated = this.task.evaluate(result);
+        var messages = this.generateReport(evaluated);
+        this.onFinish(result, evaluated, messages);
     },
     generateReport: function(evalResult) {
         return [this.loc("Correctness") + ": "+ sprintf("%.1f%%", evalResult.correctness * 100)];
@@ -64,11 +65,11 @@ var Game = Base.extend({
             }
         }
     },
-    onFinish: function(val, messages) {
+    onFinish: function(val, evaluated, messages) {
         if(typeof(val)=="function") {
             this._onFinish = val;
         } else {
-            this.gui.logGameEvent("gameFinished", val);
+            this.gui.logGameEvent("gameFinished", val, evaluated, messages);
             if(this._onFinish) {        
                 this._onFinish(val, messages);
             }
