@@ -13,11 +13,11 @@ var HistoryLogger = Base.extend({
         }
         return out.join(",");
     },
-    logGameEvent: function(game, gamepack, locale, settings, eventType, eventData) {
+    logGameEvent: function(game, gamepack, locale, settings, eventType, eventData, eventData2, eventData3) {
         var timestamp = new Date().toISOString();
         var settingsStr = this.stringifySettings(settings);
         var idStr = game + ":" + gamepack + ":" + locale + ":" + settingsStr;
-        console.log("Log game event:", this.usertoken, timestamp, idStr, idStr.hashCode(), eventType, eventData);
+        console.log("Log game event:", this.usertoken, timestamp, idStr, idStr.hashCode(), eventType, eventData, eventData2, eventData3);
         var logItem = {
             "$type": "game-event",
             "_id": timestamp,
@@ -30,7 +30,9 @@ var HistoryLogger = Base.extend({
             "ident": idStr,
             "hash": idStr.hashCode(),
             "eventType": eventType,
-            "eventData": eventData
+            "eventData": eventData,
+            "eventData2": eventData2,
+            "eventData3": eventData3
         }
         this.storeToDB(logItem);
     },

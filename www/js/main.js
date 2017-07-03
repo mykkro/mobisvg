@@ -29,47 +29,35 @@ $(document).ready(function() {
             var loc = (locale ? locale.value : null);
             /* PouchDB stuff... */
             var db = new PouchDB('kote');
+            // for debugging purposes...
+            POUCHDB = db;
+            USERTOKEN = usertoken;
+            FINDER = function() {
+                return POUCHDB.createIndex(
+                    {
+                        index: { 
+                            fields: ["timestamp", 'usertoken', 'eventType'] 
+                        }
+                    }
+                ).then(function() { 
+                    return POUCHDB.find({
+                        selector: { 
+                            "eventType": "gameFinished", 
+                            "usertoken": USERTOKEN,
+                            "timestamp": { $gt: null }
+                        },
+                        // ??? sorting by timestamp is still in ascending order!
+                        "sort": [{"timestamp": 'desc'}, {"usertoken":'asc'}, {"eventType": 'asc'}]    
+                    }); 
+                });
+            }
             startup((db && db.adapter) ? db : null, loc, usertoken);
         });
-
-
-        /* Example on how to use PouchDB... */
-        /*
-         var todo = {
-            _id: new Date().toISOString(),
-            title: "New TODO!",
-            completed: false
-          };
-          db.put(todo, function callback(err, result) {
-            if (!err) {
-              console.log('Successfully posted a todo!');
-                db.allDocs({
-                  include_docs: true,
-                  attachments: true
-                }).then(function (result) {
-                  console.log(result);
-                  console.log("Rows: "+result.rows.length);
-
-                  // start - logging enabled...
-                  
-
-                }).catch(function (err) {
-                  console.log(err);
-                  alert("Database connection error!");
-                });
-            } else {
-               alert("Database connection error!");
-            }
-          });
-          */
-
     });
 
-    window.addEventListener('orientationchange',
-        onOrientationChange, true);
+    window.addEventListener('orientationchange', onOrientationChange, true);
     //for devices that don't fire orientationchange
     window.addEventListener("resize", onResize, false);
-
     
 });
 

@@ -274,3 +274,21 @@ String.prototype.hashCode = function() {
   }
   return hash;
 };
+
+
+var pouchDbJsonDump = function(db) {
+   db.allDocs({
+    include_docs: true,
+    attachments: true
+  }).then(function (result) {
+    console.log(result);
+    console.log("Rows: "+result.rows.length);
+
+    // start - logging enabled...
+    
+
+  }).catch(function (err) {
+    console.log(err);
+    
+  });  
+}
