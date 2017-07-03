@@ -28,7 +28,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         --> 
-        <meta http-equiv="Content-Security-Policy" content="default-src * gap: ws: https://ssl.gstatic.com blob: filesystem:; style-src * 'unsafe-inline' 'self' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval' data: blob:; img-src * data: 'unsafe-inline' 'self' content:; media-src mediastream;" >
+        <meta http-equiv="Content-Security-Policy" content="default-src * gap: ws: https://ssl.gstatic.com blob: filesystem:; style-src * 'unsafe-inline' 'self' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval' data: blob:; img-src * data: 'unsafe-inline' 'self' content:; media-src 'self' mediastream;" >
 
         <!--meta http-equiv="Content-Security-Policy" content="connect-src 'self' download.mykkro.cz file: data: blob: filesystem:; default-src 'self' download.mykkro.cz gap: ws: https://ssl.gstatic.com;style-src * 'unsafe-inline' 'self' data: blob:;script-src * 'unsafe-inline' 'unsafe-eval' data: blob:;img-src * data: 'unsafe-inline' 'self' content:;media-src mediastream;/ "-->
 
@@ -122,6 +122,7 @@
         <script src="js/jquery.polartimer.js"></script>
         <script src="js/SoundPlayer.js"></script>
         <script src="js/Meta.js"></script>
+        <script src="js/HistoryLogger.js"></script>
         <script src="js/AppsGUI.js"></script>
         <script src="js/GameGUI.js"></script>
         <script src="js/Grid.js"></script>

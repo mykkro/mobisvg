@@ -1,3 +1,4 @@
+var historyLogger = null;
 
 var AppsGUI = Base.extend({
     constructor: function(db, locale) {
@@ -12,6 +13,7 @@ var AppsGUI = Base.extend({
             this.locale = localeMap[locale];
         }
         this.page = 1;
+        historyLogger = new HistoryLogger(db, this.locale);
     },
     buttonStyle: {
         fontSize: 30, border: 15, anchor: "middle", radius: 25

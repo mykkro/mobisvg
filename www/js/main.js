@@ -113,26 +113,23 @@ function startup(db, locale) {
     ////testPost();
 }
 
-function show(text) {
-    $(".event.received").text(text);
-}
 
 function onOrientationChange() {
     var msg;
     console.log("Orientation has changed");
-    switch (abs(window.orientation)) {
+    switch (Math.abs(window.orientation)) {
         case 90:
-            show("Device is in Landscape mode");
+            console.log("Device is in Landscape mode");
             break;
         default:
-            show("Device is in Portrait mode");
+            console.log("Device is in Portrait mode");
             break;
     }
     updatePage();
 }
 
 function onResize() {
-    show("Resize event fired");
+    console.log("Resize event fired");
     updatePage();
 
     var ww = window.innerWidth;

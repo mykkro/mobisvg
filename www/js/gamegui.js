@@ -8,6 +8,9 @@ var GameGUI = Base.extend({
         this.url = instance.appBaseUrl;
         this.options = options || {};
     },
+    logGameEvent: function(eventType, eventData) {
+        historyLogger.logGameEvent(this.instance.appName, this.instance.gamepackName, this.appgui.locale, this.gameSettings, eventType, eventData);
+    },
     loadScriptAndStyle: function() {
         var dfd = jQuery.Deferred();
         // load style dynamically...
@@ -303,8 +306,14 @@ var GameGUI = Base.extend({
         var self = this;
         console.log("Starting the game!");
         var game = new window[self.instance.app.app.gameClass](this.gameSettings);
+
+        // log event: start game
+        self.logGameEvent("gameCreated", null);
+
         game.baseUrl = self.url;
         game.meta = self.instance;
+        game.gui = self;
+
         game.loc = function(str) {
             return self.instance.tr(str);
         };
@@ -349,6 +358,7 @@ var GameGUI = Base.extend({
 
             self.game = new window[self.instance.app.app.gameClass]({});
             self.game.baseUrl = self.url;
+            self.game.gui = self;
 
             var configForm = {
                 "title": self.instance.tr("Settings"),

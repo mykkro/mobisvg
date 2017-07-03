@@ -6,6 +6,7 @@ var Game = Base.extend({
         this.config = config;
         // baseUrl and loc will be overwritten by the app engine...
         this.baseUrl = "";
+        this.gui = null;
         this.loc = function(s) { return s; };
         console.log("Game config loaded: ", config);
         this.embeddingOptions = this.getEmbeddingOptions();
@@ -46,22 +47,31 @@ var Game = Base.extend({
     onStart: function(val) {
         if(typeof(val)=="function") {
             this._onStart = val;
-        } else if(this._onStart) {
-            this._onStart(val);
+        } else {
+            this.gui.logGameEvent("gameStarted", this.gamedata);
+            if(this._onStart) {
+                this._onStart(val);
+            }
         }
     },
     onAbort: function(val) {
         if(typeof(val)=="function") {
             this._onAbort = val;
-        } else if(this._onAbort) {
-            this._onAbort(val);
+        } else {
+            this.gui.logGameEvent("gameAborted", null);
+            if(this._onAbort) {            
+                this._onAbort(val);
+            }
         }
     },
     onFinish: function(val, messages) {
         if(typeof(val)=="function") {
             this._onFinish = val;
-        } else if(this._onFinish) {
-            this._onFinish(val, messages);
+        } else {
+            this.gui.logGameEvent("gameFinished", val);
+            if(this._onFinish) {        
+                this._onFinish(val, messages);
+            }
         }
     }
 
