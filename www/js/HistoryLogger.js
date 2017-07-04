@@ -49,7 +49,7 @@ var HistoryLogger = Base.extend({
         }
 
     },
-    renderHistory: function(loc, data) {
+    renderHistory: function(loc, data, messageIfEmpty) {
         // TODO move this to separate class
 
         var makeGameTitle = function(gameTitle) {
@@ -125,6 +125,12 @@ var HistoryLogger = Base.extend({
 
         var records = data.docs || [];
 
+        $("#history-form").empty();
+        if(records.length == 0) {
+            var msg = $("<div>").addClass("historyempty").text(messageIfEmpty).appendTo($("#history-form"));
+            return;            
+        }
+
         // group records by ident
         var idents = [];
         var identMap = {};
@@ -137,7 +143,6 @@ var HistoryLogger = Base.extend({
           }
         });
 
-        $("#history-form").empty();
         var out = $("<div>").addClass("output").appendTo($("#history-form"));
         idents.forEach(function(ident) {
           var records = identMap[ident];

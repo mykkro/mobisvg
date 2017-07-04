@@ -68,7 +68,7 @@ var GameGUI = Base.extend({
         $("#history-form-outer").show();
         // TODO search only this game's data
         FINDERBYGAME(this.instance.appName, this.instance.gamepackName, this.appgui.locale).then(function(data) {
-            self.appgui.historyLogger.renderHistory("cs-CZ", data);
+            self.appgui.historyLogger.renderHistory(self.appgui.localeLong, data, self.instance.tr("History is empty"));
         });
     },
     hideHtmlHistoryPage: function() {

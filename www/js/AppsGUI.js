@@ -7,11 +7,16 @@ var AppsGUI = Base.extend({
             "en-US": "en",
             "cs-CZ": "cz"
         }
+        var revLocaleMap = {
+            "en": "en-US",
+            "cz": "cs-CZ"
+        }
         this.db = db;
         this.locale = "en";
         if(locale in localeMap) {
             this.locale = localeMap[locale];
         }
+        this.localeLong = revLocaleMap[this.locale];
         this.page = 1;
         this.usertoken = usertoken;
         // TODO global object for debugging purposes
@@ -145,7 +150,7 @@ var AppsGUI = Base.extend({
         var self = this;
         $("#history-form-outer").show();
         FINDER().then(function(data) {
-            self.historyLogger.renderHistory("cs-CZ", data);
+            self.historyLogger.renderHistory(self.localeLong, data, self.indexLocalized.tr("History is empty"));
         });
     },
     hideHtmlHistoryPage: function() {
