@@ -1,0 +1,90 @@
+body {
+   background-color: #eef; 
+   padding: 5px; 
+   font-family: Ubuntu, sans-serif;
+}
+
+.output {
+  font-size: 1.2em;
+}
+
+.gametitle {
+  font-size: 2.0em;
+  font-weight: bold;
+  padding-right: 1em;
+}
+
+.gamepacktitle {
+  font-size: 1.5em;
+  padding-right: 0.5em;
+ }
+ 
+ .gametitlebar {
+   margin-bottom: 0.2em;
+ }
+ 
+ .datetime {
+   background-color: #ddd;
+   display: inline-block;
+   width: 6em;
+   padding: 1em 0;
+   border-radius: 1em;
+   vertical-align: top;
+ }
+ 
+ .gamedate {
+   text-align: center;
+   margin-bottom: 0.5em;
+   font-weight: bold;
+   font-size: 1.1em;
+ }
+
+ .gametime {
+   text-align: center;
+ }
+
+ .gameitem {
+   margin-bottom: 1em;
+ }
+ 
+ .gameresults {
+   display: inline-block;
+   margin-left: 2em;
+   margin-top: 1em;
+   vertical-align: top;
+ }
+ 
+ .gamelabel {
+   display: inline-block;
+   width: 13em;
+   margin-right: 2em;
+ }
+ 
+ .gamevalue {
+   display: inline-block;
+   width: 5em;
+ }
+ 
+ .gameresult {
+   margin-bottom: 0.2em;
+ }
+ 
+ .gamerecord {
+   margin-bottom: 0.3em;
+   display: block;
+ }
+ 
+.gamerecord:nth-child(even) {background: #dee}
+.gamerecord:nth-child(odd) {background: #edc}
+ 
+ .gametopitem {
+   margin-bottom: 2em;
+ }
+ 
+ .gamesettings {
+   font-style: italic;
+   color: #666;
+   font-size: 0.8em;
+ }
+  
+}

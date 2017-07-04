@@ -46,7 +46,27 @@ $(document).ready(function() {
                             "usertoken": USERTOKEN,
                             "timestamp": { $gt: null }
                         },
-                        // ??? sorting by timestamp is still in ascending order!
+                        "sort": [{"timestamp": 'desc'}, {"usertoken":'asc'}, {"eventType": 'asc'}]    
+                    }); 
+                });
+            }
+            FINDERBYGAME = function(game, gamepack, locale) {
+                return POUCHDB.createIndex(
+                    {
+                        index: { 
+                            fields: ["timestamp", 'usertoken', 'eventType', 'game', 'gamepack', 'locale'] 
+                        }
+                    }
+                ).then(function() { 
+                    return POUCHDB.find({
+                        selector: { 
+                            "eventType": "gameFinished", 
+                            "usertoken": USERTOKEN,
+                            "timestamp": { $gt: null },
+                            "game": game,
+                            "gamepack": gamepack,
+                            "locale": locale
+                        },
                         "sort": [{"timestamp": 'desc'}, {"usertoken":'asc'}, {"eventType": 'asc'}]    
                     }); 
                 });

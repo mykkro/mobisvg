@@ -57,6 +57,37 @@ var GameGUI = Base.extend({
         this.createSettingsPageButtons();
         $("#settings-form-outer").show();
     },
+    showHistoryPage: function() {
+        r.clear();
+        this.showHtmlHistoryPage();
+        this.showGameTitle();
+        this.createHistoryPageButtons();
+    },
+    showHtmlHistoryPage: function() {
+        var self = this;
+        $("#history-form-outer").show();
+        // TODO search only this game's data
+        FINDERBYGAME(this.instance.appName, this.instance.gamepackName, this.appgui.locale).then(function(data) {
+            self.appgui.historyLogger.renderHistory("cs-CZ", data);
+        });
+    },
+    hideHtmlHistoryPage: function() {
+        $("#history-form-outer").hide();
+    },
+    createHistoryPageButtons: function() {
+        var backBtn = new ButtonWidget(this.instance.tr("Back"), this.buttonStyle);        
+        var gap = 40;
+        var yy = 900;
+        Widget.layoutButtons([backBtn], gap, yy);
+        var self = this;
+
+        backBtn.onClick(function() {
+            self.hideHtmlHistoryPage();
+            self.showGameLauncherPage();          
+        });
+
+        return [backBtn];
+    },
     showAboutPage: function() {
         r.clear();
         /* display SVG About Page */
@@ -106,8 +137,8 @@ var GameGUI = Base.extend({
     // render various widgets
     showGameResults: function(results, messages) {
         var labelSvg = new TextWidget(600, 40, "middle", this.instance.tr("Results"));
-        labelSvg.setPosition(200, 160)
-        labelSvg.setStyle({"fill": "black"})
+        labelSvg.setPosition(200, 160);
+        labelSvg.setStyle({"fill": "black"});
 
         var yy = 250;    
         messages.forEach(function(m) {
@@ -182,13 +213,10 @@ var GameGUI = Base.extend({
                 self.showGameSelectionPage();
             });
         }
-        /*
         var historyBtn = new ButtonWidget(this.instance.tr("History"), this.buttonStyle);    
-        historyBtn.setEnabled(false);
         historyBtn.onClick(function() {
             self.showHistoryPage();
         });
-        */
 
         var aboutBtn = new ButtonWidget(this.instance.tr("About"), this.buttonStyle);    
         aboutBtn.setEnabled(true);
@@ -206,7 +234,7 @@ var GameGUI = Base.extend({
             });
         }
 
-        var gap = 40;
+        var gap = 30;
         var yy = 900;
         var btns = [];
         btns.push(startBtn);
@@ -214,6 +242,7 @@ var GameGUI = Base.extend({
             btns.push(settingsBtn);
         }
         btns.push(instrBtn);
+        btns.push(historyBtn);
         btns.push(aboutBtn);
         if(exitBtn) {
             btns.push(exitBtn);
