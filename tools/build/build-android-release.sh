@@ -21,7 +21,7 @@ ROOTDIR="/cygdrive/c/Work/mobisvg"
 CWD=$(pwd)
 
 # 1. scaffold the app
-./scaffold.sh $METAFILE "$ROOTDIR/tools/build/config/$PROJECT"
+./scaffold.sh $METAFILE $PROJECT "$ROOTDIR/tools/build/config/$PROJECT"
 
 # 2. generate and copy config.xml
 CONFIGFILE="config/$PROJECT/config.json"

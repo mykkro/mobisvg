@@ -7,101 +7,6 @@
     "settings": null, 
     "apps": [
         {
-            "name": "colortest-reverse", 
-            "settings": null, 
-            "config": [
-                {
-                    "description": "", 
-                    "name": "N", 
-                    "title": "Repeat count", 
-                    "default": 10, 
-                    "type": "int", 
-                    "maxValue": 50, 
-                    "minValue": 1
-                }, 
-                {
-                    "description": "", 
-                    "name": "matchProbability", 
-                    "title": "", 
-                    "default": 35, 
-                    "type": "int", 
-                    "maxValue": 100, 
-                    "minValue": 0
-                }
-            ], 
-            "tags": [
-                "visual", 
-                "attention"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "default", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {}
-                        }, 
-                        {
-                            "preview": false, 
-                            "name": "cz", 
-                            "metadata": {}
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {}
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": false, 
-                    "translations": {
-                        "blue": "blue", 
-                        "Minimum reaction time": "Minimum reaction time", 
-                        "Average reaction time": "Average reaction time", 
-                        "yellow": "yellow", 
-                        "matchProbability": "Match probability in %", 
-                        "green": "green", 
-                        "Repeat count": "Repeat count", 
-                        "red": "red"
-                    }, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": "Choose the colored square which matches the color of the text appearing in the center of the screen as fast as possible.", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Color Reaction Test"
-                    }
-                }, 
-                {
-                    "preview": true, 
-                    "translations": {
-                        "blue": "modr\u00e1", 
-                        "Minimum reaction time": "Nejkrat\u0161\u00ed doba reakce", 
-                        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
-                        "yellow": "\u017elut\u00e1", 
-                        "matchProbability": "Pravd\u011bpodobnost shody v %", 
-                        "green": "zelen\u00e1", 
-                        "Repeat count": "Po\u010det opakov\u00e1n\u00ed", 
-                        "red": "\u010derven\u00e1"
-                    }, 
-                    "name": "cz", 
-                    "metadata": {
-                        "instructions": "Zvolte v\u017edy co nejrychleji \u010dtverec se shodnou barvou, jakou m\u00e1 n\u00e1pis, kter\u00fd se objev\u00ed uprost\u0159ed.", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Reak\u010dn\u00ed test  \u2013 barvy"
-                    }
-                }
-            ], 
-            "preview": true, 
-            "gamepackName": "default", 
-            "resources": {}, 
-            "gameClass": "ReverseColorTestGame"
-        }, 
-        {
             "name": "dual-n-back", 
             "settings": {
                 "dualType": "colors", 
@@ -320,7 +225,7 @@
                             }
                         }
                     ], 
-                    "preview": true, 
+                    "preview": false, 
                     "config": null, 
                     "resources": {
                         "tileset": "tileset.json"
@@ -386,81 +291,6 @@
             "gamepackName": "default", 
             "resources": {}, 
             "gameClass": "MemoryGame"
-        }, 
-        {
-            "name": "questionary", 
-            "settings": null, 
-            "config": null, 
-            "tags": [
-                "survey"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "barthel-en", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {
-                                "instructions": "The Barthel scale or Barthel ADL index is an ordinal scale used to measure performance in activities of daily living. Each performance item is rated on this scale with a given number of points assigned to each level or ranking. The maximum score corresponds to full independence - the patient does not need help at all, not even verbal cues.\n\nDependency score:\n\n0-20 points: total dependency\n21-60 points: dependency\n61-90 points: moderate dependency\n91-99 points: slight dependency\n100 points: independency\n", 
-                                "subtitle": " ", 
-                                "description": " ", 
-                                "title": "Barthel Index"
-                            }
-                        }
-                    ], 
-                    "preview": true, 
-                    "config": null, 
-                    "resources": {
-                        "questionary": "questionary.json"
-                    }
-                }, 
-                {
-                    "name": "barthel-cz", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "cz", 
-                            "metadata": {
-                                "instructions": "Barthel Index je standardizovan\u00fd test ur\u010den\u00fd k\u00a0hodnocen\u00ed sob\u011bsta\u010dnosti. Body jsou p\u0159id\u011blov\u00e1ny podle toho, co pacient re\u00e1ln\u011b dok\u00e1\u017ee. Pln\u00fd po\u010det bod\u016f vylu\u010duje i jen minim\u00e1ln\u00ed pomoc, v\u010detn\u011b n\u00e1pov\u011bdy. Pacient m\u016f\u017ee p\u0159i hodnocen\u00fdch \u010dinnostech vyu\u017e\u00edvat mechanick\u00e9 pom\u016fcky (madla na st\u011bn\u00e1ch, hole, berle apod.).\n\nHodnocen\u00ed sob\u011bsta\u010dnosti:\n\n0-40 bod\u016f\tvysoce z\u00e1visl\u00fd\n45-60 bod\u016f\tz\u00e1vislost st\u0159edn\u00edho stupn\u011b\n65-95 bod\u016f\tlehk\u00e1 z\u00e1vislost\n100 bod\u016f\tnez\u00e1visl\u00fd\n", 
-                                "subtitle": " ", 
-                                "description": " ", 
-                                "title": "Barthel Index"
-                            }
-                        }
-                    ], 
-                    "preview": true, 
-                    "config": null, 
-                    "resources": {
-                        "questionary": "questionary.json"
-                    }
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": false, 
-                    "translations": null, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": " ", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Questionary"
-                    }
-                }, 
-                {
-                    "preview": false, 
-                    "translations": null, 
-                    "name": "cz", 
-                    "metadata": {}
-                }
-            ], 
-            "preview": true, 
-            "gamepackName": "default", 
-            "resources": {}, 
-            "gameClass": "Questionary"
         }, 
         {
             "name": "single-n-back", 
@@ -584,146 +414,6 @@
             "gameClass": "NBackSingleGame"
         }, 
         {
-            "name": "combine-words", 
-            "settings": null, 
-            "config": null, 
-            "tags": [
-                "verbal"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "english", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {}
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {
-                        "wordlist": "wordlist.json"
-                    }
-                }, 
-                {
-                    "name": "czech", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "cz", 
-                            "metadata": {}
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {
-                        "wordlist": "wordlist.json"
-                    }
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": true, 
-                    "translations": null, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": "Two columns are displayed, containing starting and ending parts of words. Starting parts are grouped in the left column, ending parts in the right column. You can match starts and ends by clicking a word in left column then a word in right column (a red connection line will be shown). You can remove the connection line by clicking on it. After all word parts are matched, press the OK button to evaluate the result.", 
-                        "subtitle": "Test your vocabulary skills", 
-                        "description": "This is a simple test where you are shown left and right parts of some words in two columns. Connect the matching parts together!", 
-                        "title": "Combine Words"
-                    }
-                }, 
-                {
-                    "preview": true, 
-                    "translations": null, 
-                    "name": "cz", 
-                    "metadata": {
-                        "instructions": "Spojte \u010d\u00e1sti slova z lev\u00e9ho a prav\u00e9ho sloupce tak, jak k sob\u011b pat\u0159\u00ed.", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Spojov\u00e1n\u00ed slov"
-                    }
-                }
-            ], 
-            "preview": false, 
-            "gamepackName": "czech", 
-            "resources": {}, 
-            "gameClass": "CombineWordsGame"
-        }, 
-        {
-            "name": "combine-words", 
-            "settings": null, 
-            "config": null, 
-            "tags": [
-                "verbal"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "english", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {}
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {
-                        "wordlist": "wordlist.json"
-                    }
-                }, 
-                {
-                    "name": "czech", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "cz", 
-                            "metadata": {}
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {
-                        "wordlist": "wordlist.json"
-                    }
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": true, 
-                    "translations": null, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": "Two columns are displayed, containing starting and ending parts of words. Starting parts are grouped in the left column, ending parts in the right column. You can match starts and ends by clicking a word in left column then a word in right column (a red connection line will be shown). You can remove the connection line by clicking on it. After all word parts are matched, press the OK button to evaluate the result.", 
-                        "subtitle": "Test your vocabulary skills", 
-                        "description": "This is a simple test where you are shown left and right parts of some words in two columns. Connect the matching parts together!", 
-                        "title": "Combine Words"
-                    }
-                }, 
-                {
-                    "preview": true, 
-                    "translations": null, 
-                    "name": "cz", 
-                    "metadata": {
-                        "instructions": "Spojte \u010d\u00e1sti slova z lev\u00e9ho a prav\u00e9ho sloupce tak, jak k sob\u011b pat\u0159\u00ed.", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Spojov\u00e1n\u00ed slov"
-                    }
-                }
-            ], 
-            "preview": false, 
-            "gamepackName": "english", 
-            "resources": {}, 
-            "gameClass": "CombineWordsGame"
-        }, 
-        {
             "name": "mental-rotation", 
             "settings": null, 
             "config": null, 
@@ -784,122 +474,6 @@
             "gamepackName": "default", 
             "resources": {}, 
             "gameClass": "MentalRotationGame"
-        }, 
-        {
-            "name": "reaction-time", 
-            "settings": null, 
-            "config": [
-                {
-                    "description": "", 
-                    "name": "N", 
-                    "title": "", 
-                    "default": 12, 
-                    "type": "int", 
-                    "maxValue": 20, 
-                    "minValue": 1
-                }, 
-                {
-                    "description": "", 
-                    "title": "", 
-                    "default": 1000, 
-                    "maxValue": 10000, 
-                    "minValue": 100, 
-                    "type": "int", 
-                    "by": 100, 
-                    "name": "allowedShift"
-                }, 
-                {
-                    "description": "", 
-                    "title": "", 
-                    "default": 3000, 
-                    "maxValue": 10000, 
-                    "minValue": 100, 
-                    "type": "int", 
-                    "by": 100, 
-                    "name": "targetTimeout"
-                }, 
-                {
-                    "description": "", 
-                    "title": "", 
-                    "default": 5000, 
-                    "maxValue": 10000, 
-                    "minValue": 100, 
-                    "type": "int", 
-                    "by": 1000, 
-                    "name": "avgFrameLen"
-                }
-            ], 
-            "tags": [
-                "visual", 
-                "attention"
-            ], 
-            "gamepacks": [
-                {
-                    "name": "default", 
-                    "settings": null, 
-                    "locales": [
-                        {
-                            "preview": false, 
-                            "name": "en", 
-                            "metadata": {}
-                        }, 
-                        {
-                            "preview": false, 
-                            "name": "cz", 
-                            "metadata": {}
-                        }
-                    ], 
-                    "preview": false, 
-                    "config": null, 
-                    "resources": {}
-                }
-            ], 
-            "locales": [
-                {
-                    "preview": true, 
-                    "translations": {
-                        "allowedShift": "Time tolerance [ms]", 
-                        "Average reaction time": "Average reaction time", 
-                        "avgFrameLen": "Time until next object [ms]", 
-                        "Best reaction time": "Best reaction time", 
-                        "targetTimeout": "Object disappears after [ms]", 
-                        "Average delay": "Average delay", 
-                        "Hit ratio": "Hit ratio", 
-                        "N": "Repeat count"
-                    }, 
-                    "name": "en", 
-                    "metadata": {
-                        "instructions": "Click the targets immediately after they appear.", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Reaction Time Test"
-                    }
-                }, 
-                {
-                    "preview": true, 
-                    "translations": {
-                        "allowedShift": "Povolen\u00e1 odchylka \u010dasu [ms]", 
-                        "Average reaction time": "Pr\u016fm\u011brn\u00e1 doba reakce", 
-                        "avgFrameLen": "\u010cas do dal\u0161\u00edho objektu [ms]", 
-                        "Best reaction time": "Nejkrat\u0161\u00ed doba reakce", 
-                        "targetTimeout": "Objekt zmiz\u00ed za [ms]", 
-                        "Average delay": "Pr\u016fm\u011brn\u00e1 doba reakce", 
-                        "Hit ratio": "Procento z\u00e1sah\u016f", 
-                        "N": "Po\u010det opakov\u00e1n\u00ed"
-                    }, 
-                    "name": "cz", 
-                    "metadata": {
-                        "instructions": "Strefte se do c\u00edle co nejrychleji pot\u00e9, co se objev\u00ed.", 
-                        "subtitle": " ", 
-                        "description": " ", 
-                        "title": "Reak\u010dn\u00ed test"
-                    }
-                }
-            ], 
-            "preview": true, 
-            "gamepackName": "default", 
-            "resources": {}, 
-            "gameClass": "ReactionTimeGame"
         }, 
         {
             "name": "slideshow", 
@@ -1443,11 +1017,7 @@
     "locales": [
         {
             "credits": [
-                "fontSize=26@This application was created at at the 1st Faculty of Medicine of Charles University.", 
-                null, 
-                "For more applications visit Albertov research center", 
-                "<http://www.albertov.cz/kote-en>", 
-                null, 
+                "fontSize=26@C-Tester by Myrousz 2016-2017", 
                 null, 
                 "Various vector icons used in the GUI by FlatIcon <http://www.flaticon.com>", 
                 "Font Awesome by Dave Gandy <http://fontawesome.io>"
@@ -1501,11 +1071,7 @@
         }, 
         {
             "credits": [
-                "fontSize=26@Aplikace byla vytvo\u0159ena na 1. l\u00e9ka\u0159sk\u00e9 fakult\u011b Univerzity Karlovy.", 
-                null, 
-                "Pro dal\u0161\u00ed aplikace nav\u0161tivte Albertov research center", 
-                "<http://www.albertov.cz/kote>", 
-                null, 
+                "fontSize=26@C-Tester by Myrousz 2016-2017", 
                 null, 
                 "R\u016fzn\u00e9 vektorov\u00e9 ikony: FlatIcon <http://www.flaticon.com>", 
                 "Font Awesome: Dave Gandy <http://fontawesome.io>"
@@ -1552,11 +1118,11 @@
             }, 
             "name": "cz", 
             "metadata": {
-                "subtitle": "Kognitivn\u00ed testov\u00e1n\u00ed", 
+                "subtitle": "C-Tester", 
                 "description": "C-Tester description comes here...", 
-                "title": "Kote"
+                "title": "C-Tester"
             }
         }
     ], 
-    "icon": "kote2"
+    "icon": "ctester"
 }
