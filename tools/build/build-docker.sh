@@ -24,7 +24,7 @@ TMPDIR="$ROOTDIR/tools/build/tmp"
 CWD=$(pwd)
 
 # 1. scaffold the app
-./scaffold.sh $METAFILE $PROJECT
+./scaffold.sh $METAFILE $PROJECT "$ROOTDIR/tools/build/config/$PROJECT"
 
 # 2. browser build
 cd "$ROOTDIR"

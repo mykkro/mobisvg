@@ -20,11 +20,12 @@ def get_project_data(data, project_name):
     return None
 
 
-def scaffold(dir, out_dir, data, project_name):
+def scaffold(dir, out_dir, data, project_name, configdir):
     print "Scaffolding applications for project %s..." % project_name
+    print "Using config directory with extra data: %s" % configdir
     print
     info = scaffold_framework_info(data)
-    loc_index = scaffold_locales(dir, out_dir, data["locales"])
+    loc_index = scaffold_locales(dir, out_dir, data["locales"], configdir)
     project = get_project_data(data, project_name)
     apps_index = scaffold_apps(dir, out_dir, project["apps"])
     icon = scaffold_icon(dir, out_dir, project.get("icon", "kote"))
@@ -55,11 +56,11 @@ def scaffold_icon(dir, out_dir, icon_name):
     return icon_name
 
 
-def scaffold_locales(dir, out_dir, data):
+def scaffold_locales(dir, out_dir, data, configdir=None):
     loc_index = []
     for loc in data:
         loc_index.append(
-            scaffold_locale(os.path.join(dir, "locales"), os.path.join(out_dir, "locales"), loc)
+            scaffold_locale(os.path.join(dir, "locales"), os.path.join(out_dir, "locales"), loc, configdir)
         )
     return loc_index
 
@@ -117,7 +118,8 @@ def scaffold_settings(src_dir, out_dir):
     return None
 
 
-def scaffold_locale(dir, out_dir, loc):
+def scaffold_locale(dir, out_dir, loc, configdir=None):
+    # if configdir is specified, load credits.yml from this directory
     index = {}
     name = loc.keys()[0]
     index["name"] = name
@@ -137,7 +139,16 @@ def scaffold_locale(dir, out_dir, loc):
         out_path = os.path.join(out_dir, "translations.json")
         index["translations"] = scaffold_vocabulary(path, out_path, language=name)
 
-    path = os.path.join(dir, "credits.yaml")
+    path = None
+    if configdir:
+        path = os.path.join(configdir, "locales", name, "credits.yaml")    
+        # print path
+        if os.path.exists(path):
+            print "Extra credits located: %s" % path
+        else:
+            path = None
+
+    path = path or os.path.join(dir, "credits.yaml")
     if os.path.exists(path):
         out_path = os.path.join(out_dir, "credits.json")
         index["credits"] = scaffold_credits(path, out_path, language=name)
@@ -164,7 +175,7 @@ def scaffold_gamepack(dir, out_dir, gp):
     print "Scaffolding gamepack %s" % name
 
     # scaffold locales
-    index["locales"] = scaffold_locales(dir, out_dir, locales)
+    index["locales"] = scaffold_locales(dir, out_dir, locales, None)
 
     # scaffold resources
     index["resources"] = scaffold_resources(dir, out_dir, resources)
@@ -274,7 +285,7 @@ def scaffold_app(dir, out_dir, app):
 
     out_root = out_dir
 
-    index["locales"] = scaffold_locales(dir, out_root, app_yaml.get("locales", []) or [])
+    index["locales"] = scaffold_locales(dir, out_root, app_yaml.get("locales", []) or [], None)
 
     index["gamepacks"] = scaffold_gamepacks(dir, out_root, app_yaml.get("gamepacks", []) or [])
 
@@ -372,11 +383,14 @@ def load_yaml_file(path):
 
 path = "main.yaml"
 project = "allgames"
+configdir = None
 
 if len(sys.argv) > 1:
     path = sys.argv[1]
     if len(sys.argv) > 2:
         project = sys.argv[2]
+        if len(sys.argv) > 3:
+            configdir = sys.argv[3]
 
 data = load_yaml_file(path)
 
@@ -385,7 +399,7 @@ out_dir = TGTDIR
 apps_dir = os.path.join(TGTDIR, "apps")
 rmtree(apps_dir)
 os.mkdir(apps_dir)
-index = scaffold(dir, out_dir, data, project)
+index = scaffold(dir, out_dir, data, project, configdir)
 print index
 
 

@@ -4,10 +4,11 @@
 
 METAFILE="$1"
 PROJECTNAME="$2"
+CONFIGDIR="$3"
 
 ROOTDIR="/cygdrive/c/Work/mobisvg"
 
 # 1. scaffold the app
 cd "$ROOTDIR/tools/scaffold"
 
-python scaffold.py $METAFILE $PROJECTNAME
+python scaffold.py $METAFILE $PROJECTNAME $CONFIGDIR

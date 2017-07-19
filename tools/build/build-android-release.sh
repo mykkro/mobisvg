@@ -21,10 +21,10 @@ ROOTDIR="/cygdrive/c/Work/mobisvg"
 CWD=$(pwd)
 
 # 1. scaffold the app
-./scaffold.sh $METAFILE $PROJECT
+./scaffold.sh $METAFILE "$ROOTDIR/tools/build/config/$PROJECT"
 
 # 2. generate and copy config.xml
-CONFIGFILE="config/config-$PROJECT.json"
+CONFIGFILE="config/$PROJECT/config.json"
 python generate_config.py $CONFIGFILE
 cp config.xml $ROOTDIR/config.xml
 

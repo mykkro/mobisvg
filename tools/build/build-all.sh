@@ -1,8 +1,7 @@
 #!/bin/bash
 
 for f in `ls config`; do 
-	CONFNAME=${f%.json}
-	PKGNAME=${CONFNAME#config-}
+	PKGNAME=$f
 	./build-browser.sh $PKGNAME
 	./build-docker.sh $PKGNAME
 	./build-android-release.sh $PKGNAME

@@ -218,12 +218,13 @@ var GameGUI = Base.extend({
             self.showHistoryPage();
         });
 
+        /*
         var aboutBtn = new ButtonWidget(this.instance.tr("About"), this.buttonStyle);    
         aboutBtn.setEnabled(true);
         aboutBtn.onClick(function() {
             self.showAboutPage();
         });
-
+        */
         
         var configFields = this.instance.config || [];
         console.log("Config fields:", configFields);
@@ -243,7 +244,7 @@ var GameGUI = Base.extend({
         }
         btns.push(instrBtn);
         btns.push(historyBtn);
-        btns.push(aboutBtn);
+        //btns.push(aboutBtn);
         if(exitBtn) {
             btns.push(exitBtn);
         }

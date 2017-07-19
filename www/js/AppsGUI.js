@@ -397,12 +397,12 @@ var AppsGUI = Base.extend({
     parseCredits: function(credits) {
         return credits.map(function(c) {
             // does the line contain formatting metadata?
-            var c = c || "";
-            var ndx = c.indexOf("@");
+            var cc = c || "";
+            var ndx = cc.indexOf("@");
             var m = {};
             if(ndx >= 0) {
                 // separate the string into two...
-                var meta = c.substring(0,ndx);
+                var meta = cc.substring(0,ndx);
                 var parts = meta.trim().split(",");
                 parts.forEach(function(p) {
                     var pp = p.split("=");
@@ -435,7 +435,7 @@ var AppsGUI = Base.extend({
         });
     },
     parseLinks: function(line) {
-        var c = line;
+        var c = line || "";
         var arr = [];
         var curr = {"type":"text", "content":""};
         arr.push(curr);
